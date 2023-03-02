@@ -2,8 +2,60 @@
     "Flamme" : {
         "type": "flamme",
         "damage": 10,
+        "manaCost": 15,
         "offensive": true,
         "defensive": false,
         "multiTarget": false
+    },
+    "1er secours" : {
+        "type": "soin",
+        "damage": 0,
+        "manaCost": 25,
+        "offensive": false,
+        "defensive": true,
+        "multiTarget": false,
+        "heal": 30
+    },
+    "Foudre": {
+        "type": "foudre",
+        "damage": 10,
+        "manaCost": 15,
+        "offensive": true,
+        "defensive": false,
+        "multiTarget": false
+    },
+    "Soins partiels" : {
+        "type": "soin",
+        "damage": 40,
+        "offensive": false,
+        "defensive": true,
+        "multiTarget": false,
+        "heal": 75
+    },
+    "Ecrasement": {
+        "type": "physical",
+        "damage": 10,
+        "manaCost": 15,
+        "offensive": true,
+        "defensive": false,
+        "multiTarget": false
+    },
+    "Affaiblo": {
+        "type": "status",
+        "damage": 0,
+        "manaCost": 20,
+        "offensive": true,
+        "defensive": false,
+        "multiTarget": false,
+        "stats": {"atk" : 0.5}
+    },
+    "Regeneration vitale": {
+        "type": "status",
+        "damage": 0,
+        "manaCost": 70,
+        "offensive": false,
+        "defensive": true,
+        "multiTarget": false,
+        "stats": {"hp" : 0.5}
     }
 }

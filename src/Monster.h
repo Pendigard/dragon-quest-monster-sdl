@@ -13,18 +13,16 @@
 class Monster
 {
     public:
-        std::string id;
         float hp;
         float mp;
-        std::string name;
-        std::string type;
-        std::string rank;
-        std::string family;
         unsigned int exp;
         unsigned int level;
         unsigned int synthLevel;
+        std::unordered_map<std::string, std::string> infos;
         std::unordered_map<std::string, float> stats;
         std::unordered_map<std::string, float> resistances;
+        std::unordered_map<std::string, float> growth;
+        std::unordered_map<std::string, unsigned int> skills;
         /*
         std::unordered_map<std::string, float> alterations;
         std::unordered_map<std::string, float> status;

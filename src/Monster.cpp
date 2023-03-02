@@ -2,28 +2,40 @@
 
 #include "Monster.h"
 
+void jsonToUnorderedMap(rapidjson::Value& json, std::unordered_map<std::string, float>& map)
+{
+    //Boucle permettant de parcourir le json clé après clé
+    for (rapidjson::Value::ConstMemberIterator itr = json.MemberBegin(); itr != json.MemberEnd(); ++itr)
+    {
+        map[itr->name.GetString()] = itr->value.GetFloat();
+    }
+}
+
+void jsonToUnorderedMap(rapidjson::Value& json, std::unordered_map<std::string, unsigned int>& map)
+{
+    //Boucle permettant de parcourir le json clé après clé
+    for (rapidjson::Value::ConstMemberIterator itr = json.MemberBegin(); itr != json.MemberEnd(); ++itr)
+    {
+        map[itr->name.GetString()] = itr->value.GetInt();
+    }
+}
+
 Monster::Monster(rapidjson::Value& monsterData, std::string idM, rapidjson::Document& monsterBase)
 {
-    id = idM;
     hp = monsterData["hp"].GetFloat();
     mp = monsterData["mp"].GetFloat();
-    name = monsterData["name"].GetString();
-    type = monsterData["type"].GetString();
+    infos["id"] = idM;
+    infos["name"] = monsterData["name"].GetString();
+    infos["type"] = monsterData["type"].GetString();
+    infos["rank"] = monsterBase[monsterData["type"].GetString()]["rank"].GetString();
+    infos["family"] = monsterBase[monsterData["type"].GetString()]["family"].GetString();
     exp = monsterData["exp"].GetInt();
-    rank = monsterBase[monsterData["type"].GetString()]["rank"].GetString();
-    family = monsterBase[monsterData["type"].GetString()]["family"].GetString();
     synthLevel = monsterData["synthLevel"].GetInt();
     getLevelXp();
-    //Boucle permettant de parcourir la section stats du json clé après clé
-    for (rapidjson::Value::ConstMemberIterator itr = monsterData["stats"].MemberBegin(); itr != monsterData["stats"].MemberEnd(); ++itr)
-    {
-        stats[itr->name.GetString()] = itr->value.GetFloat();
-    }
-    //Boucle permettant de parcourir la section resistances du json clé après clé
-    for (rapidjson::Value::ConstMemberIterator itr = monsterBase[monsterData["type"].GetString()]["resistances"].MemberBegin(); itr != monsterBase[monsterData["type"].GetString()]["resistances"].MemberEnd(); ++itr)
-    {
-        resistances[itr->name.GetString()] = itr->value.GetFloat();
-    }
+    jsonToUnorderedMap(monsterData["skills"], skills);
+    jsonToUnorderedMap(monsterData["stats"], stats);
+    jsonToUnorderedMap(monsterData["growth"], growth);
+    jsonToUnorderedMap(monsterBase[monsterData["type"].GetString()]["resistances"], resistances);
 }
 
 void Monster::getLevelXp()
@@ -34,11 +46,11 @@ void Monster::getLevelXp()
 void Monster::afficher() const
 {
     std::cout<<"======================"<<std::endl;
-    std::cout << "Nom : " << name;
-    std::cout << " Type : " << type <<std::endl;
-    std::cout << "Rang : " << rank;
+    std::cout << "Nom : " << infos.at("name");
+    std::cout << " Type : " << infos.at("type") <<std::endl;
+    std::cout << "Rang : " << infos.at("rank");
     if (synthLevel != 0) {std::cout << "+" << synthLevel;}
-    std::cout << " Famille : " << family;
+    std::cout << " Famille : " << infos.at("family");
     std::cout  << std::endl << "HP : " << (int) hp <<"/"<< stats.at("hp");
     std::cout << " MP : " << (int) mp <<"/"<<stats.at("mp")<<std::endl;
     std::cout << "Niveau : " << level;
