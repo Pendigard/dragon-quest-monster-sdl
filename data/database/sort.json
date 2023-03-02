@@ -1,0 +1,9 @@
+{
+    "Flamme" : {
+        "type": "flamme",
+        "damage": 10,
+        "offensive": true,
+        "defensive": false,
+        "multiTarget": false
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "mainTeam":{ 
+        "1" : "1"
+    },
+    "benchTeam" : {},
+"monsters": {
+    "1": {
+        "name": "Slimey", 
+        "type": "slime", 
+        "hp": 9.2,
+        "mp": 10,
+        "stats": {"hp":10, "mp": 10,"atk" : 30, "def": 12, "agi": 14, "wid": 10},
+        "exp": 1,
+        "synthLevel": 2
+    }
+}
+}
