@@ -45,15 +45,19 @@ void Monster::getLevelXp()
 
 void Monster::afficher() const
 {
-    std::cout<<"======================"<<std::endl;
-    std::cout << "Nom : " << infos.at("name");
-    std::cout << " Type : " << infos.at("type") <<std::endl;
-    std::cout << "Rang : " << infos.at("rank");
+    std::cout<<"==================================="<<std::endl;
+    std::cout << "Nom : " << infos.at("name") << " Niveau : " << level;
+    std::cout << " Rang : " << infos.at("rank");
     if (synthLevel != 0) {std::cout << "+" << synthLevel;}
-    std::cout << " Famille : " << infos.at("family");
-    std::cout  << std::endl << "HP : " << (int) hp <<"/"<< stats.at("hp");
+    std::cout << std::endl << "Type : " << infos.at("type");
+    std::cout << " Famille : " << infos.at("family") << std::endl ;
+    std::cout << "HP : " << (int) hp <<"/"<< stats.at("hp");
     std::cout << " MP : " << (int) mp <<"/"<<stats.at("mp")<<std::endl;
-    std::cout << "Niveau : " << level;
-    std::cout << " Exp : " << exp << "/" << std::pow(level+1,3) << std::endl;
-    std::cout<<"======================"<<std::endl;
+    std::cout << "Attaque : " << stats.at("atk") << " Defense : " << stats.at("def") << std::endl;
+    std::cout << "Agilité : " << stats.at("agi") << " Sagesse : " << stats.at("wis") << std::endl;
+    std::cout << "Exp : " << exp << "/" << std::pow(level+1,3) << " ";
+    for (int i=0; i<10-(pow(level+1,3)-exp)/(pow(level+1,3)-pow(level,3))*10;i++){std::cout<<"■";}
+    for (int i=0; i<(pow(level+1,3)-exp)/(pow(level+1,3)-pow(level,3))*10;i++) { std::cout<<"□";}
+    std::cout<<std::endl;
+    std::cout<<"==================================="<<std::endl;
 }
