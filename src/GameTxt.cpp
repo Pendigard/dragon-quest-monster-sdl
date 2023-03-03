@@ -18,6 +18,8 @@ void Game::loadPlayer() {
     std::vector<Monster> mainTeam;
     loadJson("data/database/monster.json",monsterBase);
     loadJson("data/save/save.json",save);
+    loadJson("data/save/skill.json",skillBase);
+    loadJson("data/save/spell.json",spellBase);
     for (rapidjson::Value::ConstMemberIterator itr = save["mainTeam"].MemberBegin(); itr != save["mainTeam"].MemberEnd(); ++itr)
     {
         rapidjson::Value& monsterData = save["monsters"][itr->value.GetString()];

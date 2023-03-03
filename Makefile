@@ -13,4 +13,4 @@ obj/Player.o: src/Player.cpp src/Player.h src/Monster.h
 	g++ -Wall -c src/Player.cpp -o obj/Player.o
 
 obj/Monster.o: src/Monster.cpp src/Monster.h
-	g++ -Wall -c src/Monster.cpp -o obj/Monster.o -I/usr/local/include/rapidjson
+	g++ -std=c++11 -Wall -c src/Monster.cpp -o obj/Monster.o -I/usr/local/include/rapidjson

@@ -12,7 +12,7 @@
 
 class Monster
 {
-    public:
+    private:
         float hp;
         float mp;
         unsigned int exp;
@@ -28,13 +28,19 @@ class Monster
         std::unordered_map<std::string, float> status;
         */
 
+       void getLevelXp();
+       void levelUp(unsigned int level);
+       void getSpell(rapidjson::Document& spellBase, rapidjson::Document& skillBase);
+
+    public:
         ///@brief Constructeur à partir d'un fichier json
         Monster(rapidjson::Value& monsterData,std::string idM,rapidjson::Document& monsterBase);
 
-        void getLevelXp();
-
-        ///@brief Affiche les caractéristiques du monstre
+        ///@brief Affiche les caractéristiques du monstre dans la console
         void afficher() const;
+
+
+       void addXp(unsigned int xp);
 };
 
 #endif
