@@ -2,25 +2,8 @@
 
 #include "Monster.h"
 
-void jsonToUnorderedMap(rapidjson::Value& json, std::unordered_map<std::string, float>& map)
-{
-    //Boucle permettant de parcourir le json clé après clé
-    for (rapidjson::Value::ConstMemberIterator itr = json.MemberBegin(); itr != json.MemberEnd(); ++itr)
-    {
-        map[itr->name.GetString()] = itr->value.GetFloat();
-    }
-}
 
-void jsonToUnorderedMap(rapidjson::Value& json, std::unordered_map<std::string, unsigned int>& map)
-{
-    //Boucle permettant de parcourir le json clé après clé
-    for (rapidjson::Value::ConstMemberIterator itr = json.MemberBegin(); itr != json.MemberEnd(); ++itr)
-    {
-        map[itr->name.GetString()] = itr->value.GetInt();
-    }
-}
-
-Monster::Monster(rapidjson::Value& monsterData, std::string idM, rapidjson::Document& monsterBase)
+Monster::Monster(rapidjson::Value& monsterData, std::string idM, rapidjson::Document& monsterBase, rapidjson::Document& skillBase)
 {
     hp = monsterData["hp"].GetFloat();
     mp = monsterData["mp"].GetFloat();
@@ -31,11 +14,30 @@ Monster::Monster(rapidjson::Value& monsterData, std::string idM, rapidjson::Docu
     infos["family"] = monsterBase[monsterData["type"].GetString()]["family"].GetString();
     exp = monsterData["exp"].GetInt();
     synthLevel = monsterData["synthLevel"].GetInt();
+    skillPoints = monsterData["skillPoints"].GetInt();
     getLevelXp();
     jsonToUnorderedMap(monsterData["skills"], skills);
     jsonToUnorderedMap(monsterData["stats"], stats);
     jsonToUnorderedMap(monsterData["growth"], growth);
     jsonToUnorderedMap(monsterBase[monsterData["type"].GetString()]["resistances"], resistances);
+    updateSpell(skillBase);
+    for (auto& stat : stats)
+    {
+        alterations[stat.first][0] = 1;
+        alterations[stat.first][1] = 0;
+    }
+    initStatus();
+
+}
+
+void Monster::initStatus() {
+    status["poison"] = 0;
+    status["paralysie"] = 0;
+    status["sommeil"] = 0;
+    status["confusion"] = 0;
+    status["aveugle"] = 0;
+    status["regenerationVie"] = 0;
+    status["regenerationMana"] = 0;
 }
 
 void Monster::getLevelXp()
@@ -54,9 +56,19 @@ void Monster::levelUp(unsigned int level)
     mp = stats.at("mp");
 }
 
-void Monster::getSpell(rapidjson::Document& spellBase, rapidjson::Document& skillBase)
+void Monster::updateSpell(rapidjson::Document& skillBase)
 {
-
+    spells.clear();
+    for (auto& skill : skills)
+    {
+        for (rapidjson::Value::ConstMemberIterator itr = skillBase[skill.first.c_str()].MemberBegin(); itr != skillBase[skill.first.c_str()].MemberEnd(); ++itr)
+            {
+                if (itr->value.GetInt() <= skill.second && itr != skillBase[skill.first.c_str()].MemberBegin())
+                {
+                    spells.push_back(itr->name.GetString());
+                }
+            }
+    }
 }
 
 void Monster::addXp(unsigned int xp)
@@ -69,7 +81,20 @@ void Monster::addXp(unsigned int xp)
     }
 }
 
-void Monster::afficher() const
+void Monster::addSkillPoint(unsigned int points)
+{
+    skillPoints +=points;
+}
+
+void Monster::applySkillPoint(unsigned int points, std::string skill, rapidjson::Document& skillBase)
+{
+    unsigned int maxSkillSet = skillBase[skill.c_str()]["maxPoints"].GetInt()-skills[skill];
+    skills[skill] += std::min(std::min(points,skillPoints),maxSkillSet);
+    skillPoints -= std::min(std::min(points,skillPoints),maxSkillSet);
+    updateSpell(skillBase);
+}
+
+void Monster::print() const
 {
     std::cout<<"==================================="<<std::endl;
     std::cout << "Nom : " << infos.at("name") << " Niveau : " << level;
@@ -88,3 +113,10 @@ void Monster::afficher() const
     std::cout<<"==================================="<<std::endl;
 }
 
+void Monster::printSpells() const
+{
+    for (int i=0; i<spells.size(); i++)
+    {
+        std::cout << spells[i] << std::endl;
+    }
+}

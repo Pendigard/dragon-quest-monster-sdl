@@ -1,5 +1,6 @@
 #include "GameTxt.h"
 
+
 class Fight
 {
     public:
@@ -9,5 +10,7 @@ class Fight
 
     Fight(std::vector<Monster> t1, std::vector<Monster> t2);
 
-}
+};
+
+
 

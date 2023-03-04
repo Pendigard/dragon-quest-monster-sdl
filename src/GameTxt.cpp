@@ -1,38 +1,27 @@
 #include "GameTxt.h"
 
-void loadJson(std::string path, rapidjson::Document& doc){
-    std::ifstream file;
-    file.open(path);
-    if(file.is_open()){
-        std::string line;
-        std::string json;
-        while(std::getline(file, line)){
-            json += line;
-        }
-        doc.Parse(json.c_str());
-    }
-}
-
 
 void Game::loadPlayer() {
     std::vector<Monster> mainTeam;
     loadJson("data/database/monster.json",monsterBase);
     loadJson("data/save/save.json",save);
-    loadJson("data/save/skill.json",skillBase);
-    loadJson("data/save/spell.json",spellBase);
+    loadJson("data/database/skill.json",skillBase);
+    loadJson("data/database/spell.json",spellBase);
     for (rapidjson::Value::ConstMemberIterator itr = save["mainTeam"].MemberBegin(); itr != save["mainTeam"].MemberEnd(); ++itr)
     {
         rapidjson::Value& monsterData = save["monsters"][itr->value.GetString()];
-        Monster m = Monster(monsterData,itr->value.GetString(),monsterBase);
+        Monster m = Monster(monsterData,itr->value.GetString(),monsterBase,skillBase);
         player.mainTeam.push_back(m);
     }
     for (rapidjson::Value::ConstMemberIterator itr = save["benchTeam"].MemberBegin(); itr != save["benchTeam"].MemberEnd(); ++itr)
     {
         rapidjson::Value& monsterData = save["monsters"][itr->value.GetString()];
-        Monster m = Monster(monsterData,itr->value.GetString(),monsterBase);
+        Monster m = Monster(monsterData,itr->value.GetString(),monsterBase,skillBase);
         player.benchTeam.push_back(m);
     }
-    player.mainTeam[0].afficher();
+    player.mainTeam[0].print();
+    //player.mainTeam[0].applySkillPoint(40,"Pot de glu",skillBase);
+    //player.mainTeam[0].printSpells();
 }
 
 int main() {

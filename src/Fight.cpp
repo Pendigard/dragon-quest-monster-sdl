@@ -17,5 +17,3 @@ Action newAction(Monster c, std::vector<Monster> t, bool isE, std::string s) {
     a.spell = s;
     return a;
 }
-
-
