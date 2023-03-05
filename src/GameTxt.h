@@ -16,7 +16,11 @@ class Game
         rapidjson::Document spellBase;
         
         /// @brief  Charge les données de save.json, skill.json, spell.json et monster.json
-        void loadPlayer();
+        void loadGame();
+
+        /// @brief  Sauvegarde les données dans save.json, skill.json, spell.json et monster.json
+        void saveGame();
+
 
 };
 

@@ -11,7 +11,7 @@
         "agi": 200,
         "wis": 250
         },
-    "skill" : "Pot de glu",
+    "skills" : "Pot de glu",
     "growth" : {
         "hp": 2.6,
         "mp": 1.2,

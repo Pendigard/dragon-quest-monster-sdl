@@ -37,10 +37,15 @@ private:
     ///@brief Initialise les status du monstre
     void initStatus();
 
+    std::string generateID() const;
+
 public:
     ///@brief Constructeur à partir d'un fichier json
     ///@param monsterData : données du monstre, idM : identifiant du monstre, monsterBase : base de données des monstres, skillBase : base de données des compétences
     Monster(rapidjson::Value& monsterData,std::string idM,rapidjson::Document& monsterBase,rapidjson::Document& skillBase);
+
+    ///@brief Constructeur à partir des statistiques du monstre
+    Monster(std::string name,std::string type,rapidjson::Document& monsterBase,rapidjson::Document& skillBase,rapidjson::Document& save);
 
     ///@brief Affiche les caractéristiques du monstre dans la console
     void print() const;
@@ -59,6 +64,16 @@ public:
     /// @brief Applique les points de compétence au monstre dans un de ses sets de compétences
     /// @param points, skill, skillBase : points de compétence à appliquer, nom de la compétence, base de données des compétences
     void applySkillPoint(unsigned int points,std::string skill,rapidjson::Document& skillBase);
+
+    /// @brief Retourne l'identifiant du monstre
+    /// @return l'identifiant du monstre
+    std::string getId() const;
+
+    /// @brief Met à jour les statistiques du monstre dans la sauvegarde
+    /// @param m, save : monstre, sauvegarde
+    void updateSaveMonster(rapidjson::Document& save) const;
+
+    void createSaveMonster(rapidjson::Document& save) const;
 };
 
 #endif
