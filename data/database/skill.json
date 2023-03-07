@@ -4,9 +4,10 @@
         "Flamme": 2,
         "1er secours": 6,
         "Foudre": 16,
-        "Écrasement": 22,
+        "Ecrasement": 22,
+        "Crame": 28,
         "Affaiblo": 40,
         "Soins partiels" : 55,
-        "Régénération vitale" : 75
+        "Regeneration vitale" : 75
     } 
 }

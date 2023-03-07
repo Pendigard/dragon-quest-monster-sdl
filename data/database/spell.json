@@ -1,10 +1,28 @@
 {
+    "Attaque" : {
+        "type": "physical",
+        "damage": 0,
+        "manaCost": 0,
+        "offensive": true,
+        "self": false,
+        "multiTarget": false
+    },
+    "Defense" : {
+        "type": "status",
+        "damage": 0,
+        "manaCost": 0,
+        "offensive": false,
+        "self": true,
+        "multiTarget": false,
+        "stats": {"def" : 0.5},
+        "effectTurn":1
+    },
     "Flamme" : {
         "type": "flamme",
         "damage": 10,
         "manaCost": 15,
         "offensive": true,
-        "defensive": false,
+        "self": false,
         "multiTarget": false
     },
     "1er secours" : {
@@ -12,7 +30,7 @@
         "damage": 0,
         "manaCost": 25,
         "offensive": false,
-        "defensive": true,
+        "self": false,
         "multiTarget": false,
         "heal": 30
     },
@@ -21,14 +39,14 @@
         "damage": 10,
         "manaCost": 15,
         "offensive": true,
-        "defensive": false,
+        "self": false,
         "multiTarget": false
     },
     "Soins partiels" : {
         "type": "soin",
         "damage": 40,
         "offensive": false,
-        "defensive": true,
+        "self": false,
         "multiTarget": false,
         "heal": 75
     },
@@ -37,7 +55,7 @@
         "damage": 10,
         "manaCost": 15,
         "offensive": true,
-        "defensive": false,
+        "self": false,
         "multiTarget": false
     },
     "Affaiblo": {
@@ -45,7 +63,7 @@
         "damage": 0,
         "manaCost": 20,
         "offensive": true,
-        "defensive": false,
+        "self": false,
         "multiTarget": false,
         "stats": {"atk" : 0.5}
     },
@@ -54,8 +72,16 @@
         "damage": 0,
         "manaCost": 70,
         "offensive": false,
-        "defensive": true,
+        "self": false,
         "multiTarget": false,
         "stats": {"hp" : 0.5}
+    },
+    "Crame" : {
+        "type": "flamme",
+        "damage": 3,
+        "manaCost": 20,
+        "offensive": true,
+        "self": false,
+        "multiTarget": true
     }
 }
