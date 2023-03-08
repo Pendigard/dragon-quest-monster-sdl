@@ -1,6 +1,7 @@
 #include "GameTxt.h"
 
 
+
 void Game::loadGame() {
     std::vector<Monster> mainTeam;
     loadJson("data/database/monster.json",monsterBase);
@@ -24,7 +25,7 @@ void Game::loadGame() {
         Monster m = Monster(monsterData,save["storageMonsters"][i].GetString(),monsterBase,skillBase);
         player.storageMonsters.push_back(m);
     }
-    player.mainTeam[0].print();
+    //player.mainTeam[0].print();
     //player.mainTeam[0].applySkillPoint(40,"Pot de glu",skillBase);
     //player.mainTeam[0].printSpells();
 }
@@ -61,26 +62,36 @@ unsigned int Game::askTarget(bool isOffensive,Fight& f) {
     return choice;
 }
 
-std::vector<Monster> Game::getTargetPlayer(Monster caster, std::string spell,Fight& f)
+std::vector<std::string> Game::getTargetPlayer(Monster caster, std::string spell,Fight& f)
 {
     rapidjson::Value &spellInfo = f.spellBase[spell.c_str()];
-    std::vector<Monster> targetTeam;
+    std::vector<std::string> targetTeam;
     if (spellInfo["self"].GetBool()) {
-        targetTeam.push_back(caster);
+        targetTeam.push_back(caster.getId());
         return targetTeam;
         }
     if (spellInfo["offensive"].GetBool())
     {
-        if (spellInfo["multiTarget"].GetBool()) targetTeam = f.team2;
+        if (spellInfo["multiTarget"].GetBool()) {
+            for (int i = 0; i < f.team2.size(); i++)
+            {
+                targetTeam.push_back(f.team2[i].getId());
+            }
+        }
         else {
-            targetTeam.push_back(f.team2[askTarget(true,f)-1]);
+            targetTeam.push_back(f.team2[askTarget(true,f)-1].getId());
         }
     }
     else
     {
-        if (spellInfo["multiTarget"].GetBool()) targetTeam = f.team1;
+        if (spellInfo["multiTarget"].GetBool()) {
+            for (int i = 0; i < f.team1.size(); i++)
+            {
+                targetTeam.push_back(f.team1[i].getId());
+            }
+        }
         else {
-            targetTeam.push_back(f.team1[askTarget(false,f)-1]);
+            targetTeam.push_back(f.team1[askTarget(false,f)-1].getId());
         }
     }
     return targetTeam;
@@ -118,7 +129,7 @@ std::vector<Action> Game::getPlayerChoice(Fight& f)
             {
                 choice2 = orderMonster(f.team1[i]);
                 if (choice2 != 0) {
-                    std::vector<Monster> target = getTargetPlayer(f.team1[i], f.team1[i].getSpells()[choice2 - 1], f);
+                    std::vector<std::string> target = getTargetPlayer(f.team1[i], f.team1[i].getSpells()[choice2 - 1], f);
                     orders.push_back(createAction(f.team1[i].getId(), f.team1[i].getSpells()[choice2 - 1],target));
                 }
             }
@@ -135,7 +146,7 @@ void Game::printOrder(std::vector<Action> orders, Fight& f)
         std::cout << f.getMonsterById(orders[i].idCaster).getName() << " ----- " << orders[i].spell << " -----> ";
         for (int j = 0; j < orders[i].idTargets.size(); j++)
         {
-            std::cout << orders[i].idTargets[j].getName() << " ";
+            std::cout << f.getMonsterById(orders[i].idTargets[j]).getName() << " ";
         }
         std::cout << std::endl;
         std::cout << std::endl;
@@ -144,9 +155,31 @@ void Game::printOrder(std::vector<Action> orders, Fight& f)
 
 void Game::fight(Fight& f) {
     std::vector<Action> orders;
+    std::queue<spellImpact> impact;
     orders = getPlayerChoice(f);
     f.giveActions(orders);
     f.initTurn();
+    while (f.actionsOrdered.size() > 0)
+    {
+        impact = f.simulateAction();
+        while (!impact.empty())
+        {
+            std::cout << impact.front().message << std::endl;
+            f.updateMonster(impact.front());
+            impact.pop();
+        }
+        std::cout<<std::endl;
+
+        for (int i = 0; i < f.team1.size(); i++)
+        {
+            f.team1[i].print();
+        }
+        for (int i = 0; i < f.team2.size(); i++)
+        {
+            f.team2[i].print();
+        }
+    }
+
 }
  
 int main() {
@@ -156,10 +189,18 @@ int main() {
     std::vector<Monster> team1;
     std::vector<Monster> team2;
     team1=g.player.mainTeam;
-    Monster m = Monster("Gluant 1","gluant",g.monsterBase,g.skillBase,g.save,12);
-    Monster m2 = Monster("Gluant 2","gluant",g.monsterBase,g.skillBase,g.save,25);
+    Monster m = Monster("Gluant 1","gluant",g.monsterBase,g.skillBase,g.save,2);
+    Monster m2 = Monster("Gluant 2","gluant",g.monsterBase,g.skillBase,g.save,8);
     team2.push_back(m);
     team2.push_back(m2);
+    for (int i = 0; i < team1.size(); i++)
+    {
+        team1[i].print();
+    }
+    for (int i = 0; i < team2.size(); i++)
+    {
+        team2[i].print();
+    }
     Fight f(team1,team2);
     g.fight(f);
     return 0;

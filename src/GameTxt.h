@@ -23,14 +23,22 @@ class Game
 
         unsigned int askTarget(bool isOffensive,Fight& f);
 
-        std::vector<Monster> getTargetPlayer(Monster caster, std::string spell,Fight& f);
+        std::vector<std::string> getTargetPlayer(Monster caster, std::string spell,Fight& f);
 
         unsigned int orderMonster(Monster m);
 
+        /// @brief Demande au joueur de choisir des actions pour ses monstres
+        /// @param f Le combat
+        /// @return Les actions choisies par le joueur
         std::vector<Action> getPlayerChoice(Fight& f);
 
+        /// @brief Affiche l'ordre des monstres
+        /// @param order L'ordre des monstres
+        /// @param f Le combat
         void printOrder(std::vector<Action> order, Fight& f);
 
+        /// @brief Lance le combat
+        /// @param f Le combat à lancer
         void fight(Fight& f);
 
 

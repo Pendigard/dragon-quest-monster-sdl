@@ -42,8 +42,8 @@ Monster::Monster(rapidjson::Value &monsterData, std::string idM, rapidjson::Docu
     updateSpell(skillBase);
     for (auto &stat : stats)
     {
-        alterations[stat.first][0] = 1;
-        alterations[stat.first][1] = 0;
+        alterationsTurn[stat.first] = 0;
+        alterations[stat.first] = 1;
     }
     initStatus();
 }
@@ -72,8 +72,8 @@ Monster::Monster(std::string name, std::string type,rapidjson::Document &monster
     updateSpell(skillBase);
     for (auto &stat : stats)
     {
-        alterations[stat.first][0] = 1;
-        alterations[stat.first][1] = 0;
+        alterationsTurn[stat.first] = 0;
+        alterations[stat.first] = 1;
     }
     initStatus();
     addXp(std::pow(lvl,3));
@@ -255,6 +255,11 @@ void Monster::createSaveMonster(rapidjson::Document &save) const
     monster.AddMember(rapidjson::StringRef(infos.at("id").c_str()), monsterStat, save.GetAllocator());
 }
 
+bool Monster::operator==(const Monster &monster) const
+{
+    return infos.at("id") == monster.getId();
+}
+
 float Monster::getAgility() const
 {
     return stats.at("agi");
@@ -280,7 +285,25 @@ std::string Monster::getType() const
     return infos.at("type");
 }
 
-bool Monster::operator==(const Monster &monster) const
+float Monster::getStat(std::string stat) const
 {
-    return infos.at("id") == monster.getId();
+    return stats.at(stat);
+}
+
+void Monster::damage(float damage)
+{
+    hp -= damage;
+    if (hp < 1)
+    {
+        hp = 0;
+    }
+}
+
+void Monster::heal(float heal)
+{
+    hp += heal;
+    if (hp > stats.at("hp"))
+    {
+        hp = stats.at("hp");
+    }
 }

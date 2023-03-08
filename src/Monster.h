@@ -8,19 +8,18 @@
 class Monster
 {
 private:
-    float hp;
-    float mp;
     unsigned int exp;
     unsigned int level;
     unsigned int synthLevel;
     unsigned int skillPoints;
     std::string tactic;
-    std::unordered_map<std::string,unsigned int> statMax;
     std::unordered_map<std::string, float> stats;
+    std::unordered_map<std::string,unsigned int> statMax;
     std::unordered_map<std::string, float> resistances;
     std::unordered_map<std::string, float> growth;
     std::unordered_map<std::string, unsigned int> skills;
-    std::unordered_map<std::string, float[2]> alterations;
+    std::unordered_map<std::string, float> alterations;
+    std::unordered_map<std::string, int> alterationsTurn;
     std::unordered_map<std::string, int> status;
     std::vector<std::string> spells;
     std::unordered_map<std::string, std::string> infos;
@@ -45,7 +44,8 @@ private:
 
 public:
 
-    Monster();
+    float hp;
+    float mp;
     ///@brief Constructeur à partir d'un fichier json
     ///@param monsterData : données du monstre, idM : identifiant du monstre, monsterBase : base de données des monstres, skillBase : base de données des compétences
     Monster(rapidjson::Value& monsterData,std::string idM,rapidjson::Document& monsterBase,rapidjson::Document& skillBase);
@@ -109,6 +109,24 @@ public:
     /// @brief Donne le type du monstre
     /// @return Retourne le type du monstre
     std::string getType() const;
+
+    /// @brief Donne la statistique du monstre demandée
+    /// @param stat : statistique demandée
+    /// @return Retourne la statistique du monstre demandée
+    float getStat(std::string stat) const;
+
+    void damage(float damage);
+
+    void heal(float heal);
+
+    void setAlteration(std::string alteration, float value, int turn);
+
+    void setStatus(std::string status, int turn);
+
+    void resetStatus();
+
+    void resetAlterations();
+
 };
 
 #endif
