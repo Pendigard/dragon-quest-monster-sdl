@@ -11,9 +11,9 @@
 #include <algorithm>
 #include <cmath>
 
-#include <rapidjson/document.h>
-#include <rapidjson/writer.h>
-#include <rapidjson/stringbuffer.h>
+#include "../extern/rapidjson-mac/include/rapidjson/document.h"
+#include "../extern/rapidjson-mac/include/rapidjson/writer.h"
+#include "../extern/rapidjson-mac/include/rapidjson/stringbuffer.h"
 
 /// @brief Convertit un json en unordered_map
 /// @param json, map : json à convertir, map dans laquelle on stocke les données
