@@ -35,6 +35,17 @@
         "multiTarget": false,
         "dealDamage": true
     },
+    "Superflamme": {
+        "castSentence": "{} lance superflamme sur {}",
+        "element": "flamme",
+        "type": "magic",
+        "damage": 1.5,
+        "manaCost": 10,
+        "offensive": true,
+        "self": false,
+        "multiTarget": false,
+        "dealDamage": true
+    },
     "1er secours": {
         "castSentence": "{} utilise 1er secours sur {}",
         "type": "heal",
