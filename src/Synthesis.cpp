@@ -1,5 +1,5 @@
 #include "Synthesis.h"
 
-Monster Synthesis::makeSynthesis(Monster parent1, Monster parent2) {
+Monster makeSynthesis(Monster parent1, Monster parent2) {
     
 }

@@ -1,11 +1,11 @@
 {
     "gluant": {
-        "family": "Gluants",
+        "family": "Gluant",
         "rank": "D",
         "id": 1
     },
     "gluanbulle": {
-        "family": "Gluants",
+        "family": "Gluant",
         "rank": "D",
         "id": 2
     }
