@@ -264,10 +264,7 @@ int main()
     Monster m2 = Monster("Gluant 2", "gluant", g.monsterBase, g.skillBase, g.save, 10);
     team2.push_back(m);
     team2.push_back(m2);
-    for (int i = 0; i < team1.size(); i++)
-    {
-        team1[i].print();
-    }
+
     for (int i = 0; i < team2.size(); i++)
     {
         team2[i].print();
@@ -278,6 +275,10 @@ int main()
     g.player.mainTeam[0].applySkillPoint(75, "Pot de glu", g.skillBase);
     g.saveGame();
     team1 = g.player.mainTeam;
+    for (int i = 0; i < team1.size(); i++)
+    {
+        team1[i].print();
+    }
     Fight f(team1, team2);
     g.fight(f);
     return 0;

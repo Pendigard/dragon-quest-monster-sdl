@@ -350,14 +350,12 @@ std::queue<spellImpact> Fight::simulateAttack(Monster &caster, std::vector<std::
     {
         impact.function = damage;
         std::string type = spellInfo["type"].GetString();
-        if (type == "physical")
+        float statAtk = caster.getStat("atk");
+        if (type != "physical")
         {
-            dmg = (caster.getStat("atk") / 2 - getMonsterById(idTargets[i]).getStat("def") / 4) * spellInfo["damage"].GetFloat();
+            statAtk = caster.getStat("wis");
         }
-        else
-        {
-            dmg = (caster.getStat("wis") / 2 - getMonsterById(idTargets[i]).getStat("def") / 4) * spellInfo["damage"].GetFloat();
-        }
+        dmg = (statAtk / 2 - getMonsterById(idTargets[i]).getStat("def") / 4) * spellInfo["damage"].GetFloat();
         if (dmg < 0)
             dmg = 0;
         const int chance = 15;
@@ -594,7 +592,7 @@ std::queue<spellImpact> Fight::simulateAction()
 
 std::queue<std::string> Fight::simulateTurn()
 {
-    std::queue<std::string> messages= initTurn();
+    std::queue<std::string> messages = initTurn();
     while (!actionsOrdered.empty())
     {
         std::queue<spellImpact> impacts = simulateAction();
