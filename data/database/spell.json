@@ -75,6 +75,17 @@
         "multiTarget": false,
         "dealDamage": true
     },
+    "Superfoudre": {
+        "castSentence": "{} lance superfoudre sur {}",
+        "element": "foudre",
+        "type": "magic",
+        "damage": 2,
+        "manaCost": 10,
+        "offensive": true,
+        "self": false,
+        "multiTarget": false,
+        "dealDamage": true
+    },
     "Soins partiels": {
         "castSentence": "{} utilise soins partiels sur {}",
         "type": "heal",
