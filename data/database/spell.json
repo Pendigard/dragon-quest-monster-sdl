@@ -40,7 +40,7 @@
         "element": "flamme",
         "type": "magic",
         "damage": 1.5,
-        "manaCost": 10,
+        "manaCost": 10
     },
     "Megaflamme": {
         "castSentence": "{} lance megaflamme sur {}",
@@ -70,6 +70,17 @@
         "type": "magic",
         "damage": 1.2,
         "manaCost": 4,
+        "offensive": true,
+        "self": false,
+        "multiTarget": false,
+        "dealDamage": true
+    },
+    "Superfoudre": {
+        "castSentence": "{} lance superfoudre sur {}",
+        "element": "foudre",
+        "type": "magic",
+        "damage": 2,
+        "manaCost": 10,
         "offensive": true,
         "self": false,
         "multiTarget": false,
