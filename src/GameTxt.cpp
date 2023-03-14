@@ -7,22 +7,23 @@ void Game::loadGame()
     loadJson("data/save/save.json", save);
     loadJson("data/database/skill.json", skillBase);
     loadJson("data/database/spell.json", spellBase);
+    loadJson("data/database/monsterLibrary.json", library);
     for (long unsigned int i = 0; i < save["mainTeam"].Size(); i++)
     {
         rapidjson::Value &monsterData = save["monsters"][save["mainTeam"][i].GetString()];
-        Monster m = Monster(monsterData, save["mainTeam"][i].GetString(), monsterBase, skillBase);
+        Monster m = Monster(monsterData, save["mainTeam"][i].GetString(), monsterBase, skillBase,library);
         player.mainTeam.push_back(m);
     }
     for (long unsigned int i = 0; i < save["benchTeam"].Size(); i++)
     {
         rapidjson::Value &monsterData = save["monsters"][save["benchTeam"][i].GetString()];
-        Monster m = Monster(monsterData, save["benchTeam"][i].GetString(), monsterBase, skillBase);
+        Monster m = Monster(monsterData, save["benchTeam"][i].GetString(), monsterBase, skillBase,library);
         player.benchTeam.push_back(m);
     }
     for (long unsigned int i = 0; i < save["storageMonsters"].Size(); i++)
     {
         rapidjson::Value &monsterData = save["monsters"][save["storageMonsters"][i].GetString()];
-        Monster m = Monster(monsterData, save["storageMonsters"][i].GetString(), monsterBase, skillBase);
+        Monster m = Monster(monsterData, save["storageMonsters"][i].GetString(), monsterBase, skillBase,library);
         player.storageMonsters.push_back(m);
     }
 }
@@ -260,8 +261,8 @@ int main()
     g.loadGame();
     std::vector<Monster> team1;
     std::vector<Monster> team2;
-    Monster m = Monster("Gluant 1", "gluant", g.monsterBase, g.skillBase, g.save, 8);
-    Monster m2 = Monster("Gluant 2", "gluant", g.monsterBase, g.skillBase, g.save, 10);
+    Monster m = Monster("Gluant 1", "gluant", g.monsterBase, g.skillBase, g.save,g.library,8);
+    Monster m2 = Monster("Gluant 2", "gluant", g.monsterBase, g.skillBase, g.save,g.library,10);
     team2.push_back(m);
     team2.push_back(m2);
 

@@ -15,17 +15,21 @@ std::string Monster::generateID() const
     return id;
 }
 
-Monster::Monster(rapidjson::Value &monsterData, std::string idM, rapidjson::Document &monsterBase, rapidjson::Document &skillBase)
+Monster::Monster(rapidjson::Value &monsterData, std::string idM, rapidjson::Document &monsterBase, rapidjson::Document &skillBase,rapidjson::Document& library)
 {
     tactic = "Sans pitie";
-    jsonToUnorderedMap(monsterBase[monsterData["type"].GetString()]["statMax"], statMax);
+    std::string type = monsterData["type"].GetString();
+    std::string family =library[type.c_str()]["family"].GetString();
+    std::string rank = library[type.c_str()]["rank"].GetString();
+    rapidjson::Value& monsterStatBase = monsterBase[family.c_str()][rank.c_str()][type.c_str()];
+    jsonToUnorderedMap(monsterStatBase["statMax"], statMax);
     hp = monsterData["hp"].GetFloat();
     mp = monsterData["mp"].GetFloat();
     infos["id"] = idM;
     infos["name"] = monsterData["name"].GetString();
-    infos["type"] = monsterData["type"].GetString();
-    infos["rank"] = monsterBase[monsterData["type"].GetString()]["rank"].GetString();
-    infos["family"] = monsterBase[monsterData["type"].GetString()]["family"].GetString();
+    infos["type"] = type;
+    infos["rank"] = rank;
+    infos["family"] = family;
     exp = monsterData["exp"].GetInt();
     synthLevel = monsterData["synthLevel"].GetInt();
     skillPoints = monsterData["skillPoints"].GetInt();
@@ -33,7 +37,7 @@ Monster::Monster(rapidjson::Value &monsterData, std::string idM, rapidjson::Docu
     jsonToUnorderedMap(monsterData["skills"], skills);
     jsonToUnorderedMap(monsterData["stats"], stats);
     jsonToUnorderedMap(monsterData["growth"], growth);
-    jsonToUnorderedMap(monsterBase[monsterData["type"].GetString()]["resistances"], resistances);
+    jsonToUnorderedMap(monsterStatBase["resistances"], resistances);
     jsonToVector(monsterData["spells"], spells);
     for (auto &stat : stats)
     {
@@ -43,28 +47,31 @@ Monster::Monster(rapidjson::Value &monsterData, std::string idM, rapidjson::Docu
     initStatus();
 }
 
-Monster::Monster(std::string name, std::string type, rapidjson::Document &monsterBase, rapidjson::Document &skillBase, rapidjson::Document &save, unsigned int lvl = 1)
+Monster::Monster(std::string name, std::string type, rapidjson::Document &monsterBase, rapidjson::Document &skillBase, rapidjson::Document &save, rapidjson::Document& library,unsigned int lvl = 1)
 {
     tactic = "Sans pitie";
     do
     {
         infos["id"] = generateID();
     } while (save.HasMember(infos["id"].c_str()));
+    std::string family =library[type.c_str()]["family"].GetString();
+    std::string rank = library[type.c_str()]["rank"].GetString();
+    rapidjson::Value& monsterStatBase = monsterBase[family.c_str()][rank.c_str()][type.c_str()];
     infos["name"] = name;
     infos["type"] = type;
-    infos["rank"] = monsterBase[type.c_str()]["rank"].GetString();
-    infos["family"] = monsterBase[type.c_str()]["family"].GetString();
-    hp = monsterBase[type.c_str()]["growth"]["hp"].GetFloat();
-    mp = monsterBase[type.c_str()]["growth"]["mp"].GetFloat();
+    infos["rank"] = rank;
+    infos["family"] = family;
+    hp = monsterStatBase["growth"]["hp"].GetFloat();
+    mp = monsterStatBase["growth"]["mp"].GetFloat();
     exp = 1;
     synthLevel = 0;
     skillPoints = 0;
     level = 1;
-    skills[monsterBase[type.c_str()]["skills"].GetString()] = 0;
-    jsonToUnorderedMap(monsterBase[type.c_str()]["statMax"], statMax);
-    jsonToUnorderedMap(monsterBase[type.c_str()]["growth"], stats);
-    jsonToUnorderedMap(monsterBase[type.c_str()]["growth"], growth);
-    jsonToUnorderedMap(monsterBase[type.c_str()]["resistances"], resistances);
+    skills[monsterStatBase["skills"].GetString()] = 0;
+    jsonToUnorderedMap(monsterStatBase["statMax"], statMax);
+    jsonToUnorderedMap(monsterStatBase["growth"], stats);
+    jsonToUnorderedMap(monsterStatBase["growth"], growth);
+    jsonToUnorderedMap(monsterStatBase["resistances"], resistances);
     spells.push_back("Attaque");
     spells.push_back("Defense");
     for (auto &stat : stats)

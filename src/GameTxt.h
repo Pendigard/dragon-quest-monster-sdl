@@ -11,6 +11,7 @@ class Game
     public:
         Player player;
         rapidjson::Document monsterBase;
+        rapidjson::Document library;
         rapidjson::Document save;
         rapidjson::Document skillBase;
         rapidjson::Document spellBase;
