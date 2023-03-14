@@ -32,14 +32,14 @@
             "foudre": 1,
             "elec": 1,
             "lumiere": 1,
-            "poison": 0.5,
-            "paralysie": 1,
-            "sommeil": 1,
-            "confusion": 2,
-            "atk": 1,
-            "def": 1,
-            "agi": 1,
-            "wis": 1
+            "poison": 0.25,
+            "paralysis": 0.5,
+            "sleep": 0.8,
+            "confusion": 0.5,
+            "atk": 0.5,
+            "def": 0.5,
+            "agi": 0.5,
+            "wis": 0.5
         }
     },
     "gluanbulle": {
@@ -76,8 +76,8 @@
             "elec": 1,
             "lumiere": 1,
             "poison": 0.5,
-            "paralysie": 1,
-            "sommeil": 1,
+            "paralysis": 1,
+            "sleep": 1,
             "confusion": 2,
             "atk": 1,
             "def": 1,

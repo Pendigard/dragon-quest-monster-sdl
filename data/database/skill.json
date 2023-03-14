@@ -1,13 +1,37 @@
-{"Pot de glu": 
-    {
+{
+    "Pot de glu": {
         "maxPoints": 75,
-        "Flamme": 2,
-        "1er secours": 6,
-        "Foudre": 16,
-        "Ecrasement": 22,
-        "Crame": 28,
-        "Affaiblo": 40,
-        "Soins partiels" : 55,
-        "Regeneration vitale" : 75
-    } 
+        "Flamme": {
+            "point": 2,
+            "upgradeType": "spell"
+        },
+        "1er secours": {
+            "point": 6,
+            "upgradeType": "spell"
+        },
+        "Foudre": {
+            "point": 16,
+            "upgradeType": "spell"
+        },
+        "Ecrasement": {
+            "point": 22,
+            "upgradeType": "spell"
+        },
+        "Crame": {
+            "point": 28,
+            "upgradeType": "spell"
+        },
+        "Affaiblo": {
+            "point": 40,
+            "upgradeType": "spell"
+        },
+        "Soins partiels": {
+            "point": 55,
+            "upgradeType": "spell"
+        },
+        "Regeneration vitale": {
+            "point": 75,
+            "upgradeType": "spell"
+        }
+    }
 }

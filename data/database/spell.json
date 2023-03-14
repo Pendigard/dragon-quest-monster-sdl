@@ -1,5 +1,6 @@
 {
     "Attaque": {
+        "castSentence": "{} attaque {}",
         "type": "physical",
         "damage": 1,
         "manaCost": 0,
@@ -9,32 +10,36 @@
         "dealDamage": true
     },
     "Defense": {
-        "type": "status",
+        "castSentence": "{} adopte une posture défensive",
+        "type": "physical",
         "damage": 0,
         "manaCost": 0,
         "offensive": false,
         "self": true,
         "multiTarget": false,
         "dealDamage": false,
+        "affectStats": true,
         "stats": {
-            "def": 0.5
+            "def": 2
         },
         "effectTurn": 1
     },
     "Flamme": {
+        "castSentence": "{} lance flamme sur {}",
         "element": "flamme",
         "type": "magic",
         "damage": 1.2,
-        "manaCost": 15,
+        "manaCost": 4,
         "offensive": true,
         "self": false,
         "multiTarget": false,
         "dealDamage": true
     },
     "1er secours": {
+        "castSentence": "{} utilise 1er secours sur {}",
         "type": "heal",
         "damage": 0,
-        "manaCost": 25,
+        "manaCost": 5,
         "offensive": false,
         "self": false,
         "multiTarget": false,
@@ -42,18 +47,21 @@
         "heal": 30
     },
     "Foudre": {
+        "castSentence": "{} lance foudre sur {}",
         "element": "foudre",
         "type": "magic",
         "damage": 1.2,
-        "manaCost": 15,
+        "manaCost": 4,
         "offensive": true,
         "self": false,
         "multiTarget": false,
         "dealDamage": true
     },
     "Soins partiels": {
+        "castSentence": "{} utilise soins partiels sur {}",
         "type": "heal",
         "damage": 0,
+        "manaCost": 10,
         "offensive": false,
         "self": false,
         "multiTarget": false,
@@ -61,28 +69,32 @@
         "heal": 75
     },
     "Ecrasement": {
-        "element": "normal",
+        "castSentence": "{} écrase {}",
         "type": "physical",
         "damage": 1.3,
-        "manaCost": 15,
+        "manaCost": 5,
         "offensive": true,
         "self": false,
         "multiTarget": false,
         "dealDamage": true
     },
     "Affaiblo": {
+        "castSentence": "{} lance affaiblo sur {}",
         "type": "status",
         "damage": 0,
-        "manaCost": 20,
+        "manaCost": 7,
         "offensive": true,
         "self": false,
         "multiTarget": false,
         "dealDamage": false,
+        "affectStats": true,
         "stats": {
             "atk": 0.5
-        }
+        },
+        "effectTurn": 3
     },
     "Regeneration vitale": {
+        "castSentence": "{} utilise régénération vitale sur {}",
         "type": "status",
         "damage": 0,
         "manaCost": 70,
@@ -90,15 +102,17 @@
         "self": false,
         "multiTarget": false,
         "dealDamage": false,
-        "stats": {
-            "hp": 0.5
+        "affectStatus": true,
+        "status": {
+            "regen": 3
         }
     },
     "Crame": {
+        "castSentence": "{} lance crame sur l'équipe",
         "element": "flamme",
         "type": "magic",
         "damage": 0.8,
-        "manaCost": 15,
+        "manaCost": 6,
         "offensive": true,
         "self": false,
         "multiTarget": true,

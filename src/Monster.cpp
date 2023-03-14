@@ -4,26 +4,21 @@
 #include <cstdlib>
 #include <ctime>
 
-int getRand(int min, int max)
-{
-    return rand() % (max - min + 1) + min;
-}
-
 std::string Monster::generateID() const
 {
     std::string carac = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     std::string id = "";
     for (int i = 0; i < 8; i++)
     {
-        id += carac[getRand(0, carac.size() - 1)];
+        id += carac[getRand(0, carac.size())];
     }
     return id;
 }
 
-Monster::Monster(rapidjson::Value &monsterData, std::string idM, rapidjson::Document& monsterBase, rapidjson::Document &skillBase)
+Monster::Monster(rapidjson::Value &monsterData, std::string idM, rapidjson::Document &monsterBase, rapidjson::Document &skillBase)
 {
-    tactic = "Sans pitié";
-    jsonToUnorderedMap(monsterBase[monsterData["type"].GetString()]["statMax"],statMax);
+    tactic = "Sans pitie";
+    jsonToUnorderedMap(monsterBase[monsterData["type"].GetString()]["statMax"], statMax);
     hp = monsterData["hp"].GetFloat();
     mp = monsterData["mp"].GetFloat();
     infos["id"] = idM;
@@ -39,7 +34,7 @@ Monster::Monster(rapidjson::Value &monsterData, std::string idM, rapidjson::Docu
     jsonToUnorderedMap(monsterData["stats"], stats);
     jsonToUnorderedMap(monsterData["growth"], growth);
     jsonToUnorderedMap(monsterBase[monsterData["type"].GetString()]["resistances"], resistances);
-    updateSpell(skillBase);
+    jsonToVector(monsterData["spells"], spells);
     for (auto &stat : stats)
     {
         alterationsTurn[stat.first] = 0;
@@ -48,10 +43,11 @@ Monster::Monster(rapidjson::Value &monsterData, std::string idM, rapidjson::Docu
     initStatus();
 }
 
-Monster::Monster(std::string name, std::string type,rapidjson::Document &monsterBase, rapidjson::Document &skillBase, rapidjson::Document &save,unsigned int lvl=1)
+Monster::Monster(std::string name, std::string type, rapidjson::Document &monsterBase, rapidjson::Document &skillBase, rapidjson::Document &save, unsigned int lvl = 1)
 {
-    tactic = "Sans pitié";
-    do {
+    tactic = "Sans pitie";
+    do
+    {
         infos["id"] = generateID();
     } while (save.HasMember(infos["id"].c_str()));
     infos["name"] = name;
@@ -65,42 +61,43 @@ Monster::Monster(std::string name, std::string type,rapidjson::Document &monster
     skillPoints = 0;
     level = 1;
     skills[monsterBase[type.c_str()]["skills"].GetString()] = 0;
-    jsonToUnorderedMap(monsterBase[type.c_str()]["statMax"],statMax);
+    jsonToUnorderedMap(monsterBase[type.c_str()]["statMax"], statMax);
     jsonToUnorderedMap(monsterBase[type.c_str()]["growth"], stats);
     jsonToUnorderedMap(monsterBase[type.c_str()]["growth"], growth);
     jsonToUnorderedMap(monsterBase[type.c_str()]["resistances"], resistances);
-    updateSpell(skillBase);
+    spells.push_back("Attaque");
+    spells.push_back("Defense");
     for (auto &stat : stats)
     {
         alterationsTurn[stat.first] = 0;
         alterations[stat.first] = 1;
     }
     initStatus();
-    addXp(std::pow(lvl,3));
-    createSaveMonster(save);
+    addXp(std::pow(lvl, 3));
+    //createSaveMonster(save);
 }
 
 void Monster::initStatus()
 {
     status["poison"] = 0;
-    status["paralysie"] = 0;
-    status["sommeil"] = 0;
+    status["paralysis"] = 0;
+    status["sleep"] = 0;
     status["confusion"] = 0;
-    status["aveugle"] = 0;
-    status["regenerationVie"] = 0;
+    status["regen"] = 0;
     status["regenerationMana"] = 0;
 }
 
 int Monster::getMaxXp() const
 {
-    if (synthLevel < 5) {
-        return std::pow(50,3);
+    if (synthLevel < 5)
+    {
+        return std::pow(50, 3);
     }
     else if (synthLevel < 10)
     {
-        return std::pow(75,3);
+        return std::pow(75, 3);
     }
-    return std::pow(100,3);
+    return std::pow(100, 3);
 }
 
 void Monster::getLevelXp()
@@ -115,11 +112,15 @@ void Monster::levelUp(unsigned int level)
         stat.second += std::min(growth.at(stat.first) * (level - this->level), statMax.at(stat.first) - stat.second);
     }
     this->level = level;
+    if (level % 5 == 0)
+    {
+        skillPoints += 5;
+    }
     hp = stats.at("hp");
     mp = stats.at("mp");
 }
 
-void Monster::updateSpell(rapidjson::Document &skillBase)
+void Monster::getSpell(rapidjson::Document &skillBase)
 {
     spells.clear();
     spells.push_back("Attaque");
@@ -128,7 +129,14 @@ void Monster::updateSpell(rapidjson::Document &skillBase)
     {
         for (rapidjson::Value::ConstMemberIterator itr = skillBase[skill.first.c_str()].MemberBegin(); itr != skillBase[skill.first.c_str()].MemberEnd(); ++itr)
         {
-            if (itr->value.GetInt() <= skill.second && itr != skillBase[skill.first.c_str()].MemberBegin())
+            if (itr == skillBase[skill.first.c_str()].MemberBegin())
+            {
+                itr++;
+            }
+            const rapidjson::Value &currentSkill = itr->value;
+            int point = currentSkill["point"].GetInt();
+            std::string type = currentSkill["upgradeType"].GetString();
+            if (point <= skill.second && type == "spell")
             {
                 spells.push_back(itr->name.GetString());
             }
@@ -153,10 +161,33 @@ void Monster::addSkillPoint(unsigned int points)
 
 void Monster::applySkillPoint(unsigned int points, std::string skill, rapidjson::Document &skillBase)
 {
-    unsigned int maxSkillSet = skillBase[skill.c_str()]["maxPoints"].GetInt() - skills[skill];
-    skills[skill] += std::min(std::min(points, skillPoints), maxSkillSet);
-    skillPoints -= std::min(std::min(points, skillPoints), maxSkillSet);
-    updateSpell(skillBase);
+    skillPoints -= points;
+    int tmpPoint;
+    unsigned int pointUpgraded = skills[skill];     // point deja upgradé
+    int pointLeft = points;                // point restant a upgradé
+    unsigned int pointMax = points + skills[skill]; // point max a upgradé
+    for (rapidjson::Value::ConstMemberIterator itr = skillBase[skill.c_str()].MemberBegin(); itr != skillBase[skill.c_str()].MemberEnd(); ++itr)
+    {
+        if (itr == skillBase[skill.c_str()].MemberBegin())
+        {
+            itr++;
+        }
+        const rapidjson::Value &currentSkill = itr->value;
+        tmpPoint = currentSkill["point"].GetInt();
+        std::string type = currentSkill["upgradeType"].GetString();
+        pointLeft = tmpPoint - pointUpgraded;
+        if (tmpPoint <= pointMax && pointUpgraded < tmpPoint)
+        {
+            if (type == "spell")
+            {
+                spells.push_back(itr->name.GetString());
+                pointUpgraded = tmpPoint;
+            }
+        }
+    }
+    pointLeft = tmpPoint - pointUpgraded;
+    skills[skill] = points - pointLeft;
+    skillPoints += pointLeft;
 }
 
 void Monster::print() const
@@ -176,7 +207,7 @@ void Monster::print() const
     std::cout << "Attaque : " << (int)stats.at("atk") << " Defense : " << (int)stats.at("def") << std::endl;
     std::cout << "Agilité : " << (int)stats.at("agi") << " Sagesse : " << (int)stats.at("wis") << std::endl;
 
-    std::cout << "Exp : " << exp << "/" << std::min((int)std::pow(level + 1,3), getMaxXp()) << " ";
+    std::cout << "Exp : " << exp << "/" << std::min((int)std::pow(level + 1, 3), getMaxXp()) << " ";
     for (int i = 0; i < 10 - (pow(level + 1, 3) - exp) / (pow(level + 1, 3) - pow(level, 3)) * 10; i++)
     {
         std::cout << "■";
@@ -191,9 +222,16 @@ void Monster::print() const
 
 void Monster::printSpells() const
 {
+    rapidjson::Document spellBase;
+    loadJson("data/database/spell.json", spellBase);
     for (int i = 0; i < spells.size(); i++)
     {
-        std::cout <<i+1<<". "<< spells[i] << std::endl;
+        std::cout << i + 1 << ". " << spells[i];
+        if (spells[i] != "Attaque" && spells[i] != "Defense")
+        {
+            std::cout << " " << spellBase[spells[i].c_str()]["manaCost"].GetInt() << " PM";
+        }
+        std::cout << std::endl;
     }
 }
 
@@ -204,6 +242,8 @@ std::string Monster::getId() const
 
 void Monster::updateSaveMonster(rapidjson::Document &save) const
 {
+    assert(save.HasMember("monsters"));
+    assert(save["monsters"].HasMember(infos.at("id").c_str()));
     rapidjson::Value &monster = save["monsters"][infos.at("id").c_str()];
     monster["hp"] = hp;
     monster["mp"] = mp;
@@ -216,6 +256,12 @@ void Monster::updateSaveMonster(rapidjson::Document &save) const
     for (auto &stat : stats)
     {
         monster["stats"][stat.first.c_str()] = stat.second;
+    }
+    rapidjson::Value &spellsJson = monster["spells"];
+    spellsJson.SetArray();
+    for (auto &spell : spells)
+    {
+        spellsJson.PushBack(rapidjson::StringRef(spell.c_str()), save.GetAllocator());
     }
 }
 
@@ -248,6 +294,12 @@ void Monster::createSaveMonster(rapidjson::Document &save) const
     {
         skillsJson.AddMember(rapidjson::StringRef(skill.first.c_str()), (int)skill.second, save.GetAllocator());
     }
+    rapidjson::Value spells(rapidjson::kArrayType);
+    for (int i = 0; i < this->spells.size(); i++)
+    {
+        spells.PushBack(rapidjson::StringRef(this->spells[i].c_str()), save.GetAllocator());
+    }
+    monsterStat.AddMember("spells", spells, save.GetAllocator());
     monsterStat.AddMember("skills", skillsJson, save.GetAllocator());
     monsterStat.AddMember("skillPoints", skillPoints, save.GetAllocator());
     monsterStat.AddMember("exp", exp, save.GetAllocator());
@@ -287,11 +339,24 @@ std::string Monster::getType() const
 
 float Monster::getStat(std::string stat) const
 {
-    return stats.at(stat);
+    assert(stats.count(stat) == 1);
+    return stats.at(stat) * alterations.at(stat);
+}
+
+float Monster::getResistance(std::string resistance) const
+{
+    assert(resistances.count(resistance) == 1);
+    return resistances.at(resistance);
+}
+
+std::string Monster::getTactic() const
+{
+    return tactic;
 }
 
 void Monster::damage(float damage)
 {
+    assert(damage >= 0);
     hp -= damage;
     if (hp < 1)
     {
@@ -301,9 +366,115 @@ void Monster::damage(float damage)
 
 void Monster::heal(float heal)
 {
+    if (hp == 0)
+    {
+        return;
+    }
     hp += heal;
     if (hp > stats.at("hp"))
     {
         hp = stats.at("hp");
     }
+}
+
+void Monster::setStatus(std::string newStatus, int turns)
+{
+    status[newStatus] = turns;
+}
+
+void Monster::setStats(std::string stat, float value, int turns)
+{
+    if (value > 4)
+        value = 4;
+    if (value < 0.25)
+        value = 0.25;
+    alterations[stat] = value;
+    alterationsTurn[stat] = turns;
+}
+
+std::string statStatusMsg(std::string statStatus)
+{
+    if (statStatus == "atk")
+    {
+        return "L'attaque de {} revient à la normale";
+    }
+    if (statStatus == "def")
+    {
+        return "La défense de {} revient à la normale";
+    }
+    if (statStatus == "agi")
+    {
+        return "L'agilité de {} revient à la normale";
+    }
+    if (statStatus == "wis")
+    {
+        return "La sagesse de {} revient à la normale";
+    }
+    if (statStatus == "poison")
+    {
+        return "{} n'est plus empoisonné";
+    }
+    if (statStatus == "sleep")
+    {
+        return "{} se réveille";
+    }
+    if (statStatus == "paralysis")
+    {
+        return "{} n'est plus paralysé";
+    }
+    if (statStatus == "confusion")
+    {
+        return "{} n'est plus confus";
+    }
+    if (statStatus == "regen")
+    {
+        return "La régénération de {} s'arrête";
+    }
+    return "statut inconnu";
+}
+
+std::queue<std::string> Monster::updateStatStatus()
+{
+    std::queue<std::string> messages;
+    for (auto &statut : status)
+    {
+        if (statut.second > 0)
+        {
+            statut.second--;
+            if (statut.second == 0)
+            {
+                std::string message = formatString(statStatusMsg(statut.first), {getName()});
+                messages.push(message);
+            }
+        }
+    }
+    for (auto &alteration : alterations)
+    {
+        if (alterationsTurn[alteration.first] > 0)
+        {
+            alterationsTurn[alteration.first]--;
+            if (alterationsTurn[alteration.first] == 0)
+            {
+                alteration.second = 1;
+                std::string message = formatString(statStatusMsg(alteration.first), {getName()});
+                messages.push(message);
+            }
+        }
+    }
+    return messages;
+}
+
+bool Monster::getStatus(std::string status) const
+{
+    return this->status.at(status) > 0;
+}
+
+void Monster::setTactic(std::string tactic)
+{
+    this->tactic = tactic;
+}
+
+unsigned int Monster::getSkillToAttribute() const
+{
+    return skillPoints;
 }

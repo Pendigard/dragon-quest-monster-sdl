@@ -19,4 +19,4 @@ obj/Fight.o: src/Fight.cpp src/Fight.h src/Player.h src/Monster.h
 	g++ -Wall -c src/Fight.cpp -o obj/Fight.o
 
 obj/jsonFunction.o: src/jsonFunction.cpp src/jsonFunction.h
-	g++ -Wall -c src/jsonFunction.cpp -o obj/jsonFunction.o -Iextern/rapidjson-mac/include/rapidjson
+	g++ -Wall -c src/jsonFunction.cpp -o obj/jsonFunction.o -Iextern/rapidjson-master/include/rapidjson

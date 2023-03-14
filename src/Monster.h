@@ -2,8 +2,11 @@
 #define _MONSTER
 
 
+#include <queue>
 
 #include "jsonFunction.h"
+
+
 
 class Monster
 {
@@ -33,13 +36,17 @@ private:
 
     ///@brief Met à jour les sorts du monstre en fonction de ses compétences
     ///@param skillBase : base de données des compétences
-    void updateSpell(rapidjson::Document& skillBase);
+    void getSpell(rapidjson::Document& skillBase);
 
     ///@brief Initialise les status du monstre
     void initStatus();
 
+    /// @brief Génère un identifiant unique pour le monstre
+    /// @return L'identifiant unique
     std::string generateID() const;
 
+    /// @brief Renvoie l'xp maximum que le monstre peut atteindre
+    /// @return L'xp maximum
     int getMaxXp() const;
 
 public:
@@ -115,17 +122,48 @@ public:
     /// @return Retourne la statistique du monstre demandée
     float getStat(std::string stat) const;
 
+    /// @brief Donne les resistances du monstre
+    /// @param resistance : resistance demandée
+    /// @return Retourne la resistance du monstre demandée
+    float getResistance(std::string resistance) const;
+
+    /// @brief Donne la tactique du monstre
+    /// @return Retourne la tactique du monstre
+    std::string getTactic() const;
+
+    /// @brief Définit la tactique du monstre
+    /// @param tactic : tactique du monstre
+    void setTactic(std::string tactic);
+
+    /// @brief Inflige des dégâts au monstre
+    /// @param damage : dégâts à infliger
     void damage(float damage);
 
+    /// @brief Soigne le monstre
+    /// @param heal : points de vie à soigner
     void heal(float heal);
 
-    void setAlteration(std::string alteration, float value, int turn);
+    /// @brief Défini les alterations de statistiques du monstre
+    /// @param alteration : statistique à modifier
+    /// @param value : valeur de l'alteration
+    /// @param turn : nombre de tours de l'alteration
+    void setStats(std::string alteration, float value, int turn);
 
+    /// @brief Défini les alterations de status du monstre
+    /// @param status : status à modifier
+    /// @param turn : nombre de tours du status
     void setStatus(std::string status, int turn);
 
-    void resetStatus();
+    /// @brief Met à jour les alterations de statistiques et de status du monstre
+    /// @return Retourne la liste des status qui ont été supprimés
+    std::queue<std::string> updateStatStatus();
 
-    void resetAlterations();
+    /// @brief Renvoie vrai si le status du monstre est altéré
+    /// @param status : status à vérifier
+    /// @return Retourne vrai si le status du monstre est altéré
+    bool getStatus(std::string status) const;
+
+    unsigned int getSkillToAttribute() const;
 
 };
 

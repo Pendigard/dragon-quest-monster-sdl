@@ -2,7 +2,6 @@
 #define _FIGHT
 
 #include <stack>
-#include <queue>
 #include "Monster.h"
 #include "jsonFunction.h"
 
@@ -17,7 +16,7 @@ enum functionImpact
 {
     damage,
     heal,
-    stat,
+    stats,
     status,
     null
 };
@@ -25,7 +24,7 @@ enum functionImpact
 struct spellImpact
 {
     std::string message;
-    functionImpact function=null;
+    functionImpact function;
     std::vector<std::string> targetId;
     std::vector<float> argumentFloat;
     std::vector<int> argumentInt;
@@ -46,13 +45,71 @@ private:
     /// @return la pile d'actions
     void createStackAgility();
 
-    /// @brief Retourne les cibles du sort en fonction de la tactique du monstre
+    /// @brief Renvoie l'action de la tactique "Sans pitié"
+    /// @param caster : monstre qui lance le sort
+    /// @return l'action de la tactique "Sans pitié"
+    Action tacticSansPitie(Monster caster);
+
+    /// @brief Renvoie l'action de la tactique "Agir avec sagesse"
+    /// @param caster : monstre qui lance le sort
+    /// @return l'action de la tactique "Agir avec sagesse"
+    Action tacticSagesse(Monster caster);
+
+    /// @brief Renvoie l'action de la tactique "Pas de magie"
+    /// @param caster : monstre qui lance le sort
+    /// @return l'action de la tactique "Pas de magie"
+    Action tacticNoMana(Monster caster);
+
+    /// @brief Renvoie l'action de la tactique "Soins avant tout"
+    /// @param caster : monstre qui lance le sort
+    Action tacticSoin(Monster caster);
+
+    /// @brief Renvoie la liste des monstres vivants de l'équipe
+    /// @param team : équipe à tester
+    /// @return la liste des ids des monstres vivants de l'équipe
+    std::vector<std::string> getTeamAlive(std::vector<Monster> team) const;
+
+    /// @brief Vérifie si les cibles du sort sont vivantes
+    /// @param targets : cibles du sort
+    /// @param spell : nom du sort
+    void checkTargetAlive(std::vector<std::string>& targets, std::string spell, Monster caster);
+
+    /// @brief renvoie la phrase correspondant au status
+    /// @param status : status à traduire
+    /// @return la phrase correspondant au status
+    std::string getStatusName(std::string status);
+
+    /// @brief applique les effets du status
+    /// @param caster : monstre qui lance le sort
+    /// @param canMove : vrai si le monstre peut bouger, faux sinon après l'application du status
+    /// @return la phrase correspondant à la fonction
+    std::queue<spellImpact> getStatusEffect(Monster& caster,bool& canMove);
+
+    /// @brief renvoie la phrase correspondant à la statistique
+    /// @param stat : statistique à traduire
+    /// @param buff : vrai si c'est un buff, faux si c'est un debuff
+    /// @return la phrase correspondant à la statistique
+    std::string getStatsName(std::string stat, bool buff);
+
+    /// @brief Simule un sort de dégats
+    /// @param caster : monstre qui lance le sort
+    /// @param targets : cibles du sort
+    /// @param spell : nom du sort
+    /// @return la file de message à afficher
+    std::queue<spellImpact> simulateAttack(Monster& caster, std::vector<std::string> targets, std::string spell);
+
+    /// @brief Simule un sort de soin
+    /// @param caster : monstre qui lance le sort
+    /// @param targets : cibles du sort
+    /// @param spell : nom du sort
+    /// @return la file de message à afficher
+    std::queue<spellImpact> simulateHeal(Monster& caster, std::vector<std::string> targets, std::string spell);
+
+    /// @brief consome la mana du monstre
     /// @param caster : monstre qui lance le sort
     /// @param spell : nom du sort
-    /// @param isTeam1 : true si le monstre est dans l'équipe 1, false sinon
-    /// @return les cibles du sort
-    std::vector<std::string> getTargetTactic(Monster caster, std::string spell, bool isTeam1);
-
+    /// @return true si le monstre a assez de mana, false sinon
+    bool consumeMana(Monster& caster, std::string spell);
 
 
 
@@ -64,28 +121,48 @@ public:
     std::queue<Action> actionsOrdered;
     rapidjson::Document spellBase;
 
+    /// @brief Constructeur
     Fight(std::vector<Monster> t1, std::vector<Monster> t2);
 
     /// @brief Choix du sort en fonction de la tactique du monstre
     /// @param caster : monstre qui lance le sort
-    /// @param isTeam1 : true si le monstre est dans l'équipe 1, false sinon
-    void spellTacticChoice(Monster& caster, bool isTeam1);
+    void spellTacticChoice(Monster& caster);
 
 
     /// @brief Donne une action à effectuer
     void giveActions(std::vector<Action> actions);
 
-    void initTurn();
-    /// @brief Simule une action
+    /// @brief Initialise le tour
+    /// @return la file de message à afficher
+    std::queue<std::string> initTurn();
+
+    /// @brief Simule la prochaine action
     /// @return la file de message à afficher
     std::queue<spellImpact> simulateAction();
+
+    std::queue<std::string> simulateTurn();
     
     /// @brief Retourne le monstre correspondant à l'id
     /// @param id : id du monstre à trouver
     /// @return le monstre correspondant à l'id
     Monster& getMonsterById(std::string id);
 
+    /// @brief Met à jour les monstres après une action
+    /// @param impact : impact de l'action
     void updateMonster(spellImpact impact);
+
+    /// @brief Vérifie si le combat est terminé
+    /// @param isTeam1Win : true si l'équipe 1 a gagné, false sinon
+    /// @return true si le combat est terminé, false sinon
+    bool isOver(bool& isTeam1Win);
+
+    /// @brief Retourne les cibles du sort en fonction de la tactique du monstre
+    /// @param caster : monstre qui lance le sort
+    /// @param spell : nom du sort
+    /// @param isTeam1 : true si le monstre est dans l'équipe 1, false sinon
+    /// @return les cibles du sort
+    std::vector<std::string> getTargetTactic(Monster caster, std::string spell);
+
 
 };
 /// @brief Crée une action
