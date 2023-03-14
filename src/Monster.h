@@ -55,10 +55,10 @@ public:
     float mp;
     ///@brief Constructeur à partir d'un fichier json
     ///@param monsterData : données du monstre, idM : identifiant du monstre, monsterBase : base de données des monstres, skillBase : base de données des compétences
-    Monster(rapidjson::Value& monsterData,std::string idM,rapidjson::Document& monsterBase,rapidjson::Document& skillBase);
+    Monster(rapidjson::Value& monsterData,std::string idM,rapidjson::Document& monsterBase,rapidjson::Document& skillBase,rapidjson::Document& library);
 
     ///@brief Constructeur à partir des statistiques du monstre
-    Monster(std::string name,std::string type,rapidjson::Document& monsterBase,rapidjson::Document& skillBase,rapidjson::Document& save,unsigned int lvl);
+    Monster(std::string name,std::string type,rapidjson::Document& monsterBase,rapidjson::Document& skillBase,rapidjson::Document& save,rapidjson::Document& library,unsigned int lvl);
 
     ///@brief Affiche les caractéristiques du monstre dans la console
     void print() const;
