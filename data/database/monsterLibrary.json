@@ -1,3 +1,5 @@
+
+
 {
     "gluant": {
         "family": "Gluants",
@@ -7,6 +9,256 @@
     "gluanbulle": {
         "family": "Gluants",
         "rank": "D",
+        "id": 2
+    },
+    "medhigluant": {
+        "family": "Gluants",
+        "rank": "C",
+        "id": 1
+    },
+    "monte bulle": {
+        "family": "Gluants",
+        "rank": "C",
+        "id": 2
+    },
+    "gluant de metal": {
+        "family": "Gluants",
+        "rank": "B",
+        "id": 1
+    },
+    "roi gluant": {
+        "family": "Gluants",
+        "rank": "B",
+        "id": 2
+    },
+    "roi gluant de metal": {
+        "family": "Gluants",
+        "rank": "A",
+        "id": 1
+    },
+    "roi gerigluant": {
+        "family": "Gluants",
+        "rank": "A",
+        "id": 2
+    },
+    "gluandor": {
+        "family": "Gluants",
+        "rank": "S",
+        "id": 1
+    },
+    "gluancien": {
+        "family": "Gluants",
+        "rank": "S",
+        "id": 2
+    },
+
+
+
+    "pataupe":{
+        "family":"Betes",
+        "rank":"D",
+        "id": 1
+    },
+    "ornythox":{
+        "family":"Betes",
+        "rank":"D",
+        "id": 2
+    },
+    "toro":{
+        "family":"Betes",
+        "rank":"C",
+        "id": 1
+    },
+    "martelleur":{
+        "family":"Betes",
+        "rank":"C",
+        "id": 2
+    },
+    "morse a gros bras":{
+        "family":"Betes",
+        "rank":"B",
+        "id": 1
+    },
+    "yeti":{
+        "family":"Betes",
+        "rank":"B",
+        "id": 2
+    },
+    "geant":{
+        "family":"Betes",
+        "rank":"A",
+        "id": 1
+    },
+    "gryffon":{
+        "family":"Betes",
+        "rank":"A",
+        "id": 2
+    },
+    "bastonnier":{
+        "family":"Betes",
+        "rank":"S",
+        "id": 1
+    },
+    "atlas":{
+        "family":"Betes",
+        "rank":"S",
+        "id": 2
+    },
+
+
+
+    "vampivol":{
+        "family":"Demons",
+        "rank":"D",
+        "id": 1
+    },
+    "diablotin":{
+        "family":"Demons",
+        "rank":"D",
+        "id": 2
+    },
+    "cyclope":{
+        "family":"Demons",
+        "rank":"C",
+        "id": 1
+    },
+    "ombre":{
+        "family":"Demons",
+        "rank":"C",
+        "id": 2
+    },
+    "homme demon":{
+        "family":"Demons",
+        "rank":"B",
+        "id": 1
+    },
+    "pot a malice":{
+        "family":"Demons",
+        "rank":"B",
+        "id": 2
+    },
+    "troll":{
+        "family":"Demons",
+        "rank":"A",
+        "id": 1
+    },
+    "belial":{
+        "family":"Demons",
+        "rank":"A",
+        "id": 2
+    },
+    "estarque":{
+        "family":"Demons",
+        "rank":"S",
+        "id": 1
+    },
+    "nimzo":{
+        "family":"Demons",
+        "rank":"S",
+        "id": 2
+    },
+
+
+    "main de boue":{
+        "family":"Materiels",
+        "rank":"D",
+        "id": 1
+    },
+    "mannequin":{
+        "family":"Materiels",
+        "rank":"D",
+        "id": 2
+    },
+    "bougie":{
+        "family":"Materiels",
+        "rank":"C",
+        "id": 1
+    },
+    "feu follet":{
+        "family":"Materiels",
+        "rank":"C",
+        "id": 2
+    },
+    "mimic":{
+        "family":"Materiels",
+        "rank":"B",
+        "id": 1
+    },
+    "sacatresor":{
+        "family":"Materiels",
+        "rank":"B",
+        "id": 2
+    },
+    "statue vivante":{
+        "family":"Materiels",
+        "rank":"A",
+        "id": 1
+    },
+    "machine a tuer":{
+        "family":"Materiels",
+        "rank":"A",
+        "id": 2
+    },
+    "zeuss":{
+        "family":"Materiels",
+        "rank":"S",
+        "id": 1
+    },
+    "machine a exterminer":{
+        "family":"Materiels",
+        "rank":"S",
+        "id": 2
+    },
+
+
+    "komodo":{
+        "family":"Dragons",
+        "rank":"D",
+        "id": 1
+    },
+    "bebe dragon":{
+        "family":"Dragons",
+        "rank":"D",
+        "id": 2
+    },
+    "dragos":{
+        "family":"Dragons",
+        "rank":"C",
+        "id": 1
+    },
+    "gasteropod":{
+        "family":"Dragons",
+        "rank":"C",
+        "id": 2
+    },
+    "homme dragon":{
+        "family":"Dragons",
+        "rank":"B",
+        "id": 1
+    },
+    "yves le jaune":{
+        "family":"Dragons",
+        "rank":"B",
+        "id": 2
+    },
+    "grand dragon jaune":{
+        "family":"Dragons",
+        "rank":"A",
+        "id": 1
+    },
+    "meca dragon":{
+        "family":"Dragons",
+        "rank":"A",
+        "id": 2
+    },
+    "hydragon":{
+        "family":"Dragons",
+        "rank":"S",
+        "id": 1
+    },
+    "xenion":{
+        "family":"Dragons",
+        "rank":"S",
         "id": 2
     }
 }
