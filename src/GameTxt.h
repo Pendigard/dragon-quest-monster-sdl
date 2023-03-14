@@ -4,6 +4,7 @@
 #include "Player.h"
 #include "jsonFunction.h"
 #include "Fight.h"
+#include "Synthesis.h"
 #include <unistd.h>
 
 class Game

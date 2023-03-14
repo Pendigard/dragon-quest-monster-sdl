@@ -21,6 +21,7 @@ Monster::Monster(rapidjson::Value &monsterData, std::string idM, rapidjson::Docu
     std::string type = monsterData["type"].GetString();
     std::string family =library[type.c_str()]["family"].GetString();
     std::string rank = library[type.c_str()]["rank"].GetString();
+    synthId = library[type.c_str()]["id"].GetInt();
     rapidjson::Value& monsterStatBase = monsterBase[family.c_str()][rank.c_str()][type.c_str()];
     jsonToUnorderedMap(monsterStatBase["statMax"], statMax);
     hp = monsterData["hp"].GetFloat();
@@ -56,6 +57,7 @@ Monster::Monster(std::string name, std::string type, rapidjson::Document &monste
     } while (save.HasMember(infos["id"].c_str()));
     std::string family =library[type.c_str()]["family"].GetString();
     std::string rank = library[type.c_str()]["rank"].GetString();
+    synthId = library[type.c_str()]["id"].GetInt();
     rapidjson::Value& monsterStatBase = monsterBase[family.c_str()][rank.c_str()][type.c_str()];
     infos["name"] = name;
     infos["type"] = type;
@@ -484,4 +486,14 @@ void Monster::setTactic(std::string tactic)
 unsigned int Monster::getSkillToAttribute() const
 {
     return skillPoints;
+}
+
+std::string Monster::getInfos(std::string info) const
+{
+    return infos.at(info);
+}
+
+unsigned int Monster::getSynthId() const
+{
+    return synthId;
 }

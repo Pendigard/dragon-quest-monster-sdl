@@ -3,10 +3,10 @@ all: bin/program
 clean:
 	rm -f bin/* obj/*
 
-bin/program: obj/GameTxt.o obj/Player.o obj/Monster.o obj/Fight.o obj/jsonFunction.o 
-	g++ obj/GameTxt.o obj/Player.o obj/Monster.o obj/jsonFunction.o obj/Fight.o -o bin/program
+bin/program: obj/GameTxt.o obj/Player.o obj/Monster.o obj/Fight.o obj/jsonFunction.o obj/Synthesis.o
+	g++ obj/GameTxt.o obj/Player.o obj/Monster.o obj/jsonFunction.o obj/Fight.o obj/Synthesis.o -o bin/program
 
-obj/GameTxt.o: src/GameTxt.cpp src/GameTxt.h src/Player.h src/Fight.h src/Monster.h
+obj/GameTxt.o: src/GameTxt.cpp src/GameTxt.h src/Player.h src/Fight.h src/Monster.h src/Synthesis.h
 	g++ -Wall -c src/GameTxt.cpp -o obj/GameTxt.o
 
 obj/Player.o: src/Player.cpp src/Player.h src/Monster.h
@@ -20,3 +20,6 @@ obj/Fight.o: src/Fight.cpp src/Fight.h src/Player.h src/Monster.h
 
 obj/jsonFunction.o: src/jsonFunction.cpp src/jsonFunction.h
 	g++ -Wall -c src/jsonFunction.cpp -o obj/jsonFunction.o -Iextern/rapidjson-master/include/rapidjson
+
+obj/Synthesis.o: src/Synthesis.cpp src/Synthesis.h src/Monster.h
+	g++ -Wall -c src/Synthesis.cpp -o obj/Synthesis.o

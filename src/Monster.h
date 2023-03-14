@@ -15,6 +15,7 @@ private:
     unsigned int level;
     unsigned int synthLevel;
     unsigned int skillPoints;
+    unsigned int synthId;
     std::string tactic;
     std::unordered_map<std::string, float> stats;
     std::unordered_map<std::string,unsigned int> statMax;
@@ -162,6 +163,10 @@ public:
     /// @param status : status à vérifier
     /// @return Retourne vrai si le status du monstre est altéré
     bool getStatus(std::string status) const;
+
+    std::string getInfos(std::string info) const;
+
+    unsigned int getSynthId() const;
 
     unsigned int getSkillToAttribute() const;
 
