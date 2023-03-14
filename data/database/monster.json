@@ -75,7 +75,7 @@
             "foudre": 1,
             "elec": 1,
             "lumiere": 1,
-            "poison": 0.5,
+            "poison": 0,
             "paralysis": 1,
             "sleep": 1,
             "confusion": 2,

@@ -41,6 +41,13 @@
         "type": "magic",
         "damage": 1.5,
         "manaCost": 10,
+    },
+    "Megaflamme": {
+        "castSentence": "{} lance megaflamme sur {}",
+        "element": "flamme",
+        "type": "magic",
+        "damage": 2,
+        "manaCost": 20,
         "offensive": true,
         "self": false,
         "multiTarget": false,
