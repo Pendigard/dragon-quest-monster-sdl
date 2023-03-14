@@ -117,5 +117,16 @@
         "self": false,
         "multiTarget": true,
         "dealDamage": true
+    },
+    "Supercrame": {
+        "castSentence": "{} lance supercrame sur l'équipe",
+        "element": "flamme",
+        "type": "magic",
+        "damage": 1,
+        "manaCost": 10,
+        "offensive": true,
+        "self": false,
+        "multiTarget": true,
+        "dealDamage": true
     }
 }
