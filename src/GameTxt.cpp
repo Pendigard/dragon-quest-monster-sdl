@@ -7,19 +7,19 @@ void Game::loadGame()
     loadJson("data/save/save.json", save);
     loadJson("data/database/skill.json", skillBase);
     loadJson("data/database/spell.json", spellBase);
-    for (int i = 0; i < save["mainTeam"].Size(); i++)
+    for (long unsigned int i = 0; i < save["mainTeam"].Size(); i++)
     {
         rapidjson::Value &monsterData = save["monsters"][save["mainTeam"][i].GetString()];
         Monster m = Monster(monsterData, save["mainTeam"][i].GetString(), monsterBase, skillBase);
         player.mainTeam.push_back(m);
     }
-    for (int i = 0; i < save["benchTeam"].Size(); i++)
+    for (long unsigned int i = 0; i < save["benchTeam"].Size(); i++)
     {
         rapidjson::Value &monsterData = save["monsters"][save["benchTeam"][i].GetString()];
         Monster m = Monster(monsterData, save["benchTeam"][i].GetString(), monsterBase, skillBase);
         player.benchTeam.push_back(m);
     }
-    for (int i = 0; i < save["storageMonsters"].Size(); i++)
+    for (long unsigned int i = 0; i < save["storageMonsters"].Size(); i++)
     {
         rapidjson::Value &monsterData = save["monsters"][save["storageMonsters"][i].GetString()];
         Monster m = Monster(monsterData, save["storageMonsters"][i].GetString(), monsterBase, skillBase);
@@ -29,15 +29,15 @@ void Game::loadGame()
 
 void Game::saveGame()
 {
-    for (int i = 0; i < player.mainTeam.size(); i++)
+    for (long unsigned int i = 0; i < player.mainTeam.size(); i++)
     {
         player.mainTeam[i].updateSaveMonster(save);
     }
-    for (int i = 0; i < player.benchTeam.size(); i++)
+    for (long unsigned int i = 0; i < player.benchTeam.size(); i++)
     {
         player.benchTeam[i].updateSaveMonster(save);
     }
-    for (int i = 0; i < player.storageMonsters.size(); i++)
+    for (long unsigned int i = 0; i < player.storageMonsters.size(); i++)
     {
         player.storageMonsters[i].updateSaveMonster(save);
     }
@@ -46,7 +46,7 @@ void Game::saveGame()
 
 void Game::deleteFromSave(std::string id)
 {
-    for (int i = 0; i < save["mainTeam"].Size(); i++)
+    for (long unsigned int i = 0; i < save["mainTeam"].Size(); i++)
     {
         if (save["mainTeam"][i].GetString() == id)
         {
@@ -54,7 +54,7 @@ void Game::deleteFromSave(std::string id)
             break;
         }
     }
-    for (int i = 0; i < save["benchTeam"].Size(); i++)
+    for (long unsigned int i = 0; i < save["benchTeam"].Size(); i++)
     {
         if (save["benchTeam"][i].GetString() == id)
         {
@@ -62,7 +62,7 @@ void Game::deleteFromSave(std::string id)
             break;
         }
     }
-    for (int i = 0; i < save["storageMonsters"].Size(); i++)
+    for (long unsigned int i = 0; i < save["storageMonsters"].Size(); i++)
     {
         if (save["storageMonsters"][i].GetString() == id)
         {
@@ -84,7 +84,7 @@ unsigned int Game::askTarget(bool isOffensive, Fight &f)
         targetTeam = f.team1;
     if (isOffensive)
         std::cout << "Cible : " << std::endl;
-    for (int i = 0; i < targetTeam.size(); i++)
+    for (long unsigned int i = 0; i < targetTeam.size(); i++)
     {
         if (targetTeam[i].hp > 0)
         {
@@ -109,7 +109,7 @@ std::vector<std::string> Game::getTargetPlayer(Monster caster, std::string spell
     {
         if (spellInfo["multiTarget"].GetBool())
         {
-            for (int i = 0; i < f.team2.size(); i++)
+            for (long unsigned int i = 0; i < f.team2.size(); i++)
             {
                 targetTeam.push_back(f.team2[i].getId());
             }
@@ -123,7 +123,7 @@ std::vector<std::string> Game::getTargetPlayer(Monster caster, std::string spell
     {
         if (spellInfo["multiTarget"].GetBool())
         {
-            for (int i = 0; i < f.team1.size(); i++)
+            for (long unsigned int i = 0; i < f.team1.size(); i++)
             {
                 targetTeam.push_back(f.team1[i].getId());
             }
@@ -154,7 +154,7 @@ unsigned int Game::orderMonster(Monster m)
 void Game::getTacticChoice(Fight &f)
 {
     std::vector<std::string> tactics;
-    for (int i = 0; i < f.team1.size(); i++)
+    for (long unsigned int i = 0; i < f.team1.size(); i++)
     {
         std::cout << i + 1 << ". " << f.team1[i].getName() << " | " << f.team1[i].getTactic() << std::endl;
     }
@@ -165,7 +165,7 @@ void Game::getTacticChoice(Fight &f)
     tactics.push_back("Soins avant tout");
     tactics.push_back("Agir avec sagesse");
     tactics.push_back("Pas de magie");
-    for (int i = 0; i < tactics.size(); i++)
+    for (long unsigned int i = 0; i < tactics.size(); i++)
     {
         std::cout << i + 1 << ". " << tactics[i] << std::endl;
     }
@@ -195,7 +195,7 @@ std::vector<Action> Game::getPlayerChoice(Fight &f)
             break;
         case 2:
             orders.clear();
-            for (int i = 0; i < f.team1.size(); i++)
+            for (long unsigned int i = 0; i < f.team1.size(); i++)
             {
                 choice2 = orderMonster(f.team1[i]);
                 if (choice2 != 0)
@@ -216,7 +216,7 @@ std::vector<Action> Game::getPlayerChoice(Fight &f)
 void Game::printOrder(std::vector<Action> orders, Fight &f)
 {
     std::cout << std::endl;
-    for (int i = 0; i < orders.size(); i++)
+    for (long unsigned int i = 0; i < orders.size(); i++)
     {
         std::cout << f.getMonsterById(orders[i].idCaster).getName() << " ----- " << orders[i].spell << " -----> ";
         for (int j = 0; j < orders[i].idTargets.size(); j++)
@@ -246,7 +246,7 @@ void Game::fight(Fight &f)
             sleep(1);
         }
         std::cout << std::endl;
-        for (int i = 0; i < f.team1.size(); i++)
+        for (long unsigned int i = 0; i < f.team1.size(); i++)
         {
             std::cout << (int)f.team1[i].hp << "/" << (int)f.team1[i].getStat("hp") << "PV | " << (int)f.team1[i].mp << "/" << (int)f.team1[i].getStat("mp") << "PM" << std::endl;
         }
@@ -265,7 +265,7 @@ int main()
     team2.push_back(m);
     team2.push_back(m2);
 
-    for (int i = 0; i < team2.size(); i++)
+    for (long unsigned int i = 0; i < team2.size(); i++)
     {
         team2[i].print();
     }
@@ -275,7 +275,7 @@ int main()
     g.player.mainTeam[0].applySkillPoint(75, "Pot de glu", g.skillBase);
     g.saveGame();
     team1 = g.player.mainTeam;
-    for (int i = 0; i < team1.size(); i++)
+    for (long unsigned int i = 0; i < team1.size(); i++)
     {
         team1[i].print();
     }
