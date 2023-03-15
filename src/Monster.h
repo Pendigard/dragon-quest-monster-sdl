@@ -27,13 +27,9 @@ private:
     std::unordered_map<std::string, int> status;
     std::vector<std::string> spells;
     std::unordered_map<std::string, std::string> infos;
-    
-    ///@brief Met à jour le niveau du monstre avec les points d'expérience
-    void getLevelXp();
 
     ///@brief Augmente le niveau du monstre et met à jour ses statistiques
-    ///@param level : niveau du monstre
-    void levelUp(unsigned int level);
+    void levelUp();
 
     ///@brief Initialise les status du monstre
     void initStatus();
@@ -44,7 +40,7 @@ private:
 
     /// @brief Renvoie l'xp maximum que le monstre peut atteindre
     /// @return L'xp maximum
-    int getMaxXp() const;
+    int getMaxLvl() const;
 
 public:
 

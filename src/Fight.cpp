@@ -458,6 +458,8 @@ std::queue<spellImpact> Fight::simulateAction()
     assert(actionsOrdered.size() > 0);
     Action a = actionsOrdered.front();
     actionsOrdered.pop();
+    if (a.spell == "null")
+        return std::queue<spellImpact>();
     Monster &caster = getMonsterById(a.idCaster);
     if (caster.hp == 0)
         return std::queue<spellImpact>();
@@ -480,7 +482,7 @@ std::queue<spellImpact> Fight::simulateAction()
     }
     std::vector<std::string> monsterName;
     monsterName.push_back(caster.getName());
-    if (a.idTargets[0]== caster.getInfos("id"))
+    if (a.idTargets[0] == caster.getInfos("id"))
         monsterName.push_back("sur lui-même");
     else
         monsterName.push_back(getMonsterById(a.idTargets[0]).getName());
@@ -647,4 +649,25 @@ bool Fight::isOver(bool &team1Win)
         return true;
     }
     return false;
+}
+
+bool Fight::flee()
+{
+    int agilityTeam1 = 0;
+    for (int i = 0; i < team1.size(); i++)
+    {
+        if (team1[i].hp > 0)
+        {
+            agilityTeam1 = team1[i].getAgility() * 100;
+        }
+    }
+    int agilityTeam2 = 0;
+    for (int i = 0; i < team2.size(); i++)
+    {
+        if (team2[i].hp > 0)
+        {
+            agilityTeam2 = team2[i].getAgility();
+        }
+    }
+    return getRand(0, 100) < (agilityTeam1 / agilityTeam2)/2;
 }

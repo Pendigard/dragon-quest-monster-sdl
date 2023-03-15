@@ -120,6 +120,7 @@ public:
     std::vector<Action> actions;
     std::queue<Action> actionsOrdered;
     rapidjson::Document spellBase;
+    bool teamFlee;
 
     /// @brief Constructeur
     Fight(std::vector<Monster> t1, std::vector<Monster> t2);
@@ -162,6 +163,8 @@ public:
     /// @param isTeam1 : true si le monstre est dans l'équipe 1, false sinon
     /// @return les cibles du sort
     std::vector<std::string> getTargetTactic(Monster caster, std::string spell);
+
+    bool flee();
 
 
 };

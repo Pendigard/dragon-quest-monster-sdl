@@ -187,7 +187,8 @@ std::vector<Action> Game::getPlayerChoice(Fight &f)
         std::cout << "1. Combattre" << std::endl;
         std::cout << "2. Ordre" << std::endl;
         std::cout << "3. Tactique" << std::endl;
-        std::cout << "Que voulez-vous faire ? (1/2/3): ";
+        std::cout << "4. Fuir" << std::endl;
+        std::cout << "Que voulez-vous faire ? (1/.../4): ";
         std::cin >> choice;
         switch (choice)
         {
@@ -210,6 +211,29 @@ std::vector<Action> Game::getPlayerChoice(Fight &f)
             break;
         case 3:
             getTacticChoice(f);
+            break;
+        case 4:
+            if (f.flee())
+            {
+                std::cout << "Vous prenez la fuite." << std::endl;
+                sleep(1);
+                f.teamFlee = true;
+                return orders;
+            }
+            else
+            {
+                std::cout << "Vous prenez la fuite." << std::endl;
+                sleep(1);
+                std::cout << "Mais les monstres vous bloquent le chemin." << std::endl;
+                orders.empty();
+                std::vector<std::string> emptyTarget;
+                for (long unsigned int i = 0; i < f.team1.size(); i++)
+                {
+                    orders.push_back(createAction(f.team1[i].getInfos("id"), "null", emptyTarget));
+                }
+                return orders;
+            }
+        default:
             break;
         }
     }
@@ -240,6 +264,8 @@ void Game::fight(Fight &f)
     while (f.isOver(win) == false)
     {
         orders = getPlayerChoice(f);
+        if (f.teamFlee)
+            return;
         f.giveActions(orders);
         messages = f.simulateTurn();
         while (!messages.empty())
@@ -253,6 +279,16 @@ void Game::fight(Fight &f)
         {
             std::cout << (int)f.team1[i].hp << "/" << (int)f.team1[i].getStat("hp") << "PV | " << (int)f.team1[i].mp << "/" << (int)f.team1[i].getStat("mp") << "PM" << std::endl;
         }
+    }
+    if (win)
+    {
+        sleep(1);
+        std::cout << "Vous remportez le combat" << std::endl;
+    }
+    else
+    {
+        sleep(1);
+        std::cout << "Votre équipe est décimé" << std::endl;
     }
 }
 
@@ -291,26 +327,26 @@ int main()
     Game g;
     g.loadGame();
     std::vector<std::string> monsters;
-    //monsters.push_back("komodor");
+    // monsters.push_back("komodor");
     monsters.push_back("gluant");
-    //monsters.push_back("jaunyve");
+    // monsters.push_back("jaunyve");
     monsters.push_back("gluanbulle");
-    std::vector<Monster> team2 = g.createWildMonsterTeam(monsters, 5, 9);
-    std::vector<Monster> team1 = g.player.mainTeam;
+    std::vector<Monster> team2 = g.createWildMonsterTeam(monsters, 15, 19);
     for (long unsigned int i = 0; i < team2.size(); i++)
     {
         team2[i].print();
     }
+    g.player.mainTeam[0].addXp(1000000);
     g.player.mainTeam[0].addSkillPoint(75);
     g.player.mainTeam[0].applySkillPoint(75, "Pot de glu", g.skillBase);
     // g.saveGame();
     // g.player.mainTeam[1].addXp(1000000);
     // team1 = g.player.mainTeam;
-    for (long unsigned int i = 0; i < team1.size(); i++)
+    for (long unsigned int i = 0; i < g.player.mainTeam.size(); i++)
     {
-        team1[i].print();
+        g.player.mainTeam[i].print();
     }
-    Fight f(team1, team2);
+    Fight f(g.player.mainTeam, team2);
     g.fight(f);
     return 0;
 }
