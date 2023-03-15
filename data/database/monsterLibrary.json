@@ -1,47 +1,105 @@
-
-
 {
     "gluant": {
         "family": "Gluant",
-        "rank": "D",
+        "rank": "F",
         "id": 1
     },
     "gluanbulle": {
         "family": "Gluant",
-        "rank": "D",
+        "rank": "F",
         "id": 2
     },
     "medhigluant": {
         "family": "Gluants",
-        "rank": "C",
+        "rank": "F",
+        "id": 3
+    },
+    "gluantbulot": {
+        "family": "Gluants",
+        "rank": "E",
         "id": 1
     },
-    "monte bulle": {
+    "gluante": {
         "family": "Gluants",
-        "rank": "C",
+        "rank": "E",
         "id": 2
+    },
+    "gluant de crin": {
+        "family": "Gluants",
+        "rank": "E",
+        "id": 3
+    },
+    "gluant mouchete": {
+        "family": "Gluants",
+        "rank": "E",
+        "id": 4
+    },
+    "gluangelique": {
+        "family": "Gluants",
+        "rank": "D",
+        "id": 1
+    },
+    "monte-gluant": {
+        "family": "Gluants",
+        "rank": "D",
+        "id": 2
+    },
+    "slurpierre": {
+        "family": "Gluants",
+        "rank": "D",
+        "id": 3
     },
     "gluant de metal": {
         "family": "Gluants",
-        "rank": "B",
+        "rank": "D",
+        "id": 4
+    },
+    "gluant dragon": {
+        "family": "Gluants",
+        "rank": "C",
         "id": 1
     },
     "roi gluant": {
         "family": "Gluants",
+        "rank": "C",
+        "id": 2
+    },
+    "cybergluant": {
+        "family": "Gluants",
+        "rank": "C",
+        "id": 3
+    },
+    "gluant de mercure": {
+        "family": "Gluants",
+        "rank": "C",
+        "id": 4
+    },
+    "monstruoeuf": {
+        "family": "Gluants",
+        "rank": "B",
+        "id": 1
+    },
+    "roi guerigluant": {
+        "family": "Gluants",
         "rank": "B",
         "id": 2
     },
-    "roi gluant de metal": {
+    "gluanor": {
+        "family": "Gluants",
+        "rank": "B",
+        "id": 3
+    },
+    "reine gluant mouchete": {
         "family": "Gluants",
         "rank": "A",
         "id": 1
     },
-    "roi gerigluant": {
+    "gluangedor": {
         "family": "Gluants",
         "rank": "A",
         "id": 2
     },
-    "gluandor": {
+    "roi gluant de metal": {
         "family": "Gluants",
         "rank": "S",
         "id": 1
@@ -51,214 +109,128 @@
         "rank": "S",
         "id": 2
     },
-
-
-
-    "pataupe":{
-        "family":"Betes",
-        "rank":"D",
+    "gluant de tenerium": {
+        "family": "Gluants",
+        "rank": "S",
+        "id": 3
+    },
+    "gluandor": {
+        "family": "Gluants",
+        "rank": "X",
         "id": 1
     },
-    "ornythox":{
-        "family":"Betes",
-        "rank":"D",
-        "id": 2
-    },
-    "toro":{
-        "family":"Betes",
-        "rank":"C",
+    "komodor": {
+        "family": "Dragon",
+        "rank": "F",
         "id": 1
     },
-    "martelleur":{
-        "family":"Betes",
-        "rank":"C",
+    "jaunyve" : {
+        "family": "Dragon",
+        "rank": "F",
         "id": 2
     },
-    "morse a gros bras":{
-        "family":"Betes",
-        "rank":"B",
+    "dracorne" : {
+        "family": "Dragon",
+        "rank": "E",
         "id": 1
     },
-    "yeti":{
-        "family":"Betes",
-        "rank":"B",
+    "dragos" : {
+        "family": "Dragon",
+        "rank": "E",
         "id": 2
     },
-    "geant":{
-        "family":"Betes",
-        "rank":"A",
+    "dragonin" : {
+        "family": "Dragon",
+        "rank": "E",
+        "id": 3
+    },
+    "dragon vert" : {
+        "family": "Dragon",
+        "rank": "D",
         "id": 1
     },
-    "gryffon":{
-        "family":"Betes",
-        "rank":"A",
+    "butanosaure" : {
+        "family": "Dragon",
+        "rank": "D",
         "id": 2
     },
-    "bastonnier":{
-        "family":"Betes",
-        "rank":"S",
-        "id": 1
+    "draquatique": {
+        "family": "Dragon",
+        "rank": "D",
+        "id": 3
     },
-    "atlas":{
-        "family":"Betes",
-        "rank":"S",
-        "id": 2
+    "hachosaure": {
+        "family" : "Dragon",
+        "rank" : "C",
+        "id" : 1
     },
-
-
-
-    "vampivol":{
-        "family":"Demons",
-        "rank":"D",
-        "id": 1
+    "serpolaire": {
+        "family" : "Dragon",
+        "rank" : "C",
+        "id" : 2
     },
-    "diablotin":{
-        "family":"Demons",
-        "rank":"D",
-        "id": 2
+    "dracapace": {
+        "family" : "Dragon",
+        "rank" : "C",
+        "id" : 3
     },
-    "cyclope":{
-        "family":"Demons",
-        "rank":"C",
-        "id": 1
+    "dragon de metal": {
+        "family" : "Dragon",
+        "rank" : "B",
+        "id" : 1
     },
-    "ombre":{
-        "family":"Demons",
-        "rank":"C",
-        "id": 2
+    "serpenlair": {
+        "family" : "Dragon",
+        "rank" : "B",
+        "id" : 2
     },
-    "homme demon":{
-        "family":"Demons",
-        "rank":"B",
-        "id": 1
+    "dracularge" : {
+        "family" : "Dragon",
+        "rank" : "B",
+        "id" : 3
     },
-    "pot a malice":{
-        "family":"Demons",
-        "rank":"B",
-        "id": 2
+    "grand dragon": {
+        "family" : "Dragon",
+        "rank" : "A",
+        "id" : 1
     },
-    "troll":{
-        "family":"Demons",
-        "rank":"A",
-        "id": 1
+    "mecadragon": {
+        "family" : "Dragon",
+        "rank" : "A",
+        "id" : 2
     },
-    "belial":{
-        "family":"Demons",
-        "rank":"A",
-        "id": 2
+    "dragon noir": {
+        "family" : "Dragon",
+        "rank" : "S",
+        "id" : 1
     },
-    "estarque":{
-        "family":"Demons",
-        "rank":"S",
-        "id": 1
+    "draculard": {
+        "family" : "Dragon",
+        "rank" : "S",
+        "id" : 2
     },
-    "nimzo":{
-        "family":"Demons",
-        "rank":"S",
-        "id": 2
+    "Lordraco" : {
+        "family" : "Dragon",
+        "rank" : "S",
+        "id" : 3
     },
-
-
-    "main de boue":{
-        "family":"Materiels",
-        "rank":"D",
-        "id": 1
+    "Xenlon": {
+        "family" : "Dragon",
+        "rank" : "X",
+        "id" : 1
     },
-    "mannequin":{
-        "family":"Materiels",
-        "rank":"D",
-        "id": 2
+    "Hydragon": {
+        "family" : "Dragon",
+        "rank" : "X",
+        "id" : 2
     },
-    "bougie":{
-        "family":"Materiels",
-        "rank":"C",
-        "id": 1
-    },
-    "feu follet":{
-        "family":"Materiels",
-        "rank":"C",
-        "id": 2
-    },
-    "mimic":{
-        "family":"Materiels",
-        "rank":"B",
-        "id": 1
-    },
-    "sacatresor":{
-        "family":"Materiels",
-        "rank":"B",
-        "id": 2
-    },
-    "statue vivante":{
-        "family":"Materiels",
-        "rank":"A",
-        "id": 1
-    },
-    "machine a tuer":{
-        "family":"Materiels",
-        "rank":"A",
-        "id": 2
-    },
-    "zeuss":{
-        "family":"Materiels",
-        "rank":"S",
-        "id": 1
-    },
-    "machine a exterminer":{
-        "family":"Materiels",
-        "rank":"S",
-        "id": 2
-    },
-
-
-    "komodo":{
-        "family":"Dragons",
-        "rank":"D",
-        "id": 1
-    },
-    "bebe dragon":{
-        "family":"Dragons",
-        "rank":"D",
-        "id": 2
-    },
-    "dragos":{
-        "family":"Dragons",
-        "rank":"C",
-        "id": 1
-    },
-    "gasteropod":{
-        "family":"Dragons",
-        "rank":"C",
-        "id": 2
-    },
-    "homme dragon":{
-        "family":"Dragons",
-        "rank":"B",
-        "id": 1
-    },
-    "yves le jaune":{
-        "family":"Dragons",
-        "rank":"B",
-        "id": 2
-    },
-    "grand dragon jaune":{
-        "family":"Dragons",
-        "rank":"A",
-        "id": 1
-    },
-    "meca dragon":{
-        "family":"Dragons",
-        "rank":"A",
-        "id": 2
-    },
-    "hydragon":{
-        "family":"Dragons",
-        "rank":"S",
-        "id": 1
-    },
-    "xenion":{
-        "family":"Dragons",
-        "rank":"S",
-        "id": 2
+    "Lordragon": {
+        "family" : "Dragon",
+        "rank" : "X",
+        "id" : 3
     }
 }
+
+    
+
+
