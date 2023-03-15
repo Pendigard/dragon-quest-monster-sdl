@@ -44,7 +44,7 @@ std::string getChildMonster(Monster parent, std::string rank)
     return monster;
 }
 
-std::vector<std::string> makeSynthesis(Monster parent1, Monster parent2)
+std::vector<std::string> makeSynthesisPreview(Monster parent1, Monster parent2)
 {
     std::vector<std::string> result;
     std::string rank = getSynthesisRank(parent1, parent2);

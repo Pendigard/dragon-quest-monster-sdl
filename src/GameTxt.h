@@ -59,7 +59,16 @@ class Game
         /// @param f Le combat à lancer
         void fight(Fight& f);
 
+        /// @brief Supprime un monstre de la sauvegarde
+        /// @param id L'identifiant du monstre à supprimer
         void deleteFromSave(std::string id);
+
+        /// @brief Crée une équipe de monstres sauvages
+        /// @param monsters Les monstres possiblement présents dans l'équipe
+        /// @param levelMin Niveau minimum des monstres
+        /// @param levelMax Niveau maximum des monstres
+        /// @return L'équipe de monstres sauvages
+        std::vector<Monster> createWildMonsterTeam(std::vector<std::string> monsters,unsigned int levelMin,unsigned int levelMax,std::string monster);
 
 
 };

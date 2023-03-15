@@ -35,10 +35,6 @@ private:
     ///@param level : niveau du monstre
     void levelUp(unsigned int level);
 
-    ///@brief Met à jour les sorts du monstre en fonction de ses compétences
-    ///@param skillBase : base de données des compétences
-    void getSpell(rapidjson::Document& skillBase);
-
     ///@brief Initialise les status du monstre
     void initStatus();
 
@@ -93,10 +89,6 @@ public:
     /// @param m : monstre à comparer
     /// @return vrai si les deux monstres ont le même identifiant
     bool operator==(const Monster& m) const;
-
-        /// @brief Retourne l'identifiant du monstre
-    /// @return l'identifiant du monstre
-    std::string getId() const;
 
     /// @brief Donne l'agilité du monstre
     /// @return Retourne l'agilité du monstre
@@ -169,6 +161,10 @@ public:
     unsigned int getSynthId() const;
 
     unsigned int getSkillToAttribute() const;
+
+    void autoAttributeSkill(rapidjson::Document& skillBase);
+
+    void printSkill() const;
 
 };
 

@@ -3,7 +3,7 @@
 
 #include "Monster.h"
 
-std::vector<std::string> makeSynthesis(Monster parent1, Monster parent2);
+std::vector<std::string> makeSynthesisPreview(Monster parent1, Monster parent2);
 
 std::string getSynthesisRank(Monster parent1, Monster parent2);
 

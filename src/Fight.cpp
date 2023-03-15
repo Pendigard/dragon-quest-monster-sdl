@@ -36,7 +36,7 @@ std::vector<std::string> Fight::getTeamAlive(std::vector<Monster> team) const
     {
         if (team[i].hp > 0)
         {
-            alive.push_back(team[i].getId());
+            alive.push_back(team[i].getInfos("id"));
         }
     }
     return alive;
@@ -61,31 +61,17 @@ std::vector<std::string> Fight::getTargetTactic(Monster caster, std::string spel
         else
             targetTeam = getTeamAlive(team2);
     }
-    if (spellInfo["offensive"].GetBool())
+    if (spellInfo["multiTarget"].GetBool())
     {
-        if (spellInfo["multiTarget"].GetBool())
-        {
-            targets = targetTeam;
-        }
-        else
-        {
-            targets.push_back(targetTeam[rand() % targetTeam.size()]);
-        }
+        targets = targetTeam;
+    }
+    else if (spellInfo["self"].GetBool())
+    {
+        targets.push_back(caster.getInfos("id"));
     }
     else
     {
-        if (spellInfo["multiTarget"].GetBool())
-        {
-            targets = targetTeam;
-        }
-        else if (spellInfo["self"].GetBool())
-        {
-            targets.push_back(caster.getId());
-        }
-        else
-        {
-            targets.push_back(targetTeam[rand() % targetTeam.size()]);
-        }
+        targets.push_back(targetTeam[rand() % targetTeam.size()]);
     }
     return targets;
 }
@@ -103,7 +89,7 @@ Action Fight::tacticSoin(Monster caster)
             possibleSpells.push_back(spells[i]);
     }
     std::string spell = possibleSpells[getRand(0, possibleSpells.size())];
-    a = createAction(caster.getId(), spell, getTargetTactic(caster, spell));
+    a = createAction(caster.getInfos("id"), spell, getTargetTactic(caster, spell));
     return a;
 }
 
@@ -119,7 +105,7 @@ Action Fight::tacticNoMana(Monster caster)
             possibleSpells.push_back(spells[i]);
     }
     std::string spell = possibleSpells[getRand(0, possibleSpells.size())];
-    a = createAction(caster.getId(), spell, getTargetTactic(caster, spell));
+    a = createAction(caster.getInfos("id"), spell, getTargetTactic(caster, spell));
     return a;
 }
 
@@ -135,7 +121,7 @@ Action Fight::tacticSagesse(Monster caster)
             possibleSpells.push_back(spells[i]);
     }
     std::string spell = possibleSpells[getRand(0, possibleSpells.size())];
-    a = createAction(caster.getId(), spell, getTargetTactic(caster, spell));
+    a = createAction(caster.getInfos("id"), spell, getTargetTactic(caster, spell));
     return a;
 }
 
@@ -154,7 +140,7 @@ Action Fight::tacticSansPitie(Monster caster)
         }
     }
     std::string spell = possibleSpells[getRand(0, possibleSpells.size())];
-    a = createAction(caster.getId(), spell, getTargetTactic(caster, spell));
+    a = createAction(caster.getInfos("id"), spell, getTargetTactic(caster, spell));
     return a;
 }
 
@@ -187,14 +173,14 @@ Monster &Fight::getMonsterById(std::string id)
 {
     for (int i = 0; i < team1.size(); i++)
     {
-        if (team1[i].getId() == id)
+        if (team1[i].getInfos("id") == id)
         {
             return team1[i];
         }
     }
     for (int i = 0; i < team2.size(); i++)
     {
-        if (team2[i].getId() == id)
+        if (team2[i].getInfos("id") == id)
         {
             return team2[i];
         }
@@ -254,7 +240,7 @@ std::queue<std::string> Fight::initTurn()
                 messagesTotal.push(messages.front());
                 messages.pop();
             }
-            if (std::count(alreadyAction.begin(), alreadyAction.end(), team1[i].getId()) == 0)
+            if (std::count(alreadyAction.begin(), alreadyAction.end(), team1[i].getInfos("id")) == 0)
                 spellTacticChoice(team1[i]);
         }
     }
@@ -268,7 +254,7 @@ std::queue<std::string> Fight::initTurn()
                 messagesTotal.push(messages.front());
                 messages.pop();
             }
-            if (std::count(alreadyAction.begin(), alreadyAction.end(), team2[i].getId()) == 0)
+            if (std::count(alreadyAction.begin(), alreadyAction.end(), team2[i].getInfos("id")) == 0)
                 spellTacticChoice(team2[i]);
         }
     }
@@ -418,7 +404,7 @@ std::queue<spellImpact> Fight::getStatusEffect(Monster &caster, bool &canMove)
         args.push_back(std::to_string((int)dmg));
         impact.message = formatString("{} subit {} points de dégâts de poison", args);
         impact.function = damage;
-        impact.targetId.push_back(caster.getId());
+        impact.targetId.push_back(caster.getInfos("id"));
         impact.argumentFloat.push_back(dmg);
         queueImpact.push(impact);
     }
@@ -460,7 +446,7 @@ std::queue<spellImpact> Fight::getStatusEffect(Monster &caster, bool &canMove)
         args.push_back(std::to_string((int)valHeal));
         impact.message = formatString("{} se soigne de {} points de vie", args);
         impact.function = heal;
-        impact.targetId.push_back(caster.getId());
+        impact.targetId.push_back(caster.getInfos("id"));
         impact.argumentFloat.push_back(valHeal);
         queueImpact.push(impact);
     }
@@ -494,7 +480,7 @@ std::queue<spellImpact> Fight::simulateAction()
     }
     std::vector<std::string> monsterName;
     monsterName.push_back(caster.getName());
-    if (getMonsterById(a.idTargets[0]).getName() == caster.getName())
+    if (a.idTargets[0]== caster.getInfos("id"))
         monsterName.push_back("sur lui-même");
     else
         monsterName.push_back(getMonsterById(a.idTargets[0]).getName());
@@ -593,7 +579,8 @@ std::queue<spellImpact> Fight::simulateAction()
 std::queue<std::string> Fight::simulateTurn()
 {
     std::queue<std::string> messages = initTurn();
-    while (!actionsOrdered.empty())
+    bool team1Win = true;
+    while (!actionsOrdered.empty() && !isOver(team1Win))
     {
         std::queue<spellImpact> impacts = simulateAction();
         while (!impacts.empty())

@@ -103,7 +103,7 @@ std::vector<std::string> Game::getTargetPlayer(Monster caster, std::string spell
     std::vector<std::string> targetTeam;
     if (spellInfo["self"].GetBool())
     {
-        targetTeam.push_back(caster.getId());
+        targetTeam.push_back(caster.getInfos("id"));
         return targetTeam;
     }
     if (spellInfo["offensive"].GetBool())
@@ -112,12 +112,12 @@ std::vector<std::string> Game::getTargetPlayer(Monster caster, std::string spell
         {
             for (long unsigned int i = 0; i < f.team2.size(); i++)
             {
-                targetTeam.push_back(f.team2[i].getId());
+                targetTeam.push_back(f.team2[i].getInfos("id"));
             }
         }
         else
         {
-            targetTeam.push_back(f.team2[askTarget(true, f) - 1].getId());
+            targetTeam.push_back(f.team2[askTarget(true, f) - 1].getInfos("id"));
         }
     }
     else
@@ -126,12 +126,12 @@ std::vector<std::string> Game::getTargetPlayer(Monster caster, std::string spell
         {
             for (long unsigned int i = 0; i < f.team1.size(); i++)
             {
-                targetTeam.push_back(f.team1[i].getId());
+                targetTeam.push_back(f.team1[i].getInfos("id"));
             }
         }
         else
         {
-            targetTeam.push_back(f.team1[askTarget(false, f) - 1].getId());
+            targetTeam.push_back(f.team1[askTarget(false, f) - 1].getInfos("id"));
         }
     }
     return targetTeam;
@@ -198,11 +198,13 @@ std::vector<Action> Game::getPlayerChoice(Fight &f)
             orders.clear();
             for (long unsigned int i = 0; i < f.team1.size(); i++)
             {
+                if (f.team1[i].hp <= 0)
+                    continue;
                 choice2 = orderMonster(f.team1[i]);
                 if (choice2 != 0)
                 {
                     std::vector<std::string> target = getTargetPlayer(f.team1[i], f.team1[i].getSpells()[choice2 - 1], f);
-                    orders.push_back(createAction(f.team1[i].getId(), f.team1[i].getSpells()[choice2 - 1], target));
+                    orders.push_back(createAction(f.team1[i].getInfos("id"), f.team1[i].getSpells()[choice2 - 1], target));
                 }
             }
             break;
@@ -254,37 +256,59 @@ void Game::fight(Fight &f)
     }
 }
 
+std::vector<Monster> Game::createWildMonsterTeam(std::vector<std::string> monsters, unsigned int levelMin, unsigned int levelMax, std::string monster = "null")
+{
+    std::vector<Monster> team;
+    std::string letterId = "A";
+    unsigned int teamSize = rand() % 3 + 1;
+    std::string name;
+    unsigned int level;
+    if (monster != "null")
+    {
+        name = monster + " " + letterId;
+        level = rand() % (levelMax - levelMin) + levelMin;
+        Monster m = Monster(name, monster, monsterBase, skillBase, save, library, level);
+        team.push_back(m);
+        letterId[0]++;
+        teamSize--;
+    }
+    for (unsigned int i = 0; i < teamSize; i++)
+    {
+        std::string randomMonster = monsters[rand() % monsters.size()];
+        level = rand() % (levelMax - levelMin) + levelMin;
+        name = randomMonster + " " + letterId;
+        Monster m = Monster(name, randomMonster, monsterBase, skillBase, save, library, level);
+        m.applySkillPoint(5, "Pot de glu", skillBase);
+        team.push_back(m);
+        letterId[0]++;
+    }
+    return team;
+}
+
 int main()
 {
     srand(time(NULL));
     Game g;
     g.loadGame();
-    std::vector<Monster> team1;
-    std::vector<Monster> team2;
-    Monster m = Monster("Gluant 1", "gluant", g.monsterBase, g.skillBase, g.save, g.library, 8);
-    Monster m2 = Monster("Gluant 2", "gluant", g.monsterBase, g.skillBase, g.save, g.library, 10);
-    team2.push_back(m);
-    team2.push_back(m2);
-
+    std::vector<std::string> monsters;
+    //monsters.push_back("komodor");
+    monsters.push_back("gluant");
+    //monsters.push_back("jaunyve");
+    monsters.push_back("gluanbulle");
+    std::vector<Monster> team2 = g.createWildMonsterTeam(monsters, 5, 9);
+    std::vector<Monster> team1 = g.player.mainTeam;
     for (long unsigned int i = 0; i < team2.size(); i++)
     {
         team2[i].print();
     }
-    m.createSaveMonster(g.save);
-    g.deleteFromSave(m.getId());
     g.player.mainTeam[0].addSkillPoint(75);
     g.player.mainTeam[0].applySkillPoint(75, "Pot de glu", g.skillBase);
-    g.saveGame();
-    team1 = g.player.mainTeam;
+    // g.saveGame();
+    // g.player.mainTeam[1].addXp(1000000);
+    // team1 = g.player.mainTeam;
     for (long unsigned int i = 0; i < team1.size(); i++)
     {
         team1[i].print();
-    }
-    std::vector<std::string> synth;
-    synth = makeSynthesis(team1[0], team1[1]);
-    for (long unsigned int i = 0; i < synth.size(); i++)
-    {
-        std::cout << synth[i] << std::endl;
     }
     Fight f(team1, team2);
     g.fight(f);
