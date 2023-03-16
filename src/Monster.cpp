@@ -98,6 +98,7 @@ Monster::Monster(std::string name, std::string type, rapidjson::Document &monste
     exp = 0;
     addXp(getXpLvl(lvl));
     autoAttributeSkill(skillBase);
+    //createSaveMonster(save);
 }
 
 void Monster::initStatus()
@@ -230,7 +231,9 @@ void Monster::printSpells() const
 void Monster::updateSaveMonster(rapidjson::Document &save) const
 {
     assert(save.HasMember("monsters"));
-    assert(save["monsters"].HasMember(infos.at("id").c_str()));
+    if (!save["monsters"].HasMember(infos.at("id").c_str())) {
+        createSaveMonster(save);
+    }
     rapidjson::Value &monster = save["monsters"][infos.at("id").c_str()];
     monster["hp"] = hp;
     monster["mp"] = mp;
@@ -254,44 +257,44 @@ void Monster::updateSaveMonster(rapidjson::Document &save) const
 
 void Monster::createSaveMonster(rapidjson::Document &save) const
 {
-    rapidjson::Value &monster = save["monsters"];
     rapidjson::Value monsterStat;
     monsterStat.SetObject();
-    monsterStat.AddMember("name", rapidjson::StringRef(infos.at("name").c_str()), save.GetAllocator());
-    monsterStat.AddMember("type", rapidjson::StringRef(infos.at("type").c_str()), save.GetAllocator());
+    monsterStat.AddMember("name", rapidjson::Value(infos.at("name").c_str(),save.GetAllocator()), save.GetAllocator());
+    monsterStat.AddMember("type", rapidjson::Value(infos.at("type").c_str(),save.GetAllocator()), save.GetAllocator());
     monsterStat.AddMember("hp", hp, save.GetAllocator());
     monsterStat.AddMember("mp", mp, save.GetAllocator());
     rapidjson::Value statsJson;
     statsJson.SetObject();
     for (auto &stat : stats)
     {
-        statsJson.AddMember(rapidjson::StringRef(stat.first.c_str()), stat.second, save.GetAllocator());
+        statsJson.AddMember(rapidjson::Value(stat.first.c_str(),save.GetAllocator()), rapidjson::Value(stat.second), save.GetAllocator());
     }
     monsterStat.AddMember("stats", statsJson, save.GetAllocator());
     rapidjson::Value growthJson;
     growthJson.SetObject();
     for (auto &growth : growth)
     {
-        growthJson.AddMember(rapidjson::StringRef(growth.first.c_str()), growth.second, save.GetAllocator());
+        growthJson.AddMember(rapidjson::Value(growth.first.c_str(),save.GetAllocator()), rapidjson::Value(growth.second), save.GetAllocator());
     }
     monsterStat.AddMember("growth", growthJson, save.GetAllocator());
     rapidjson::Value skillsJson;
     skillsJson.SetObject();
     for (auto &skill : skills)
     {
-        skillsJson.AddMember(rapidjson::StringRef(skill.first.c_str()), (int)skill.second, save.GetAllocator());
+        skillsJson.AddMember(rapidjson::Value(skill.first.c_str(),save.GetAllocator()), rapidjson::Value(skill.second), save.GetAllocator());
     }
     rapidjson::Value spells(rapidjson::kArrayType);
     for (int i = 0; i < this->spells.size(); i++)
     {
-        spells.PushBack(rapidjson::StringRef(this->spells[i].c_str()), save.GetAllocator());
+        spells.PushBack(rapidjson::Value(this->spells[i].c_str(),save.GetAllocator()), save.GetAllocator());
     }
     monsterStat.AddMember("spells", spells, save.GetAllocator());
     monsterStat.AddMember("skills", skillsJson, save.GetAllocator());
     monsterStat.AddMember("skillPoints", skillPoints, save.GetAllocator());
     monsterStat.AddMember("exp", exp, save.GetAllocator());
-    monsterStat.AddMember("synthLevel", skillPoints, save.GetAllocator());
-    monster.AddMember(rapidjson::StringRef(infos.at("id").c_str()), monsterStat, save.GetAllocator());
+    monsterStat.AddMember("synthLevel", synthLevel, save.GetAllocator());
+    save["monsters"].AddMember(rapidjson::Value(infos.at("id").c_str(),save.GetAllocator()), monsterStat, save.GetAllocator());
+    assert(save["monsters"].HasMember(infos.at("id").c_str()));
 }
 
 bool Monster::operator==(const Monster &monster) const
@@ -500,4 +503,9 @@ void Monster::printSkill() const
         std::cout << spell << " | ";
     }
     std::cout << std::endl;
+}
+
+void Monster::setName(std::string name)
+{
+    infos["name"] = name;
 }

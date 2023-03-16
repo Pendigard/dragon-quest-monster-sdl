@@ -24,6 +24,11 @@
         },
         "effectTurn": 1
     },
+    "Dressage": {
+        "offensive": true,
+        "self": false,
+        "multiTarget": false
+    },
     "Flamme": {
         "castSentence": "{} lance flamme sur {}",
         "element": "flamme",

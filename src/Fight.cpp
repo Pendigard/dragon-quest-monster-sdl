@@ -14,6 +14,7 @@ Fight::Fight(std::vector<Monster> t1, std::vector<Monster> t2)
     nbTurn = 0;
     team1 = t1;
     team2 = t2;
+    canScout = true;
     loadJson("data/database/spell.json", spellBase);
 }
 
@@ -581,6 +582,7 @@ std::queue<spellImpact> Fight::simulateAction()
 std::queue<std::string> Fight::simulateTurn()
 {
     std::queue<std::string> messages = initTurn();
+    std::queue<std::string> messages2;
     bool team1Win = true;
     while (!actionsOrdered.empty() && !isOver(team1Win))
     {
@@ -669,5 +671,58 @@ bool Fight::flee()
             agilityTeam2 = team2[i].getAgility();
         }
     }
-    return getRand(0, 100) < (agilityTeam1 / agilityTeam2)/2;
+    return getRand(0, 100) < (agilityTeam1 / agilityTeam2) / 2;
+}
+
+bool Fight::scout(std::string idMonster, std::queue<std::string> &messages)
+{
+    Monster monster = getMonsterById(idMonster);
+    if (monster.hp == 0)
+    {
+        return false;
+    }
+    int dmg;
+    int chanceScout = 0;
+    messages.push("Les monstres se préparent à attaquer");
+    for (int i = 0; i < team1.size(); i++)
+    {
+        messages.push(team1[i].getName() + " tente d'impressionner " + monster.getInfos("type"));
+        dmg = (team1[i].getStat("atk") / 2 - monster.getStat("def") / 4);
+        if (dmg < 0)
+            dmg = 0;
+        const int chance = 15;
+        if (getRand(0, 1000) < chance)
+        {
+            dmg = dmg * 2;
+            messages.push("C'est un coup critique !");
+        }
+        chanceScout += 100 * dmg / monster.hp;
+        chanceScout = std::min(chanceScout, 100);
+        if (100 * dmg / monster.hp > 15)
+            messages.push("Cela impressionne vraiment le monstre");
+        else if (100 * dmg / monster.hp > 5)
+            messages.push("Cela impressionne le monstre");
+        else
+            messages.push("Cela n'impressionne pas vraiment le monstre");
+        messages.push("Vos chances sont de " + std::to_string(chanceScout) + "%");
+    }
+    messages.push("le monstre vous jauge...");
+    if (getRand(0, 100) < chanceScout)
+    {
+        messages.push("Vous avez réussi à dresser " + monster.getInfos("type") + "!");
+        messages.push("Les autres monstres s'enfuient");
+        return true;
+    }
+    else
+    {
+        messages.push("Le monstre ne veut pas se laisser dresser");
+        if (getRand(1,2)<1) {
+            messages.push("Le monstre se vexe");
+            canScout = false;
+        }
+        else {
+            messages.push("Le monstre évalue la situation");
+        }
+        return false;
+    }
 }

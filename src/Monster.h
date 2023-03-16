@@ -21,10 +21,10 @@ private:
     std::unordered_map<std::string,unsigned int> statMax;
     std::unordered_map<std::string, float> resistances;
     std::unordered_map<std::string, float> growth;
-    std::unordered_map<std::string, unsigned int> skills;
     std::unordered_map<std::string, float> alterations;
     std::unordered_map<std::string, int> alterationsTurn;
     std::unordered_map<std::string, int> status;
+    std::unordered_map<std::string, unsigned int> skills;
     std::vector<std::string> spells;
     std::unordered_map<std::string, std::string> infos;
 
@@ -161,6 +161,8 @@ public:
     void autoAttributeSkill(rapidjson::Document& skillBase);
 
     void printSkill() const;
+
+    void setName(std::string name);
 
 };
 

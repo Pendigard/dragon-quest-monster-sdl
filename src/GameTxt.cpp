@@ -30,18 +30,30 @@ void Game::loadGame()
 
 void Game::saveGame()
 {
+    rapidjson::Value idMain(rapidjson::kArrayType);
+    rapidjson::Value idBench(rapidjson::kArrayType);
+    rapidjson::Value idStorage(rapidjson::kArrayType);
     for (long unsigned int i = 0; i < player.mainTeam.size(); i++)
     {
         player.mainTeam[i].updateSaveMonster(save);
+        rapidjson::Value v(player.mainTeam[i].getInfos("id").c_str(), save.GetAllocator());
+        idMain.PushBack(v, save.GetAllocator());
     }
     for (long unsigned int i = 0; i < player.benchTeam.size(); i++)
     {
         player.benchTeam[i].updateSaveMonster(save);
+        rapidjson::Value v(player.benchTeam[i].getInfos("id").c_str(), save.GetAllocator());
+        idBench.PushBack(v, save.GetAllocator());
     }
     for (long unsigned int i = 0; i < player.storageMonsters.size(); i++)
     {
         player.storageMonsters[i].updateSaveMonster(save);
+        rapidjson::Value v(player.storageMonsters[i].getInfos("id").c_str(), save.GetAllocator());
+        idStorage.PushBack(v, save.GetAllocator());
     }
+    save["mainTeam"] = idMain;
+    save["benchTeam"] = idBench;
+    save["storageMonsters"] = idStorage;
     saveJson("data/save/saveTest.json", save);
 }
 
@@ -78,19 +90,17 @@ void Game::deleteFromSave(std::string id)
 unsigned int Game::askTarget(bool isOffensive, Fight &f)
 {
     unsigned int choice;
-    std::vector<Monster> targetTeam;
+    std::vector<std::string> targetTeam;
     if (isOffensive)
-        targetTeam = f.team2;
+        targetTeam = f.getTeamAlive(f.team2);
     else
-        targetTeam = f.team1;
+        targetTeam = f.getTeamAlive(f.team1);
     if (isOffensive)
         std::cout << "Cible : " << std::endl;
     for (long unsigned int i = 0; i < targetTeam.size(); i++)
     {
-        if (targetTeam[i].hp > 0)
-        {
-            std::cout << i + 1 << ". " << targetTeam[i].getName() << "(" << targetTeam[i].getType() << ")" << std::endl;
-        }
+        Monster m = f.getMonsterById(targetTeam[i]);
+        std::cout << i + 1 << ". " << m.getName() << "(" << m.getType() << ")" << std::endl;
     }
     std::cout << "Quel monstre voulez-vous cibler ? (1/.../" << targetTeam.size() << ") : ";
     std::cin >> choice;
@@ -178,6 +188,7 @@ void Game::getTacticChoice(Fight &f)
 
 std::vector<Action> Game::getPlayerChoice(Fight &f)
 {
+    f.scouting = false;
     std::vector<Action> orders;
     unsigned int choice = 0;
     unsigned int choice2 = 0;
@@ -187,8 +198,9 @@ std::vector<Action> Game::getPlayerChoice(Fight &f)
         std::cout << "1. Combattre" << std::endl;
         std::cout << "2. Ordre" << std::endl;
         std::cout << "3. Tactique" << std::endl;
-        std::cout << "4. Fuir" << std::endl;
-        std::cout << "Que voulez-vous faire ? (1/.../4): ";
+        std::cout << "4. Dresser" << std::endl;
+        std::cout << "5. Fuir" << std::endl;
+        std::cout << "Que voulez-vous faire ? (1/.../5): ";
         std::cin >> choice;
         switch (choice)
         {
@@ -213,6 +225,18 @@ std::vector<Action> Game::getPlayerChoice(Fight &f)
             getTacticChoice(f);
             break;
         case 4:
+            if (f.canScout)
+            {
+                std::vector<std::string> emptyTarget;
+                f.scouting = true;
+                for (long unsigned int i = 0; i < f.team1.size(); i++)
+                {
+                    orders.push_back(createAction(f.team1[i].getInfos("id"), "null", emptyTarget));
+                }
+                return orders;
+            }
+            break;
+        case 5:
             if (f.flee())
             {
                 std::cout << "Vous prenez la fuite." << std::endl;
@@ -255,43 +279,6 @@ void Game::printOrder(std::vector<Action> orders, Fight &f)
     }
 }
 
-void Game::fight(Fight &f)
-{
-    std::vector<Action> orders;
-    std::queue<spellImpact> impact;
-    std::queue<std::string> messages;
-    bool win = false;
-    while (f.isOver(win) == false)
-    {
-        orders = getPlayerChoice(f);
-        if (f.teamFlee)
-            return;
-        f.giveActions(orders);
-        messages = f.simulateTurn();
-        while (!messages.empty())
-        {
-            std::cout << messages.front() << std::endl;
-            messages.pop();
-            sleep(1);
-        }
-        std::cout << std::endl;
-        for (long unsigned int i = 0; i < f.team1.size(); i++)
-        {
-            std::cout << (int)f.team1[i].hp << "/" << (int)f.team1[i].getStat("hp") << "PV | " << (int)f.team1[i].mp << "/" << (int)f.team1[i].getStat("mp") << "PM" << std::endl;
-        }
-    }
-    if (win)
-    {
-        sleep(1);
-        std::cout << "Vous remportez le combat" << std::endl;
-    }
-    else
-    {
-        sleep(1);
-        std::cout << "Votre équipe est décimé" << std::endl;
-    }
-}
-
 std::vector<Monster> Game::createWildMonsterTeam(std::vector<std::string> monsters, unsigned int levelMin, unsigned int levelMax, std::string monster = "null")
 {
     std::vector<Monster> team;
@@ -321,6 +308,114 @@ std::vector<Monster> Game::createWildMonsterTeam(std::vector<std::string> monste
     return team;
 }
 
+void Game::scoutMonster(std::string id, Fight &f)
+{
+    std::string name;
+    std::cout << "Donnez un nom au monstre:";
+    std::cin >> name;
+    Monster monster = f.getMonsterById(id);
+    monster.setName(name);
+    std::cout << std::endl
+              << "Voulez-vous l'ajouter à votre équipe ? (y/n):";
+    std::string answer;
+    std::cin >> answer;
+    monster.createSaveMonster(save);
+    switch (answer[0])
+    {
+    case 'y':
+        if (player.mainTeam.size() == 3)
+        {
+            std::cout << std::endl
+                      << "Votre équipe est déjà pleine:" << std::endl;
+            for (long unsigned int i = 0; i < player.mainTeam.size(); i++)
+            {
+                std::cout << i + 1 << ". " << player.mainTeam[i].getName() << " (" << player.mainTeam[i].getInfos("type") << ")" << std::endl;
+            }
+            std::cout << "Quel monstre voulez-vous remplacer ?(0 pour l'envoyer en réserve/1/2/3):";
+            int choice;
+            std::cin >> choice;
+            if (choice == 0)
+            {
+                player.storageMonsters.push_back(monster);
+                break;
+            }
+            else
+            {
+                player.storageMonsters.push_back(player.mainTeam[choice - 1]);
+                player.mainTeam[choice - 1] = monster;
+                break;
+            }
+        }
+        else
+        {
+            player.mainTeam.push_back(monster);
+            break;
+        }
+    case 'n':
+        player.storageMonsters.push_back(monster);
+        break;
+    }
+}
+
+void Game::fight(Fight &f)
+{
+    std::vector<Action> orders;
+    std::queue<spellImpact> impact;
+    std::queue<std::string> messages;
+    bool win = false;
+    while (f.isOver(win) == false)
+    {
+        orders = getPlayerChoice(f);
+        if (f.teamFlee)
+        {
+            player.mainTeam = f.team1;
+            return;
+        }
+        if (f.scouting)
+        {
+            std::string monsterToScout = getTargetPlayer(f.team1[0], "Dressage", f)[0];
+            bool scouted = f.scout(monsterToScout, messages);
+            while (!messages.empty())
+            {
+                std::cout << messages.front() << std::endl
+                          << std::endl;
+                messages.pop();
+                sleep(1);
+            }
+            if (scouted)
+            {
+                player.mainTeam = f.team1;
+                scoutMonster(monsterToScout, f);
+                return;
+            }
+        }
+        f.giveActions(orders);
+        messages = f.simulateTurn();
+        while (!messages.empty())
+        {
+            std::cout << messages.front() << std::endl;
+            messages.pop();
+            sleep(1);
+        }
+        std::cout << std::endl;
+        for (long unsigned int i = 0; i < f.team1.size(); i++)
+        {
+            std::cout << (int)f.team1[i].hp << "/" << (int)f.team1[i].getStat("hp") << "PV | " << (int)f.team1[i].mp << "/" << (int)f.team1[i].getStat("mp") << "PM" << std::endl;
+        }
+    }
+    if (win)
+    {
+        sleep(1);
+        std::cout << "Vous remportez le combat" << std::endl;
+        player.mainTeam = f.team1;
+    }
+    else
+    {
+        sleep(1);
+        std::cout << "Votre équipe est décimé" << std::endl;
+    }
+}
+
 int main()
 {
     srand(time(NULL));
@@ -339,14 +434,16 @@ int main()
     g.player.mainTeam[0].addXp(1000000);
     g.player.mainTeam[0].addSkillPoint(75);
     g.player.mainTeam[0].applySkillPoint(75, "Pot de glu", g.skillBase);
-    // g.saveGame();
-    // g.player.mainTeam[1].addXp(1000000);
-    // team1 = g.player.mainTeam;
     for (long unsigned int i = 0; i < g.player.mainTeam.size(); i++)
     {
         g.player.mainTeam[i].print();
     }
     Fight f(g.player.mainTeam, team2);
     g.fight(f);
+    for (long unsigned int i = 0; i < g.player.storageMonsters.size(); i++)
+    {
+        g.player.storageMonsters[i].print();
+    }
+    g.saveGame();
     return 0;
 }

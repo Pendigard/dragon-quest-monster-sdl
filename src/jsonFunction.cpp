@@ -27,6 +27,18 @@ void jsonToVector(rapidjson::Value& jsonList, std::vector<std::string>& vec)
     }
 }
 
+void unorderedMapToJson(rapidjson::Document& doc, std::unordered_map<std::string, float>& map)
+{
+    rapidjson::Value json(rapidjson::kObjectType);
+    for (auto& x : map)
+    {
+        rapidjson::Value key(x.first.c_str(), doc.GetAllocator());
+        rapidjson::Value value(x.second);
+        json.AddMember(key, value, doc.GetAllocator());
+    }
+    doc.CopyFrom(json, doc.GetAllocator());
+}
+
 
 void loadJson(std::string path, rapidjson::Document& doc) {
     std::ifstream file;

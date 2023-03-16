@@ -70,6 +70,10 @@ class Game
         /// @return L'équipe de monstres sauvages
         std::vector<Monster> createWildMonsterTeam(std::vector<std::string> monsters,unsigned int levelMin,unsigned int levelMax,std::string monster);
 
+        /// @brief Demande au joueur quoi faire avec le monstre nouvellement capturé
+        /// @param id L'identifiant du monstre capturé
+        void scoutMonster(std::string id, Fight& f);
+
 
 };
 

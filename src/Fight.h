@@ -64,11 +64,6 @@ private:
     /// @param caster : monstre qui lance le sort
     Action tacticSoin(Monster caster);
 
-    /// @brief Renvoie la liste des monstres vivants de l'équipe
-    /// @param team : équipe à tester
-    /// @return la liste des ids des monstres vivants de l'équipe
-    std::vector<std::string> getTeamAlive(std::vector<Monster> team) const;
-
     /// @brief Vérifie si les cibles du sort sont vivantes
     /// @param targets : cibles du sort
     /// @param spell : nom du sort
@@ -114,13 +109,15 @@ private:
 
 
 public:
-    unsigned int nbTurn;
-    std::vector<Monster> team1;
-    std::vector<Monster> team2;
-    std::vector<Action> actions;
-    std::queue<Action> actionsOrdered;
-    rapidjson::Document spellBase;
-    bool teamFlee;
+    unsigned int nbTurn;//Nombre de tours
+    std::vector<Monster> team1;//Équipe du joueur
+    std::vector<Monster> team2;//Équipe de l'I.A.
+    std::vector<Action> actions;//Actions à effectuer
+    std::queue<Action> actionsOrdered;//File des actions à effectuer
+    rapidjson::Document spellBase;//Base de données des sorts
+    bool teamFlee;//Indique si l'équipe a fui
+    bool canScout;//Indique si l'équipe peut dresser
+    bool scouting;//Indique si l'équipe est en train de dresser
 
     /// @brief Constructeur
     Fight(std::vector<Monster> t1, std::vector<Monster> t2);
@@ -156,6 +153,11 @@ public:
     /// @param isTeam1Win : true si l'équipe 1 a gagné, false sinon
     /// @return true si le combat est terminé, false sinon
     bool isOver(bool& isTeam1Win);
+    
+    /// @brief Renvoie la liste des monstres vivants de l'équipe
+    /// @param team : équipe à tester
+    /// @return la liste des ids des monstres vivants de l'équipe
+    std::vector<std::string> getTeamAlive(std::vector<Monster> team) const;
 
     /// @brief Retourne les cibles du sort en fonction de la tactique du monstre
     /// @param caster : monstre qui lance le sort
@@ -164,7 +166,14 @@ public:
     /// @return les cibles du sort
     std::vector<std::string> getTargetTactic(Monster caster, std::string spell);
 
+    /// @brief Calcule si l'équipe a fui
+    /// @return true si l'équipe a fui, false sinon
     bool flee();
+
+    /// @brief Lance la phase de dressage
+    /// @param idMonster : id du monstre à dresser
+    /// @return true si le monstre a été dressé, false sinon
+    bool scout(std::string idMonster,std::queue<std::string> &messages);
 
 
 };
