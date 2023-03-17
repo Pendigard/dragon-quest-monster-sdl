@@ -172,14 +172,14 @@ void Monster::applySkillPoint(unsigned int points, std::string skill, rapidjson:
         int point = currentSkill["point"].GetInt();
         if (lastSkillCap < point && point <= maxPointToAttribute)
         {
-            lastSkillCap += point;
+            lastSkillCap = point;
             if (type == "spell")
             {
                 spells.push_back(itr->name.GetString());
             }
         }
     }
-    skillPoints -= maxPointToAttribute;
+    skillPoints -= std::min(points,maxPointSkillSet);
     skills[skill] = maxPointToAttribute;
 }
 
