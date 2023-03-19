@@ -1,12 +1,10 @@
 #ifndef _MONSTER
 #define _MONSTER
 
-
 #include <queue>
 
 #include "jsonFunction.h"
-
-
+#include "database.h"
 
 class Monster
 {
@@ -18,7 +16,7 @@ private:
     unsigned int synthId;
     std::string tactic;
     std::unordered_map<std::string, float> stats;
-    std::unordered_map<std::string,unsigned int> statMax;
+    std::unordered_map<std::string, unsigned int> statMax;
     std::unordered_map<std::string, float> resistances;
     std::unordered_map<std::string, float> growth;
     std::unordered_map<std::string, float> alterations;
@@ -43,15 +41,24 @@ private:
     int getMaxLvl() const;
 
 public:
-
     float hp;
     float mp;
-    ///@brief Constructeur à partir d'un fichier json
+    ///@brief Constructeur à partir d'un monstre dans la sauvegarde
     ///@param monsterData : données du monstre, idM : identifiant du monstre, monsterBase : base de données des monstres, skillBase : base de données des compétences
-    Monster(rapidjson::Value& monsterData,std::string idM,rapidjson::Document& monsterBase,rapidjson::Document& skillBase,rapidjson::Document& library);
+    Monster(rapidjson::Value &monsterData,std::string idM, Database &database);
 
-    ///@brief Constructeur à partir des statistiques du monstre
-    Monster(std::string name,std::string type,rapidjson::Document& monsterBase,rapidjson::Document& skillBase,rapidjson::Document& save,rapidjson::Document& library,unsigned int lvl);
+    ///@brief Constructeur de monstre sauvage
+    Monster(std::string name, std::string type, Database &database, rapidjson::Document& save, unsigned int lvl);
+
+    /// @brief Constructeur de monstre de synthèse
+    /// @param m1 Monstre parent 1
+    /// @param m2 Monstre parent 2
+    /// @param database Base de données
+    /// @param skills Compétences du monstre
+    Monster(Monster& m1, Monster& m2, std::string name, std::string type, Database &database, std::unordered_map<std::string, unsigned int>& skills, rapidjson::Document &save);
+
+    /// @brief génère un monstre null
+    Monster();
 
     ///@brief Affiche les caractéristiques du monstre dans la console
     void print() const;
@@ -61,7 +68,8 @@ public:
 
     ///@brief Ajoute des points d'expérience au monstre
     ///@param xp : nombre de points d'expérience à ajouter
-    void addXp(unsigned int xp);
+    ///@return vrai si le monstre a gagné un niveau
+    bool addXp(unsigned int xp);
 
     ///@brief Ajoute des points de compétence au monstre
     ///@param points : nombre de points de compétence à ajouter
@@ -71,20 +79,20 @@ public:
     /// @param points nombre de points de compétence à appliquer
     ///@param skill set de compétence dans lequel appliquer les points
     ///@param skillBase base de données des compétences
-    void applySkillPoint(unsigned int points,std::string skill,rapidjson::Document& skillBase);
+    void applySkillPoint(unsigned int points, std::string skill, Database &db);
 
     /// @brief Met à jour les statistiques du monstre dans la sauvegarde
     /// @param save : sauvegarde
-    void updateSaveMonster(rapidjson::Document& save) const;
+    void updateSaveMonster(rapidjson::Document &save) const;
 
     /// @brief Crée un monstre dans la sauvegarde
     /// @param save : sauvegarde
-    void createSaveMonster(rapidjson::Document& save) const;
+    void createSaveMonster(rapidjson::Document &save) const;
 
     /// @brief vrai si les deux monstres ont le même identifiant
     /// @param m : monstre à comparer
     /// @return vrai si les deux monstres ont le même identifiant
-    bool operator==(const Monster& m) const;
+    bool operator==(const Monster &m) const;
 
     /// @brief Donne l'agilité du monstre
     /// @return Retourne l'agilité du monstre
@@ -93,6 +101,8 @@ public:
     /// @brief Donne l'experience du monstre
     /// @return Retourne l'experience du monstre
     unsigned int getExp() const;
+
+    unsigned int getLevel() const;
 
     /// @brief Donne les sorts du monstre
     /// @return Retourne les sorts du monstre
@@ -158,12 +168,19 @@ public:
 
     unsigned int getSkillToAttribute() const;
 
-    void autoAttributeSkill(rapidjson::Document& skillBase);
+    void autoAttributeSkill(Database &db);
 
     void printSkill() const;
 
     void setName(std::string name);
 
+    void fullHeal();
+
+    std::unordered_map<std::string, unsigned int> getSkills() const;
+
+    unsigned int getSynthLevel() const;
+
+    std::unordered_map<std::string, float> getGrowth() const;
 };
 
 #endif

@@ -58,17 +58,6 @@
         "multiTarget": false,
         "dealDamage": true
     },
-    "1er secours": {
-        "castSentence": "{} utilise 1er secours sur {}",
-        "type": "heal",
-        "damage": 0,
-        "manaCost": 5,
-        "offensive": false,
-        "self": false,
-        "multiTarget": false,
-        "dealDamage": false,
-        "heal": 30
-    },
     "Foudre": {
         "castSentence": "{} lance foudre sur {}",
         "element": "foudre",
@@ -90,17 +79,6 @@
         "self": false,
         "multiTarget": false,
         "dealDamage": true
-    },
-    "Soins partiels": {
-        "castSentence": "{} utilise soins partiels sur {}",
-        "type": "heal",
-        "damage": 0,
-        "manaCost": 10,
-        "offensive": false,
-        "self": false,
-        "multiTarget": false,
-        "dealDamage": false,
-        "heal": 75
     },
     "Ecrasement": {
         "castSentence": "{} écrase {}",
@@ -126,20 +104,6 @@
             "atk": 0.5
         },
         "effectTurn": 3
-    },
-    "Regeneration vitale": {
-        "castSentence": "{} utilise régénération vitale sur {}",
-        "type": "status",
-        "damage": 0,
-        "manaCost": 70,
-        "offensive": false,
-        "self": false,
-        "multiTarget": false,
-        "dealDamage": false,
-        "affectStatus": true,
-        "status": {
-            "regen": 3
-        }
     },
     "Crame": {
         "castSentence": "{} lance crame sur l'équipe",
@@ -173,5 +137,281 @@
         "self": false,
         "multiTarget": true,
         "dealDamage": true
+    },
+    "Protection": {
+        "castSentence": "{} lance protection sur {}",
+        "type": "status",
+        "damage": 0,
+        "manaCost": 5,
+        "offensive": false,
+        "self": false,
+        "multiTarget": false,
+        "dealDamage": false,
+        "affectStats": true,
+        "stats": {
+            "def": 3
+        },
+        "effectTurn": 3
+    },
+    "Megaprotection": {
+        "castSentence": "{} lance megaprotection sur {}",
+        "type": "status",
+        "damage": 0,
+        "manaCost": 14,
+        "offensive": false,
+        "self": false,
+        "multiTarget": true,
+        "dealDamage": false,
+        "affectStats": true,
+        "stats": {
+            "def": 2
+        },
+        "effectTurn": 3
+    },
+    "1er secours": {
+        "castSentence": "{} utilise 1er secours sur {}",
+        "type": "heal",
+        "damage": 0,
+        "manaCost": 5,
+        "offensive": false,
+        "self": false,
+        "multiTarget": false,
+        "dealDamage": false,
+        "heal": 30
+    },
+    "Soins partiels": {
+        "castSentence": "{} utilise soins partiels sur {}",
+        "type": "heal",
+        "damage": 0,
+        "manaCost": 10,
+        "offensive": false,
+        "self": false,
+        "multiTarget": false,
+        "dealDamage": false,
+        "heal": 75
+    },
+    "Multisoin" : {
+        "castSentence": "{} utilise multisoin sur l'équipe",
+        "type": "heal",
+        "damage": 0,
+        "manaCost": 20,
+        "offensive": false,
+        "self": false,
+        "multiTarget": true,
+        "dealDamage": false,
+        "heal": 50
+    },
+    "Regeneration vitale": {
+        "castSentence": "{} utilise régénération vitale sur {}",
+        "type": "status",
+        "damage": 0,
+        "manaCost": 70,
+        "offensive": false,
+        "self": false,
+        "multiTarget": false,
+        "dealDamage": false,
+        "affectStatus": true,
+        "status": {
+            "regen": 3
+        }
+    },
+    "Pluie salvatrice": {
+        "castSentence": "{} utilise pluie salvatrice sur l'équipe",
+        "type": "heal",
+        "damage": 0,
+        "manaCost": 30,
+        "offensive": false,
+        "self": false,
+        "multiTarget": true,
+        "dealDamage": false,
+        "affectStatus" : true,
+        "status": {
+            "regen": 3
+        }
+    },
+    "Vague de soulagement": {
+        "castSentence": "{} utilise vague de soulagement sur l'équipe",
+        "type": "effect",
+        "damage": 0,
+        "manaCost": 30,
+        "offensive": false,
+        "self": false,
+        "multiTarget": true,
+        "effect": "cancelNegativeStatus",
+        "dealDamage": false
+    },
+    "Chant redempteur" : {
+        "castSentence": "{} utilise chant redempteur sur l'équipe",
+        "type": "effect",
+        "damage": 0,
+        "manaCost": 150,
+        "offensive": false,
+        "self": false,
+        "multiTarget": true,
+        "effect": "revive",
+        "dealDamage": false
+    },
+    "Omnisoin" : {
+        "castSentence": "{} utilise omnisoin sur l'équipe",
+        "type": "heal",
+        "damage": 0,
+        "manaCost": 100,
+        "offensive": false,
+        "self": false,
+        "multiTarget": true,
+        "dealDamage": false,
+        "heal": 300
+    },
+    "Rappel": {
+        "castSentence": "{} utilise rappel sur {}",
+        "type": "effect",
+        "damage": 0,
+        "manaCost": 20,
+        "offensive": false,
+        "self": false,
+        "multiTarget": false,
+        "effect": "rappel",
+        "dealDamage": false
+    },
+    "Stimulation": {
+        "castSentence": "{} utilise stimulation sur {}",
+        "type": "effect",
+        "damage": 0,
+        "manaCost": 10,
+        "offensive": false,
+        "self": false,
+        "multiTarget": false,
+        "effect": "cancelParalysis",
+        "dealDamage": false
+    },
+    "Meditation" : {
+        "castSentence": "{} médite",
+        "type": "effect",
+        "damage": 0,
+        "manaCost": 0,
+        "offensive": false,
+        "self": false,
+        "multiTarget": false,
+        "giveMana": 20,
+        "dealDamage": false
+    },
+    "Baffaiblissante" : {
+        "castSentence": "{} utilise baffaiblissante sur {}",
+        "type": "physical",
+        "damage": 1.1,
+        "manaCost": 12,
+        "offensive": true,
+        "self": false,
+        "multiTarget": false,
+        "dealDamage": true,
+        "affectStats": true,
+        "stats": {
+            "atk": 0.5
+        },
+        "effectTurn": 3
+    },
+    "Attaque eblouissante" : {
+        "castSentence": "{} utilise attaque eblouissante sur {}",
+        "type": "physical",
+        "damage": 1.1,
+        "manaCost": 12,
+        "offensive": true,
+        "self": false,
+        "multiTarget": false,
+        "dealDamage": true,
+        "affectStats": true,
+        "stats": {
+            "def": 0.5
+        },
+        "effectTurn": 3
+    },
+    "Pique empoisonee": {
+        "castSentence": "{} utilise pique empoisonee sur {}",
+        "type": "physical",
+        "damage": 1.1,
+        "manaCost": 12,
+        "offensive": true,
+        "self": false,
+        "multiTarget": false,
+        "dealDamage": true,
+        "affectStatus": true,
+        "status": {
+            "poison": 2
+        }
+    },
+    "Frappe paralysante" : {
+        "castSentence": "{} utilise frappe paralysante sur {}",
+        "type": "physical",
+        "damage": 1.1,
+        "manaCost": 12,
+        "offensive": true,
+        "self": false,
+        "multiTarget": false,
+        "dealDamage": true,
+        "affectStatus": true,
+        "status": {
+            "paralysis": 2
+        }
+    },
+    "Haleine fraiche": {
+        "castSentence": "{} souffle son haleine sur {}",
+        "type": "status",
+        "element": "breath",
+        "damage": 0,
+        "manaCost": 15,
+        "offensive": true,
+        "self": false,
+        "multiTarget": true,
+        "dealDamage": false,
+        "affectStatus": true,
+        "status": {
+            "poison": 2
+        }
+    },
+    "Souffle brulant" : {
+        "castSentence": "{} souffle son haleine sur {}",
+        "type": "status",
+        "element": "breath",
+        "damage": 0,
+        "manaCost": 15,
+        "offensive": true,
+        "self": false,
+        "multiTarget": true,
+        "dealDamage": false,
+        "affectStatus": true,
+        "status": {
+            "paralysis": 2
+        }
+    },
+    "Haleine veneneuse": {
+        "castSentence": "{} souffle son haleine sur {}",
+        "type": "status",
+        "element": "breath",
+        "damage": 0,
+        "manaCost": 20,
+        "offensive": true,
+        "self": false,
+        "multiTarget": true,
+        "dealDamage": false,
+        "affectStatus": true,
+        "status": {
+            "poison": 4
+        }
+    },
+    "Volee veneneuse" : {
+        "castSentence": "{} utilise volee veneneuse sur {}",
+        "type": "status",
+        "element": "breath",
+        "damage": 1.3,
+        "manaCost": 18,
+        "offensive": true,
+        "self": false,
+        "multiTarget": false,
+        "dealDamage": true,
+        "affectStatus": true,
+        "status": {
+            "poison": 4
+        }
     }
+
 }

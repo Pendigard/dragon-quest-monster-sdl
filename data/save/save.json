@@ -1,15 +1,16 @@
 {
     "mainTeam": [
-        "1","O4PJ5WA2"
+        "1"
     ],
     "benchTeam": [],
-    "storageMonsters": [],
+    "storageMonsters": ["O4PJ5WA2"],
     "monsters": {
         "1": {
             "name": "Slimey",
             "type": "gluant",
             "hp": 10,
             "mp": 10,
+            "charge": "neutre",
             "stats": {
                 "hp": 10.0,
                 "mp": 10.0,
@@ -27,7 +28,8 @@
                 "wis": 1.3
             },
             "skills": {
-                "Pot de glu": 0
+                "Pot de glu": 0,
+                "Bonus attaque": 0
             },
             "spells" : ["Attaque","Defense"],
             "skillPoints": 0,
@@ -39,6 +41,7 @@
             "type": "gluanbulle",
             "hp": 26.4,
             "mp": 21.5,
+            "charge": "moins",
             "stats": {
                 "def": 13.2,
                 "hp": 26.4,
@@ -60,7 +63,7 @@
             },
             "spells" : ["Attaque","Defense"],
             "skillPoints": 0,
-            "exp": 1725,
+            "exp": 1,
             "synthLevel": 0
         }
     }

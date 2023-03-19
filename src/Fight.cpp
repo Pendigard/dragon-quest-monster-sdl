@@ -726,3 +726,23 @@ bool Fight::scout(std::string idMonster, std::queue<std::string> &messages)
         return false;
     }
 }
+
+unsigned int Fight::getGoldReward(Database& db) const
+{
+    unsigned int gold = 0;
+    for (int i = 0; i < team2.size(); i++)
+    {
+        gold += db.getMonsterStat(team2[i].getInfos("family"),team2[i].getInfos("rank"),team2[i].getInfos("type"))["gold"].GetInt();
+    }
+    return gold;
+}
+
+unsigned int Fight::getExpReward(Database& db) const
+{
+    unsigned int exp = 0;
+    for (int i = 0; i < team2.size(); i++)
+    {
+        exp += db.getMonsterStat(team2[i].getInfos("family"),team2[i].getInfos("rank"),team2[i].getInfos("type"))["exp"].GetInt()*team2[i].getLevel();
+    }
+    return exp;
+}

@@ -9,4 +9,6 @@ std::string getSynthesisRank(Monster parent1, Monster parent2);
 
 std::string getChildMonster(Monster parent1,std::string rank);
 
+std::unordered_map<std::string, unsigned int> getSynthesisSkills(Monster parent1, Monster parent2, std::string child, Database &db);
+
 #endif

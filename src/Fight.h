@@ -34,7 +34,6 @@ struct spellImpact
 class Fight
 {
 private:
-
     /// @brief Indique si le monstre est dans l'équipe 1
     /// @param m : monstre à tester
     /// @return true si le monstre est dans l'équipe 1, false sinon
@@ -67,7 +66,7 @@ private:
     /// @brief Vérifie si les cibles du sort sont vivantes
     /// @param targets : cibles du sort
     /// @param spell : nom du sort
-    void checkTargetAlive(std::vector<std::string>& targets, std::string spell, Monster caster);
+    void checkTargetAlive(std::vector<std::string> &targets, std::string spell, Monster caster);
 
     /// @brief renvoie la phrase correspondant au status
     /// @param status : status à traduire
@@ -78,7 +77,7 @@ private:
     /// @param caster : monstre qui lance le sort
     /// @param canMove : vrai si le monstre peut bouger, faux sinon après l'application du status
     /// @return la phrase correspondant à la fonction
-    std::queue<spellImpact> getStatusEffect(Monster& caster,bool& canMove);
+    std::queue<spellImpact> getStatusEffect(Monster &caster, bool &canMove);
 
     /// @brief renvoie la phrase correspondant à la statistique
     /// @param stat : statistique à traduire
@@ -91,41 +90,40 @@ private:
     /// @param targets : cibles du sort
     /// @param spell : nom du sort
     /// @return la file de message à afficher
-    std::queue<spellImpact> simulateAttack(Monster& caster, std::vector<std::string> targets, std::string spell);
+    std::queue<spellImpact> simulateAttack(Monster &caster, std::vector<std::string> targets, std::string spell);
 
     /// @brief Simule un sort de soin
     /// @param caster : monstre qui lance le sort
     /// @param targets : cibles du sort
     /// @param spell : nom du sort
     /// @return la file de message à afficher
-    std::queue<spellImpact> simulateHeal(Monster& caster, std::vector<std::string> targets, std::string spell);
+    std::queue<spellImpact> simulateHeal(Monster &caster, std::vector<std::string> targets, std::string spell);
 
     /// @brief consome la mana du monstre
     /// @param caster : monstre qui lance le sort
     /// @param spell : nom du sort
     /// @return true si le monstre a assez de mana, false sinon
-    bool consumeMana(Monster& caster, std::string spell);
-
-
+    bool consumeMana(Monster &caster, std::string spell);
 
 public:
-    unsigned int nbTurn;//Nombre de tours
-    std::vector<Monster> team1;//Équipe du joueur
-    std::vector<Monster> team2;//Équipe de l'I.A.
-    std::vector<Action> actions;//Actions à effectuer
-    std::queue<Action> actionsOrdered;//File des actions à effectuer
-    rapidjson::Document spellBase;//Base de données des sorts
-    bool teamFlee;//Indique si l'équipe a fui
-    bool canScout;//Indique si l'équipe peut dresser
-    bool scouting;//Indique si l'équipe est en train de dresser
+    unsigned int nbTurn;               // Nombre de tours
+    std::vector<Monster> team1;        // Équipe du joueur
+    std::vector<Monster> team2;        // Équipe de l'I.A.
+    std::vector<Action> actions;       // Actions à effectuer
+    std::queue<Action> actionsOrdered; // File des actions à effectuer
+    rapidjson::Document spellBase;     // Base de données des sorts
+    bool teamFlee;                     // Indique si l'équipe a fui
+    bool canScout;                     // Indique si l'équipe peut dresser
+    bool scouting;                     // Indique si l'équipe est en train de dresser
 
     /// @brief Constructeur
+    /// @param t1 : équipe du joueur
+    /// @param t2 : équipe de l'I.A.
     Fight(std::vector<Monster> t1, std::vector<Monster> t2);
 
     /// @brief Choix du sort en fonction de la tactique du monstre
     /// @param caster : monstre qui lance le sort
-    void spellTacticChoice(Monster& caster);
-
+    void spellTacticChoice(Monster &caster);
 
     /// @brief Donne une action à effectuer
     void giveActions(std::vector<Action> actions);
@@ -135,15 +133,17 @@ public:
     std::queue<std::string> initTurn();
 
     /// @brief Simule la prochaine action
-    /// @return la file de message à afficher
+    /// @return la file d'impact à effectuer
     std::queue<spellImpact> simulateAction();
 
+    /// @brief Simule le tour
+    /// @return la file de message à afficher
     std::queue<std::string> simulateTurn();
-    
+
     /// @brief Retourne le monstre correspondant à l'id
     /// @param id : id du monstre à trouver
     /// @return le monstre correspondant à l'id
-    Monster& getMonsterById(std::string id);
+    Monster &getMonsterById(std::string id);
 
     /// @brief Met à jour les monstres après une action
     /// @param impact : impact de l'action
@@ -152,8 +152,8 @@ public:
     /// @brief Vérifie si le combat est terminé
     /// @param isTeam1Win : true si l'équipe 1 a gagné, false sinon
     /// @return true si le combat est terminé, false sinon
-    bool isOver(bool& isTeam1Win);
-    
+    bool isOver(bool &isTeam1Win);
+
     /// @brief Renvoie la liste des monstres vivants de l'équipe
     /// @param team : équipe à tester
     /// @return la liste des ids des monstres vivants de l'équipe
@@ -173,9 +173,11 @@ public:
     /// @brief Lance la phase de dressage
     /// @param idMonster : id du monstre à dresser
     /// @return true si le monstre a été dressé, false sinon
-    bool scout(std::string idMonster,std::queue<std::string> &messages);
+    bool scout(std::string idMonster, std::queue<std::string> &messages);
 
+    unsigned int getGoldReward(Database &db) const;
 
+    unsigned int getExpReward(Database &db) const;
 };
 /// @brief Crée une action
 /// @param idCaster id du monstre qui lance le sort

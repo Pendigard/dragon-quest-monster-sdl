@@ -1,33 +1,358 @@
 {
     "Pot de glu": {
         "maxPoints": 75,
-        "Flamme": {
-            "point": 2,
-            "upgradeType": "spell"
-        },
-        "1er secours": {
-            "point": 6,
-            "upgradeType": "spell"
-        },
-        "Foudre": {
-            "point": 16,
-            "upgradeType": "spell"
-        },
-        "Ecrasement": {
-            "point": 22,
-            "upgradeType": "spell"
-        },
-        "Affaiblo": {
-            "point": 40,
-            "upgradeType": "spell"
-        },
-        "Soins partiels": {
-            "point": 55,
-            "upgradeType": "spell"
-        },
-        "Regeneration vitale": {
-            "point": 75,
-            "upgradeType": "spell"
+        "stepUpgrade": {
+            "Flamme": {
+                "point": 2,
+                "upgradeType": "spell"
+            },
+            "1er secours": {
+                "point": 6,
+                "upgradeType": "spell"
+            },
+            "Foudre": {
+                "point": 16,
+                "upgradeType": "spell"
+            },
+            "Ecrasement": {
+                "point": 22,
+                "upgradeType": "spell"
+            },
+            "Affaiblo": {
+                "point": 40,
+                "upgradeType": "spell"
+            },
+            "Soins partiels": {
+                "point": 55,
+                "upgradeType": "spell"
+            },
+            "Regeneration vitale": {
+                "point": 75,
+                "upgradeType": "spell"
+            }
+        }
+    },
+    "Defenseur": {
+        "maxPoints": 100,
+        "stepUpgrade": {
+            "Protection": {
+                "point": 5,
+                "upgradeType": "spell"
+            },
+            "1er secours": {
+                "point": 11,
+                "upgradeType": "spell"
+            },
+            "Attaque eblouissante": {
+                "point": 17,
+                "upgradeType": "spell"
+            },
+            "Megaprotection": {
+                "point": 27,
+                "upgradeType": "spell"
+            },
+            "Soins partiels": {
+                "point": 52,
+                "upgradeType": "spell"
+            },
+            "Baffaiblissante": {
+                "point": 77,
+                "upgradeType": "spell"
+            },
+            "Defense alteration": {
+                "point": 100,
+                "upgradeType": "res",
+                "stat": "def",
+                "value": 0
+            }
+        }
+    },
+    "Intoxicateur" : {
+        "maxPoints": 100,
+        "stepUpgrade" : {
+            "Pique empoisonee": {
+                "point": 6,
+                "upgradeType": "spell"
+            },
+            "Haleine fraiche": {
+                "point": 12,
+                "upgradeType": "spell"
+            },
+            "Frappe paralysante": {
+                "point": 18,
+                "upgradeType": "spell"
+            },
+            "Souffle brulant": {
+                "point": 26,
+                "upgradeType": "spell"
+            },
+            "Haleine veneneuse": {
+                "point": 38,
+                "upgradeType": "spell"
+            },
+            "Volee veneneuse": {
+                "point": 50,
+                "upgradeType": "spell"
+            },
+            "Defense poison": {
+                "point": 75,
+                "upgradeType": "res",
+                "stat": "poison",
+                "value": 0
+            },
+            "Defense paralysie": {
+                "point": 100,
+                "upgradeType": "res",
+                "stat": "paralysis",
+                "value": 0
+            }
+        }
+    },
+    "Guerisseur": {
+        "maxPoints": 100,
+        "stepUpgrade": {
+            "1er secours": {
+                "point": 4,
+                "upgradeType": "spell"
+            },
+            "Stimulation": {
+                "point": 12,
+                "upgradeType": "spell"
+            },
+            "Megaprotection": {
+                "point": 20,
+                "upgradeType": "spell"
+            },
+            "Multisoin": {
+                "point": 30,
+                "upgradeType": "spell"
+            },
+            "Vague de soulagement": {
+                "point": 40,
+                "upgradeType": "spell"
+            },
+            "Pluie salvatrice": {
+                "point": 55,
+                "upgradeType": "spell"
+            },
+            "Chant redempteur": {
+                "point": 75,
+                "upgradeType": "spell"
+            },
+            "Omnisoin": {
+                "point": 100,
+                "upgradeType": "spell"
+            }
+        }
+    },
+    "Soigneur" : {
+        "maxPoints": 100,
+        "stepUpgrade": {
+            "1er secours": {
+                "point": 4,
+                "upgradeType": "spell"
+            },
+            "Protection": {
+                "point": 12,
+                "upgradeType": "spell"
+            },
+            "Soins partiels": {
+                "point": 28,
+                "upgradeType": "spell"
+            },
+            "Rappel": {
+                "point": 42,
+                "upgradeType": "spell"
+            },
+            "Regeneration vitale": {
+                "point": 52,
+                "upgradeType": "spell"
+            },
+            "Meditation": {
+                "point": 62,
+                "upgradeType": "spell"
+            },
+            "Soins complets": {
+                "point": 75,
+                "upgradeType": "spell"
+            },
+            "Resurection": {
+                "point": 100,
+                "upgradeType": "spell"
+            }
+        }
+    },
+    "Bonus attaque": {
+        "maxPoints": 50,
+        "setUpgrade": "Bonus attaque II",
+        "stepUpgrade": {
+            "Attaque+3": {
+                "point": 4,
+                "upgradeType": "stat",
+                "stat": "atk",
+                "value": 3
+            },
+            "Max PV+5": {
+                "point": 8,
+                "upgradeType": "stat",
+                "stat": "hp",
+                "value": 5
+            },
+            "Attaque+3": {
+                "point": 14,
+                "upgradeType": "stat",
+                "stat": "atk",
+                "value": 3
+            },
+            "Max PV+10": {
+                "point": 20,
+                "upgradeType": "stat",
+                "stat": "hp",
+                "value": 10
+            },
+            "Attaque+5": {
+                "point": 29,
+                "upgradeType": "stat",
+                "stat": "atk",
+                "value": 5
+            },
+            "Max PV+10": {
+                "point": 38,
+                "upgradeType": "stat",
+                "stat": "hp",
+                "value": 10
+            },
+            "Attaque+5": {
+                "point": 50,
+                "upgradeType": "stat",
+                "stat": "atk",
+                "value": 5
+            }
+        }
+    },
+    "Bonus attaque II": {
+        "maxPoints": 75,
+        "setUpgrade": "Bonus attaque III",
+        "stepUpgrade": {
+            "Attaque+5": {
+                "point": 4,
+                "upgradeType": "stat",
+                "stat": "atk",
+                "value": 5
+            },
+            "Max PV+10": {
+                "point": 8,
+                "upgradeType": "stat",
+                "stat": "hp",
+                "value": 10
+            },
+            "Attaque+5": {
+                "point": 14,
+                "upgradeType": "stat",
+                "stat": "atk",
+                "value": 3
+            },
+            "Max PV+10": {
+                "point": 20,
+                "upgradeType": "stat",
+                "stat": "hp",
+                "value": 10
+            },
+            "Attaque+5": {
+                "point": 28,
+                "upgradeType": "stat",
+                "stat": "atk",
+                "value": 5
+            },
+            "Max PV+10": {
+                "point": 36,
+                "upgradeType": "stat",
+                "stat": "hp",
+                "value": 10
+            },
+            "Attaque+10": {
+                "point": 48,
+                "upgradeType": "stat",
+                "stat": "atk",
+                "value": 5
+            },
+            "Max PV+10" : {
+                "point": 60,
+                "upgradeType": "stat",
+                "stat": "hp",
+                "value": 10
+            },
+            "Attaque+10": {
+                "point": 75,
+                "upgradeType": "stat",
+                "stat": "atk",
+                "value": 5
+            }
+        }
+    },
+    "Bonus attaque III": {
+        "maxPoints": 100,
+        "stepUpgrade": {
+            "Attaque+10": {
+                "point": 4,
+                "upgradeType": "stat",
+                "stat": "atk",
+                "value": 10
+            },
+            "Max PV+10": {
+                "point": 8,
+                "upgradeType": "stat",
+                "stat": "hp",
+                "value": 10
+            },
+            "Attaque+10": {
+                "point": 14,
+                "upgradeType": "stat",
+                "stat": "atk",
+                "value": 10
+            },
+            "Max PV+10": {
+                "point": 20,
+                "upgradeType": "stat",
+                "stat": "hp",
+                "value": 10
+            },
+            "Attaque+10": {
+                "point": 28,
+                "upgradeType": "stat",
+                "stat": "atk",
+                "value": 10
+            },
+            "Max PV+20": {
+                "point": 36,
+                "upgradeType": "stat",
+                "stat": "hp",
+                "value": 10
+            },
+            "Attaque+20": {
+                "point": 48,
+                "upgradeType": "stat",
+                "stat": "atk",
+                "value": 10
+            },
+            "Max PV+20" : {
+                "point": 60,
+                "upgradeType": "stat",
+                "stat": "hp",
+                "value": 10
+            },
+            "Attaque+20": {
+                "point": 75,
+                "upgradeType": "stat",
+                "stat": "atk",
+                "value": 10
+            },
+            "Defense affaiblo": {
+                "point": 100,
+                "upgradeType": "res",
+                "stat": "atk",
+                "value": 0
+            }
         }
     }
 }
