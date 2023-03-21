@@ -3,7 +3,11 @@
 
 #include "Monster.h"
 
-std::vector<std::string> makeSynthesisPreview(Monster parent1, Monster parent2);
+std::vector<std::string> makeSynthesisPreview(Monster parent1, Monster parent2, Database &db);
+
+bool isRecipe(Monster parent1, Monster parent2, Database &db);
+
+std::string getMonsterFromRecipe(Monster parent1, Monster parent2, Database &db);
 
 std::string getSynthesisRank(Monster parent1, Monster parent2);
 

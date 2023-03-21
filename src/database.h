@@ -11,6 +11,7 @@ private:
     rapidjson::Document library;     // Base de données de la librairie des monstres
     rapidjson::Document skillBase;   // Base de données des compétences
     rapidjson::Document spellBase;   // Base de données des sorts
+    rapidjson::Document synthesisRecipe; // Base de données des recettes de synthese
 
 public:
     /// @brief Constructeur lance la fonction loadDatabase()
@@ -41,6 +42,8 @@ public:
     /// @param type Le type du monstre
     /// @return Les statistiques du monstre
     rapidjson::Value &getMonsterStat(std::string family, std::string rank, std::string type);
+
+    rapidjson::Document &getSynthesisRecipe();
 };
 
 #endif

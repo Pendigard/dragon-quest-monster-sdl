@@ -776,7 +776,7 @@ void Game::synthesis()
               << std::endl;
     synthetisableMonstersMoins[monsterMoins - 1].print();
     std::cout << std::endl;
-    std::vector<std::string> childrenMonsters = makeSynthesisPreview(synthetisableMonstersPlus[monsterPlus - 1], synthetisableMonstersMoins[monsterMoins - 1]);
+    std::vector<std::string> childrenMonsters = makeSynthesisPreview(synthetisableMonstersPlus[monsterPlus - 1], synthetisableMonstersMoins[monsterMoins - 1],database);
     for (long unsigned int i = 0; i < childrenMonsters.size(); i++)
     {
         std::cout << i + 1 << ". " << childrenMonsters[i] << " Rang:" << database.getLibrary()[childrenMonsters[i].c_str()]["rank"].GetString();

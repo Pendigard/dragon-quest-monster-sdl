@@ -1,5 +1,24 @@
 #include "Synthesis.h"
 
+bool isRecipe(Monster parent1, Monster parent2, Database &db)
+{
+    rapidjson::Document recipe = db.getSynthesisRecipe();
+    std::string type1 = parent1.getInfos("type");
+    std::string type2 = parent2.getInfos("type");
+    bool test1 = (recipe.HasMember(type1.c_str())) && (recipe[type1.c_str()].HasMember(type2.c_str()));
+    bool test2 = (recipe.HasMember(type2.c_str())) && (recipe[type2.c_str()].HasMember(type1.c_str()));
+    return test1 && test2;
+}
+
+std::string getMonsterFromRecipe(Monster parent1, Monster parent2, Database &db)
+{
+    rapidjson::Document recipe = db.getSynthesisRecipe();
+    std::string type1 = parent1.getInfos("type");
+    std::string type2 = parent2.getInfos("type");
+    std::string result = recipe[type1.c_str()][type2.c_str()]["child"].GetString();
+    return result;
+}
+
 std::string getSynthesisRank(Monster parent1, Monster parent2)
 {
     std::unordered_map<std::string, int> rankMap;
@@ -58,9 +77,15 @@ bool parent1HigherId(Monster parent1, Monster parent2, std::string rank)
     return true;
 }
 
-std::vector<std::string> makeSynthesisPreview(Monster parent1, Monster parent2)
+std::vector<std::string> makeSynthesisPreview(Monster parent1, Monster parent2, Database &db)
 {
     std::vector<std::string> result;
+    
+    if (isRecipe(parent1, parent2, db))
+    {
+        result.push_back(getMonsterFromRecipe(parent1, parent2, db));
+        return result;    
+    }
     std::string rank = getSynthesisRank(parent1, parent2);
     std::string monster1 = getChildMonster(parent1, rank);
     std::string monster2 = getChildMonster(parent2, rank);
@@ -97,8 +122,9 @@ std::unordered_map<std::string, unsigned int> getSynthesisSkills(Monster parent1
             if (skillBase[skill.first.c_str()]["maxPoints"].GetInt() < points)
                 possibleSkill[skillBase[skill.first.c_str()]["setUpgrade"].GetString()] = 0;
         }
-        else {
-            possibleSkill[skill.first] = points/2;
+        else
+        {
+            possibleSkill[skill.first] = points / 2;
         }
     }
     for (auto &skill : parent2.getSkills())
@@ -111,15 +137,16 @@ std::unordered_map<std::string, unsigned int> getSynthesisSkills(Monster parent1
                 if (skillBase[skill.first.c_str()]["maxPoints"].GetInt() < points)
                     possibleSkill[skillBase[skill.first.c_str()]["setUpgrade"].GetString()] = 0;
             }
-            else {
-                possibleSkill[skill.first] = points/2;
+            else
+            {
+                possibleSkill[skill.first] = points / 2;
             }
         }
         alreadyUsed.push_back(skill.first);
     }
     rapidjson::Document &lib = db.getLibrary();
-    std::string childSkill = db.getMonsterStat(lib[child.c_str()]["family"].GetString(),lib[child.c_str()]["rank"].GetString(),child)["skills"].GetString();
-    if (std::find(alreadyUsed.begin(), alreadyUsed.end(),childSkill) == alreadyUsed.end())
+    std::string childSkill = db.getMonsterStat(lib[child.c_str()]["family"].GetString(), lib[child.c_str()]["rank"].GetString(), child)["skills"].GetString();
+    if (std::find(alreadyUsed.begin(), alreadyUsed.end(), childSkill) == alreadyUsed.end())
     {
         possibleSkill[childSkill] = 0;
     }
