@@ -2,7 +2,7 @@
 
 bool isRecipe(Monster parent1, Monster parent2, Database &db)
 {
-    rapidjson::Document recipe = db.getSynthesisRecipe();
+    rapidjson::Document &recipe = db.getSynthesisRecipe();
     std::string type1 = parent1.getInfos("type");
     std::string type2 = parent2.getInfos("type");
     bool test1 = (recipe.HasMember(type1.c_str())) && (recipe[type1.c_str()].HasMember(type2.c_str()));
@@ -12,7 +12,7 @@ bool isRecipe(Monster parent1, Monster parent2, Database &db)
 
 std::string getMonsterFromRecipe(Monster parent1, Monster parent2, Database &db)
 {
-    rapidjson::Document recipe = db.getSynthesisRecipe();
+    rapidjson::Document &recipe = db.getSynthesisRecipe();
     std::string type1 = parent1.getInfos("type");
     std::string type2 = parent2.getInfos("type");
     std::string result = recipe[type1.c_str()][type2.c_str()]["child"].GetString();
