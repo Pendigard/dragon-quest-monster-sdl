@@ -69,10 +69,15 @@
         "rank": "C",
         "id": 3
     },
-    "gluant de mercure": {
+    "aggluantin": {
         "family": "Gluant",
         "rank": "C",
         "id": 4
+    },
+    "gluant de mercure": {
+        "family": "Gluant",
+        "rank": "C",
+        "id": 5
     },
     "monstruoeuf": {
         "family": "Gluant",

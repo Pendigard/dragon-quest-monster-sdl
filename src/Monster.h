@@ -162,24 +162,40 @@ public:
     /// @return Retourne vrai si le status du monstre est altéré
     bool getStatus(std::string status) const;
 
+    /// @brief retourne une informations du monstre
+    /// @param info : information demandée
+    /// @return Retourne l'informations du nom info du monstre
     std::string getInfos(std::string info) const;
 
+    /// @brief Donne l'identifiant de synthèse du monstre
+    /// @return Retourne l'identifiant de synthèse du monstre
     unsigned int getSynthId() const;
 
+    /// @brief Donne les points de compétence du monstre qui n'ont pas encore été appliqués
+    /// @return Retourne les points de compétence du monstre qui n'ont pas encore été appliqués
     unsigned int getSkillToAttribute() const;
 
+    /// @brief Attribution automatique des points de compétence du monstre
+    /// @param db : base de données
     void autoAttributeSkill(Database &db);
 
-    void printSkill() const;
-
+    /// @brief change le nom du monstre
+    /// @param name : nouveau nom du monstre
     void setName(std::string name);
 
+    /// @brief Soigne le monstre à 100%
     void fullHeal();
 
+    /// @brief Donne les compétences du monstre
+    /// @return Retourne les compétences du monstre
     std::unordered_map<std::string, unsigned int> getSkills() const;
 
+    /// @brief Donne le niveau de synthèse du monstre
+    /// @return Retourne le niveau de synthèse du monstre
     unsigned int getSynthLevel() const;
 
+    /// @brief Donne la croissance du monstre
+    /// @return Retourne la croissance du monstre
     std::unordered_map<std::string, float> getGrowth() const;
 };
 

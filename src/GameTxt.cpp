@@ -454,6 +454,7 @@ void Game::attributePoint(Monster &m)
         {
             std::cout << i + 1 << ". " << skill.first << " : " << skill.second << std::endl;
             skills.push_back(skill.first);
+            i++;
         }
         std::cout << "Quelle compétence voulez-vous améliorer ? (0 pour quitter 1/" << skills.size() << "):";
         int choice;
@@ -560,15 +561,15 @@ void Game::exploration(std::vector<std::string> monsterZone, int niveauMin, int 
 
 void Game::play()
 {
-    std::vector<std::string> monstersZone1;
-    monstersZone1.push_back("komodor");
-    monstersZone1.push_back("gluant");
-    monstersZone1.push_back("jaunyve");
-    monstersZone1.push_back("gluanbulle");
+    std::vector<std::string> zone1;
+    zone1.push_back("komodor");
+    zone1.push_back("gluant");
+    zone1.push_back("medhigluant");
+    std::vector<std::string> zone2;
     bool end = false;
     while (!end)
     {
-        std::cout << "1. Explorer les plaines sauvages" << std::endl;
+        std::cout << "1. Explorer les zones sauvages" << std::endl;
         std::cout << "2. Aller au centre des dresseurs" << std::endl;
         std::cout << "3. Quitter" << std::endl;
         std::cout << "Que voulez-vous faire ?(1/2/3):";
@@ -584,7 +585,7 @@ void Game::play()
             switch (zone)
             {
             case 1:
-                exploration(monstersZone1, 1, 5);
+                exploration(zone1, 1, 5);
                 break;
             }
             break;
@@ -710,7 +711,7 @@ std::unordered_map<std::string, unsigned int> Game::getSkillSynthChoice(Monster 
     std::unordered_map<std::string, unsigned int> chosenSkill;
     bool end = false;
     int setChosen = 0;
-    while (!end && setChosen < possibleSkill.size() && setChosen < 3)
+    while (!end && setChosen < possibleSkill.size() && setChosen <= 3)
     {
         std::vector<std::string> skillName;
         int i = 0;

@@ -573,21 +573,6 @@ void Monster::autoAttributeSkill(Database &db)
     }
 }
 
-void Monster::printSkill() const
-{
-    std::cout << std::endl;
-    for (auto &skill : skills)
-    {
-        std::cout << skill.first << " : " << skill.second << " | ";
-    }
-    std::cout << std::endl;
-    for (auto &spell : spells)
-    {
-        std::cout << spell << " | ";
-    }
-    std::cout << std::endl;
-}
-
 void Monster::setName(std::string name)
 {
     infos["name"] = name;

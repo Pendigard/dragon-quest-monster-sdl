@@ -7,9 +7,9 @@
 
 struct Action
 {
-    std::string idCaster;
-    std::vector<std::string> idTargets;
-    std::string spell;
+    std::string idCaster;               // Id du monstre qui lance le sort
+    std::vector<std::string> idTargets; // Id des cibles du sort
+    std::string spell;                  // Nom du sort
 };
 
 enum functionImpact
@@ -23,12 +23,12 @@ enum functionImpact
 
 struct spellImpact
 {
-    std::string message;
-    functionImpact function;
-    std::vector<std::string> targetId;
-    std::vector<float> argumentFloat;
-    std::vector<int> argumentInt;
-    std::vector<std::string> argumentString;
+    std::string message;                     // Message à afficher à l'impact du sort
+    functionImpact function;                 // Fonction à appliquer
+    std::vector<std::string> targetId;       // Id des cibles
+    std::vector<float> argumentFloat;        // Arguments de la fonction
+    std::vector<int> argumentInt;            // Arguments de la fonction
+    std::vector<std::string> argumentString; // Arguments de la fonction
 };
 
 class Fight
@@ -175,8 +175,14 @@ public:
     /// @return true si le monstre a été dressé, false sinon
     bool scout(std::string idMonster, std::queue<std::string> &messages);
 
+    /// @brief Renvoie l'or gagné
+    /// @param db : base de données
+    /// @return l'or gagné
     unsigned int getGoldReward(Database &db) const;
 
+    /// @brief Renvoie l'expérience gagnée
+    /// @param db : base de données
+    /// @return l'expérience gagnée
     unsigned int getExpReward(Database &db) const;
 };
 /// @brief Crée une action

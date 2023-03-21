@@ -343,8 +343,10 @@ std::queue<spellImpact> Fight::simulateAttack(Monster &caster, std::vector<std::
             statAtk = caster.getStat("wis");
         }
         dmg = (statAtk / 2 - getMonsterById(idTargets[i]).getStat("def") / 4) * spellInfo["damage"].GetFloat();
-        if (dmg < 0)
+        if (dmg < -15)
             dmg = 0;
+        else if (dmg < 1)
+            dmg = getRand(0, 2);
         const int chance = 15;
         if (getRand(0, 1000) < chance)
         {

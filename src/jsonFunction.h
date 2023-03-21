@@ -42,8 +42,8 @@ void saveJson(std::string path, rapidjson::Document& doc);
 std::string formatString(const std::string fmt_str,std::vector<std::string> args);
 
 /// @brief Retourne un nombre aléatoire entre min et max
-/// @param min borne minimale
-/// @param max borne maximale
+/// @param min borne minimale inclue
+/// @param max borne maximale exclue
 /// @return nombre aléatoire
 int getRand(int min, int max);
 
