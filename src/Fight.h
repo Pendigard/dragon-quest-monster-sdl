@@ -14,11 +14,11 @@ struct Action
 
 enum functionImpact
 {
-    damage,
-    heal,
-    stats,
-    status,
-    null
+    damage, // Appliquer au monstre la fonction damage
+    heal,   // Appliquer au monstre la fonction heal
+    stats,  // Appliquer au monstre la fonction d'altération des stats
+    status, // Appliquer au monstre la fonction d'altération des status
+    null    // Ne rien faire
 };
 
 struct spellImpact
@@ -61,6 +61,7 @@ private:
 
     /// @brief Renvoie l'action de la tactique "Soins avant tout"
     /// @param caster : monstre qui lance le sort
+    /// @return l'action de la tactique "Soins avant tout"
     Action tacticSoin(Monster caster);
 
     /// @brief Vérifie si les cibles du sort sont vivantes
@@ -76,7 +77,7 @@ private:
     /// @brief applique les effets du status
     /// @param caster : monstre qui lance le sort
     /// @param canMove : vrai si le monstre peut bouger, faux sinon après l'application du status
-    /// @return la phrase correspondant à la fonction
+    /// @return La file des impacts a appliquer au monstre caster 
     std::queue<spellImpact> getStatusEffect(Monster &caster, bool &canMove);
 
     /// @brief renvoie la phrase correspondant à la statistique
@@ -116,10 +117,18 @@ public:
     bool canScout;                     // Indique si l'équipe peut dresser
     bool scouting;                     // Indique si l'équipe est en train de dresser
 
+    Fight();
+
     /// @brief Constructeur
     /// @param t1 : équipe du joueur
     /// @param t2 : équipe de l'I.A.
     Fight(std::vector<Monster> t1, std::vector<Monster> t2);
+
+    /// @brief Constructeur par copie
+    /// @param fight : fight à copier
+    Fight(Fight const &fight);
+
+    Fight &operator=(Fight const &fight);
 
     /// @brief Choix du sort en fonction de la tactique du monstre
     /// @param caster : monstre qui lance le sort

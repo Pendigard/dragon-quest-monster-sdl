@@ -7,10 +7,10 @@
 class Database
 {
 private:
-    rapidjson::Document monsterBase; // Base de données des monstres
-    rapidjson::Document library;     // Base de données de la librairie des monstres
-    rapidjson::Document skillBase;   // Base de données des compétences
-    rapidjson::Document spellBase;   // Base de données des sorts
+    rapidjson::Document monsterBase;     // Base de données des monstres
+    rapidjson::Document library;         // Base de données de la librairie des monstres
+    rapidjson::Document skillBase;       // Base de données des compétences
+    rapidjson::Document spellBase;       // Base de données des sorts
     rapidjson::Document synthesisRecipe; // Base de données des recettes de synthese
 
 public:
@@ -43,6 +43,8 @@ public:
     /// @return Les statistiques du monstre
     rapidjson::Value &getMonsterStat(std::string family, std::string rank, std::string type);
 
+    /// @brief Retourne la base de données des recettes de synthese
+    /// @return La base de données des recettes de synthese
     rapidjson::Document &getSynthesisRecipe();
 };
 

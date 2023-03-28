@@ -9,6 +9,13 @@ Action createAction(std::string i, std::string s, std::vector<std::string> targe
     return a;
 }
 
+Fight::Fight()
+{
+    nbTurn = 0;
+    canScout = true;
+    loadJson("data/database/spell.json", spellBase);
+}
+
 Fight::Fight(std::vector<Monster> t1, std::vector<Monster> t2)
 {
     nbTurn = 0;
@@ -17,6 +24,34 @@ Fight::Fight(std::vector<Monster> t1, std::vector<Monster> t2)
     canScout = true;
     loadJson("data/database/spell.json", spellBase);
 }
+
+Fight::Fight(Fight const &fight)
+{
+    nbTurn = fight.nbTurn;
+    team1 = fight.team1;
+    team2 = fight.team2;
+    actions = fight.actions;
+    actionsOrdered = fight.actionsOrdered;
+    loadJson("data/database/spell.json", spellBase);
+    teamFlee = fight.teamFlee;
+    canScout = fight.canScout;
+    scouting = fight.scouting;
+}
+
+Fight& Fight::operator=(Fight const &fight)
+{
+    nbTurn = fight.nbTurn;
+    team1 = fight.team1;
+    team2 = fight.team2;
+    actions = fight.actions;
+    actionsOrdered = fight.actionsOrdered;
+    loadJson("data/database/spell.json", spellBase);
+    teamFlee = fight.teamFlee;
+    canScout = fight.canScout;
+    scouting = fight.scouting;
+    return *this;
+}
+
 
 bool Fight::isTeam1(Monster m) const
 {
@@ -147,26 +182,24 @@ Action Fight::tacticSansPitie(Monster caster)
 
 void Fight::spellTacticChoice(Monster &caster)
 {
-    // Temporaire
-    if (caster.getTactic() == "Sans pitie")
+    switch (caster.getTactic())
     {
-        actions.push_back(tacticSansPitie(caster));
-        return;
-    }
-    if (caster.getTactic() == "Agir avec sagesse")
-    {
-        actions.push_back(tacticSagesse(caster));
-        return;
-    }
-    if (caster.getTactic() == "Soins avant tout")
-    {
-        actions.push_back(tacticSoin(caster));
-        return;
-    }
-    if (caster.getTactic() == "Pas de magie")
-    {
-        actions.push_back(tacticNoMana(caster));
-        return;
+        case SansPitie:
+            actions.push_back(tacticSansPitie(caster));
+            break;
+        case Sagesse:
+            actions.push_back(tacticSagesse(caster));
+            break;
+        case Soin:
+            actions.push_back(tacticSoin(caster));
+            break;
+        case NoMana:
+            actions.push_back(tacticNoMana(caster));
+            break;
+        default:
+            actions.push_back(tacticSansPitie(caster));
+            std::cout<<"Tactic not found"<<std::endl;
+            break;
     }
 }
 

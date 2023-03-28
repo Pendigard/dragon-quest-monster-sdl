@@ -161,25 +161,26 @@ unsigned int Game::orderMonster(Monster m)
 void Game::getTacticChoice(Fight &f)
 {
     std::vector<std::string> tactics;
-    for (long unsigned int i = 0; i < f.team1.size(); i++)
-    {
-        std::cout << i + 1 << ". " << f.team1[i].getName() << " | " << f.team1[i].getTactic() << std::endl;
-    }
-    std::cout << "A quel monstre voulez-vous changer de tactique ? (1/.../" << f.team1.size() << "): ";
-    unsigned int monsterIndex = 0;
-    std::cin >> monsterIndex;
     tactics.push_back("Sans pitié");
     tactics.push_back("Soins avant tout");
     tactics.push_back("Agir avec sagesse");
     tactics.push_back("Pas de magie");
+    for (long unsigned int i = 0; i < f.team1.size(); i++)
+    {
+        std::cout << i + 1 << ". " << f.team1[i].getName() << " | " << tactics[f.team1[i].getTactic()] << std::endl;
+    }
+    std::cout << "A quel monstre voulez-vous changer de tactique ? (1/.../" << f.team1.size() << "): ";
+    unsigned int monsterIndex = 0;
+    std::cin >> monsterIndex;
     for (long unsigned int i = 0; i < tactics.size(); i++)
     {
         std::cout << i + 1 << ". " << tactics[i] << std::endl;
     }
     std::cout << "Quelle tactique voulez-vous utiliser ? (1/.../" << tactics.size() << "): ";
-    unsigned int choice;
+    int choice;
     std::cin >> choice;
-    f.team1[monsterIndex].setTactic(tactics[choice - 1]);
+    Tactics t = (Tactics)(choice - 1);
+    f.team1[monsterIndex].setTactic(t);
 }
 
 void drawMonstersFight(Fight &f)

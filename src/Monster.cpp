@@ -31,7 +31,7 @@ Monster::Monster() {
 
 Monster::Monster(rapidjson::Value &monsterData, std::string idM, Database &db)
 {
-    tactic = "Sans pitie";
+    tactic = SansPitie;
     std::string type = monsterData["type"].GetString();
     std::string family = db.getLibrary()[type.c_str()]["family"].GetString();
     std::string rank = db.getLibrary()[type.c_str()]["rank"].GetString();
@@ -69,7 +69,7 @@ Monster::Monster(rapidjson::Value &monsterData, std::string idM, Database &db)
 
 Monster::Monster(std::string name, std::string type, Database &db, rapidjson::Document &save, unsigned int lvl = 1)
 {
-    tactic = "Sans pitie";
+    tactic = SansPitie;
     do
     {
         infos["id"] = generateID();
@@ -162,7 +162,7 @@ Monster::Monster(Monster &m1, Monster &m2, std::string name, std::string type, D
     spells.push_back("Attaque");
     spells.push_back("Defense");
     initStatus();
-    tactic = "Sans pitie";
+    tactic = SansPitie;
 }
 
 void Monster::initStatus()
@@ -422,7 +422,7 @@ float Monster::getResistance(std::string resistance) const
     return resistances.at(resistance);
 }
 
-std::string Monster::getTactic() const
+Tactics Monster::getTactic() const
 {
     return tactic;
 }
@@ -542,7 +542,7 @@ bool Monster::getStatus(std::string status) const
     return this->status.at(status) > 0;
 }
 
-void Monster::setTactic(std::string tactic)
+void Monster::setTactic(Tactics tactic)
 {
     this->tactic = tactic;
 }
@@ -601,4 +601,14 @@ unsigned int Monster::getSynthLevel() const
 std::unordered_map<std::string, float> Monster::getGrowth() const
 {
     return growth;
+}
+
+unsigned int Monster::getHp() const
+{
+    return hp;
+}
+
+unsigned int Monster::getMp() const
+{
+    return mp;
 }

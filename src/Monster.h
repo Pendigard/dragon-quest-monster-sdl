@@ -4,27 +4,36 @@
 #include <queue>
 
 #include "jsonFunction.h"
-#include "database.h"
+#include "Database.h"
+
+enum Tactics
+{
+    nullTactic = -1,
+    SansPitie = 0, // Sans pitié
+    Soin = 1,      // Soin avant tout
+    Sagesse = 2,   // Agir avec sagesse
+    NoMana = 3     // Pas de magies
+};
 
 class Monster
 {
 private:
-    unsigned int exp;
-    unsigned int level;
-    unsigned int synthLevel;
-    unsigned int skillPoints;
-    unsigned int synthId;
-    std::string tactic;
-    std::unordered_map<std::string, float> stats;
-    std::unordered_map<std::string, unsigned int> statMax;
-    std::unordered_map<std::string, float> resistances;
-    std::unordered_map<std::string, float> growth;
-    std::unordered_map<std::string, float> alterations;
-    std::unordered_map<std::string, int> alterationsTurn;
-    std::unordered_map<std::string, int> status;
-    std::unordered_map<std::string, unsigned int> skills;
-    std::vector<std::string> spells;
-    std::unordered_map<std::string, std::string> infos;
+    unsigned int exp;                                      // Experience totale du monstre
+    unsigned int level;                                    // Niveau du monstre
+    unsigned int synthLevel;                               // Niveau de synthèse du monstre
+    unsigned int skillPoints;                              // Points de compétence du monstre
+    unsigned int synthId;                                  // Identifiant de synthèse du monstre
+    Tactics tactic;                                        // Tactique du monstre
+    std::unordered_map<std::string, float> stats;          // Statistiques du monstre
+    std::unordered_map<std::string, unsigned int> statMax; // Statistiques maximales du monstre
+    std::unordered_map<std::string, float> resistances;    // Résistances du monstre
+    std::unordered_map<std::string, float> growth;         // Croissance des statistiques du monstre
+    std::unordered_map<std::string, float> alterations;    // Statistiques modifiées par des effets
+    std::unordered_map<std::string, int> alterationsTurn;  // Nombre de tours restants des effets
+    std::unordered_map<std::string, int> status;           // Status du monstre
+    std::unordered_map<std::string, unsigned int> skills;  // Compétences du monstre
+    std::vector<std::string> spells;                       // Sorts du monstre
+    std::unordered_map<std::string, std::string> infos;    // Informations du monstre
 
     ///@brief Augmente le niveau du monstre et met à jour ses statistiques
     void levelUp();
@@ -41,21 +50,21 @@ private:
     int getMaxLvl() const;
 
 public:
-    float hp;
-    float mp;
+    float hp; // Points de vie du monstre
+    float mp; // Points de mana du monstre
     ///@brief Constructeur à partir d'un monstre dans la sauvegarde
     ///@param monsterData : données du monstre, idM : identifiant du monstre, monsterBase : base de données des monstres, skillBase : base de données des compétences
-    Monster(rapidjson::Value &monsterData,std::string idM, Database &database);
+    Monster(rapidjson::Value &monsterData, std::string idM, Database &database);
 
     ///@brief Constructeur de monstre sauvage
-    Monster(std::string name, std::string type, Database &database, rapidjson::Document& save, unsigned int lvl);
+    Monster(std::string name, std::string type, Database &database, rapidjson::Document &save, unsigned int lvl);
 
     /// @brief Constructeur de monstre de synthèse
     /// @param m1 Monstre parent 1
     /// @param m2 Monstre parent 2
     /// @param database Base de données
     /// @param skills Compétences du monstre
-    Monster(Monster& m1, Monster& m2, std::string name, std::string type, Database &database, std::unordered_map<std::string, unsigned int>& skills, rapidjson::Document &save);
+    Monster(Monster &m1, Monster &m2, std::string name, std::string type, Database &database, std::unordered_map<std::string, unsigned int> &skills, rapidjson::Document &save);
 
     /// @brief génère un monstre null
     Monster();
@@ -128,11 +137,11 @@ public:
 
     /// @brief Donne la tactique du monstre
     /// @return Retourne la tactique du monstre
-    std::string getTactic() const;
+    Tactics getTactic() const;
 
     /// @brief Définit la tactique du monstre
     /// @param tactic : tactique du monstre
-    void setTactic(std::string tactic);
+    void setTactic(Tactics tactic);
 
     /// @brief Inflige des dégâts au monstre
     /// @param damage : dégâts à infliger
@@ -197,6 +206,14 @@ public:
     /// @brief Donne la croissance du monstre
     /// @return Retourne la croissance du monstre
     std::unordered_map<std::string, float> getGrowth() const;
+
+    /// @brief Retourne les hp du monstre
+    /// @return Retourne les hp du monstre
+    unsigned int getHp() const;
+
+    /// @brief Retourne les mp du monstre
+    /// @return Retourne les mp du monstre
+    unsigned int getMp() const;
 };
 
 #endif

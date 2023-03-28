@@ -24,6 +24,9 @@ void jsonToUnorderedMap(rapidjson::Value& json, std::unordered_map<std::string, 
 /// @param json, map : json à convertir, map dans laquelle on stocke les données
 void jsonToUnorderedMap(rapidjson::Value& json, std::unordered_map<std::string, float>& map);
 
+/// @brief Convertit une liste d'un fichier json en std::vector
+/// @param jsonList : La liste du fichier json
+/// @param vec : Le vecteur dans lequel on stocke les données
 void jsonToVector(rapidjson::Value& jsonList, std::vector<std::string>& vec);
 
 /// @brief Charge un fichier json
@@ -41,7 +44,7 @@ void saveJson(std::string path, rapidjson::Document& doc);
 /// @return chaîne de caractères formatée
 std::string formatString(const std::string fmt_str,std::vector<std::string> args);
 
-/// @brief Retourne un nombre aléatoire entre min et max
+/// @brief Retourne un entier aléatoire entre min inclue et max exclue
 /// @param min borne minimale inclue
 /// @param max borne maximale exclue
 /// @return nombre aléatoire
