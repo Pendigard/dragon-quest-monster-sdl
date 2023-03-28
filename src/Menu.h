@@ -17,6 +17,7 @@ enum menuChoice
 {                  // Les actions à effectuer lorsqu'une option est choisie
     casterIndex,   // Choisir la cible du sort
     targetIndex,   // Choisir la cible de l'attaque
+    spellIndex,    // Choisir le sort
     simulateFight, // Simuler le combat
     tacticMenu,    // Ouvrir le menu des tactiques
     scoutMenu,     // Ouvrir le menu de dressage

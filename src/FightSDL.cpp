@@ -13,7 +13,7 @@ FightSDL::FightSDL(Fight &fight, SDL_Renderer *renderer, Sprite *cursor)
     this->camera.x = 0;
     this->camera.y = 0;
     this->caster = -1;
-    this->tacticIcons = Sprite(renderer, "../data/sprite/tactic_icon/tactic_", 4);
+    this->tacticIcons = Sprite(renderer, "data/sprite/tactic_icon/tactic_", 4);
     createMenu();
     currentMenu = "main";
     tacticIndex = nullTactic;
@@ -51,7 +51,7 @@ std::vector<Sprite> FightSDL::createTeamSprite(std::vector<Monster> &team)
     std::vector<Sprite> teamSprite;
     for (long unsigned int i = 0; i < team.size(); i++)
     {
-        Sprite s = Sprite(renderer, "../data/sprite/fighting_sprite/" + team[i].getInfos("type") + ".png", 1);
+        Sprite s = Sprite(renderer, "data/sprite/fighting_sprite/" + team[i].getInfos("type") + ".png", 1);
         teamSprite.push_back(s);
     }
     return teamSprite;
@@ -62,7 +62,7 @@ std::vector<Sprite> FightSDL::createTeamSpriteIcon(std::vector<Monster> &team)
     std::vector<Sprite> teamSprite;
     for (long unsigned int i = 0; i < team.size(); i++)
     {
-        Sprite s = Sprite(renderer, "../data/sprite/overworld_monsters/" + team[i].getInfos("type") + "/" + team[i].getInfos("type") + "_front_", 3);
+        Sprite s = Sprite(renderer, "data/sprite/overworld_monsters/" + team[i].getInfos("type") + "/" + team[i].getInfos("type") + "_front_", 3);
         teamSprite.push_back(s);
     }
     return teamSprite;
@@ -146,21 +146,38 @@ void FightSDL::createMenu()
     switch (teamSprites2.size())
     {
     case 1:
-        options.push_back(createOption("", 400, 350 - teamSprites2[0].getHeight(), teamSprites2[0].getWidth()/2, 100, UP, targetIndex, true));
+        options.push_back(createOption("", 400, 350 - teamSprites2[0].getHeight(), teamSprites2[0].getWidth() / 2, 100, UP, targetIndex, true));
         break;
     case 2:
-        options.push_back(createOption("", 300, 350 - teamSprites2[0].getHeight(), teamSprites2[0].getWidth()/2, 100, UP, targetIndex, true));
-        options.push_back(createOption("", 500, 350 - teamSprites2[1].getHeight(), teamSprites2[1].getWidth()/2, 100, UP, targetIndex, true));
+        options.push_back(createOption("", 300, 350 - teamSprites2[0].getHeight(), teamSprites2[0].getWidth() / 2, 100, UP, targetIndex, true));
+        options.push_back(createOption("", 500, 350 - teamSprites2[1].getHeight(), teamSprites2[1].getWidth() / 2, 100, UP, targetIndex, true));
         break;
     case 3:
-        options.push_back(createOption("", 200, 350 - teamSprites2[0].getHeight(), teamSprites2[0].getWidth()/2, 100, UP, targetIndex, true));
-        options.push_back(createOption("", 400, 350 - teamSprites2[1].getHeight(), teamSprites2[1].getWidth()/2, 100, UP, targetIndex, true));
-        options.push_back(createOption("", 600, 350 - teamSprites2[2].getHeight(), teamSprites2[2].getWidth()/2, 100, UP, targetIndex, true));
+        options.push_back(createOption("", 200, 350 - teamSprites2[0].getHeight(), teamSprites2[0].getWidth() / 2, 100, UP, targetIndex, true));
+        options.push_back(createOption("", 400, 350 - teamSprites2[1].getHeight(), teamSprites2[1].getWidth() / 2, 100, UP, targetIndex, true));
+        options.push_back(createOption("", 600, 350 - teamSprites2[2].getHeight(), teamSprites2[2].getWidth() / 2, 100, UP, targetIndex, true));
         break;
     }
     menu.addRow(options);
     options.clear();
     menus["enemy"] = menu;
+    for (long unsigned int i = 0; i < fight.team1.size(); i++)
+    {
+        menu.clear();
+        int page = 0;
+        long unsigned int spell = 0;
+        std::vector<std::string> spells = fight.team1[i].getSpells();
+        while (spell < spells.size())
+        {
+            for (int j = 0; j < std::min(spells.size(), 8 + spell); j++)
+            {
+                menu.addRow(createSingleOptionRow(createOption(spells[j], 10 + j * 260, 10 + page * 100, 250, 100, DOWN, spellIndex)), page);
+                spell++;
+            }
+            page++;
+        }
+        menus["spell" + std::to_string(i)] = menu;
+    }
     menu.clear();
     menu.addRow(createSingleOptionRow(createOption("Sans pitie", 20, 450, 370, 45, RIGHT)));
     menu.addRow(createSingleOptionRow(createOption("Soins avant tout", 20, 500, 370, 45, RIGHT)));
@@ -205,7 +222,8 @@ void FightSDL::checkChoiceSet()
         }
         else if (caster != -1)
         {
-            changeCurrentMenu("tactic");
+            //changeCurrentMenu("tactic");
+            changeCurrentMenu("spell0");
         }
         break;
     default:
@@ -217,7 +235,7 @@ bool FightSDL::runFight()
 {
     bool quit = false;
     SDL_Event event;
-    Sprite background(renderer, "../data/sprite/background/plain.png", 1);
+    Sprite background(renderer, "data/sprite/background/plain.png", 1);
     std::vector<Option> options;
     bool pointToEnemy = true;
     while (!quit)

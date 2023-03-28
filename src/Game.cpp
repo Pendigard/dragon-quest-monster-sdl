@@ -50,7 +50,7 @@ Game::Game()
         exit(1);
     }
 
-    cursor = Sprite(renderer,"../data/sprite/cursor/cursor_",4);
+    cursor = Sprite(renderer,"data/sprite/cursor/cursor_",4);
 
     timeLastFrame = SDL_GetTicks();
 
