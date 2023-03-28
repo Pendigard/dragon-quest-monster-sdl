@@ -67,12 +67,29 @@ Sprite::Sprite(Sprite const &other)
     srcRect.h = height;
 }
 
+Sprite& Sprite::operator=(Sprite const &other)
+{
+    this->width = other.getWidth();
+    this->height = other.getHeight();
+    this->currentSprite = 0;
+    this->isAnimated = other.getIsAnimated();
+    this->renderer = other.getRenderer();
+    this->path = other.getPath();
+    srcRect.x = 0;
+    srcRect.y = 0;
+    loadTexture(path, other.getNumSprites());
+    srcRect.w = width;
+    srcRect.h = height;
+    return *this;
+}
+
 Sprite::~Sprite()
 {
     for (int i = 0; i < texture.size(); i++)
     {
         SDL_DestroyTexture(texture[i]);
     }
+    texture.clear();
 }
 
 void Sprite::draw(int x, int y, Camera c, bool notAbsolute, float size, bool bottomCoord, bool flip)
@@ -82,7 +99,6 @@ void Sprite::draw(int x, int y, Camera c, bool notAbsolute, float size, bool bot
     destRect.x = (x - (destRect.w / 2) * bottomCoord) - c.x * notAbsolute;
     destRect.y = y - (destRect.h / 2) * bottomCoord - c.y * notAbsolute;
     int RenderCopy;
-    loadTexture(path, texture.size());
     if (!flip)
     {
         RenderCopy = SDL_RenderCopy(renderer, texture[currentSprite], &srcRect, &destRect);

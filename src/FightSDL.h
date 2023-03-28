@@ -38,12 +38,12 @@ private:
     /// @brief Crée les sprites des monstres d'une équipe
     /// @param team L'équipe de monstres
     /// @return Les sprites des monstres de l'équipe
-    std::vector<Sprite> createTeamSprite(std::vector<Monster> &team);
+    void createTeamSprite(std::vector<Monster> &team, int teamIndex=1);
 
     /// @brief Crée les sprites des icônes des monstres d'une équipe
     /// @param team L'équipe de monstres
     /// @return Les sprites des icônes des monstres de l'équipe
-    std::vector<Sprite> createTeamSpriteIcon(std::vector<Monster> &team);
+    void createTeamSpriteIcon(std::vector<Monster> &team);
 
     /// @brief Dessine une équipe de monstres
     /// @param team L'équipe de monstres

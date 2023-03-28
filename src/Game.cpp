@@ -50,7 +50,7 @@ Game::Game()
         exit(1);
     }
 
-    cursor = Sprite(renderer,"data/sprite/cursor/cursor_",4);
+    cursor = Sprite(renderer, "data/sprite/cursor/cursor_", 4);
 
     timeLastFrame = SDL_GetTicks();
 
@@ -73,19 +73,19 @@ void Game::loadGame()
 {
     loadJson("data/save/save.json", save);
     database.loadDatabase();
-    for (long unsigned int i = 0; i < save["mainTeam"].Size(); i++)
+    for (size_t i = 0; i < save["mainTeam"].Size(); i++)
     {
         rapidjson::Value &monsterData = save["monsters"][save["mainTeam"][i].GetString()];
         Monster m = Monster(monsterData, save["mainTeam"][i].GetString(), database);
         player.mainTeam.push_back(m);
     }
-    for (long unsigned int i = 0; i < save["benchTeam"].Size(); i++)
+    for (size_t i = 0; i < save["benchTeam"].Size(); i++)
     {
         rapidjson::Value &monsterData = save["monsters"][save["benchTeam"][i].GetString()];
         Monster m = Monster(monsterData, save["benchTeam"][i].GetString(), database);
         player.benchTeam.push_back(m);
     }
-    for (long unsigned int i = 0; i < save["storageMonsters"].Size(); i++)
+    for (size_t i = 0; i < save["storageMonsters"].Size(); i++)
     {
         rapidjson::Value &monsterData = save["monsters"][save["storageMonsters"][i].GetString()];
         Monster m = Monster(monsterData, save["storageMonsters"][i].GetString(), database);
@@ -98,19 +98,19 @@ void Game::saveGame()
     rapidjson::Value idMain(rapidjson::kArrayType);
     rapidjson::Value idBench(rapidjson::kArrayType);
     rapidjson::Value idStorage(rapidjson::kArrayType);
-    for (long unsigned int i = 0; i < player.mainTeam.size(); i++)
+    for (size_t i = 0; i < player.mainTeam.size(); i++)
     {
         player.mainTeam[i].updateSaveMonster(save);
         rapidjson::Value v(player.mainTeam[i].getInfos("id").c_str(), save.GetAllocator());
         idMain.PushBack(v, save.GetAllocator());
     }
-    for (long unsigned int i = 0; i < player.benchTeam.size(); i++)
+    for (size_t i = 0; i < player.benchTeam.size(); i++)
     {
         player.benchTeam[i].updateSaveMonster(save);
         rapidjson::Value v(player.benchTeam[i].getInfos("id").c_str(), save.GetAllocator());
         idBench.PushBack(v, save.GetAllocator());
     }
-    for (long unsigned int i = 0; i < player.storageMonsters.size(); i++)
+    for (size_t i = 0; i < player.storageMonsters.size(); i++)
     {
         player.storageMonsters[i].updateSaveMonster(save);
         rapidjson::Value v(player.storageMonsters[i].getInfos("id").c_str(), save.GetAllocator());
@@ -124,7 +124,7 @@ void Game::saveGame()
 
 void Game::deleteFromSave(std::string id)
 {
-    for (long unsigned int i = 0; i < save["mainTeam"].Size(); i++)
+    for (size_t i = 0; i < save["mainTeam"].Size(); i++)
     {
         if (save["mainTeam"][i].GetString() == id)
         {
@@ -132,7 +132,7 @@ void Game::deleteFromSave(std::string id)
             break;
         }
     }
-    for (long unsigned int i = 0; i < save["benchTeam"].Size(); i++)
+    for (size_t i = 0; i < save["benchTeam"].Size(); i++)
     {
         if (save["benchTeam"][i].GetString() == id)
         {
@@ -140,7 +140,7 @@ void Game::deleteFromSave(std::string id)
             break;
         }
     }
-    for (long unsigned int i = 0; i < save["storageMonsters"].Size(); i++)
+    for (size_t i = 0; i < save["storageMonsters"].Size(); i++)
     {
         if (save["storageMonsters"][i].GetString() == id)
         {
@@ -180,7 +180,6 @@ std::vector<Monster> Game::createWildMonsterTeam(std::vector<std::string> monste
     }
     return team;
 }
-
 
 void Game::run()
 {

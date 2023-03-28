@@ -37,6 +37,8 @@ public:
     /// @param other L'objet Sprite à copier
     Sprite(Sprite const &other);
 
+    Sprite &operator=(Sprite const &other);
+
     /// @brief Constructeur de la classe Sprite
     /// @param renderer Le renderer
     /// @param path Le chemin vers le fichier
