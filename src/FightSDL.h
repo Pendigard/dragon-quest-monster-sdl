@@ -30,15 +30,21 @@ private:
     std::string currentMenu;                     // Le menu actuel
     std::stack<std::string> previousMenu;        // Les menus précédents
     fightStatus status;                          // Le status du combat
+    int stepStatus;                              // L'étape du status
     std::unordered_map<std::string, Menu> menus; // Les menus du combat
-    std::vector<int> target;                     // Les monstres ciblés
+    std::vector<Action> orders;                  // Les monstres ciblés
     int caster;                                  // Le monstre qui lance le sort -1 non défini de 0 à 2 équipe du joueur de 3 à 5 équipe adverse
+    int spellChoice;                             // Le sort choisi
     Tactics tacticIndex;                         // La tactique choisie
+    Database *database;                          // La base de donnée
+    int lastTimeSpellImpact;                     // Le dernier temps où un sort a impacté
+    std::queue<spellImpact> spellImpacts;        // Les impacts de sorts
+    bool pointToAlly;                           // Si la camera pointe vers l'ennemi
 
     /// @brief Crée les sprites des monstres d'une équipe
     /// @param team L'équipe de monstres
     /// @return Les sprites des monstres de l'équipe
-    void createTeamSprite(std::vector<Monster> &team, int teamIndex=1);
+    void createTeamSprite(std::vector<Monster> &team, int teamIndex = 1);
 
     /// @brief Crée les sprites des icônes des monstres d'une équipe
     /// @param team L'équipe de monstres
@@ -47,7 +53,7 @@ private:
 
     /// @brief Dessine une équipe de monstres
     /// @param team L'équipe de monstres
-    void drawTeam(std::vector<Sprite> &team);
+    void drawTeam(bool team1);
 
     /// @brief Dessine les informations d'une équipe de monstres
     /// @param team L'équipe de monstres
@@ -70,9 +76,21 @@ private:
     /// @brief Retourne au menu précédent
     void returnToPreviousMenu();
 
+    void addOrder(Action action);
+
+    void removeOrder(std::string idCaster);
+
+    void drawOrder();
+
+    int getMonsterIndex(std::string id, bool &team);
+
+    void simulateActions();
+
+    void updateMonsterMenu();
+
 public:
     /// @brief Constructeur
-    FightSDL(Fight &fight, SDL_Renderer *renderer, Sprite *cursor);
+    FightSDL(Fight &fight, SDL_Renderer *renderer, Sprite *cursor, Database *database);
 
     /// @brief Destructeur
     ~FightSDL();

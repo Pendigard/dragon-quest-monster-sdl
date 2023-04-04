@@ -1,13 +1,14 @@
 
 #include "FightSDL.h"
 
-FightSDL::FightSDL(Fight &fight, SDL_Renderer *renderer, Sprite *cursor)
+FightSDL::FightSDL(Fight &fight, SDL_Renderer *renderer, Sprite *cursor, Database *database)
 {
+    this->database = database;
     this->fight = fight;
     this->renderer = renderer;
     this->cursor = cursor;
     createTeamSprite(fight.team1);
-    createTeamSprite(fight.team2,2);
+    createTeamSprite(fight.team2, 2);
     createTeamSpriteIcon(fight.team1);
     this->timeLastFrame = SDL_GetTicks();
     this->camera.x = 0;
@@ -18,28 +19,37 @@ FightSDL::FightSDL(Fight &fight, SDL_Renderer *renderer, Sprite *cursor)
     currentMenu = "main";
     tacticIndex = nullTactic;
     this->status = mainMenu;
+    lastTimeSpellImpact = SDL_GetTicks();
 }
 
 FightSDL::~FightSDL()
 {
 }
 
-void FightSDL::drawTeam(std::vector<Sprite> &team)
+void FightSDL::drawTeam(bool team1)
 {
+    std::vector<Sprite> &team = team1 ? teamSprites1 : teamSprites2;
+    std::vector<Monster> &fightTeam = team1 ? fight.team1 : fight.team2;
     float size = 3;
     switch (team.size())
     {
     case 1:
-        team[0].draw(400, 350, camera, false, size, true);
+        if (fightTeam[0].getHp() > 0)
+            team[0].draw(400, 350, camera, false, size, true);
         break;
     case 2:
-        team[0].draw(300, 350, camera, false, size, true);
-        team[1].draw(500, 350, camera, false, size, true);
+        if (fightTeam[0].getHp() > 0)
+            team[0].draw(300, 350, camera, false, size, true);
+        if (fightTeam[1].getHp() > 0)
+            team[1].draw(500, 350, camera, false, size, true);
         break;
     case 3:
-        team[0].draw(200, 350, camera, false, size, true);
-        team[1].draw(400, 350, camera, false, size, true);
-        team[2].draw(600, 350, camera, false, size, true);
+        if (fightTeam[0].getHp() > 0)
+            team[0].draw(200, 350, camera, false, size, true);
+        if (fightTeam[1].getHp() > 0)
+            team[1].draw(400, 350, camera, false, size, true);
+        if (fightTeam[2].getHp() > 0)
+            team[2].draw(600, 350, camera, false, size, true);
         break;
     default:
         break;
@@ -99,32 +109,6 @@ void FightSDL::drawTeamInfo(std::vector<Monster> &team, std::vector<Sprite> &tea
     }
 }
 
-bool FightSDL::getPlayerFightChoice()
-{
-    switch (menus[currentMenu].getChoice())
-    {
-    case tacticMenu:
-        changeCurrentMenu("team");
-        caster = -1;
-        status = tactic;
-        return false;
-    case casterIndex:
-        caster = menus[currentMenu].getCurrentChoiceX();
-        return false;
-    case targetIndex:
-        target.push_back(menus[currentMenu].getCurrentChoiceX());
-        return false;
-    case orderMenu:
-        changeCurrentMenu("team");
-        caster = -1;
-        target.clear();
-        status = order;
-        return false;
-    default:
-        return false;
-    }
-}
-
 std::vector<Option> createSingleOptionRow(Option option)
 {
     std::vector<Option> options;
@@ -136,10 +120,10 @@ void FightSDL::createMenu()
 {
     Menu menu(cursor);
     std::vector<Option> options;
-    menu.addRow(createSingleOptionRow(createOption("Combattre", 10, 450, 220, 45, RIGHT)));
+    menu.addRow(createSingleOptionRow(createOption("Combattre", 10, 450, 220, 45, RIGHT, simulateFight)));
     menu.addRow(createSingleOptionRow(createOption("Tactique", 10, 500, 220, 45, RIGHT, tacticMenu)));
     menu.addRow(createSingleOptionRow(createOption("Ordre", 10, 550, 220, 45, RIGHT, orderMenu)));
-    menu.addRow(createSingleOptionRow(createOption("Dressage", 10, 600, 220, 45, RIGHT)));
+    menu.addRow(createSingleOptionRow(createOption("Dressage", 10, 600, 220, 45, RIGHT, scoutMenu)));
     menu.addRow(createSingleOptionRow(createOption("Fuir", 10, 650, 220, 45, RIGHT)));
     menu.changePageX = false;
     menus["main"] = menu;
@@ -178,9 +162,17 @@ void FightSDL::createMenu()
         std::vector<std::string> spells = fight.team1[i].getSpells();
         while (spell < spells.size())
         {
-            for (size_t j = 0; j < std::min(spells.size(), 9 + spell); j++)
+            size_t tmp = spell;
+            for (size_t j = 0; j < std::min(spells.size() - tmp, (size_t)5); j++)
             {
-                menu.addRow(createSingleOptionRow(createOption(spells[j], 10, 450 + j * 50, 350, 45, RIGHT, spellIndex)), page);
+                std::string label = spells[j + tmp];
+                rapidjson::Document &spellBase = database->getSpellBase();
+                assert(spellBase.HasMember(spells[j + tmp].c_str()));
+                if (spellBase[spells[j + tmp].c_str()].HasMember("manaCost") && spellBase[spells[j + tmp].c_str()]["manaCost"].GetInt() > 0)
+                {
+                    label = label + createSpaceString(15 - label.size()) + " PM: " + std::to_string(spellBase[spells[j + tmp].c_str()]["manaCost"].GetInt());
+                }
+                menu.addRow(createSingleOptionRow(createOption(label, 10, 450 + j * 50, 550, 45, RIGHT, spellIndex)), page);
                 spell++;
             }
             page++;
@@ -195,6 +187,20 @@ void FightSDL::createMenu()
     menus["tactic"] = menu;
 }
 
+void FightSDL::updateMonsterMenu()
+{
+    for (size_t i = 0; i < fight.team1.size(); i++)
+    {
+        menus["team"].setForbiddenChoice(i, 0, fight.team1[i].getHp() <= 0);
+        menus["team"].setFirstChoice();
+    }
+    for (size_t i = 0; i < fight.team2.size(); i++)
+    {
+        menus["enemy"].setForbiddenChoice(i, 0, fight.team2[i].getHp() <= 0);
+        menus["enemy"].setFirstChoice();
+    }
+}
+
 void FightSDL::changeCurrentMenu(std::string menu)
 {
     previousMenu.push(currentMenu);
@@ -206,13 +212,128 @@ void FightSDL::returnToPreviousMenu()
     if (previousMenu.empty())
     {
         caster = -1;
-        target.clear();
         this->status = mainMenu;
+        pointToAlly = true;
+        stepStatus = 0;
         return;
     }
 
     currentMenu = previousMenu.top();
     previousMenu.pop();
+    stepStatus--;
+}
+
+void FightSDL::addOrder(Action action)
+{
+    for (size_t i = 0; i < orders.size(); i++)
+    {
+        if (orders[i].idCaster == action.idCaster)
+        {
+            orders[i] = action;
+            return;
+        }
+    }
+    orders.push_back(action);
+}
+
+void FightSDL::removeOrder(std::string idCaster)
+{
+    for (size_t i = 0; i < orders.size(); i++)
+    {
+        if (orders[i].idCaster == idCaster)
+        {
+            orders.erase(orders.begin() + i);
+            return;
+        }
+    }
+}
+
+int FightSDL::getMonsterIndex(std::string idCaster, bool &team)
+{
+    for (size_t i = 0; i < fight.team1.size(); i++)
+    {
+        if (fight.team1[i].getInfos("id") == idCaster)
+        {
+            team = true;
+            return i;
+        }
+    }
+    for (size_t i = 0; i < fight.team2.size(); i++)
+    {
+        if (fight.team2[i].getInfos("id") == idCaster)
+        {
+            team = false;
+            return i;
+        }
+    }
+    return -1;
+}
+
+void FightSDL::drawOrder()
+{
+    SDL_Color white = {255, 255, 255};
+    if (orders.size() > 0)
+        drawBox(renderer, 10, 150, 600, 5 + 25 * orders.size());
+    for (size_t i = 0; i < orders.size(); i++)
+    {
+        bool teamCaster;
+        bool teamTarget;
+        std::string name;
+        int casterIndex = getMonsterIndex(orders[i].idCaster, teamCaster);
+        if (teamCaster)
+            name = fight.team1[casterIndex].getName();
+        else
+            name = fight.team2[casterIndex].getName();
+        std::string label = name + " ----" + orders[i].spell;
+        int targetIndex = getMonsterIndex(orders[i].idTargets[0], teamTarget);
+        if (orders[i].idTargets.size() == 1)
+        {
+            if (teamTarget)
+                label = label + "----> " + fight.team1[targetIndex].getName();
+            else
+                label = label + "----> " + fight.team2[targetIndex].getName();
+        }
+        else if (teamTarget == true)
+        {
+            label = label + "----> les allies";
+        }
+        else
+        {
+            label = label + "----> l'equipe adverse";
+        }
+        drawText(renderer, label, 20, 160 + i * 20, 12, white);
+    }
+}
+
+bool FightSDL::getPlayerFightChoice()
+{
+    switch (menus[currentMenu].getChoice())
+    {
+    case simulateFight:
+        stepStatus = 0;
+        status = simulateTurn;
+        lastTimeSpellImpact = SDL_GetTicks();
+        fight.giveActions(orders);
+        fight.initTurn();
+        orders.clear();
+        return false;
+    case tacticMenu:
+        stepStatus = 0;
+        caster = -1;
+        status = tactic;
+        return false;
+    case orderMenu:
+        stepStatus = 0;
+        caster = -1;
+        status = order;
+        return false;
+    case scoutMenu:
+        stepStatus = 0;
+        status = scout;
+        return false;
+    default:
+        return false;
+    }
 }
 
 void FightSDL::checkChoiceSet()
@@ -220,28 +341,159 @@ void FightSDL::checkChoiceSet()
     switch (status)
     {
     case tactic:
-        if (caster != -1 && currentMenu == "tactic")
+        if (stepStatus == 2)
         {
             tacticIndex = (Tactics)menus[currentMenu].getCurrentChoiceY();
             fight.team1[caster].setTactic(tacticIndex);
+            removeOrder(fight.team1[caster].getInfos("id"));
             caster = -1;
             tacticIndex = nullTactic;
-            status = tactic;
             returnToPreviousMenu();
         }
-        else if (caster != -1)
+        else if (stepStatus == 1)
         {
+            caster = menus[currentMenu].getCurrentChoiceX();
             changeCurrentMenu("tactic");
+            stepStatus++;
+        }
+        else
+        {
+            changeCurrentMenu("team");
+            stepStatus++;
         }
         break;
     case order:
-        if (caster != -1)
+        if (stepStatus == 3)
         {
+            std::string spell = fight.team1[caster].getSpells()[spellChoice];
+            std::vector<std::string> targetId;
+            if (database->getSpellBase()[spell.c_str()]["offensive"].GetBool())
+            {
+                targetId.push_back(fight.team2[menus[currentMenu].getCurrentChoiceX()].getInfos("id"));
+            }
+            else
+            {
+                targetId.push_back(fight.team1[menus[currentMenu].getCurrentChoiceX()].getInfos("id"));
+            }
+            addOrder(createAction(fight.team1[caster].getInfos("id"), spell, targetId));
+            returnToPreviousMenu();
+            returnToPreviousMenu();
+        }
+        else if (stepStatus == 2)
+        {
+            spellChoice = menus[currentMenu].getCurrentChoiceY() + menus[currentMenu].getCurrentPage() * 5;
+            std::string spell = fight.team1[caster].getSpells()[spellChoice];
+            if (!database->getSpellBase()[spell.c_str()]["multiTarget"].GetBool() && !database->getSpellBase()[spell.c_str()]["self"].GetBool())
+            {
+                if (database->getSpellBase()[spell.c_str()]["offensive"].GetBool())
+                {
+                    changeCurrentMenu("enemy");
+                }
+                else
+                {
+                    changeCurrentMenu("team");
+                }
+                stepStatus++;
+            }
+            else
+            {
+                std::vector<std::string> targetId;
+                if (database->getSpellBase()[spell.c_str()]["self"].GetBool())
+                {
+                    targetId.push_back(fight.team1[caster].getInfos("id"));
+                }
+                else
+                {
+                    if (database->getSpellBase()[spell.c_str()]["offensive"].GetBool())
+                    {
+                        for (size_t i = 0; i < fight.team2.size(); i++)
+                        {
+                            targetId.push_back(fight.team2[i].getInfos("id"));
+                        }
+                    }
+                    else
+                    {
+                        for (size_t i = 0; i < fight.team1.size(); i++)
+                        {
+                            targetId.push_back(fight.team1[i].getInfos("id"));
+                        }
+                    }
+                }
+                addOrder(createAction(fight.team1[caster].getInfos("id"), spell, targetId));
+                returnToPreviousMenu();
+            }
+        }
+        else if (stepStatus == 1)
+        {
+            caster = menus[currentMenu].getCurrentChoiceX();
             changeCurrentMenu("spell" + std::to_string(caster));
+            stepStatus++;
+        }
+        else
+        {
+            changeCurrentMenu("team");
+            stepStatus++;
+        }
+        break;
+    case scout:
+        if (stepStatus == 1)
+        {
+            std::vector<std::string> emptyTarget;
+            fight.scouting = true;
+            for (long unsigned int i = 0; i < fight.team1.size(); i++)
+            {
+                orders.push_back(createAction(fight.team1[i].getInfos("id"), "null", emptyTarget));
+            }
+            stepStatus++;
+        }
+        else
+        {
+            changeCurrentMenu("enemy");
+            stepStatus++;
         }
         break;
     default:
         break;
+    }
+}
+
+void FightSDL::simulateActions()
+{
+    if (fight.actionsOrdered.size() > 0)
+    {
+        if (spellImpacts.size() == 0)
+        {
+            getMonsterIndex(fight.actionsOrdered.front().idCaster, pointToAlly);
+            spellImpacts = fight.simulateAction();
+            lastTimeSpellImpact = SDL_GetTicks();
+        }
+        else
+        {
+            SDL_Color color = {255, 255, 255};
+            drawBox(renderer, 15, 520, 760, 120);
+            drawText(renderer, spellImpacts.front().message, 25, 530, 15, color);
+            if (lastTimeSpellImpact + 2000 < SDL_GetTicks())
+            {
+                fight.updateMonster(spellImpacts.front());
+                spellImpacts.pop();
+                lastTimeSpellImpact = SDL_GetTicks();
+                if (spellImpacts.size() > 0)
+                {
+                    if (spellImpacts.front().targetId.size() > 0)
+                        getMonsterIndex(spellImpacts.front().targetId.front(), pointToAlly);
+                }
+                else
+                {
+                    pointToAlly = false;
+                }
+            }
+        }
+    }
+    else
+    {
+        updateMonsterMenu();
+        pointToAlly = true;
+        status = mainMenu;
     }
 }
 
@@ -251,7 +503,8 @@ bool FightSDL::runFight()
     SDL_Event event;
     Sprite background(renderer, "data/sprite/background/plain.png", 1);
     std::vector<Option> options;
-    bool pointToEnemy = true;
+    pointToAlly = true;
+    bool team1Alive = true;
     while (!quit)
     {
         if (timeLastFrame + 200 < SDL_GetTicks())
@@ -259,9 +512,12 @@ bool FightSDL::runFight()
             updateSprite(teamSpritesIcon1);
             timeLastFrame = SDL_GetTicks();
         }
+        if (fight.isOver(team1Alive) && spellImpacts.size() == 0)
+        {
+            quit=true;
+        }
         while (SDL_PollEvent(&event))
         {
-            pointToEnemy = true;
             if (event.type == SDL_QUIT)
                 return false;
             if (event.type == SDL_KEYDOWN)
@@ -276,24 +532,27 @@ bool FightSDL::runFight()
                     checkChoiceSet();
                 }
                 if (event.key.keysym.sym == SDLK_UP)
-                    menus[currentMenu].changeCurrentChoice(menus[currentMenu].getCurrentChoiceX(), menus[currentMenu].getCurrentChoiceY() - 1);
+                    menus[currentMenu].changeChoiceUp();
                 if (event.key.keysym.sym == SDLK_DOWN)
-                    menus[currentMenu].changeCurrentChoice(menus[currentMenu].getCurrentChoiceX(), menus[currentMenu].getCurrentChoiceY() + 1);
+                    menus[currentMenu].changeChoiceDown();
                 if (event.key.keysym.sym == SDLK_LEFT)
-                    menus[currentMenu].changeCurrentChoice(menus[currentMenu].getCurrentChoiceX() - 1, menus[currentMenu].getCurrentChoiceY());
+                    menus[currentMenu].changeChoiceLeft();
                 if (event.key.keysym.sym == SDLK_RIGHT)
-                    menus[currentMenu].changeCurrentChoice(menus[currentMenu].getCurrentChoiceX() + 1, menus[currentMenu].getCurrentChoiceY());
+                    menus[currentMenu].changeChoiceRight();
             }
         }
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
         SDL_RenderClear(renderer);
-        background.draw(0, 0, camera, false, 1, false, !pointToEnemy);
-        if (pointToEnemy)
-            drawTeam(teamSprites2);
-        else
-            drawTeam(teamSprites1);
+        if (status != simulateTurn)
+            pointToAlly = false;
+        background.draw(0, 0, camera, false, 1, false, !pointToAlly);
+        if (status == simulateTurn)
+            simulateActions();
+        drawTeam(pointToAlly);
+        if (status != simulateTurn)
+            menus[currentMenu].drawOptions(renderer, camera);
+        drawOrder();
         drawTeamInfo(fight.team1, teamSpritesIcon1);
-        menus[currentMenu].drawOptions(renderer, camera);
         SDL_RenderPresent(renderer);
     }
     return true;

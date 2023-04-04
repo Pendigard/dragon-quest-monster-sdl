@@ -12,6 +12,7 @@ Option createOption(std::string text, int x, int y, int w, int h, cursorDirectio
     option.direction = direction;
     option.transparent = transparent;
     option.action = action;
+    option.forbidden = false;
     return option;
 }
 
@@ -104,7 +105,7 @@ void Menu::changeCurrentChoice(int x, int y)
     if (currentChoiceX < 0)
     {
         if (changePageX)
-            currentPage = std::max(currentPage - 1, 0);
+            currentPage = (currentPage - 1)%options.size();
         currentChoiceX = options[currentPage][currentChoiceY].size() - 1;
     }
     if (currentChoiceX >= options[currentPage][currentChoiceY].size())
@@ -117,14 +118,100 @@ void Menu::changeCurrentChoice(int x, int y)
     if (currentChoiceY < 0)
     {
         if (!changePageX)
-            currentPage = std::max(currentPage - 1, 0);
+            currentPage = (currentPage - 1)%options.size();
         currentChoiceY = options[currentPage].size() - 1;
     }
+}
+
+void Menu::changeChoiceDown()
+{
+    currentChoiceY++;
     if (currentChoiceY >= options[currentPage].size())
     {
         if (!changePageX)
             currentPage = (currentPage + 1) % options.size();
         currentChoiceY = 0;
+    }
+    if (isForbiddenChoice())
+    {
+        changeChoiceUp();
+    }
+}
+
+void Menu::changeChoiceUp()
+{
+    currentChoiceY--;
+    if (currentChoiceY < 0)
+    {
+        if (!changePageX)
+            currentPage = (currentPage - 1)%options.size();
+        currentChoiceY = options[currentPage].size() - 1;
+    }
+    if (isForbiddenChoice())
+    {
+        changeChoiceDown();
+    }
+}
+
+void Menu::changeChoiceLeft()
+{
+    currentChoiceX--;
+    if (currentChoiceX < 0)
+    {
+        if (changePageX)
+            currentPage = (currentPage - 1)%options.size();
+        currentChoiceX = options[currentPage][currentChoiceY].size() - 1;
+    }
+    if (isForbiddenChoice())
+    {
+        changeChoiceLeft();
+    }
+}
+
+void Menu::changeChoiceRight()
+{
+    currentChoiceX++;
+    if (currentChoiceX >= options[currentPage][currentChoiceY].size())
+    {
+        if (changePageX)
+            currentPage = (currentPage + 1) % options.size();
+        currentChoiceX = 0;
+    }
+    if (isForbiddenChoice())
+    {
+        changeChoiceRight();
+    }
+}
+
+bool Menu::isForbiddenChoice()
+{
+    return options[currentPage][currentChoiceY][currentChoiceX].forbidden;
+}
+
+void Menu::setForbiddenChoice(int x, int y, bool forbidden, int page) {
+    options[page][y][x].forbidden = forbidden;
+}
+
+void Menu::setFirstChoice()
+{
+    currentChoiceX = 0;
+    currentChoiceY = 0;
+    currentPage = 0;
+    for (size_t i = 0; i < options.size(); i++)
+    {
+        for (size_t j = 0; j < options[i].size(); j++)
+        {
+            for (size_t k = 0; k < options[i][j].size(); k++)
+            {
+                if (!options[i][j][k].forbidden)
+                {
+                    currentChoiceX = k;
+                    currentChoiceY = j;
+                    currentPage = i;
+                    return;
+                }
+            }
+        }
     }
 }
 
@@ -136,4 +223,9 @@ menuChoice Menu::getChoice() const
 void Menu::clear()
 {
     options.clear();
+}
+
+Option& Menu::getCurrentOption()
+{
+    return options[currentPage][currentChoiceY][currentChoiceX];
 }

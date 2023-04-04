@@ -42,8 +42,6 @@ public:
     /// @brief Constructeur de la classe Sprite
     /// @param renderer Le renderer
     /// @param path Le chemin vers le fichier
-    /// @param w La largeur de la texture
-    /// @param h La hauteur de la texture
     /// @param numSprites Le nombre de textures
     Sprite(SDL_Renderer *renderer, std::string path, int numSprites);
 

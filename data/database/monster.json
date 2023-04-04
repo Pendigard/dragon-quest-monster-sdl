@@ -206,6 +206,92 @@
                     }
                 }
             }
+        },
+        "S" : {
+            "gluancien" : {
+                "statMax" : {
+                    "hp" : 999,
+                    "mp" : 1100,
+                    "atk" : 450,
+                    "def" : 890,
+                    "agi" : 650,
+                    "wis" : 999
+                },
+                "skills" : "Bang et foudre",
+                "growth" : {
+                    "hp" : 7.4,
+                    "mp" : 7.9,
+                    "atk" : 3.5,
+                    "def" : 6.9,
+                    "agi" : 4.5,
+                    "wis" : 7.8
+                },
+                "exp" : 975,
+                "gold" : 400,
+                "resistances" : {
+                    "flamme" : 1,
+                    "eau" : 1,
+                    "terre" : 2,
+                    "vent" : 1,
+                    "bang" : 1,
+                    "glace" : 1,
+                    "foudre" : 1,
+                    "elec" : 0.25,
+                    "lumiere" : 0.25,
+                    "poison" : 0.25,
+                    "paralysis" : 0.75,
+                    "sleep" : 0.75,
+                    "confusion" : 0.75,
+                    "atk" : 0.25,
+                    "def" : 0.5,
+                    "agi" : 0.5,
+                    "wis" : 0,
+                    "breath" : 0.5
+                }
+            }
+        },
+        "X": {
+            "gluandor" : {
+                "statMax" : {
+                    "hp" : 128,
+                    "mp" : 1000,
+                    "atk" : 900,
+                    "def" : 1050,
+                    "agi" : 900,
+                    "wis" : 750
+                },
+                "skills" : "Bang et foudre",
+                "growth" : {
+                    "hp" : 0.9,
+                    "mp" : 7.7,
+                    "atk" : 6.9,
+                    "def" : 10.9,
+                    "agi" : 7.5,
+                    "wis" : 5.8
+                },
+                "exp" : 1300,
+                "gold" : 10000,
+                "resistances" : {
+                    "flamme" : -1,
+                    "eau" : -1,
+                    "terre" : -1,
+                    "vent" : -1,
+                    "bang" : -1,
+                    "glace" : -1,
+                    "foudre" : -1,
+                    "elec" : 2,
+                    "lumiere" : -1,
+                    "poison" : 0.75,
+                    "paralysis" : 0.75,
+                    "sleep" : 0.75,
+                    "confusion" : 0.75,
+                    "atk" : 0.5,
+                    "def" : 0.5,
+                    "agi" : 0,
+                    "wis" : 0.75,
+                    "breath" : 0.75
+                }
+            }
         }
     },
     "Dragon": {
@@ -334,6 +420,94 @@
                     "def": 0.25,
                     "agi": 0.5,
                     "wis": 0.25
+                }
+            }
+        },
+        "X" : {
+            "Xenlon" : {
+                "statMax" : {
+                    "hp" : 1200,
+                    "mp" : 500,
+                    "atk" : 510,
+                    "def" : 800,
+                    "agi" : 750,
+                    "wis" : 600
+                },
+                "skills" : "Souffle",
+                "growth" : {
+                    "hp" : 8.2,
+                    "mp" : 5.5,
+                    "atk" : 5.4,
+                    "def" : 6.9,
+                    "agi" : 7.2,
+                    "wis" : 5.5
+                },
+                "exp" : 900,
+                "gold" : 2650,
+                "resistances" : {
+                    "flamme" : 0.25,
+                    "eau" : 2,
+                    "terre" : 0.5,
+                    "vent" : 0,
+                    "bang" : 1,
+                    "glace" : 0.5,
+                    "foudre" : 0.25,
+                    "elec" : 0,
+                    "lumiere" : 2,
+                    "poison" : 0.5,
+                    "paralysis" : 0.25,
+                    "sleep" : 0.5,
+                    "confusion" : 0.75,
+                    "atk" : 0.25,
+                    "def" : 0.5,
+                    "agi" : 0.5,
+                    "wis" : 0.5,
+                    "breath" : 0.25
+                }
+            }
+        }
+    },
+    "???" : {
+        "X" : {
+            "Estark" : {
+                "statMax" : {
+                    "hp" : 1700,
+                    "mp" : 420,
+                    "atk" : 770,
+                    "def" : 800,
+                    "agi" : 700,
+                    "wis" : 400
+                },
+                "skills" : "Estark",
+                "growth" : {
+                    "hp" : 9.8,
+                    "mp" : 2.8,
+                    "atk" : 6,
+                    "def" : 6.5,
+                    "agi" : 6.2,
+                    "wis" : 3
+                },
+                "exp" : 7500,
+                "gold" : 1000,
+                "resistances" : {
+                    "flamme" : 1,
+                    "eau" : 1,
+                    "terre" : 1,
+                    "vent" : 1,
+                    "bang" : 0.5,
+                    "glace" : 2,
+                    "foudre" : 2,
+                    "elec" : 0,
+                    "lumiere" : 4,
+                    "poison" : 0,
+                    "paralysis" : 0,
+                    "sleep" : 0.9,
+                    "confusion" : 0,
+                    "atk" : 0.25,
+                    "def" : 0.5,
+                    "agi" : 0.5,
+                    "wis" : 0.5,
+                    "breath" : 0.5
                 }
             }
         }

@@ -44,6 +44,11 @@ void saveJson(std::string path, rapidjson::Document& doc);
 /// @return chaîne de caractères formatée
 std::string formatString(const std::string fmt_str,std::vector<std::string> args);
 
+/// @brief Crée une chaîne de caractères contenant des espaces
+/// @param size : nombre d'espaces
+/// @return chaîne de caractères contenant des espaces
+std::string createSpaceString(int size);
+
 /// @brief Retourne un entier aléatoire entre min inclue et max exclue
 /// @param min borne minimale inclue
 /// @param max borne maximale exclue

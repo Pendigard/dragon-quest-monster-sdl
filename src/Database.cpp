@@ -5,7 +5,6 @@ Database::Database()
     loadDatabase();
 }
 
-
 void Database::loadDatabase()
 {
     loadJson("data/database/monster.json",monsterBase);

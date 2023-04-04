@@ -9,22 +9,24 @@
 #include "Fight.h"
 #include "Menu.h"
 #include "FightSDL.h"
+#include "Entity.h"
 
 class Game
 {
 private:
-    Player player;                                // Le joueur
-    rapidjson::Document save;                     // Les données de sauvegarde
-    Database database;                            // La base de données
-    Camera camera;                                // La caméra
-    SDL_Renderer *renderer;                       // Le renderer
-    SDL_Window *window;                           // La fenêtre
-    int timeLastFrame;                            // La mesure en tick du dernier changement de frame des sprites
-    int screenWidth;                              // La largeur de la fenêtre
-    int screenHeight;                             // La hauteur de la fenêtre
-    bool running;                                 // Vrai si le jeu est en cours d'execution
-    std::unordered_map<Sprite *, Sprite> sprites; // Les sprites
-    Sprite cursor;                                // Le curseur
+    Player player;                                     // Le joueur
+    rapidjson::Document save;                          // Les données de sauvegarde
+    Database database;                                 // La base de données
+    Camera camera;                                     // La caméra
+    SDL_Renderer *renderer;                            // Le renderer
+    SDL_Window *window;                                // La fenêtre
+    int timeLastFrame;                                 // La mesure en tick du dernier changement de frame des sprites
+    int screenWidth;                                   // La largeur de la fenêtre
+    int screenHeight;                                  // La hauteur de la fenêtre
+    bool running;                                      // Vrai si le jeu est en cours d'execution
+    std::unordered_map<std::string, Sprite *> sprites; // Les sprites
+    std::vector<Entity> entities;                      // Les entités
+    Sprite cursor;                                     // Le curseur
 
 public:
     /// @brief Constructeur initialise toutes les composantes de SDL
@@ -38,6 +40,10 @@ public:
 
     /// @brief Charge les données de sauvegarde
     void loadGame();
+
+    void loadSprites();
+
+    void loadPlayer();
 
     /// @brief Sauvegarde les données dans le fichier de sauvegarde
     void saveGame();

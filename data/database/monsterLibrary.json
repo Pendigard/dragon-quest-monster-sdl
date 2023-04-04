@@ -233,6 +233,11 @@
         "family" : "Dragon",
         "rank" : "X",
         "id" : 3
+    },
+    "Estark" : {
+        "family" : "???",
+        "rank" : "X",
+        "id" : 1
     }
 }
 

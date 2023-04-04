@@ -13,6 +13,7 @@ private:
 public:
     /// @brief Constructeur lance la fonction loadDatabase()
     Database();
+    Database& operator=(const Database& other);
     /// @brief Charge les données de monster.json, library.json, skill.json et spell.json
     void loadDatabase();
     /// @brief retourne la base de données des monstres

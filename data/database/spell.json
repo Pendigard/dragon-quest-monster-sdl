@@ -80,9 +80,53 @@
         "multiTarget": false,
         "dealDamage": true
     },
+    "Bang" : {
+        "castSentence": "{} lance bang sur {}",
+        "element": "bang",
+        "type": "magic",
+        "damage": 1.2,
+        "manaCost": 4,
+        "offensive": true,
+        "self": false,
+        "multiTarget": false,
+        "dealDamage": true
+    },
+    "Superbang" : {
+        "castSentence": "{} lance superbang sur {}",
+        "element": "bang",
+        "type": "magic",
+        "damage": 2,
+        "manaCost": 10,
+        "offensive": true,
+        "self": false,
+        "multiTarget": false,
+        "dealDamage": true
+    },
     "Ecrasement": {
         "castSentence": "{} écrase {}",
         "type": "physical",
+        "damage": 1.3,
+        "manaCost": 5,
+        "offensive": true,
+        "self": false,
+        "multiTarget": false,
+        "dealDamage": true
+    },
+    "Lame detonante" : {
+        "castSentence": "{} lance lame detonante sur {}",
+        "element": "bang",
+        "type": "magic",
+        "damage": 1.3,
+        "manaCost": 5,
+        "offensive": true,
+        "self": false,
+        "multiTarget": false,
+        "dealDamage": true
+    },
+    "Lame benie" : {
+        "castSentence": "{} lance lame benie sur {}",
+        "element": "lumiere",
+        "type": "magic",
         "damage": 1.3,
         "manaCost": 5,
         "offensive": true,
@@ -190,7 +234,7 @@
         "dealDamage": false,
         "heal": 75
     },
-    "Multisoin" : {
+    "Multisoin": {
         "castSentence": "{} utilise multisoin sur l'équipe",
         "type": "heal",
         "damage": 0,
@@ -224,7 +268,7 @@
         "self": false,
         "multiTarget": true,
         "dealDamage": false,
-        "affectStatus" : true,
+        "affectStatus": true,
         "status": {
             "regen": 3
         }
@@ -237,10 +281,10 @@
         "offensive": false,
         "self": false,
         "multiTarget": true,
-        "effect": "cancelNegativeStatus",
+        "effect": {"cancelNegativeStatus" : 1},
         "dealDamage": false
     },
-    "Chant redempteur" : {
+    "Chant redempteur": {
         "castSentence": "{} utilise chant redempteur sur l'équipe",
         "type": "effect",
         "damage": 0,
@@ -248,10 +292,12 @@
         "offensive": false,
         "self": false,
         "multiTarget": true,
-        "effect": "revive",
+        "effect": {
+            "rappel" : 0.5
+        },
         "dealDamage": false
     },
-    "Omnisoin" : {
+    "Omnisoin": {
         "castSentence": "{} utilise omnisoin sur l'équipe",
         "type": "heal",
         "damage": 0,
@@ -270,7 +316,9 @@
         "offensive": false,
         "self": false,
         "multiTarget": false,
-        "effect": "rappel",
+        "effect": {
+            "rappel": 0.5
+        },
         "dealDamage": false
     },
     "Stimulation": {
@@ -281,10 +329,12 @@
         "offensive": false,
         "self": false,
         "multiTarget": false,
-        "effect": "cancelParalysis",
+        "effect": {
+            "cancelParalysis": 0.7
+        },
         "dealDamage": false
     },
-    "Meditation" : {
+    "Meditation": {
         "castSentence": "{} médite",
         "type": "effect",
         "damage": 0,
@@ -292,10 +342,12 @@
         "offensive": false,
         "self": false,
         "multiTarget": false,
-        "giveMana": 20,
+        "effect": {
+            "giveMana": 20
+        },
         "dealDamage": false
     },
-    "Baffaiblissante" : {
+    "Baffaiblissante": {
         "castSentence": "{} utilise baffaiblissante sur {}",
         "type": "physical",
         "damage": 1.1,
@@ -310,7 +362,7 @@
         },
         "effectTurn": 3
     },
-    "Attaque eblouissante" : {
+    "Attaque eblouissante": {
         "castSentence": "{} utilise attaque eblouissante sur {}",
         "type": "physical",
         "damage": 1.1,
@@ -326,7 +378,7 @@
         "effectTurn": 3
     },
     "Pique empoisonee": {
-        "castSentence": "{} utilise pique empoisonee sur {}",
+        "castSentence": "{} utilise pique empoisonee {}",
         "type": "physical",
         "damage": 1.1,
         "manaCost": 12,
@@ -339,8 +391,8 @@
             "poison": 2
         }
     },
-    "Frappe paralysante" : {
-        "castSentence": "{} utilise frappe paralysante sur {}",
+    "Frappe paralysante": {
+        "castSentence": "{} utilise frappe paralysante {}",
         "type": "physical",
         "damage": 1.1,
         "manaCost": 12,
@@ -354,7 +406,7 @@
         }
     },
     "Haleine fraiche": {
-        "castSentence": "{} souffle son haleine sur {}",
+        "castSentence": "{} souffle son haleine sur l'équipe",
         "type": "status",
         "element": "breath",
         "damage": 0,
@@ -368,8 +420,8 @@
             "poison": 2
         }
     },
-    "Souffle brulant" : {
-        "castSentence": "{} souffle son haleine sur {}",
+    "Souffle brulant": {
+        "castSentence": "{} souffle son haleine sur l'équipe",
         "type": "status",
         "element": "breath",
         "damage": 0,
@@ -384,9 +436,8 @@
         }
     },
     "Haleine veneneuse": {
-        "castSentence": "{} souffle son haleine sur {}",
-        "type": "status",
-        "element": "breath",
+        "castSentence": "{} souffle son haleine sur l'équipe",
+        "type": "breath",
         "damage": 0,
         "manaCost": 20,
         "offensive": true,
@@ -398,10 +449,9 @@
             "poison": 4
         }
     },
-    "Volee veneneuse" : {
+    "Volee veneneuse": {
         "castSentence": "{} utilise volee veneneuse sur {}",
-        "type": "status",
-        "element": "breath",
+        "type": "breath",
         "damage": 1.3,
         "manaCost": 18,
         "offensive": true,
@@ -412,6 +462,172 @@
         "status": {
             "poison": 4
         }
+    },
+    "Doubleslash": {
+        "castSentence": "{} utilise Doubleslash sur {}",
+        "type": "physical",
+        "damage": 0.7,
+        "manaCost": 15,
+        "offensive": true,
+        "self": false,
+        "multiTarget": false,
+        "dealDamage": true,
+        "multiHit": 2
+    },
+    "Multislash": {
+        "castSentence": "{} utilise Multislash sur l'équipe adverse",
+        "type": "physical",
+        "damage": 0.6,
+        "manaCost": 15,
+        "offensive": true,
+        "self": false,
+        "multiTarget": true,
+        "dealDamage": true,
+        "multiHit": 3
+    },
+    "Aura de peur": {
+        "castSentence": "{} lance une aura de peur",
+        "type": "breath",
+        "damage": 0,
+        "manaCost": 15,
+        "offensive": true,
+        "self": false,
+        "multiTarget": true,
+        "dealDamage": false,
+        "affectStatus": true,
+        "status": {
+            "paralysis": 2
+        }
+    },
+    "Megaglace": {
+        "castSentence": "{} utilise Megaglace sur {}",
+        "type": "magic",
+        "element": "glace",
+        "damage": 2.1,
+        "manaCost": 40,
+        "offensive": true,
+        "self": false,
+        "multiTarget": false,
+        "dealDamage": true
+    },
+    "Megaelec": {
+        "castSentence": "{} utilise Megaelec sur {}",
+        "type": "magic",
+        "element": "elec",
+        "damage": 2.1,
+        "manaCost": 40,
+        "offensive": true,
+        "self": false,
+        "multiTarget": false,
+        "dealDamage": true
+    },
+    "Coup de l'assassin": {
+        "castSentence": "{} frappe {} avec un coup assassin",
+        "type": "physical",
+        "damage": 0.7,
+        "manaCost": 12,
+        "offensive": true,
+        "self": false,
+        "multiTarget": false,
+        "dealDamage": true,
+        "effect": {
+            "kill": 0.15
+        }
+    },
+    "Frappe Imperiale": {
+        "castSentence": "{} ascene une frappe imperiale sur {}",
+        "type": "physical",
+        "damage": 3.5,
+        "manaCost": 80,
+        "offensive": true,
+        "self": false,
+        "multiTarget": false,
+        "dealDamage": true
+    },
+    "Perturbonde": {
+        "castSentence": "{} utilise Perturbonde",
+        "type": "breath",
+        "damage": 0,
+        "manaCost": 30,
+        "offensive": true,
+        "self": false,
+        "multiTarget": true,
+        "dealDamage": false,
+        "affectStatus": true,
+        "effect": {
+            "clearPositiveStatus": 1
+        }
+    },
+    "Souffle de feu" : {
+        "castSentence": "{} projette un souffle de feu",
+        "type": "breath",
+        "element" : "flamme",
+        "damage": 0.9,
+        "manaCost": 10,
+        "offensive": true,
+        "self": false,
+        "multiTarget": true,
+        "dealDamage": true
+    },
+    "Souffle frais" : {
+        "castSentence": "{} projette un souffle frais",
+        "type": "breath",
+        "element" : "glace",
+        "damage": 0.9,
+        "manaCost": 10,
+        "offensive": true,
+        "self": false,
+        "multiTarget": true,
+        "dealDamage": true
+    },
+    "Cracheflamme" : {
+        "castSentence": "{} utilise cracheflamme",
+        "type": "breath",
+        "element" : "flamme",
+        "damage": 1.2,
+        "manaCost": 15,
+        "offensive": true,
+        "self": false,
+        "multiTarget": true,
+        "dealDamage": true
+    },
+    "Souffle froid" : {
+        "castSentence": "{} projette un souffle de glace",
+        "type": "breath",
+        "element" : "glace",
+        "damage": 1.2,
+        "manaCost": 15,
+        "offensive": true,
+        "self": false,
+        "multiTarget": true,
+        "dealDamage": true
+    },
+    "Retrosouffle" : {
+        "castSentence": "{} utilise retrosouffle",
+        "type": "breath",
+        "damage": 0,
+        "manaCost": 20,
+        "offensive": false,
+        "self": true,
+        "multiTarget": false,
+        "dealDamage": false,
+        "affectStatus" : true,
+        "status" : {
+            "breathRes" : 2
+        }
+    },
+    "Grande inspiration" : {
+        "castSentence": "{} prend une grande inspiration",
+        "type": "breath",
+        "damage": 0,
+        "manaCost": 20,
+        "offensive": false,
+        "self": true,
+        "multiTarget": false,
+        "dealDamage": false,
+        "affectStatus" : true,
+        "status" : {
+            "breathAtk" : 2
+        }
     }
-
 }

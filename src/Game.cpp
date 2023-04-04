@@ -58,10 +58,23 @@ Game::Game()
     database.loadDatabase();
 
     loadGame();
+    loadSprites();
+}
+
+void Game::loadSprites()
+{
+    sprites["player_front"] = new Sprite(renderer, "data/sprite/player/player_front_", 3);  
+    sprites["player_back"] = new Sprite(renderer, "data/sprite/player/player_back_", 3);
+    sprites["player_left"] = new Sprite(renderer, "data/sprite/player/player_left_", 3);
+    sprites["player_right"] = new Sprite(renderer, "data/sprite/player/player_right_", 3);
 }
 
 Game::~Game()
 {
+    for (auto &sprite : sprites)
+    {
+        delete sprite.second;
+    }
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
@@ -185,6 +198,12 @@ void Game::run()
 {
     SDL_Event event;
     running = true;
+    player.mainTeam[0].applySkillPoint(100,"Estark",database);
+    for (size_t i = 1; i < player.mainTeam.size(); i++)
+    {
+        player.mainTeam[i].autoAttributeSkill(database);
+    }
+    player.mainTeam[0].addXp(170000);
     while (running)
     {
         while (SDL_PollEvent(&event))
@@ -203,8 +222,8 @@ void Game::run()
                     monsters.push_back("medhigluant");
                     monsters.push_back("jaunyve");
                     monsters.push_back("gluanbulle");
-                    Fight f(player.mainTeam, createWildMonsterTeam(monsters, 1, 5));
-                    FightSDL fight(f, renderer, &cursor);
+                    Fight f(player.mainTeam, createWildMonsterTeam(monsters, 47, 50));
+                    FightSDL fight(f, renderer, &cursor, &database);
                     fight.runFight();
                 }
             }

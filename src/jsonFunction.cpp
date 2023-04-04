@@ -80,6 +80,16 @@ std::string formatString(const std::string fmt_str,std::vector<std::string> args
     return result;
 }
 
+std::string createSpaceString(int size)
+{
+    std::string result;
+    for (int i=0; i<size; i++)
+    {
+        result += " ";
+    }
+    return result;
+}
+
 int getRand(int min, int max)
 {
     return rand() % (max - min) + min;

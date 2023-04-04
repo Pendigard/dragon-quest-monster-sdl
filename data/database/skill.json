@@ -67,9 +67,9 @@
             }
         }
     },
-    "Intoxicateur" : {
+    "Intoxicateur": {
         "maxPoints": 100,
-        "stepUpgrade" : {
+        "stepUpgrade": {
             "Pique empoisonee": {
                 "point": 6,
                 "upgradeType": "spell"
@@ -145,7 +145,7 @@
             }
         }
     },
-    "Soigneur" : {
+    "Soigneur": {
         "maxPoints": 100,
         "stepUpgrade": {
             "1er secours": {
@@ -276,7 +276,7 @@
                 "stat": "atk",
                 "value": 5
             },
-            "Max PV+10" : {
+            "Max PV+10": {
                 "point": 60,
                 "upgradeType": "stat",
                 "stat": "hp",
@@ -335,7 +335,7 @@
                 "stat": "atk",
                 "value": 10
             },
-            "Max PV+20" : {
+            "Max PV+20": {
                 "point": 60,
                 "upgradeType": "stat",
                 "stat": "hp",
@@ -352,6 +352,101 @@
                 "upgradeType": "res",
                 "stat": "atk",
                 "value": 0
+            }
+        }
+    },
+    "Estark": {
+        "maxPoints": 100,
+        "stepUpgrade": {
+            "Doubleslash": {
+                "point": 5,
+                "upgradeType": "spell"
+            },
+            "Multislash": {
+                "point": 10,
+                "upgradeType": "spell"
+            },
+            "Aura de peur": {
+                "point": 19,
+                "upgradeType": "spell"
+            },
+            "Megaglace": {
+                "point": 29,
+                "upgradeType": "spell"
+            },
+            "Megaelec": {
+                "point": 43,
+                "upgradeType": "spell"
+            },
+            "Coup de l'assassin": {
+                "point": 60,
+                "upgradeType": "spell"
+            },
+            "Perturbonde": {
+                "point": 70,
+                "upgradeType": "spell"
+            },
+            "Frappe Imperiale": {
+                "point": 100,
+                "upgradeType": "spell"
+            }
+        }
+    },
+    "Souffle" : {
+        "maxPoints": 50,
+        "stepUpgrade": {
+            "Souffle de feu" : {
+                "point": 5,
+                "upgradeType": "spell"
+            },
+            "Souffle frais" : {
+                "point": 10,
+                "upgradeType": "spell"
+            },
+            "Cracheflamme" : {
+                "point": 18,
+                "upgradeType": "spell"
+            },
+            "Souffle froid" : {
+                "point": 25,
+                "upgradeType": "spell"
+            },
+            "Rétrosouffle" : {
+                "point": 38,
+                "upgradeType": "spell"
+            },
+            "Grande inspiration" : {
+                "point": 50,
+                "upgradeType": "spell"
+            }
+        }
+    },
+    "Bang et foudre" : {
+        "maxPoints": 50,
+        "stepUpgrade": {
+            "Bang" : {
+                "point": 6,
+                "upgradeType": "spell"
+            },
+            "Foudre" : {
+                "point": 10,
+                "upgradeType": "spell"
+            },
+            "Lame detonante" : {
+                "point": 14,
+                "upgradeType": "spell"
+            },
+            "Lame benie" : {
+                "point": 19,
+                "upgradeType": "spell"
+            },
+            "Superfoudre" : {
+                "point": 32,
+                "upgradeType": "spell"
+            },
+            "Superbang" : {
+                "point": 50,
+                "upgradeType": "spell"
             }
         }
     }

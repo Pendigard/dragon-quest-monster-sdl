@@ -38,7 +38,7 @@ Fight::Fight(Fight const &fight)
     scouting = fight.scouting;
 }
 
-Fight& Fight::operator=(Fight const &fight)
+Fight &Fight::operator=(Fight const &fight)
 {
     nbTurn = fight.nbTurn;
     team1 = fight.team1;
@@ -51,7 +51,6 @@ Fight& Fight::operator=(Fight const &fight)
     scouting = fight.scouting;
     return *this;
 }
-
 
 bool Fight::isTeam1(Monster m) const
 {
@@ -184,22 +183,22 @@ void Fight::spellTacticChoice(Monster &caster)
 {
     switch (caster.getTactic())
     {
-        case SansPitie:
-            actions.push_back(tacticSansPitie(caster));
-            break;
-        case Sagesse:
-            actions.push_back(tacticSagesse(caster));
-            break;
-        case Soin:
-            actions.push_back(tacticSoin(caster));
-            break;
-        case NoMana:
-            actions.push_back(tacticNoMana(caster));
-            break;
-        default:
-            actions.push_back(tacticSansPitie(caster));
-            std::cout<<"Tactic not found"<<std::endl;
-            break;
+    case SansPitie:
+        actions.push_back(tacticSansPitie(caster));
+        break;
+    case Sagesse:
+        actions.push_back(tacticSagesse(caster));
+        break;
+    case Soin:
+        actions.push_back(tacticSoin(caster));
+        break;
+    case NoMana:
+        actions.push_back(tacticNoMana(caster));
+        break;
+    default:
+        actions.push_back(tacticSansPitie(caster));
+        std::cout << "Tactic not found" << std::endl;
+        break;
     }
 }
 
@@ -506,7 +505,6 @@ std::queue<spellImpact> Fight::simulateAction()
     bool multipleTarget = a.idTargets.size() > 1;
     bool canMove = true;
     std::queue<spellImpact> queueImpact = getStatusEffect(caster, canMove);
-    ;
     if (!canMove)
         return queueImpact;
     rapidjson::Value &spellInfo = spellBase[a.spell.c_str()];
@@ -751,33 +749,35 @@ bool Fight::scout(std::string idMonster, std::queue<std::string> &messages)
     else
     {
         messages.push("Le monstre ne veut pas se laisser dresser");
-        if (getRand(1,2)<1) {
+        if (getRand(1, 2) < 1)
+        {
             messages.push("Le monstre se vexe");
             canScout = false;
         }
-        else {
+        else
+        {
             messages.push("Le monstre évalue la situation");
         }
         return false;
     }
 }
 
-unsigned int Fight::getGoldReward(Database& db) const
+unsigned int Fight::getGoldReward(Database &db) const
 {
     unsigned int gold = 0;
     for (int i = 0; i < team2.size(); i++)
     {
-        gold += db.getMonsterStat(team2[i].getInfos("family"),team2[i].getInfos("rank"),team2[i].getInfos("type"))["gold"].GetInt();
+        gold += db.getMonsterStat(team2[i].getInfos("family"), team2[i].getInfos("rank"), team2[i].getInfos("type"))["gold"].GetInt();
     }
     return gold;
 }
 
-unsigned int Fight::getExpReward(Database& db) const
+unsigned int Fight::getExpReward(Database &db) const
 {
     unsigned int exp = 0;
     for (int i = 0; i < team2.size(); i++)
     {
-        exp += db.getMonsterStat(team2[i].getInfos("family"),team2[i].getInfos("rank"),team2[i].getInfos("type"))["exp"].GetInt()*team2[i].getLevel();
+        exp += db.getMonsterStat(team2[i].getInfos("family"), team2[i].getInfos("rank"), team2[i].getInfos("type"))["exp"].GetInt() * team2[i].getLevel();
     }
     return exp;
 }

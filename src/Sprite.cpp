@@ -160,8 +160,8 @@ void Sprite::setCurrentSprite(int currentSprite)
 
 void drawText(SDL_Renderer *renderer, std::string text, int x, int y, int size, SDL_Color color)
 {
-    TTF_Font *font = TTF_OpenFont("data/font/dragon-quest.ttf", size);
-    SDL_Surface *surface = TTF_RenderText_Solid(font, text.c_str(), color);
+    TTF_Font *font = TTF_OpenFont("data/font/a-goblin-appears.ttf", size);
+    SDL_Surface *surface = TTF_RenderUTF8_Blended(font, text.c_str(), color);;
     SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
     SDL_FreeSurface(surface);
     SDL_Rect rect;
