@@ -189,11 +189,6 @@
         "rank" : "B",
         "id" : 2
     },
-    "dracularge" : {
-        "family" : "Dragon",
-        "rank" : "B",
-        "id" : 3
-    },
     "grand dragon": {
         "family" : "Dragon",
         "rank" : "A",
@@ -204,20 +199,15 @@
         "rank" : "A",
         "id" : 2
     },
-    "dragon noir": {
+    "draculard": {
         "family" : "Dragon",
         "rank" : "S",
         "id" : 1
     },
-    "draculard": {
-        "family" : "Dragon",
-        "rank" : "S",
-        "id" : 2
-    },
     "Lordraco" : {
         "family" : "Dragon",
         "rank" : "S",
-        "id" : 3
+        "id" : 2
     },
     "Xenlon": {
         "family" : "Dragon",

@@ -874,12 +874,12 @@ void Game::getSynthesisVector()
     {
         if (player.storageMonsters[i].getInfos("id") != idPlus && player.storageMonsters[i].getInfos("charge") != "plus")
         {
-            if (player.storageMonsters[i].getLevel() >= 10)
+            //if (player.storageMonsters[i].getLevel() >= 10)
                 synthetizer.choiceMinus.push_back(&player.storageMonsters[i]);
         }
         if (player.storageMonsters[i].getInfos("id") != idMinus && player.storageMonsters[i].getInfos("charge") != "moins")
         {
-            if (player.storageMonsters[i].getLevel() >= 10)
+            //if (player.storageMonsters[i].getLevel() >= 10)
                 synthetizer.choicePlus.push_back(&player.storageMonsters[i]);
         }
     }
