@@ -20,12 +20,19 @@ Pour lancer le jeu lancez la commande:
 ./bin/game
 ```
 
+Il existe aussi une version textuel du jeu utilisable avec la commande:
+
+```
+./bin/game_text
+```
+
 ## Fonctionnalités
 
--Les monstres (implémenté complètement)
+### Les monstres (implémenté complètement)
     Un Monstre peut être considéré comme un combattant il possède plusieurs caractéristiques:
         - Un nom
         - Un type : On peut voir ça comme son espece
+        - Une charge : plus, moins ou neutre utile pour les fusions
         - Un niveau : Le niveau du monstre détermine la croissance de ses statistiques
         - Des statistiques : Les statistiques du monstre déterminent sa puissance en combat
         - Des sets de compétences : Les sets de compétences du monstre déterminent les actions qu'il peut effectuer en combat
@@ -41,7 +48,7 @@ Pour lancer le jeu lancez la commande:
         - Sagesse : Détermine la puissance des compétences magiques du monstre
 
 
--Combat en tour par tour (implémenté partiellement)
+### Combat en tour par tour (implémenté partiellement)
     Le joueur affronte des monstres sauvages dans des combats en tour par tour par équipe allant de 1 à 3 monstres par équipe. Le joueur peut choisir les actions de ses monstres où les laisser agir de manière autonome en suivant une tactique prédéfinie que le joueur peut choisir:
     - Sans pitié : Le monstre utilise seulement des compétences infligeant des dégâts sur les ennemis
     - Soins avant tout : Le monstre utilise seulement des compétences de soin pour aider ses alliés
@@ -62,8 +69,26 @@ Pour lancer le jeu lancez la commande:
     véritable dégât le pourcentage de dégâts qu'il lui aurait infligé indique la chance qu'ils soit capturé. Si le monstre est capturé, le combat s'arrête. Mais s'il refuse d'être capturé, il a une 
     chance sur deux d'être vexé, dans ce cas le monstre ne pourra plus être capturé du combat. À l'échec d'un dressage le combat continue sans que les monstres du joueur puissent attaquer.
     Enfin le joueur peut décider de fuir le combat. La probabiliter de fuite dépend de la statistique d'agilité de chaque monstre. Si la fuite échoue le combat continue sans que les monstres du 
-    joueur puissent attaquer. Si la fuite réussi le combat s'arrête sans que le joueur n'est reçu aucune récompense.
+    joueur puissent attaquer. Si la fuite réussi le combat s'arrête sans que le joueur n'ait reçu aucune récompense.
 
+### Gestion de la map (implémenté complètement)
+    La carte est représenté par plusieurs calques superposés. Chaque calque représente un type d'élément de la carte. Il y a un calque pour les éléments de décor, les falaises... La carte 
+    fonctionne avec un système de tile, se sont des cases de 32x32 pixels. Chaque tile est représenté par un nombre qui correspond à un élément de la carte. Le dernier calque apparaît au dessus du 
+    joueur pour permettre un effet de profondeur. Le joueur peut se déplacer sur la carte avec les touches directionnelles. Une map contient aussi des objets servants à faire apparaître des 
+    monstres où des éléments avec lesquelles le joueur peut interagir. Il peut aussi interagir avec les éléments de la carte en appuyant sur la touche entrer, pour parler au pnj ou encore lire un 
+    panneau. Les maps sont faites via l'outils Tiled, un éditeur permettant de gérer toutes les fonctionnalités cités plus haut. Ce logiciel renvoie un fichier .json qui sera lu et analysé par
+    le programme pour créer la map. Les maps sont stocké dans data/map et les tileset dans data/tileset/info au format json et data/tileset/source pour les images.
+
+### Gestion des sauvegardes (implémenté complètement)
+    Les sauvegardes sont au format .json. Elles contiennent toutes les informations nécessaires à la reprise d'une partie. Elles sont stockées dans le dossier data/save du jeu. Les infos des monstres du joueurs y sont stocké ainsi que la map et la position du joueur au moment de la sauvegarde. Le joueur peut sauvegarder à tout moment en appuyant sur la touche echap qui ouvre le menu principale et lorsqu'il clique sur sauvegarder la sauvegarde se fait.
+
+### Gestion des menus (implémenté complètement)
+    Le jeu dispose d'un système de menu. Un menu est composé de page d'option. Pour passer à une autre option le joueur utilise les flèches directionnelles et appuie sur entrer pour accéder à l'option. Échap permet de revenir au menu précédent et s'il n'y a pas de menu précédent de sortir du menu.
+
+### Synthèse (implémenté partiellement)
+    Les synthèse permettre de mélanger deux monstres pour en créer un nouveau. Le joueur peut accéder à la synthèse en parlant au pnj devant la tante. Il peut alors choisir deux monstres à mélanger. 
+    Les monstres doivent avoir des charges opposées. Il existe de synthétisation possible celle générative calculé pour n'importe quelle monstre, et celle par recette, déjà prédéfinis dans un 
+    fichier à part. Le monstre enfant récupère la somme du quart des statistiques de ses 2 parents. Le joueur pourra choisir parmis 3 des sets de compétences des deux parents pour le monstre enfant.
 
 
 ## Auteurs
