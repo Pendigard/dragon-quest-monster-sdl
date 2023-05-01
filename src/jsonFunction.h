@@ -55,4 +55,23 @@ std::string createSpaceString(int size);
 /// @return nombre aléatoire
 int getRand(int min, int max);
 
+/// @brief Divise un string en un vecteur de string séparé par un delimiter
+/// @param str String à diviser
+/// @param delimiter Délimiteur
+/// @return Vecteur de string
+std::vector<std::string> splitString(std::string str, const char delimiter[2]);
+
+/// @brief Remplace une chaîne de caractères par une autre dans une chaîne de caractères
+/// @param str Chaîne de caractères
+/// @param toReplace Chaîne de caractères à remplacer
+/// @param replaceBy Chaîne de caractères par laquelle remplacer
+/// @return Chaîne de caractères modifiée
+std::string replaceString(std::string str, std::string toReplace, std::string replaceBy);
+
+/// @brief Retourne une chaîne de caractères de longueur maxLen
+/// @param str Chaîne de caractères
+/// @param maxLen Longueur maximale
+/// @return Chaîne de caractères de longueur maxLen
+std::string maxLenString(std::string str, int maxLen);
+
 #endif

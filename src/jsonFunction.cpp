@@ -1,36 +1,37 @@
 #include "jsonFunction.h"
 
-void jsonToUnorderedMap(rapidjson::Value& json, std::unordered_map<std::string, float>& map)
+
+void jsonToUnorderedMap(rapidjson::Value &json, std::unordered_map<std::string, float> &map)
 {
-    //Boucle permettant de parcourir le json clé après clé
+    // Boucle permettant de parcourir le json clé après clé
     for (rapidjson::Value::ConstMemberIterator itr = json.MemberBegin(); itr != json.MemberEnd(); ++itr)
     {
         map[itr->name.GetString()] = itr->value.GetFloat();
     }
 }
 
-void jsonToUnorderedMap(rapidjson::Value& json, std::unordered_map<std::string, unsigned int>& map)
+void jsonToUnorderedMap(rapidjson::Value &json, std::unordered_map<std::string, unsigned int> &map)
 {
-    //Boucle permettant de parcourir le json clé après clé
+    // Boucle permettant de parcourir le json clé après clé
     for (rapidjson::Value::ConstMemberIterator itr = json.MemberBegin(); itr != json.MemberEnd(); ++itr)
     {
         map[itr->name.GetString()] = itr->value.GetInt();
     }
 }
 
-void jsonToVector(rapidjson::Value& jsonList, std::vector<std::string>& vec)
+void jsonToVector(rapidjson::Value &jsonList, std::vector<std::string> &vec)
 {
-    //Boucle permettant de parcourir le json clé après clé
-    for (int i=0; i<jsonList.Size(); i++)
+    // Boucle permettant de parcourir le json clé après clé
+    for (int i = 0; i < jsonList.Size(); i++)
     {
         vec.push_back(jsonList[i].GetString());
     }
 }
 
-void unorderedMapToJson(rapidjson::Document& doc, std::unordered_map<std::string, float>& map)
+void unorderedMapToJson(rapidjson::Document &doc, std::unordered_map<std::string, float> &map)
 {
     rapidjson::Value json(rapidjson::kObjectType);
-    for (auto& x : map)
+    for (auto &x : map)
     {
         rapidjson::Value key(x.first.c_str(), doc.GetAllocator());
         rapidjson::Value value(x.second);
@@ -39,20 +40,22 @@ void unorderedMapToJson(rapidjson::Document& doc, std::unordered_map<std::string
     doc.CopyFrom(json, doc.GetAllocator());
 }
 
-
-void loadJson(std::string path, rapidjson::Document& doc) {
+void loadJson(std::string path, rapidjson::Document &doc)
+{
     std::ifstream file;
     file.open(path);
     assert(file.is_open());
     std::string line;
     std::string json;
-    while(std::getline(file, line)){
+    while (std::getline(file, line))
+    {
         json += line;
     }
     doc.Parse(json.c_str());
 }
 
-void saveJson(std::string path, rapidjson::Document& doc) {
+void saveJson(std::string path, rapidjson::Document &doc)
+{
     std::ofstream file;
     file.open(path);
     assert(file.is_open());
@@ -63,8 +66,7 @@ void saveJson(std::string path, rapidjson::Document& doc) {
     file << buffer.GetString();
 }
 
-
-std::string formatString(const std::string fmt_str,std::vector<std::string> args)
+std::string formatString(const std::string fmt_str, std::vector<std::string> args)
 {
     std::string result;
     size_t cur_pos = 0;
@@ -83,7 +85,7 @@ std::string formatString(const std::string fmt_str,std::vector<std::string> args
 std::string createSpaceString(int size)
 {
     std::string result;
-    for (int i=0; i<size; i++)
+    for (int i = 0; i < size; i++)
     {
         result += " ";
     }
@@ -93,4 +95,46 @@ std::string createSpaceString(int size)
 int getRand(int min, int max)
 {
     return rand() % (max - min) + min;
+}
+
+std::vector<std::string> splitString(std::string str, const char delimiter[2])
+{
+    std::vector<std::string> res;
+    std::string tmp;
+    for (int i = 0; i < str.size(); i++)
+    {
+        if (str[i] == delimiter[0])
+        {
+            res.push_back(tmp);
+            tmp = "";
+        }
+        else
+        {
+            tmp += str[i];
+        }
+    }
+    res.push_back(tmp);
+    return res;
+}
+
+std::string replaceString(std::string str, std::string toReplace, std::string replaceBy) {
+    std::string res;
+    for (size_t i = 0; i< str.size(); i++) {
+        if (str[i] == toReplace[0]) {
+            res += replaceBy;
+        }
+        else {
+            res += str[i];
+        }
+    }   
+    return res;
+}
+
+std::string maxLenString(std::string str, int maxLen)
+{
+    if (str.size() > maxLen)
+    {
+        return str.substr(0, maxLen - 3) + "...";
+    }
+    return str;
 }

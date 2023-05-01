@@ -52,8 +52,11 @@ private:
 public:
     float hp; // Points de vie du monstre
     float mp; // Points de mana du monstre
+    
     ///@brief Constructeur à partir d'un monstre dans la sauvegarde
-    ///@param monsterData : données du monstre, idM : identifiant du monstre, monsterBase : base de données des monstres, skillBase : base de données des compétences
+    ///@param monsterData données du monstre
+    ///@param idM identifiant du monstre
+    ///@param database base de données
     Monster(rapidjson::Value &monsterData, std::string idM, Database &database);
 
     ///@brief Constructeur de monstre sauvage
@@ -76,12 +79,12 @@ public:
     void printSpells() const;
 
     ///@brief Ajoute des points d'expérience au monstre
-    ///@param xp : nombre de points d'expérience à ajouter
+    ///@param xp nombre de points d'expérience à ajouter
     ///@return vrai si le monstre a gagné un niveau
     bool addXp(unsigned int xp);
 
     ///@brief Ajoute des points de compétence au monstre
-    ///@param points : nombre de points de compétence à ajouter
+    ///@param points nombre de points de compétence à ajouter
     void addSkillPoint(unsigned int points);
 
     /// @brief Applique les points de compétence au monstre dans un de ses sets de compétences
@@ -91,17 +94,22 @@ public:
     void applySkillPoint(unsigned int points, std::string skill, Database &db);
 
     /// @brief Met à jour les statistiques du monstre dans la sauvegarde
-    /// @param save : sauvegarde
+    /// @param save sauvegarde
     void updateSaveMonster(rapidjson::Document &save) const;
 
     /// @brief Crée un monstre dans la sauvegarde
-    /// @param save : sauvegarde
+    /// @param save sauvegarde
     void createSaveMonster(rapidjson::Document &save) const;
 
     /// @brief vrai si les deux monstres ont le même identifiant
-    /// @param m : monstre à comparer
+    /// @param m monstre à comparer
     /// @return vrai si les deux monstres ont le même identifiant
     bool operator==(const Monster &m) const;
+
+    /// @brief Vrai si les deux monstres n'ont pas le même identifiant
+    /// @param m Monstre à comparer
+    /// @return Vrai si les deux monstres n'ont pas le même identifiant
+    bool operator!=(const Monster &m) const;
 
     /// @brief Donne l'agilité du monstre
     /// @return Retourne l'agilité du monstre
@@ -111,7 +119,14 @@ public:
     /// @return Retourne l'experience du monstre
     unsigned int getExp() const;
 
+    /// @brief Accesseur du niveau du monstre
+    /// @return Retourne le niveau du monstre
     unsigned int getLevel() const;
+
+    /// @brief Donne l'xp nécessaire pour atteindre le niveau demandé
+    /// @param level niveau demandé
+    /// @return Retourne l'xp nécessaire pour atteindre le niveau demandé
+    int getXpLvl(int level) const;
 
     /// @brief Donne les sorts du monstre
     /// @return Retourne les sorts du monstre
@@ -126,12 +141,12 @@ public:
     std::string getType() const;
 
     /// @brief Donne la statistique du monstre demandée
-    /// @param stat : statistique demandée
+    /// @param stat statistique demandée
     /// @return Retourne la statistique du monstre demandée
     float getStat(std::string stat) const;
 
     /// @brief Donne les resistances du monstre
-    /// @param resistance : resistance demandée
+    /// @param resistance resistance demandée
     /// @return Retourne la resistance du monstre demandée
     float getResistance(std::string resistance) const;
 
@@ -140,26 +155,26 @@ public:
     Tactics getTactic() const;
 
     /// @brief Définit la tactique du monstre
-    /// @param tactic : tactique du monstre
+    /// @param tactic tactique du monstre
     void setTactic(Tactics tactic);
 
     /// @brief Inflige des dégâts au monstre
-    /// @param damage : dégâts à infliger
+    /// @param damage dégâts à infliger
     void damage(float damage);
 
     /// @brief Soigne le monstre
-    /// @param heal : points de vie à soigner
+    /// @param heal points de vie à soigner
     void heal(float heal);
 
     /// @brief Défini les alterations de statistiques du monstre
-    /// @param alteration : statistique à modifier
-    /// @param value : valeur de l'alteration
-    /// @param turn : nombre de tours de l'alteration
+    /// @param alteration statistique à modifier
+    /// @param value valeur de l'alteration
+    /// @param turn nombre de tours de l'alteration
     void setStats(std::string alteration, float value, int turn);
 
     /// @brief Défini les alterations de status du monstre
-    /// @param status : status à modifier
-    /// @param turn : nombre de tours du status
+    /// @param status status à modifier
+    /// @param turn nombre de tours du status
     void setStatus(std::string status, int turn);
 
     /// @brief Met à jour les alterations de statistiques et de status du monstre
@@ -167,12 +182,12 @@ public:
     std::queue<std::string> updateStatStatus();
 
     /// @brief Renvoie vrai si le status du monstre est altéré
-    /// @param status : status à vérifier
+    /// @param status status à vérifier
     /// @return Retourne vrai si le status du monstre est altéré
     bool getStatus(std::string status) const;
 
     /// @brief retourne une informations du monstre
-    /// @param info : information demandée
+    /// @param info information demandée
     /// @return Retourne l'informations du nom info du monstre
     std::string getInfos(std::string info) const;
 
@@ -185,11 +200,11 @@ public:
     unsigned int getSkillToAttribute() const;
 
     /// @brief Attribution automatique des points de compétence du monstre
-    /// @param db : base de données
+    /// @param db base de données
     void autoAttributeSkill(Database &db);
 
     /// @brief change le nom du monstre
-    /// @param name : nouveau nom du monstre
+    /// @param name nouveau nom du monstre
     void setName(std::string name);
 
     /// @brief Soigne le monstre à 100%

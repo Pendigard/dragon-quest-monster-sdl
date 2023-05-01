@@ -1,7 +1,7 @@
 
 #include "Menu.h"
 
-Option createOption(std::string text, int x, int y, int w, int h, cursorDirection direction, menuChoice action, bool transparent)
+Option createOption(std::string text, int x, int y, int w, int h, cursorDirection direction, bool transparent, int size)
 {
     Option option;
     option.text = text;
@@ -11,8 +11,8 @@ Option createOption(std::string text, int x, int y, int w, int h, cursorDirectio
     option.h = h;
     option.direction = direction;
     option.transparent = transparent;
-    option.action = action;
     option.forbidden = false;
+    option.size = size;
     return option;
 }
 
@@ -40,6 +40,21 @@ Menu::Menu(Sprite *cursor)
     this->changePageX = true;
 }
 
+void Menu::addOption(Option option, int row, int page)
+{
+    assert(page >= 0);
+    assert(row >= 0);
+    if (page >= options.size())
+    {
+        options.resize(page + 1);
+    }
+    if (row >= options[page].size())
+    {
+        options[page].resize(row + 1);
+    }
+    options[page][row].push_back(option);
+}
+
 void Menu::addRow(std::vector<Option> row, int page)
 {
     if (page >= options.size())
@@ -51,6 +66,9 @@ void Menu::addRow(std::vector<Option> row, int page)
 
 void Menu::drawOptions(SDL_Renderer *renderer, Camera camera)
 {
+    SDL_Color color = {255, 255, 255};
+    if (empty())
+        return;
     for (int i = 0; i < options[currentPage].size(); i++)
     {
         for (int j = 0; j < options[currentPage][i].size(); j++)
@@ -58,25 +76,24 @@ void Menu::drawOptions(SDL_Renderer *renderer, Camera camera)
             if (!options[currentPage][i][j].transparent)
             {
                 drawBox(renderer, options[currentPage][i][j].x, options[currentPage][i][j].y, options[currentPage][i][j].w, options[currentPage][i][j].h);
-                SDL_Color color = {255, 255, 255};
-                drawText(renderer, options[currentPage][i][j].text, options[currentPage][i][j].x + 10, options[currentPage][i][j].y + 10, 20, color);
             }
+            drawText(renderer, options[currentPage][i][j].text, options[currentPage][i][j].x + 10, options[currentPage][i][j].y + 10, options[currentPage][i][j].size, color);
             if (i == currentChoiceY && j == currentChoiceX)
             {
                 (*cursor).setCurrentSprite(options[currentPage][i][j].direction);
                 switch (options[currentPage][i][j].direction)
                 {
                 case UP:
-                    (*cursor).draw(options[currentPage][i][j].x + options[currentPage][i][j].w / 2 - (*cursor).getWidth() / 2, options[currentPage][i][j].y - (*cursor).getHeight(), camera, false, 1);
+                    (*cursor).draw(options[currentPage][i][j].x + options[currentPage][i][j].w / 2 - (*cursor).getWidth() / 2, options[currentPage][i][j].y - (*cursor).getHeight(), 1);
                     break;
                 case DOWN:
-                    (*cursor).draw(options[currentPage][i][j].x + options[currentPage][i][j].w / 2 - (*cursor).getWidth() / 2, options[currentPage][i][j].y + options[currentPage][i][j].h, camera, false, 1);
+                    (*cursor).draw(options[currentPage][i][j].x + options[currentPage][i][j].w / 2 - (*cursor).getWidth() / 2, options[currentPage][i][j].y + options[currentPage][i][j].h, 1);
                     break;
                 case LEFT:
-                    (*cursor).draw(options[currentPage][i][j].x - (*cursor).getWidth(), options[currentPage][i][j].y + options[currentPage][i][j].h / 2 - (*cursor).getHeight() / 2, camera, false, 1);
+                    (*cursor).draw(options[currentPage][i][j].x - (*cursor).getWidth(), options[currentPage][i][j].y + options[currentPage][i][j].h / 2 - (*cursor).getHeight() / 2, 1);
                     break;
                 case RIGHT:
-                    (*cursor).draw(options[currentPage][i][j].x + options[currentPage][i][j].w, options[currentPage][i][j].y + options[currentPage][i][j].h / 2 - (*cursor).getHeight() / 2, camera, false, 1);
+                    (*cursor).draw(options[currentPage][i][j].x + options[currentPage][i][j].w, options[currentPage][i][j].y + options[currentPage][i][j].h / 2 - (*cursor).getHeight() / 2, 1);
                     break;
                 }
             }
@@ -105,20 +122,21 @@ void Menu::changeCurrentChoice(int x, int y)
     if (currentChoiceX < 0)
     {
         if (changePageX)
-            currentPage = (currentPage - 1)%options.size();
+            currentPage = (currentPage - 1) % options.size();
         currentChoiceX = options[currentPage][currentChoiceY].size() - 1;
     }
     if (currentChoiceX >= options[currentPage][currentChoiceY].size())
     {
         if (changePageX)
-            currentPage = (currentPage + 1) % options.size();;
+            currentPage = (currentPage + 1) % options.size();
+        ;
         currentChoiceX = 0;
     }
     currentChoiceY = y;
     if (currentChoiceY < 0)
     {
         if (!changePageX)
-            currentPage = (currentPage - 1)%options.size();
+            currentPage = (currentPage - 1) % options.size();
         currentChoiceY = options[currentPage].size() - 1;
     }
 }
@@ -144,7 +162,7 @@ void Menu::changeChoiceUp()
     if (currentChoiceY < 0)
     {
         if (!changePageX)
-            currentPage = (currentPage - 1)%options.size();
+            currentPage = (currentPage - 1) % options.size();
         currentChoiceY = options[currentPage].size() - 1;
     }
     if (isForbiddenChoice())
@@ -159,7 +177,7 @@ void Menu::changeChoiceLeft()
     if (currentChoiceX < 0)
     {
         if (changePageX)
-            currentPage = (currentPage - 1)%options.size();
+            currentPage = (currentPage - 1) % options.size();
         currentChoiceX = options[currentPage][currentChoiceY].size() - 1;
     }
     if (isForbiddenChoice())
@@ -188,7 +206,8 @@ bool Menu::isForbiddenChoice()
     return options[currentPage][currentChoiceY][currentChoiceX].forbidden;
 }
 
-void Menu::setForbiddenChoice(int x, int y, bool forbidden, int page) {
+void Menu::setForbiddenChoice(int x, int y, bool forbidden, int page)
+{
     options[page][y][x].forbidden = forbidden;
 }
 
@@ -215,9 +234,18 @@ void Menu::setFirstChoice()
     }
 }
 
-menuChoice Menu::getChoice() const
+void Menu::clearForbiddenChoices()
 {
-    return options[currentPage][currentChoiceY][currentChoiceX].action;
+    for (size_t i = 0; i < options.size(); i++)
+    {
+        for (size_t j = 0; j < options[i].size(); j++)
+        {
+            for (size_t k = 0; k < options[i][j].size(); k++)
+            {
+                options[i][j][k].forbidden = false;
+            }
+        }
+    }
 }
 
 void Menu::clear()
@@ -225,7 +253,16 @@ void Menu::clear()
     options.clear();
 }
 
-Option& Menu::getCurrentOption()
+Option &Menu::getCurrentOption()
 {
     return options[currentPage][currentChoiceY][currentChoiceX];
+}
+
+bool Menu::empty() const
+{
+    return options.empty();
+}
+
+unsigned int Menu::getNbRow() const {
+    return options[currentPage].size();
 }

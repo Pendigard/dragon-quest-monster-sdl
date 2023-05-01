@@ -21,6 +21,18 @@ enum functionImpact
     null    // Ne rien faire
 };
 
+enum actionType
+{
+    cast,
+    takeDamage,
+    takeHeal,
+    takeStatus,
+    attack,
+    prepareScout,
+    critical,
+    none
+};
+
 struct spellImpact
 {
     std::string message;                     // Message à afficher à l'impact du sort
@@ -29,7 +41,19 @@ struct spellImpact
     std::vector<float> argumentFloat;        // Arguments de la fonction
     std::vector<int> argumentInt;            // Arguments de la fonction
     std::vector<std::string> argumentString; // Arguments de la fonction
+    actionType type;                         // Type d'action
+    bool team1;                              // Indique si l'impact se fait sur l'équipe du joueur
 };
+
+struct scoutImpact
+{
+    std::string message;      // Message à afficher à l'impact du sort
+    unsigned int chanceScout; // Chance de dresser
+    actionType type;          // Type d'action
+    bool team1;               // Indique si l'impact se fait sur l'équipe du joueur
+};
+
+scoutImpact createScoutImpact(std::string message, actionType type, bool team1, unsigned int chanceScout = 0);
 
 class Fight
 {
@@ -77,7 +101,7 @@ private:
     /// @brief applique les effets du status
     /// @param caster : monstre qui lance le sort
     /// @param canMove : vrai si le monstre peut bouger, faux sinon après l'application du status
-    /// @return La file des impacts a appliquer au monstre caster 
+    /// @return La file des impacts a appliquer au monstre caster
     std::queue<spellImpact> getStatusEffect(Monster &caster, bool &canMove);
 
     /// @brief renvoie la phrase correspondant à la statistique
@@ -182,7 +206,7 @@ public:
     /// @brief Lance la phase de dressage
     /// @param idMonster : id du monstre à dresser
     /// @return true si le monstre a été dressé, false sinon
-    bool scout(std::string idMonster, std::queue<std::string> &messages);
+    bool scout(std::string idMonster, std::queue<scoutImpact> &messages);
 
     /// @brief Renvoie l'or gagné
     /// @param db : base de données

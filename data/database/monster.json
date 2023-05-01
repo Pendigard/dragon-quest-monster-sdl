@@ -19,7 +19,7 @@
                     "agi": 1.8,
                     "wis": 1.3
                 },
-                "exp": 10000,
+                "exp": 1,
                 "gold": 10,
                 "resistances": {
                     "flamme": 2,
@@ -125,7 +125,255 @@
                 }
             }
         },
+        "E": {
+            "gluanbulot": {
+                "statMax": {
+                    "hp": 410,
+                    "mp": 450,
+                    "atk": 490,
+                    "def": 980,
+                    "agi": 170,
+                    "wis": 390
+                },
+                "skills": "Pot de glu",
+                "growth": {
+                    "hp": 2.2,
+                    "mp": 1.8,
+                    "atk": 1.9,
+                    "def": 3.1,
+                    "agi": 0.4,
+                    "wis": 1.3
+                },
+                "exp": 3,
+                "gold": 20,
+                "resistances": {
+                    "flamme": 1,
+                    "eau": 0.5,
+                    "terre": 0.5,
+                    "vent": 0.5,
+                    "bang": 2,
+                    "glace": 2,
+                    "foudre": 0.5,
+                    "elec": 1,
+                    "lumiere": 1,
+                    "poison": 0.5,
+                    "paralysis": 0.5,
+                    "sleep": 0.8,
+                    "confusion": 0.5,
+                    "atk": 0.5,
+                    "def": 0.25,
+                    "agi": 0.5,
+                    "wis": 0.5,
+                    "breath": 1
+                }
+            },
+            "gluante": {
+                "statMax": {
+                    "hp": 480,
+                    "mp": 380,
+                    "atk": 470,
+                    "def": 480,
+                    "agi": 420,
+                    "wis": 440
+                },
+                "skills": "Pot de glu",
+                "growth": {
+                    "hp": 2.2,
+                    "mp": 2,
+                    "atk": 2.3,
+                    "def": 2.8,
+                    "agi": 1.8,
+                    "wis": 2.1
+                },
+                "exp": 10,
+                "gold": 18,
+                "resistances": {
+                    "flamme": 0.5,
+                    "eau": 2,
+                    "terre": 1,
+                    "vent": 1,
+                    "bang": 1,
+                    "glace": 1,
+                    "foudre": 1,
+                    "elec": 1,
+                    "lumiere": 1,
+                    "poison": 0.25,
+                    "paralysis": 0.5,
+                    "sleep": 0.5,
+                    "confusion": 0.5,
+                    "atk": 0.5,
+                    "def": 0.5,
+                    "agi": 0.5,
+                    "wis": 0.5,
+                    "breath": 1
+                }
+            },
+            "gluant de crin": {
+                "statMax": {
+                    "hp": 600,
+                    "mp": 110,
+                    "atk": 530,
+                    "def": 540,
+                    "agi": 390,
+                    "wis": 390
+                },
+                "skills": "Intoxicateur",
+                "growth": {
+                    "hp": 3.2,
+                    "mp": 0.4,
+                    "atk": 2.7,
+                    "def": 2.6,
+                    "agi": 2.1,
+                    "wis": 2.1
+                },
+                "exp": 13,
+                "gold": 2,
+                "resistances": {
+                    "flamme": 2,
+                    "eau": 1,
+                    "terre": 0.5,
+                    "vent": 1,
+                    "bang": 1,
+                    "glace": 0.5,
+                    "foudre": 1,
+                    "elec": 1,
+                    "lumiere": 2,
+                    "poison": 0,
+                    "paralysis": 0.5,
+                    "sleep": 0.75,
+                    "confusion": 0.75,
+                    "atk": 0.25,
+                    "def": 0.5,
+                    "agi": 0.25,
+                    "wis": 0.5,
+                    "breath": 1
+                }
+            },
+            "gluant mouchete": {
+                "statMax": {
+                    "hp": 550,
+                    "mp": 300,
+                    "atk": 460,
+                    "def": 450,
+                    "agi": 410,
+                    "wis": 330
+                },
+                "skills": "Pot de glu",
+                "growth": {
+                    "hp": 2.9,
+                    "mp": 2.1,
+                    "atk": 2.7,
+                    "def": 2.8,
+                    "agi": 2.4,
+                    "wis": 2.1
+                },
+                "exp": 13,
+                "gold": 25,
+                "resistances": {
+                    "flamme": 1,
+                    "eau": 1,
+                    "terre": 0.5,
+                    "vent": 1,
+                    "bang": 0.25,
+                    "glace": 0.5,
+                    "foudre": 1,
+                    "elec": 1,
+                    "lumiere": 1,
+                    "poison": 0.5,
+                    "paralysis": 0.5,
+                    "sleep": 0.5,
+                    "confusion": 0.75,
+                    "atk": 0.5,
+                    "def": 0.5,
+                    "agi": 0.5,
+                    "wis": 0.5,
+                    "breath": 1
+                }
+            },
+            "gluancornu": {
+                "statMax": {
+                    "hp": 520,
+                    "mp": 200,
+                    "atk": 600,
+                    "def": 500,
+                    "agi": 460,
+                    "wis": 260
+                },
+                "skills": "Souffle",
+                "growth": {
+                    "hp": 2.9,
+                    "mp": 2,
+                    "atk": 3.1,
+                    "def": 2.9,
+                    "agi": 2.6,
+                    "wis": 1.9
+                },
+                "exp": 11,
+                "gold": 20,
+                "resistances": {
+                    "flamme": 0.25,
+                    "eau": 1,
+                    "terre": 1,
+                    "vent": 1,
+                    "bang": 0.5,
+                    "glace": 2,
+                    "foudre": 4,
+                    "elec": 1,
+                    "lumiere": 1,
+                    "poison": 0.5,
+                    "paralysis": 0.5,
+                    "sleep": 0.5,
+                    "confusion": 0.5,
+                    "atk": 0.25,
+                    "def": 0.75,
+                    "agi": 0.5,
+                    "wis": 0.5,
+                    "breath": 1
+                }
+            }
+        },
         "D": {
+            "gluangelique": {
+                "statMax": {
+                    "hp": 440,
+                    "mp": 640,
+                    "atk": 320,
+                    "def": 510,
+                    "agi": 540,
+                    "wis": 900
+                },
+                "skills": "Guerisseur",
+                "growth": {
+                    "hp": 2.9,
+                    "mp": 2.3,
+                    "atk": 1.8,
+                    "def": 2.5,
+                    "agi": 2.9,
+                    "wis": 4.1
+                },
+                "exp": 25,
+                "gold": 24,
+                "resistances": {
+                    "flamme": 1,
+                    "eau": 1,
+                    "terre": 1,
+                    "vent": 1,
+                    "bang": 2,
+                    "glace": 1,
+                    "foudre": 2,
+                    "elec": 4,
+                    "lumiere": 0,
+                    "poison": 0,
+                    "paralysis": 0.25,
+                    "sleep": 0.5,
+                    "confusion": 0.5,
+                    "atk": 0.5,
+                    "def": 0.5,
+                    "agi": 0.5,
+                    "wis": 0.75,
+                    "breath": 1
+                }
+            },
             "monte-gluant": {
                 "statMax": {
                     "hp": 500,
@@ -164,132 +412,631 @@
                     "agi": 0,
                     "wis": 0.5,
                     "breath": 1
+                }
+            },
+            "slurpierre": {
+                "statMax": {
+                    "hp": 630,
+                    "mp": 160,
+                    "atk": 500,
+                    "def": 610,
+                    "agi": 390,
+                    "wis": 410
                 },
-                "gluant de metal": {
-                    "statMax": {
-                        "hp": 30,
-                        "mp": 710,
-                        "atk": 480,
-                        "def": 999,
-                        "agi": 999,
-                        "wis": 460
-                    },
-                    "skills": "Pot de glu",
-                    "growth": {
-                        "hp": 0.7,
-                        "mp": 1.8,
-                        "atk": 1.2,
-                        "def": 7,
-                        "agi": 6.8,
-                        "wis": 1.3
-                    },
-                    "exp": 1500,
-                    "resistances": {
-                        "flamme": 0,
-                        "eau": 0,
-                        "terre": 1,
-                        "vent": 0,
-                        "bang": 0,
-                        "glace": 0,
-                        "foudre": 0,
-                        "elec": 0,
-                        "lumiere": 0,
-                        "poison": 0.25,
-                        "paralysis": 0.5,
-                        "sleep": 0.5,
-                        "confusion": 0.5,
-                        "atk": 0.5,
-                        "def": 0,
-                        "agi": 0.5,
-                        "wis": 0.5,
-                        "breath": 1
-                    }
+                "skills": "Defenseur",
+                "growth": {
+                    "hp": 2.8,
+                    "mp": 2.7,
+                    "atk": 2.6,
+                    "def": 3.4,
+                    "agi": 2.2,
+                    "wis": 2.4
+                },
+                "exp": 25,
+                "gold": 30,
+                "resistances": {
+                    "flamme": 1,
+                    "eau": 1,
+                    "terre": 0,
+                    "vent": 1,
+                    "bang": 2,
+                    "glace": 2,
+                    "foudre": 0,
+                    "elec": 1,
+                    "lumiere": 1,
+                    "poison": 0,
+                    "paralysis": 0.5,
+                    "sleep": 0.5,
+                    "confusion": 0.75,
+                    "atk": 0.5,
+                    "def": 0.5,
+                    "agi": 0.75,
+                    "wis": 0.5,
+                    "breath": 1
+                }
+            },
+            "monte-gluant de metal": {
+                "statMax": {
+                    "hp": 480,
+                    "mp": 350,
+                    "atk": 500,
+                    "def": 610,
+                    "agi": 400,
+                    "wis": 340
+                },
+                "skills": "Defenseur",
+                "growth": {
+                    "hp": 3,
+                    "mp": 1.6,
+                    "atk": 2.2,
+                    "def": 3.4,
+                    "agi": 2.1,
+                    "wis": 2.1
+                },
+                "exp": 25,
+                "gold": 24,
+                "resistances": {
+                    "flamme": 1,
+                    "eau": 1,
+                    "terre": 1,
+                    "vent": 1,
+                    "bang": 1,
+                    "glace": 1,
+                    "foudre": 4,
+                    "elec": 1,
+                    "lumiere": 1,
+                    "poison": 0.5,
+                    "paralysis": 0.75,
+                    "sleep": 0.5,
+                    "confusion": 0.75,
+                    "atk": 0.25,
+                    "def": 0.25,
+                    "agi": 0.5,
+                    "wis": 0.75,
+                    "breath": 1
+                }
+            },
+            "gluant de metal": {
+                "statMax": {
+                    "hp": 30,
+                    "mp": 710,
+                    "atk": 480,
+                    "def": 999,
+                    "agi": 999,
+                    "wis": 460
+                },
+                "skills": "Pot de glu",
+                "growth": {
+                    "hp": 0.4,
+                    "mp": 1.8,
+                    "atk": 1.2,
+                    "def": 7,
+                    "agi": 6.8,
+                    "wis": 1.3
+                },
+                "exp": 1500,
+                "gold" : 20,
+                "resistances": {
+                    "flamme": 0,
+                    "eau": 0,
+                    "terre": 1,
+                    "vent": 0,
+                    "bang": 0,
+                    "glace": 0,
+                    "foudre": 0,
+                    "elec": 0,
+                    "lumiere": 0,
+                    "poison": 0.25,
+                    "paralysis": 0.5,
+                    "sleep": 0.5,
+                    "confusion": 0.5,
+                    "atk": 0.5,
+                    "def": 0,
+                    "agi": 0.5,
+                    "wis": 0.5,
+                    "breath": 1
                 }
             }
         },
-        "S" : {
-            "gluancien" : {
-                "statMax" : {
-                    "hp" : 999,
-                    "mp" : 1100,
-                    "atk" : 450,
-                    "def" : 890,
-                    "agi" : 650,
-                    "wis" : 999
+        "C": {
+            "gluandragon": {
+                "statMax": {
+                    "hp": 580,
+                    "mp": 420,
+                    "atk": 600,
+                    "def": 690,
+                    "agi": 520,
+                    "wis": 440
                 },
-                "skills" : "Bang et foudre",
-                "growth" : {
-                    "hp" : 7.4,
-                    "mp" : 7.9,
-                    "atk" : 3.5,
-                    "def" : 6.9,
-                    "agi" : 4.5,
-                    "wis" : 7.8
+                "skills": "Souffle",
+                "growth": {
+                    "hp": 3.2,
+                    "mp": 2.9,
+                    "atk": 3.3,
+                    "def": 3.4,
+                    "agi": 2.8,
+                    "wis": 3
                 },
-                "exp" : 975,
-                "gold" : 400,
-                "resistances" : {
-                    "flamme" : 1,
-                    "eau" : 1,
-                    "terre" : 2,
-                    "vent" : 1,
-                    "bang" : 1,
-                    "glace" : 1,
-                    "foudre" : 1,
-                    "elec" : 0.25,
-                    "lumiere" : 0.25,
-                    "poison" : 0.25,
-                    "paralysis" : 0.75,
-                    "sleep" : 0.75,
-                    "confusion" : 0.75,
-                    "atk" : 0.25,
-                    "def" : 0.5,
-                    "agi" : 0.5,
-                    "wis" : 0,
-                    "breath" : 0.5
+                "exp": 30,
+                "gold": 30,
+                "resistances": {
+                    "flamme": 0.5,
+                    "eau": 1,
+                    "terre": 1,
+                    "vent": 2,
+                    "bang": 1,
+                    "glace": 2,
+                    "foudre": 2,
+                    "elec": 1,
+                    "lumiere": 2,
+                    "poison": 0.5,
+                    "paralysis": 0.5,
+                    "sleep": 0.75,
+                    "confusion": 0.5,
+                    "atk": 0.5,
+                    "def": 0.5,
+                    "agi": 0.5,
+                    "wis": 0.5,
+                    "breath": 1
+                }
+            },
+            "roi gluant": {
+                "statMax": {
+                    "hp": 730,
+                    "mp": 400,
+                    "atk": 520,
+                    "def": 600,
+                    "agi": 280,
+                    "wis": 540
+                },
+                "skills": "Pot de glu",
+                "growth": {
+                    "hp": 3.8,
+                    "mp": 3,
+                    "atk": 3.3,
+                    "def": 3.5,
+                    "agi": 2.4,
+                    "wis": 3.1
+                },
+                "exp": 36,
+                "gold": 50,
+                "resistances": {
+                    "flamme": 1,
+                    "eau": 1,
+                    "terre": 1,
+                    "vent": 1,
+                    "bang": 1,
+                    "glace": 1,
+                    "foudre": 1,
+                    "elec": 4,
+                    "lumiere": 2,
+                    "poison": 0.75,
+                    "paralysis": 0.5,
+                    "sleep": 0.75,
+                    "confusion": 0.75,
+                    "atk": 0.5,
+                    "def": 0.5,
+                    "agi": 0.5,
+                    "wis": 0.5,
+                    "breath": 1
+                }
+            },
+            "cybergluant": {
+                "statMax": {
+                    "hp": 650,
+                    "mp": 400,
+                    "atk": 620,
+                    "def": 600,
+                    "agi": 330,
+                    "wis": 630
+                },
+                "skills": "Defenseur",
+                "growth": {
+                    "hp": 3.4,
+                    "mp": 3.1,
+                    "atk": 3.3,
+                    "def": 3.5,
+                    "agi": 2.7,
+                    "wis": 3.2
+                },
+                "exp": 30,
+                "gold": 25,
+                "resistances": {
+                    "flamme": 0.5,
+                    "eau": 1,
+                    "terre": 1,
+                    "vent": 2,
+                    "bang": 1,
+                    "glace": 2,
+                    "foudre": 2,
+                    "elec": 1,
+                    "lumiere": 2,
+                    "poison": 0.5,
+                    "paralysis": 0.5,
+                    "sleep": 0.75,
+                    "confusion": 0.5,
+                    "atk": 0.5,
+                    "def": 0.5,
+                    "agi": 0.5,
+                    "wis": 0.5,
+                    "breath": 1
+                }
+            },
+            "gluant de mercure": {
+                "statMax": {
+                    "hp": 32,
+                    "mp": 850,
+                    "atk": 520,
+                    "def": 1400,
+                    "agi": 1400,
+                    "wis": 480
+                },
+                "skills": "Pot de glu",
+                "growth": {
+                    "hp": 0.7,
+                    "mp": 4.2,
+                    "atk": 3.6,
+                    "def": 14,
+                    "agi": 14,
+                    "wis": 2.8
+                },
+                "exp": 100,
+                "gold": 30,
+                "resistances": {
+                    "flamme": 0,
+                    "eau": 0,
+                    "terre": 0,
+                    "vent": 0,
+                    "bang": 0,
+                    "glace": 0,
+                    "foudre": 0,
+                    "elec": 0,
+                    "lumiere": 0,
+                    "poison": 0,
+                    "paralysis": 0.5,
+                    "sleep": 0.5,
+                    "confusion": 0.5,
+                    "atk": 0.5,
+                    "def": 0.5,
+                    "agi": 0.5,
+                    "wis": 0.5,
+                    "breath": 0
+                }
+            }
+        },
+        "B": {
+            "monstroeuf": {
+                "statMax": {
+                    "hp": 590,
+                    "mp": 330,
+                    "atk": 640,
+                    "def": 680,
+                    "agi": 580,
+                    "wis": 460
+                },
+                "skills": "Soigneur",
+                "growth": {
+                    "hp": 4.2,
+                    "mp": 3.2,
+                    "atk": 3.3,
+                    "def": 4.4,
+                    "agi": 2.8,
+                    "wis": 3
+                },
+                "exp": 40,
+                "gold": 10,
+                "resistances": {
+                    "flamme": 1,
+                    "eau": 1,
+                    "terre": 2,
+                    "vent": 0,
+                    "bang": 1,
+                    "glace": 2,
+                    "foudre": 1,
+                    "elec": 1,
+                    "lumiere": 1,
+                    "poison": 0,
+                    "paralysis": 0.5,
+                    "sleep": 0.75,
+                    "confusion": 0.75,
+                    "atk": 0.5,
+                    "def": 0.25,
+                    "agi": 0.5,
+                    "wis": 0.5,
+                    "breath": 1
+                }
+            },
+            "roi guerigluant": {
+                "statMax": {
+                    "hp": 800,
+                    "mp": 540,
+                    "atk": 270,
+                    "def": 520,
+                    "agi": 480,
+                    "wis": 440
+                },
+                "skills": "Guerisseur",
+                "growth": {
+                    "hp": 5.1,
+                    "mp": 4.2,
+                    "atk": 2.7,
+                    "def": 4.4,
+                    "agi": 3.8,
+                    "wis": 3.6
+                },
+                "exp": 42,
+                "gold": 50,
+                "resistances": {
+                    "flamme": 1,
+                    "eau": 1,
+                    "terre": 1,
+                    "vent": 1,
+                    "bang": 1,
+                    "glace": 1,
+                    "foudre": 1,
+                    "elec": 1,
+                    "lumiere": 0,
+                    "poison": 0,
+                    "paralysis": 0.5,
+                    "sleep": 0.5,
+                    "confusion": 0.75,
+                    "atk": 0.5,
+                    "def": 0.5,
+                    "agi": 0.75,
+                    "wis": 0.25,
+                    "breath": 1
+                }
+            }
+        },
+        "A": {
+            "gluangedor": {
+                "statMax": {
+                    "hp": 600,
+                    "mp": 810,
+                    "atk": 340,
+                    "def": 870,
+                    "agi": 600,
+                    "wis": 720
+                },
+                "skills": "Guerisseur",
+                "growth": {
+                    "hp": 4.2,
+                    "mp": 5.9,
+                    "atk": 3.3,
+                    "def": 5.4,
+                    "agi": 4.8,
+                    "wis": 5.4
+                },
+                "exp": 40,
+                "gold": 10,
+                "resistances": {
+                    "flamme": 1,
+                    "eau": 1,
+                    "terre": 0.5,
+                    "vent": 2,
+                    "bang": 1,
+                    "glace": 1,
+                    "foudre": 1,
+                    "elec": 4,
+                    "lumiere": 0,
+                    "poison": 0,
+                    "paralysis": 0,
+                    "sleep": 0.5,
+                    "confusion": 0.5,
+                    "atk": 0.5,
+                    "def": 0.5,
+                    "agi": 0.5,
+                    "wis": 0.5,
+                    "breath": 1
+                }
+            },
+            "reine gluante mouchete": {
+                "statMax": {
+                    "hp": 910,
+                    "mp": 600,
+                    "atk": 620,
+                    "def": 660,
+                    "agi": 400,
+                    "wis": 720
+                },
+                "skills": "Pot de glu",
+                "growth": {
+                    "hp": 6.1,
+                    "mp": 5.2,
+                    "atk": 5.3,
+                    "def": 4.4,
+                    "agi": 4.8,
+                    "wis": 5.9
+                },
+                "exp": 40,
+                "gold": 10,
+                "resistances": {
+                    "flamme": 1,
+                    "eau": 1,
+                    "terre": 1,
+                    "vent": 1,
+                    "bang": 1,
+                    "glace": 2,
+                    "foudre": 2,
+                    "elec": 1,
+                    "lumiere": 1,
+                    "poison": 0.5,
+                    "paralysis": 0.5,
+                    "sleep": 0.5,
+                    "confusion": 0.5,
+                    "atk": 0.5,
+                    "def": 0.5,
+                    "agi": 0.5,
+                    "wis": 0.5,
+                    "breath": 1
+                }
+            }
+        },
+        "S": {
+            "roi gluant de metal": {
+                "statMax": {
+                    "hp": 56,
+                    "mp": 1000,
+                    "atk": 650,
+                    "def": 1700,
+                    "agi": 910,
+                    "wis": 500
+                },
+                "skills": "Bang et foudre",
+                "growth": {
+                    "hp": 0.9,
+                    "mp": 7.2,
+                    "atk": 6.3,
+                    "def": 17,
+                    "agi": 6.8,
+                    "wis": 5.2
+                },
+                "exp": 300,
+                "gold": 157,
+                "resistances": {
+                    "flamme": 0,
+                    "eau": 0,
+                    "terre": 0,
+                    "vent": 0,
+                    "bang": 0,
+                    "glace": 0,
+                    "foudre": 0,
+                    "elec": 0,
+                    "lumiere": 0,
+                    "poison": 0,
+                    "paralysis": 0.5,
+                    "sleep": 0.75,
+                    "confusion": 0.75,
+                    "atk": 0.5,
+                    "def": 0.5,
+                    "agi": 0.5,
+                    "wis": 0.5,
+                    "breath": 1
+                }
+            },
+            "gluancien": {
+                "statMax": {
+                    "hp": 999,
+                    "mp": 1100,
+                    "atk": 450,
+                    "def": 890,
+                    "agi": 650,
+                    "wis": 999
+                },
+                "skills": "Bang et foudre",
+                "growth": {
+                    "hp": 7.4,
+                    "mp": 7.9,
+                    "atk": 3.5,
+                    "def": 6.9,
+                    "agi": 4.5,
+                    "wis": 7.8
+                },
+                "exp": 975,
+                "gold": 400,
+                "resistances": {
+                    "flamme": 1,
+                    "eau": 1,
+                    "terre": 2,
+                    "vent": 1,
+                    "bang": 1,
+                    "glace": 1,
+                    "foudre": 1,
+                    "elec": 0.25,
+                    "lumiere": 0.25,
+                    "poison": 0.25,
+                    "paralysis": 0.75,
+                    "sleep": 0.75,
+                    "confusion": 0.75,
+                    "atk": 0.25,
+                    "def": 0.5,
+                    "agi": 0.5,
+                    "wis": 0,
+                    "breath": 0.5
+                }
+            },
+            "gluant de tenerium" : {
+                "statMax": {
+                    "hp": 64,
+                    "mp": 1500,
+                    "atk": 820,
+                    "def": 1600,
+                    "agi": 750,
+                    "wis": 610
+                },
+                "skills": "Soigneur",
+                "growth": {
+                    "hp": 1,
+                    "mp": 11.5,
+                    "atk": 9.3,
+                    "def": 24,
+                    "agi": 9.9,
+                    "wis": 10.5
+                },
+                "exp": 400,
+                "gold": 1500,
+                "resistances": {
+                    "flamme": -1,
+                    "eau": -1,
+                    "terre": -1,
+                    "vent": -1,
+                    "bang": -1,
+                    "glace": -1,
+                    "foudre": -1,
+                    "elec": -1,
+                    "lumiere": -1,
+                    "poison": 0.5,
+                    "paralysis": 0.5,
+                    "sleep": 0.5,
+                    "confusion": 0.75,
+                    "atk": 0.5,
+                    "def":  0.5,
+                    "agi":  0.5,
+                    "wis":  0.5,
+                    "breath": 1
                 }
             }
         },
         "X": {
-            "gluandor" : {
-                "statMax" : {
-                    "hp" : 128,
-                    "mp" : 1000,
-                    "atk" : 900,
-                    "def" : 1050,
-                    "agi" : 900,
-                    "wis" : 750
+            "gluandor": {
+                "statMax": {
+                    "hp": 128,
+                    "mp": 1000,
+                    "atk": 900,
+                    "def": 1050,
+                    "agi": 900,
+                    "wis": 750
                 },
-                "skills" : "Bang et foudre",
-                "growth" : {
-                    "hp" : 0.9,
-                    "mp" : 7.7,
-                    "atk" : 6.9,
-                    "def" : 10.9,
-                    "agi" : 7.5,
-                    "wis" : 5.8
+                "skills": "Bang et foudre",
+                "growth": {
+                    "hp": 0.9,
+                    "mp": 7.7,
+                    "atk": 6.9,
+                    "def": 10.9,
+                    "agi": 7.5,
+                    "wis": 5.8
                 },
-                "exp" : 1300,
-                "gold" : 10000,
-                "resistances" : {
-                    "flamme" : -1,
-                    "eau" : -1,
-                    "terre" : -1,
-                    "vent" : -1,
-                    "bang" : -1,
-                    "glace" : -1,
-                    "foudre" : -1,
-                    "elec" : 2,
-                    "lumiere" : -1,
-                    "poison" : 0.75,
-                    "paralysis" : 0.75,
-                    "sleep" : 0.75,
-                    "confusion" : 0.75,
-                    "atk" : 0.5,
-                    "def" : 0.5,
-                    "agi" : 0,
-                    "wis" : 0.75,
-                    "breath" : 0.75
+                "exp": 1300,
+                "gold": 10000,
+                "resistances": {
+                    "flamme": -1,
+                    "eau": -1,
+                    "terre": -1,
+                    "vent": -1,
+                    "bang": -1,
+                    "glace": -1,
+                    "foudre": -1,
+                    "elec": 2,
+                    "lumiere": -1,
+                    "poison": 0.75,
+                    "paralysis": 0.75,
+                    "sleep": 0.75,
+                    "confusion": 0.75,
+                    "atk": 0.5,
+                    "def": 0.5,
+                    "agi": 0,
+                    "wis": 0.75,
+                    "breath": 0.75
                 }
             }
         }
@@ -379,8 +1126,7 @@
                 }
             }
         },
-        "E":
-        {
+        "E": {
             "dracorne": {
                 "statMax": {
                     "hp": 600,
@@ -423,91 +1169,91 @@
                 }
             }
         },
-        "X" : {
-            "Xenlon" : {
-                "statMax" : {
-                    "hp" : 1200,
-                    "mp" : 500,
-                    "atk" : 510,
-                    "def" : 800,
-                    "agi" : 750,
-                    "wis" : 600
+        "X": {
+            "Xenlon": {
+                "statMax": {
+                    "hp": 1200,
+                    "mp": 500,
+                    "atk": 510,
+                    "def": 800,
+                    "agi": 750,
+                    "wis": 600
                 },
-                "skills" : "Souffle",
-                "growth" : {
-                    "hp" : 8.2,
-                    "mp" : 5.5,
-                    "atk" : 5.4,
-                    "def" : 6.9,
-                    "agi" : 7.2,
-                    "wis" : 5.5
+                "skills": "Souffle",
+                "growth": {
+                    "hp": 8.2,
+                    "mp": 5.5,
+                    "atk": 5.4,
+                    "def": 6.9,
+                    "agi": 7.2,
+                    "wis": 5.5
                 },
-                "exp" : 900,
-                "gold" : 2650,
-                "resistances" : {
-                    "flamme" : 0.25,
-                    "eau" : 2,
-                    "terre" : 0.5,
-                    "vent" : 0,
-                    "bang" : 1,
-                    "glace" : 0.5,
-                    "foudre" : 0.25,
-                    "elec" : 0,
-                    "lumiere" : 2,
-                    "poison" : 0.5,
-                    "paralysis" : 0.25,
-                    "sleep" : 0.5,
-                    "confusion" : 0.75,
-                    "atk" : 0.25,
-                    "def" : 0.5,
-                    "agi" : 0.5,
-                    "wis" : 0.5,
-                    "breath" : 0.25
+                "exp": 900,
+                "gold": 2650,
+                "resistances": {
+                    "flamme": 0.25,
+                    "eau": 2,
+                    "terre": 0.5,
+                    "vent": 0,
+                    "bang": 1,
+                    "glace": 0.5,
+                    "foudre": 0.25,
+                    "elec": 0,
+                    "lumiere": 2,
+                    "poison": 0.5,
+                    "paralysis": 0.25,
+                    "sleep": 0.5,
+                    "confusion": 0.75,
+                    "atk": 0.25,
+                    "def": 0.5,
+                    "agi": 0.5,
+                    "wis": 0.5,
+                    "breath": 0.25
                 }
             }
         }
     },
-    "???" : {
-        "X" : {
-            "Estark" : {
-                "statMax" : {
-                    "hp" : 1700,
-                    "mp" : 420,
-                    "atk" : 770,
-                    "def" : 800,
-                    "agi" : 700,
-                    "wis" : 400
+    "???": {
+        "X": {
+            "Estark": {
+                "statMax": {
+                    "hp": 1700,
+                    "mp": 420,
+                    "atk": 770,
+                    "def": 800,
+                    "agi": 700,
+                    "wis": 400
                 },
-                "skills" : "Estark",
-                "growth" : {
-                    "hp" : 9.8,
-                    "mp" : 2.8,
-                    "atk" : 6,
-                    "def" : 6.5,
-                    "agi" : 6.2,
-                    "wis" : 3
+                "skills": "Estark",
+                "growth": {
+                    "hp": 9.8,
+                    "mp": 2.8,
+                    "atk": 6,
+                    "def": 6.5,
+                    "agi": 6.2,
+                    "wis": 3
                 },
-                "exp" : 7500,
-                "gold" : 1000,
-                "resistances" : {
-                    "flamme" : 1,
-                    "eau" : 1,
-                    "terre" : 1,
-                    "vent" : 1,
-                    "bang" : 0.5,
-                    "glace" : 2,
-                    "foudre" : 2,
-                    "elec" : 0,
-                    "lumiere" : 4,
-                    "poison" : 0,
-                    "paralysis" : 0,
-                    "sleep" : 0.9,
-                    "confusion" : 0,
-                    "atk" : 0.25,
-                    "def" : 0.5,
-                    "agi" : 0.5,
-                    "wis" : 0.5,
-                    "breath" : 0.5
+                "exp": 7500,
+                "gold": 1000,
+                "resistances": {
+                    "flamme": 1,
+                    "eau": 1,
+                    "terre": 1,
+                    "vent": 1,
+                    "bang": 0.5,
+                    "glace": 2,
+                    "foudre": 2,
+                    "elec": 0,
+                    "lumiere": 4,
+                    "poison": 0,
+                    "paralysis": 0,
+                    "sleep": 0.9,
+                    "confusion": 0,
+                    "atk": 0.25,
+                    "def": 0.5,
+                    "agi": 0.5,
+                    "wis": 0.5,
+                    "breath": 0.5
                 }
             }
         }

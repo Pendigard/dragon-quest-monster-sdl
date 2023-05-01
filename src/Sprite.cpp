@@ -1,6 +1,7 @@
 #include "Sprite.h"
 
-Sprite::Sprite() {
+Sprite::Sprite()
+{
     this->currentSprite = 0;
     this->isAnimated = false;
     this->path = "";
@@ -67,7 +68,7 @@ Sprite::Sprite(Sprite const &other)
     srcRect.h = height;
 }
 
-Sprite& Sprite::operator=(Sprite const &other)
+Sprite &Sprite::operator=(Sprite const &other)
 {
     this->width = other.getWidth();
     this->height = other.getHeight();
@@ -92,19 +93,65 @@ Sprite::~Sprite()
     texture.clear();
 }
 
-void Sprite::draw(int x, int y, Camera c, bool notAbsolute, float size, bool bottomCoord, bool flip)
+void Sprite::draw(int x, int y, Camera c, float size, int frame, bool bottomCoord, bool flip)
+{
+    destRect.w = width * size * c.zoom;
+    destRect.h = height * size * c.zoom;
+    destRect.x = (x - (destRect.w / 2) * bottomCoord) * c.zoom - c.x;
+    destRect.y = (y - (destRect.h / 2) * bottomCoord) * c.zoom - c.y;
+    int RenderCopy;
+    int frameIndex = currentSprite;
+    if (frame != -1)
+        frameIndex = frame;
+    if (!flip)
+    {
+        RenderCopy = SDL_RenderCopy(renderer, texture[frameIndex], &srcRect, &destRect);
+    }
+    else
+    {
+        RenderCopy = SDL_RenderCopyEx(renderer, texture[frameIndex], &srcRect, &destRect, 0, NULL, SDL_FLIP_HORIZONTAL);
+    }
+    if (RenderCopy != 0)
+    {
+        std::cout << path << " " << SDL_GetError() << std::endl;
+    }
+    assert(RenderCopy == 0);
+}
+
+void Sprite::draw(int x, int y, float size, int frame, bool bottomCoord, bool flip)
 {
     destRect.w = width * size;
     destRect.h = height * size;
-    destRect.x = (x - (destRect.w / 2) * bottomCoord) - c.x * notAbsolute;
-    destRect.y = y - (destRect.h / 2) * bottomCoord - c.y * notAbsolute;
+    destRect.x = x - (destRect.w / 2) * bottomCoord;
+    destRect.y = y - (destRect.h / 2) * bottomCoord;
     int RenderCopy;
+    int frameIndex = currentSprite;
+    if (frame != -1)
+        frameIndex = frame;
     if (!flip)
     {
-        RenderCopy = SDL_RenderCopy(renderer, texture[currentSprite], &srcRect, &destRect);
+        RenderCopy = SDL_RenderCopy(renderer, texture[frameIndex], &srcRect, &destRect);
     }
     else
-        RenderCopy = SDL_RenderCopyEx(renderer, texture[currentSprite], &srcRect, &destRect, 0, NULL, SDL_FLIP_HORIZONTAL);
+        RenderCopy = SDL_RenderCopyEx(renderer, texture[frameIndex], &srcRect, &destRect, 0, NULL, SDL_FLIP_HORIZONTAL);
+    if (RenderCopy != 0)
+    {
+        std::cout << path << " " << SDL_GetError() << std::endl;
+    }
+    assert(RenderCopy == 0);
+}
+
+void Sprite::drawCrop(int x, int y, int cropX, int cropY, Camera c, int cropW, int cropH, float size)
+{
+    destRect.w = cropW * size * c.zoom;
+    destRect.h = cropH * size * c.zoom;
+    destRect.x = (x * c.zoom - c.x);
+    destRect.y = (y * c.zoom - c.y);
+    srcRect.x = cropX;
+    srcRect.y = cropY;
+    srcRect.w = cropW;
+    srcRect.h = cropH;
+    int RenderCopy = SDL_RenderCopy(renderer, texture[currentSprite], &srcRect, &destRect);
     assert(RenderCopy == 0);
 }
 
@@ -158,35 +205,42 @@ void Sprite::setCurrentSprite(int currentSprite)
     this->currentSprite = currentSprite;
 }
 
-void drawText(SDL_Renderer *renderer, std::string text, int x, int y, int size, SDL_Color color)
-{
-    TTF_Font *font = TTF_OpenFont("data/font/a-goblin-appears.ttf", size);
-    SDL_Surface *surface = TTF_RenderUTF8_Blended(font, text.c_str(), color);;
-    SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
-    SDL_FreeSurface(surface);
-    SDL_Rect rect;
-    rect.x = x;
-    rect.y = y;
-    SDL_QueryTexture(texture, NULL, NULL, &rect.w, &rect.h);
-    SDL_RenderCopy(renderer, texture, NULL, &rect);
-    SDL_DestroyTexture(texture);
-    TTF_CloseFont(font);
-}
-
-void drawBox(SDL_Renderer *renderer, int x, int y, int w, int h)
-{
-    SDL_Rect rectFill = {x + 5,y + 5, w - 10,h - 10};
-    SDL_Rect rect = {x, y, w, h};
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-    SDL_RenderFillRect(renderer, &rect);
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 170);
-    SDL_RenderFillRect(renderer, &rectFill);
-}
-
 void updateSprite(std::vector<Sprite> &vec)
 {
     for (long unsigned int i = 0; i < vec.size(); i++)
     {
         vec[i].update();
     }
+}
+
+std::vector<SDL_Texture *> &Sprite::getTextures()
+{
+    return texture;
+}
+
+void loadMonsterSprite(SDL_Renderer *renderer, std::string type, std::unordered_map<std::string, Sprite> &sprites)
+{
+    if (sprites.find(type) != sprites.end()) {
+        return;
+    }
+    std::string typeWithNoSpace = replaceString(type, " ", "_");
+    sprites[type] = Sprite(renderer, "data/sprite/fighting_sprite/" + typeWithNoSpace + ".png", 1);
+}
+
+void loadOverworldSprite(SDL_Renderer *renderer, std::string name, std::unordered_map<std::string, Sprite> &sprites)
+{
+    if (name == "")
+        return;
+    std::string nameWithNoSpace = replaceString(name, " ", "_");
+    sprites[name + "_front"] = Sprite(renderer, "data/sprite/overworld_sprites/" + nameWithNoSpace + "/" + nameWithNoSpace + "_front_", 3);
+    sprites[name + "_back"] = Sprite(renderer, "data/sprite/overworld_sprites/" + nameWithNoSpace + "/" + nameWithNoSpace + "_back_", 3);
+    sprites[name + "_left"] = Sprite(renderer, "data/sprite/overworld_sprites/" + nameWithNoSpace + "/" + nameWithNoSpace + "_left_", 3);
+    sprites[name + "_right"] = Sprite(renderer, "data/sprite/overworld_sprites/" + nameWithNoSpace + "/" + nameWithNoSpace + "_right_", 3);
+}
+
+void loadSprite(SDL_Renderer *renderer, std::string name, std::string path, std::unordered_map<std::string, Sprite> &sprites, int numSprites)
+{
+    if (sprites.find(name) != sprites.end())
+        return;
+    sprites[name] = Sprite(renderer, path, numSprites);
 }

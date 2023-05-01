@@ -1,5 +1,6 @@
 {
     "files.associations": {
+        "*.pl": "prolog",
         "unordered_map": "cpp",
         "__bit_reference": "cpp",
         "__bits": "cpp",
@@ -68,6 +69,7 @@
         "algorithm": "cpp",
         "filesystem": "cpp",
         "queue": "cpp",
-        "regex": "cpp"
+        "regex": "cpp",
+        "__memory": "cpp"
     }
 }

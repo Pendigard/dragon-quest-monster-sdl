@@ -15,7 +15,7 @@ std::string Monster::generateID() const
     return id;
 }
 
-int getXpLvl(int level)
+int Monster::getXpLvl(int level) const
 {
     int xp = 1;
     for (int i = 1; i < level; i++)
@@ -346,6 +346,7 @@ void Monster::createSaveMonster(rapidjson::Document &save) const
     monsterStat.AddMember("type", rapidjson::Value(infos.at("type").c_str(), save.GetAllocator()), save.GetAllocator());
     monsterStat.AddMember("hp", hp, save.GetAllocator());
     monsterStat.AddMember("mp", mp, save.GetAllocator());
+    monsterStat.AddMember("charge", rapidjson::Value(infos.at("charge").c_str(), save.GetAllocator()), save.GetAllocator());
     rapidjson::Value statsJson;
     statsJson.SetObject();
     for (auto &stat : stats)
@@ -383,6 +384,11 @@ void Monster::createSaveMonster(rapidjson::Document &save) const
 bool Monster::operator==(const Monster &monster) const
 {
     return infos.at("id") == monster.getInfos("id");
+}
+
+bool Monster::operator!=(const Monster &monster) const
+{
+    return infos.at("id") != monster.getInfos("id");
 }
 
 float Monster::getAgility() const

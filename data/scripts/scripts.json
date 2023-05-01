@@ -1,0 +1,38 @@
+{
+    "sign1": {
+        "name": "",
+        "text": "La grotte de la colline est par ici."
+    },
+    "friendly": {
+        "name": "",
+        "text": "M'attaque pas! je suis gentil.",
+        "next": {
+            "name": "Slurpy",
+            "text": "Je suis Slurpy. tu es dresseur? tu devrais savoir que les|monstres ne sont pas toujours méchants."
+        }
+    },
+    "grandpa": {
+        "name": "Papy gateux",
+        "text": "Tu sais petit, les monstres les plus forts ne se trouvent pas|forcément dans la nature, mais sont le produits de fusion|de deux monstres.",
+        "next": {
+            "name": "Papy gateux",
+            "text": "Je te conseille de rester patient, afin d'avoir le meilleur|monstre possible."
+        }
+    },
+    "mentor": {
+        "name": "Capitaine Éli",
+        "text": "Salut petit. Tu es rentré d'exploration?|On s'est bien occupé de tes monstres, ils sont tous en pleine|forme.",
+        "next": {
+            "name": "Capitaine Éli",
+            "text": "Tu veux les voir?",
+            "next": {
+                "menu": "monsterCenter",
+                "menuStatus": "monsterCenter",
+                "next": {
+                    "name": "Capitaine Éli",
+                    "text": "Fait attention à toi quand tu explores, on sait jamais ce|qui peut t'arriver."
+                }
+            }
+        }
+    }
+}

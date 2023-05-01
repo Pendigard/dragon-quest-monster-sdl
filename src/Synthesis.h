@@ -3,11 +3,11 @@
 
 #include "Monster.h"
 
-/// @brief Retourne le nom des monstres qui peuvent être résultat de la synthese
+/// @brief Retourne le type des monstres qui peuvent être résultat de la synthese
 /// @param parent1 Monstre parent 1
 /// @param parent2 Monstre parent 2
 /// @param db Base de données
-/// @return Retourne le nom des monstres qui peuvent être résultat de la synthese
+/// @return Retourne le type des monstres qui peuvent être résultat de la synthese
 std::vector<std::string> makeSynthesisPreview(Monster parent1, Monster parent2, Database &db);
 
 /// @brief Vrai si une recette existe entre les deux monstres

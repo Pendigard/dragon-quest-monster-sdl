@@ -385,6 +385,7 @@ bool Game::fight(Fight &f)
     std::vector<Action> orders;
     std::queue<spellImpact> impact;
     std::queue<std::string> messages;
+    std::queue<scoutImpact> scoutImpacts;
     bool win = false;
     while (f.isOver(win) == false)
     {
@@ -397,12 +398,12 @@ bool Game::fight(Fight &f)
         if (f.scouting)
         {
             std::string monsterToScout = getTargetPlayer(f.team1[0], "Dressage", f)[0];
-            bool scouted = f.scout(monsterToScout, messages);
-            while (!messages.empty())
+            bool scouted = f.scout(monsterToScout, scoutImpacts);
+            while (!scoutImpacts.empty())
             {
-                std::cout << messages.front() << std::endl
+                std::cout << scoutImpacts.front().message << std::endl
                           << std::endl;
-                messages.pop();
+                scoutImpacts.pop();
                 sleep(1);
             }
             if (scouted)

@@ -14,7 +14,7 @@
         "rank": "F",
         "id": 3
     },
-    "gluantbulot": {
+    "gluanbulot": {
         "family": "Gluant",
         "rank": "E",
         "id": 1
@@ -34,6 +34,11 @@
         "rank": "E",
         "id": 4
     },
+    "gluancornu" : {
+        "family": "Gluant",
+        "rank": "E",
+        "id": 5
+    },
     "gluangelique": {
         "family": "Gluant",
         "rank": "D",
@@ -49,12 +54,17 @@
         "rank": "D",
         "id": 3
     },
-    "gluant de metal": {
+    "monte-gluant de metal": {
         "family": "Gluant",
         "rank": "D",
         "id": 4
     },
-    "gluant dragon": {
+    "gluant de metal": {
+        "family": "Gluant",
+        "rank": "D",
+        "id": 5
+    },
+    "gluandragon": {
         "family": "Gluant",
         "rank": "C",
         "id": 1
@@ -69,17 +79,12 @@
         "rank": "C",
         "id": 3
     },
-    "aggluantin": {
+    "gluant de mercure": {
         "family": "Gluant",
         "rank": "C",
         "id": 4
     },
-    "gluant de mercure": {
-        "family": "Gluant",
-        "rank": "C",
-        "id": 5
-    },
-    "monstruoeuf": {
+    "monstroeuf": {
         "family": "Gluant",
         "rank": "B",
         "id": 1
@@ -89,17 +94,12 @@
         "rank": "B",
         "id": 2
     },
-    "gluanor": {
-        "family": "Gluant",
-        "rank": "B",
-        "id": 3
-    },
-    "reine gluant mouchete": {
+    "gluangedor": {
         "family": "Gluant",
         "rank": "A",
         "id": 1
     },
-    "gluangedor": {
+    "reine gluante mouchete": {
         "family": "Gluant",
         "rank": "A",
         "id": 2

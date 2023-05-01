@@ -707,19 +707,32 @@ bool Fight::flee()
     return getRand(0, 100) < (agilityTeam1 / agilityTeam2) / 2;
 }
 
-bool Fight::scout(std::string idMonster, std::queue<std::string> &messages)
+scoutImpact createScoutImpact(std::string message, actionType type, bool team1, unsigned int chanceScout) {
+    scoutImpact impact;
+    impact.message = message;
+    impact.type = type;
+    impact.team1 = team1;
+    impact.chanceScout = chanceScout;
+    return impact;
+}
+
+bool Fight::scout(std::string idMonster, std::queue<scoutImpact> &impacts)
 {
     Monster monster = getMonsterById(idMonster);
+    std::string message;
     if (monster.hp == 0)
     {
         return false;
     }
     int dmg;
     int chanceScout = 0;
-    messages.push("Les monstres se préparent à attaquer");
+    impacts.push(createScoutImpact("Les monstres se préparent à attaquer",prepareScout,true));
     for (int i = 0; i < team1.size(); i++)
     {
-        messages.push(team1[i].getName() + " tente d'impressionner " + monster.getInfos("type"));
+        if (team1[i].hp < 1)
+            continue;
+        message = team1[i].getName() + " tente d'impressionner " + monster.getInfos("type");
+        impacts.push(createScoutImpact(message,attack,true));
         dmg = (team1[i].getStat("atk") / 2 - monster.getStat("def") / 4);
         if (dmg < 0)
             dmg = 0;
@@ -727,36 +740,43 @@ bool Fight::scout(std::string idMonster, std::queue<std::string> &messages)
         if (getRand(0, 1000) < chance)
         {
             dmg = dmg * 2;
-            messages.push("C'est un coup critique !");
+            impacts.push(createScoutImpact("C'est un coup critique !",critical,false));
         }
-        chanceScout += 100 * dmg / monster.hp;
+        unsigned int percent = 100 * dmg / monster.hp;
+        chanceScout += percent;
         chanceScout = std::min(chanceScout, 100);
-        if (100 * dmg / monster.hp > 15)
-            messages.push("Cela impressionne vraiment le monstre");
-        else if (100 * dmg / monster.hp > 5)
-            messages.push("Cela impressionne le monstre");
+        if (percent > 15)
+            impacts.push(createScoutImpact("Cela impressionne vraiment le monstre",takeDamage,false,percent));
+        else if (percent > 5)
+            impacts.push(createScoutImpact("Cela impressionne le monstre",takeDamage,false,percent));
         else
-            messages.push("Cela n'impressionne pas vraiment le monstre");
-        messages.push("Vos chances sont de " + std::to_string(chanceScout) + "%");
+            impacts.push(createScoutImpact("Cela n'impressionne pas le monstre",takeDamage,false,percent));
+        message = "Vos chances sont de " + std::to_string(chanceScout) + "%";
+        impacts.push(createScoutImpact(message,none,false));
     }
-    messages.push("le monstre vous jauge...");
+    impacts.push(createScoutImpact("Le monstre vous jauge...",none,false));
     if (getRand(0, 100) < chanceScout)
     {
-        messages.push("Vous avez réussi à dresser " + monster.getInfos("type") + "!");
-        messages.push("Les autres monstres s'enfuient");
+        message = "Vous avez réussi à dresser " + monster.getInfos("type") + "!";
+        impacts.push(createScoutImpact(message,none,false));
+        message="Les autres monstres s'enfuient";
+        impacts.push(createScoutImpact(message,none,false));
         return true;
     }
     else
     {
-        messages.push("Le monstre ne veut pas se laisser dresser");
+        message = "Le monstre ne veut pas se laisser dresser";
+        impacts.push(createScoutImpact(message,none,false));
         if (getRand(1, 2) < 1)
         {
-            messages.push("Le monstre se vexe");
+            message="Le monstre se vexe";
+            impacts.push(createScoutImpact(message,none,false));
             canScout = false;
         }
         else
         {
-            messages.push("Le monstre évalue la situation");
+            message = "Le monstre évalue la situation";
+            impacts.push(createScoutImpact(message,none,false));
         }
         return false;
     }
