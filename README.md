@@ -48,6 +48,22 @@ Pour lancer le jeu lancez la commande:
     - Agir avec sagesse : Le monstre utilise des compétences offensive pouvant infliger des dégâts sur les ennemis ainsi qu'alterer leur statut ou des compétences de soutien pour aider ses alliés
     - Pas de magie : Le monstre n'utilise que des compétences qui ne consomment pas de PM
 
+    Si le joueur lui donne un ordre, il peut alors choisir une compétence à utiliser parmi celles qu'il possède.
+
+    Lorsque le joueur clique sur combattre les actions s'executent alors dans l'ordre d'agilité de chaque monstre. Plus un monstre a une grande stat d'agilité plus souvent il attaquera en premier. Si un monstre est KO il ne peut plus agir. Le combat se termine lorsque une des deux équipes est décimés complètement.
+
+    Les monstres peuvent subir des altérations de status et de statistiques. Pour les altérations de status, il en existe plusieurs:
+    - Empoisonné : Le monstre perd des PV à chaque tour
+    - Paralysé : Le monstre ne peut plus agir pendant un certain nombre de tour
+    - Endormi : Le monstre ne peut plus agir pendant un certain nombre de tour, il se réveille lorsqu'il est attaqué
+    - Confus : Le monstre agit de manière aléatoire pendant un certain nombre de tour (pas implémenté)
+    Les status s'applique à chaque fois que le monstre effectue une action.
+    Pour les altérations de stats, on applique un facteur multiplicateur sur la stat du monstre pendant un certain nombre de tour. Elles peuvent être aussi bien positives que négatives. Par exemple si un monstre est affaibli, sa stat d'attaque sera divisé par 2.
+
+    Le joueur peut aussi tenter de dresser un monstre. Dans ce cas ses monstres passent en mode dressage, tour à tour ils attaquent le monstre voulant être capturé, sans lui infliger de véritable dégât le pourcentage de dégâts qu'il lui aurait infligé indique la chance qu'ils soit capturé. Si le monstre est capturé, le combat s'arrête. Mais s'il refuse d'être capturé, il a une chance sur deux d'être vexé, dans ce cas le monstre ne pourra plus être capturé du combat. À l'échec d'un dressage le combat continue sans que les monstres du joueur puissent attaquer.
+
+    Enfin le joueur peut décider de fuir le combat. La probabiliter de fuite dépend de la statistique d'agilité de chaque monstre. Si la fuite échoue le combat continue sans que les monstres du joueur puissent attaquer. Si la fuite réussi le combat s'arrête sans que le joueur n'est reçu aucune récompense.
+
 
 
 ## Auteurs
