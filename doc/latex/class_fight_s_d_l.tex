@@ -1,0 +1,131 @@
+\hypertarget{class_fight_s_d_l}{}\doxysection{Fight\+SDL Class Reference}
+\label{class_fight_s_d_l}\index{FightSDL@{FightSDL}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_fight_s_d_l_a75890c3a15f88e278fd3377ca222f0ae}\label{class_fight_s_d_l_a75890c3a15f88e278fd3377ca222f0ae}} 
+{\bfseries Fight\+SDL} (\mbox{\hyperlink{class_fight}{Fight}} \&fight, SDL\+\_\+\+Renderer $\ast$renderer, \mbox{\hyperlink{class_sprite}{Sprite}} $\ast$cursor, \mbox{\hyperlink{class_database}{Database}} $\ast$database, std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_sprite}{Sprite}} $>$ $\ast$sprites, std\+::unordered\+\_\+map$<$ std\+::string, Mix\+\_\+\+Chunk $\ast$ $>$ $\ast$sounds)
+\begin{DoxyCompactList}\small\item\em Constructeur. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_fight_s_d_l_af4f0684842f7b8b8e8cd9608f36229c5}\label{class_fight_s_d_l_af4f0684842f7b8b8e8cd9608f36229c5}} 
+{\bfseries $\sim$\+Fight\+SDL} ()
+\begin{DoxyCompactList}\small\item\em Destructeur. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_fight_s_d_l_ad45169598dee40b441733d35e0c80b3d}{run\+Fight}} ()
+\begin{DoxyCompactList}\small\item\em Lance le combat. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{class_fight_s_d_l_a68d84a278f318204e244e4728e9145a3}{get\+Gold\+Reward}} () const
+\begin{DoxyCompactList}\small\item\em Retourne la récompense en or. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{class_fight_s_d_l_a3454936fa0d7987e26856c1ad1f0acdd}{get\+Xp\+Reward}} () const
+\begin{DoxyCompactList}\small\item\em Retourne la récompense en xp. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_monster}{Monster}} $>$ \mbox{\hyperlink{class_fight_s_d_l_aca4929657d870f47a4573fdd80e73bee}{get\+Team}} (const unsigned int \&team\+Index) const
+\begin{DoxyCompactList}\small\item\em Retourne l\textquotesingle{}équipe en fonction de l\textquotesingle{}index. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_fight_s_d_l_ab1981891bf9349dbc2bbf09f1ba926bd}{get\+Fleed}} () const
+\begin{DoxyCompactList}\small\item\em Retourne vrai si le joueur a fuit. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_fight_s_d_l_a6a0dc62ae34a577fb3b62846d9397b2f}{get\+Scouted}} () const
+\begin{DoxyCompactList}\small\item\em Retourne vrai si le joueur a dresser un monstre. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_monster}{Monster}} $\ast$ \mbox{\hyperlink{class_fight_s_d_l_ac8ac8b944cb8aebb815a36a3e062e739}{get\+Monster\+Scouted}} () const
+\begin{DoxyCompactList}\small\item\em Le monstre dréssé si le joueur en a dressé un, un pointeur null sinon. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_fight_s_d_l_ab1981891bf9349dbc2bbf09f1ba926bd}\label{class_fight_s_d_l_ab1981891bf9349dbc2bbf09f1ba926bd}} 
+\index{FightSDL@{FightSDL}!getFleed@{getFleed}}
+\index{getFleed@{getFleed}!FightSDL@{FightSDL}}
+\doxysubsubsection{\texorpdfstring{getFleed()}{getFleed()}}
+{\footnotesize\ttfamily bool Fight\+SDL\+::get\+Fleed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne vrai si le joueur a fuit. 
+
+\begin{DoxyReturn}{Returns}
+Vrai si le joueur a fuit 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_fight_s_d_l_a68d84a278f318204e244e4728e9145a3}\label{class_fight_s_d_l_a68d84a278f318204e244e4728e9145a3}} 
+\index{FightSDL@{FightSDL}!getGoldReward@{getGoldReward}}
+\index{getGoldReward@{getGoldReward}!FightSDL@{FightSDL}}
+\doxysubsubsection{\texorpdfstring{getGoldReward()}{getGoldReward()}}
+{\footnotesize\ttfamily unsigned int Fight\+SDL\+::get\+Gold\+Reward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne la récompense en or. 
+
+\begin{DoxyReturn}{Returns}
+La récompense en or 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_fight_s_d_l_ac8ac8b944cb8aebb815a36a3e062e739}\label{class_fight_s_d_l_ac8ac8b944cb8aebb815a36a3e062e739}} 
+\index{FightSDL@{FightSDL}!getMonsterScouted@{getMonsterScouted}}
+\index{getMonsterScouted@{getMonsterScouted}!FightSDL@{FightSDL}}
+\doxysubsubsection{\texorpdfstring{getMonsterScouted()}{getMonsterScouted()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_monster}{Monster}} $\ast$ Fight\+SDL\+::get\+Monster\+Scouted (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Le monstre dréssé si le joueur en a dressé un, un pointeur null sinon. 
+
+\begin{DoxyReturn}{Returns}
+Le monstre dréssé ~\newline
+ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_fight_s_d_l_a6a0dc62ae34a577fb3b62846d9397b2f}\label{class_fight_s_d_l_a6a0dc62ae34a577fb3b62846d9397b2f}} 
+\index{FightSDL@{FightSDL}!getScouted@{getScouted}}
+\index{getScouted@{getScouted}!FightSDL@{FightSDL}}
+\doxysubsubsection{\texorpdfstring{getScouted()}{getScouted()}}
+{\footnotesize\ttfamily bool Fight\+SDL\+::get\+Scouted (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne vrai si le joueur a dresser un monstre. 
+
+\begin{DoxyReturn}{Returns}
+Vrai si le joueur a dresser un monstre 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_fight_s_d_l_aca4929657d870f47a4573fdd80e73bee}\label{class_fight_s_d_l_aca4929657d870f47a4573fdd80e73bee}} 
+\index{FightSDL@{FightSDL}!getTeam@{getTeam}}
+\index{getTeam@{getTeam}!FightSDL@{FightSDL}}
+\doxysubsubsection{\texorpdfstring{getTeam()}{getTeam()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_monster}{Monster}} $>$ Fight\+SDL\+::get\+Team (\begin{DoxyParamCaption}\item[{const unsigned int \&}]{team\+Index }\end{DoxyParamCaption}) const}
+
+
+
+Retourne l\textquotesingle{}équipe en fonction de l\textquotesingle{}index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em team\+Index} & L\textquotesingle{}index de l\textquotesingle{}équipe, 1 pour l\textquotesingle{}équipe du joueur, 2 pour l\textquotesingle{}équipe adverse \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}équipe associée à l\textquotesingle{}index 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_fight_s_d_l_a3454936fa0d7987e26856c1ad1f0acdd}\label{class_fight_s_d_l_a3454936fa0d7987e26856c1ad1f0acdd}} 
+\index{FightSDL@{FightSDL}!getXpReward@{getXpReward}}
+\index{getXpReward@{getXpReward}!FightSDL@{FightSDL}}
+\doxysubsubsection{\texorpdfstring{getXpReward()}{getXpReward()}}
+{\footnotesize\ttfamily unsigned int Fight\+SDL\+::get\+Xp\+Reward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne la récompense en xp. 
+
+\begin{DoxyReturn}{Returns}
+La récompense en xp 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_fight_s_d_l_ad45169598dee40b441733d35e0c80b3d}\label{class_fight_s_d_l_ad45169598dee40b441733d35e0c80b3d}} 
+\index{FightSDL@{FightSDL}!runFight@{runFight}}
+\index{runFight@{runFight}!FightSDL@{FightSDL}}
+\doxysubsubsection{\texorpdfstring{runFight()}{runFight()}}
+{\footnotesize\ttfamily bool Fight\+SDL\+::run\+Fight (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Lance le combat. 
+
+\begin{DoxyReturn}{Returns}
+Si le combat est terminé 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/Fight\+SDL.\+h\item 
+src/Fight\+SDL.\+cpp\end{DoxyCompactItemize}

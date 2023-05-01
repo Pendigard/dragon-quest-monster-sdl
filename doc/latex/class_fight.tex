@@ -1,0 +1,327 @@
+\hypertarget{class_fight}{}\doxysection{Fight Class Reference}
+\label{class_fight}\index{Fight@{Fight}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_fight_a876422ba3a47d57342ba7cc79b2da2d2}{Fight}} (std\+::vector$<$ \mbox{\hyperlink{class_monster}{Monster}} $>$ t1, std\+::vector$<$ \mbox{\hyperlink{class_monster}{Monster}} $>$ t2)
+\begin{DoxyCompactList}\small\item\em Constructeur. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_fight_a435698d2d8fe44bf29ac760509068c4a}{Fight}} (\mbox{\hyperlink{class_fight}{Fight}} const \&fight)
+\begin{DoxyCompactList}\small\item\em Constructeur par copie. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_fight_a389d0c7b86d3f7c6d4e32e11e706f324}\label{class_fight_a389d0c7b86d3f7c6d4e32e11e706f324}} 
+\mbox{\hyperlink{class_fight}{Fight}} \& {\bfseries operator=} (\mbox{\hyperlink{class_fight}{Fight}} const \&fight)
+\item 
+void \mbox{\hyperlink{class_fight_a380fe3b38eef5122fb5a5909ff0ec5d2}{spell\+Tactic\+Choice}} (\mbox{\hyperlink{class_monster}{Monster}} \&caster)
+\begin{DoxyCompactList}\small\item\em Choix du sort en fonction de la tactique du monstre. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_fight_a4a947755e059c2d916affd20dca891ec}\label{class_fight_a4a947755e059c2d916affd20dca891ec}} 
+void {\bfseries give\+Actions} (std\+::vector$<$ \mbox{\hyperlink{struct_action}{Action}} $>$ actions)
+\begin{DoxyCompactList}\small\item\em Donne une action à effectuer. \end{DoxyCompactList}\item 
+std\+::queue$<$ std\+::string $>$ \mbox{\hyperlink{class_fight_ac71a19afe96ece3b1227702d23a89c51}{init\+Turn}} ()
+\begin{DoxyCompactList}\small\item\em Initialise le tour. \end{DoxyCompactList}\item 
+std\+::queue$<$ \mbox{\hyperlink{structspell_impact}{spell\+Impact}} $>$ \mbox{\hyperlink{class_fight_a75358dc3e2e8421c2ff277319cc3a759}{simulate\+Action}} ()
+\begin{DoxyCompactList}\small\item\em Simule la prochaine action. \end{DoxyCompactList}\item 
+std\+::queue$<$ std\+::string $>$ \mbox{\hyperlink{class_fight_ace15cba4c4cb661b172174a83dd53763}{simulate\+Turn}} ()
+\begin{DoxyCompactList}\small\item\em Simule le tour. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_monster}{Monster}} \& \mbox{\hyperlink{class_fight_ac316d1c125f0f112d2d0b5189b8abb42}{get\+Monster\+By\+Id}} (std\+::string id)
+\begin{DoxyCompactList}\small\item\em Retourne le monstre correspondant à l\textquotesingle{}id. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_fight_abca3c8f09e7f86cabb02b754afaca30b}{update\+Monster}} (\mbox{\hyperlink{structspell_impact}{spell\+Impact}} impact)
+\begin{DoxyCompactList}\small\item\em Met à jour les monstres après une action. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_fight_a4cb44c9564e88e4eca5da6402ae7745c}{is\+Over}} (bool \&is\+Team1\+Win)
+\begin{DoxyCompactList}\small\item\em Vérifie si le combat est terminé \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{class_fight_ae7ccb45fd2e96ec18d6d3bb39fd73339}{get\+Team\+Alive}} (std\+::vector$<$ \mbox{\hyperlink{class_monster}{Monster}} $>$ team) const
+\begin{DoxyCompactList}\small\item\em Renvoie la liste des monstres vivants de l\textquotesingle{}équipe. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{class_fight_a28d5acf71940922351d7d6c2e288b659}{get\+Target\+Tactic}} (\mbox{\hyperlink{class_monster}{Monster}} caster, std\+::string spell)
+\begin{DoxyCompactList}\small\item\em Retourne les cibles du sort en fonction de la tactique du monstre. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_fight_a321aaed488ede2a4bfe053acf1dc792f}{flee}} ()
+\begin{DoxyCompactList}\small\item\em Calcule si l\textquotesingle{}équipe a fui. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_fight_a2eddd06d9992afc48a31ad673ba52590}{scout}} (std\+::string id\+Monster, std\+::queue$<$ \mbox{\hyperlink{structscout_impact}{scout\+Impact}} $>$ \&messages)
+\begin{DoxyCompactList}\small\item\em Lance la phase de dressage. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{class_fight_aee824d78a9d375e6a9fc56a5c828574e}{get\+Gold\+Reward}} (\mbox{\hyperlink{class_database}{Database}} \&db) const
+\begin{DoxyCompactList}\small\item\em Renvoie l\textquotesingle{}or gagné \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{class_fight_a095cef57144ba099e63844cb78ef33b5}{get\+Exp\+Reward}} (\mbox{\hyperlink{class_database}{Database}} \&db) const
+\begin{DoxyCompactList}\small\item\em Renvoie l\textquotesingle{}expérience gagnée. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_fight_acf8cd32b53556e701685fbca9bb3eeca}\label{class_fight_acf8cd32b53556e701685fbca9bb3eeca}} 
+unsigned int {\bfseries nb\+Turn}
+\item 
+\mbox{\Hypertarget{class_fight_a84d1183f7fc5c669c3380466cf8d1205}\label{class_fight_a84d1183f7fc5c669c3380466cf8d1205}} 
+std\+::vector$<$ \mbox{\hyperlink{class_monster}{Monster}} $>$ {\bfseries team1}
+\item 
+\mbox{\Hypertarget{class_fight_af764da1d2d241d9dd6db44a673cc5ad6}\label{class_fight_af764da1d2d241d9dd6db44a673cc5ad6}} 
+std\+::vector$<$ \mbox{\hyperlink{class_monster}{Monster}} $>$ {\bfseries team2}
+\item 
+\mbox{\Hypertarget{class_fight_ac2cea1818606c49b3ab64d3de45faa73}\label{class_fight_ac2cea1818606c49b3ab64d3de45faa73}} 
+std\+::vector$<$ \mbox{\hyperlink{struct_action}{Action}} $>$ {\bfseries actions}
+\item 
+\mbox{\Hypertarget{class_fight_a8785d1f0a124d47357b5ef17a4a7d22b}\label{class_fight_a8785d1f0a124d47357b5ef17a4a7d22b}} 
+std\+::queue$<$ \mbox{\hyperlink{struct_action}{Action}} $>$ {\bfseries actions\+Ordered}
+\item 
+\mbox{\Hypertarget{class_fight_aa2bff0fa03a667cc81a12184d6ee655a}\label{class_fight_aa2bff0fa03a667cc81a12184d6ee655a}} 
+rapidjson\+::\+Document {\bfseries spell\+Base}
+\item 
+\mbox{\Hypertarget{class_fight_a51ac60d9e63a4507e20787f6625fb536}\label{class_fight_a51ac60d9e63a4507e20787f6625fb536}} 
+bool {\bfseries team\+Flee}
+\item 
+\mbox{\Hypertarget{class_fight_a96250cee7b0c50335c060bd5ab069ab0}\label{class_fight_a96250cee7b0c50335c060bd5ab069ab0}} 
+bool {\bfseries can\+Scout}
+\item 
+\mbox{\Hypertarget{class_fight_a42dcf46f8e9030f2f5f47fb6120ccab8}\label{class_fight_a42dcf46f8e9030f2f5f47fb6120ccab8}} 
+bool {\bfseries scouting}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_fight_a876422ba3a47d57342ba7cc79b2da2d2}\label{class_fight_a876422ba3a47d57342ba7cc79b2da2d2}} 
+\index{Fight@{Fight}!Fight@{Fight}}
+\index{Fight@{Fight}!Fight@{Fight}}
+\doxysubsubsection{\texorpdfstring{Fight()}{Fight()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Fight\+::\+Fight (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{class_monster}{Monster}} $>$}]{t1,  }\item[{std\+::vector$<$ \mbox{\hyperlink{class_monster}{Monster}} $>$}]{t2 }\end{DoxyParamCaption})}
+
+
+
+Constructeur. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t1} & \+: équipe du joueur \\
+\hline
+{\em t2} & \+: équipe de l\textquotesingle{}I.\+A. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_fight_a435698d2d8fe44bf29ac760509068c4a}\label{class_fight_a435698d2d8fe44bf29ac760509068c4a}} 
+\index{Fight@{Fight}!Fight@{Fight}}
+\index{Fight@{Fight}!Fight@{Fight}}
+\doxysubsubsection{\texorpdfstring{Fight()}{Fight()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Fight\+::\+Fight (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_fight}{Fight}} const \&}]{fight }\end{DoxyParamCaption})}
+
+
+
+Constructeur par copie. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fight} & \+: fight à copier \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_fight_a321aaed488ede2a4bfe053acf1dc792f}\label{class_fight_a321aaed488ede2a4bfe053acf1dc792f}} 
+\index{Fight@{Fight}!flee@{flee}}
+\index{flee@{flee}!Fight@{Fight}}
+\doxysubsubsection{\texorpdfstring{flee()}{flee()}}
+{\footnotesize\ttfamily bool Fight\+::flee (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Calcule si l\textquotesingle{}équipe a fui. 
+
+\begin{DoxyReturn}{Returns}
+true si l\textquotesingle{}équipe a fui, false sinon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_fight_a095cef57144ba099e63844cb78ef33b5}\label{class_fight_a095cef57144ba099e63844cb78ef33b5}} 
+\index{Fight@{Fight}!getExpReward@{getExpReward}}
+\index{getExpReward@{getExpReward}!Fight@{Fight}}
+\doxysubsubsection{\texorpdfstring{getExpReward()}{getExpReward()}}
+{\footnotesize\ttfamily unsigned int Fight\+::get\+Exp\+Reward (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_database}{Database}} \&}]{db }\end{DoxyParamCaption}) const}
+
+
+
+Renvoie l\textquotesingle{}expérience gagnée. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em db} & \+: base de données \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+l\textquotesingle{}expérience gagnée 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_fight_aee824d78a9d375e6a9fc56a5c828574e}\label{class_fight_aee824d78a9d375e6a9fc56a5c828574e}} 
+\index{Fight@{Fight}!getGoldReward@{getGoldReward}}
+\index{getGoldReward@{getGoldReward}!Fight@{Fight}}
+\doxysubsubsection{\texorpdfstring{getGoldReward()}{getGoldReward()}}
+{\footnotesize\ttfamily unsigned int Fight\+::get\+Gold\+Reward (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_database}{Database}} \&}]{db }\end{DoxyParamCaption}) const}
+
+
+
+Renvoie l\textquotesingle{}or gagné 
+
+
+\begin{DoxyParams}{Parameters}
+{\em db} & \+: base de données \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+l\textquotesingle{}or gagné 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_fight_ac316d1c125f0f112d2d0b5189b8abb42}\label{class_fight_ac316d1c125f0f112d2d0b5189b8abb42}} 
+\index{Fight@{Fight}!getMonsterById@{getMonsterById}}
+\index{getMonsterById@{getMonsterById}!Fight@{Fight}}
+\doxysubsubsection{\texorpdfstring{getMonsterById()}{getMonsterById()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_monster}{Monster}} \& Fight\+::get\+Monster\+By\+Id (\begin{DoxyParamCaption}\item[{std\+::string}]{id }\end{DoxyParamCaption})}
+
+
+
+Retourne le monstre correspondant à l\textquotesingle{}id. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & \+: id du monstre à trouver \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+le monstre correspondant à l\textquotesingle{}id 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_fight_a28d5acf71940922351d7d6c2e288b659}\label{class_fight_a28d5acf71940922351d7d6c2e288b659}} 
+\index{Fight@{Fight}!getTargetTactic@{getTargetTactic}}
+\index{getTargetTactic@{getTargetTactic}!Fight@{Fight}}
+\doxysubsubsection{\texorpdfstring{getTargetTactic()}{getTargetTactic()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ Fight\+::get\+Target\+Tactic (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_monster}{Monster}}}]{caster,  }\item[{std\+::string}]{spell }\end{DoxyParamCaption})}
+
+
+
+Retourne les cibles du sort en fonction de la tactique du monstre. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em caster} & \+: monstre qui lance le sort \\
+\hline
+{\em spell} & \+: nom du sort \\
+\hline
+{\em is\+Team1} & \+: true si le monstre est dans l\textquotesingle{}équipe 1, false sinon \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+les cibles du sort 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_fight_ae7ccb45fd2e96ec18d6d3bb39fd73339}\label{class_fight_ae7ccb45fd2e96ec18d6d3bb39fd73339}} 
+\index{Fight@{Fight}!getTeamAlive@{getTeamAlive}}
+\index{getTeamAlive@{getTeamAlive}!Fight@{Fight}}
+\doxysubsubsection{\texorpdfstring{getTeamAlive()}{getTeamAlive()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ Fight\+::get\+Team\+Alive (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{class_monster}{Monster}} $>$}]{team }\end{DoxyParamCaption}) const}
+
+
+
+Renvoie la liste des monstres vivants de l\textquotesingle{}équipe. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em team} & \+: équipe à tester \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+la liste des ids des monstres vivants de l\textquotesingle{}équipe 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_fight_ac71a19afe96ece3b1227702d23a89c51}\label{class_fight_ac71a19afe96ece3b1227702d23a89c51}} 
+\index{Fight@{Fight}!initTurn@{initTurn}}
+\index{initTurn@{initTurn}!Fight@{Fight}}
+\doxysubsubsection{\texorpdfstring{initTurn()}{initTurn()}}
+{\footnotesize\ttfamily std\+::queue$<$ std\+::string $>$ Fight\+::init\+Turn (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initialise le tour. 
+
+\begin{DoxyReturn}{Returns}
+la file de message à afficher 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_fight_a4cb44c9564e88e4eca5da6402ae7745c}\label{class_fight_a4cb44c9564e88e4eca5da6402ae7745c}} 
+\index{Fight@{Fight}!isOver@{isOver}}
+\index{isOver@{isOver}!Fight@{Fight}}
+\doxysubsubsection{\texorpdfstring{isOver()}{isOver()}}
+{\footnotesize\ttfamily bool Fight\+::is\+Over (\begin{DoxyParamCaption}\item[{bool \&}]{is\+Team1\+Win }\end{DoxyParamCaption})}
+
+
+
+Vérifie si le combat est terminé 
+
+
+\begin{DoxyParams}{Parameters}
+{\em is\+Team1\+Win} & \+: true si l\textquotesingle{}équipe 1 a gagné, false sinon \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si le combat est terminé, false sinon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_fight_a2eddd06d9992afc48a31ad673ba52590}\label{class_fight_a2eddd06d9992afc48a31ad673ba52590}} 
+\index{Fight@{Fight}!scout@{scout}}
+\index{scout@{scout}!Fight@{Fight}}
+\doxysubsubsection{\texorpdfstring{scout()}{scout()}}
+{\footnotesize\ttfamily bool Fight\+::scout (\begin{DoxyParamCaption}\item[{std\+::string}]{id\+Monster,  }\item[{std\+::queue$<$ \mbox{\hyperlink{structscout_impact}{scout\+Impact}} $>$ \&}]{messages }\end{DoxyParamCaption})}
+
+
+
+Lance la phase de dressage. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id\+Monster} & \+: id du monstre à dresser \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si le monstre a été dressé, false sinon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_fight_a75358dc3e2e8421c2ff277319cc3a759}\label{class_fight_a75358dc3e2e8421c2ff277319cc3a759}} 
+\index{Fight@{Fight}!simulateAction@{simulateAction}}
+\index{simulateAction@{simulateAction}!Fight@{Fight}}
+\doxysubsubsection{\texorpdfstring{simulateAction()}{simulateAction()}}
+{\footnotesize\ttfamily std\+::queue$<$ \mbox{\hyperlink{structspell_impact}{spell\+Impact}} $>$ Fight\+::simulate\+Action (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Simule la prochaine action. 
+
+\begin{DoxyReturn}{Returns}
+la file d\textquotesingle{}impact à effectuer 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_fight_ace15cba4c4cb661b172174a83dd53763}\label{class_fight_ace15cba4c4cb661b172174a83dd53763}} 
+\index{Fight@{Fight}!simulateTurn@{simulateTurn}}
+\index{simulateTurn@{simulateTurn}!Fight@{Fight}}
+\doxysubsubsection{\texorpdfstring{simulateTurn()}{simulateTurn()}}
+{\footnotesize\ttfamily std\+::queue$<$ std\+::string $>$ Fight\+::simulate\+Turn (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Simule le tour. 
+
+\begin{DoxyReturn}{Returns}
+la file de message à afficher 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_fight_a380fe3b38eef5122fb5a5909ff0ec5d2}\label{class_fight_a380fe3b38eef5122fb5a5909ff0ec5d2}} 
+\index{Fight@{Fight}!spellTacticChoice@{spellTacticChoice}}
+\index{spellTacticChoice@{spellTacticChoice}!Fight@{Fight}}
+\doxysubsubsection{\texorpdfstring{spellTacticChoice()}{spellTacticChoice()}}
+{\footnotesize\ttfamily void Fight\+::spell\+Tactic\+Choice (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_monster}{Monster}} \&}]{caster }\end{DoxyParamCaption})}
+
+
+
+Choix du sort en fonction de la tactique du monstre. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em caster} & \+: monstre qui lance le sort \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_fight_abca3c8f09e7f86cabb02b754afaca30b}\label{class_fight_abca3c8f09e7f86cabb02b754afaca30b}} 
+\index{Fight@{Fight}!updateMonster@{updateMonster}}
+\index{updateMonster@{updateMonster}!Fight@{Fight}}
+\doxysubsubsection{\texorpdfstring{updateMonster()}{updateMonster()}}
+{\footnotesize\ttfamily void Fight\+::update\+Monster (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structspell_impact}{spell\+Impact}}}]{impact }\end{DoxyParamCaption})}
+
+
+
+Met à jour les monstres après une action. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em impact} & \+: impact de l\textquotesingle{}action \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/Fight.\+h\item 
+src/Fight.\+cpp\end{DoxyCompactItemize}

@@ -334,8 +334,6 @@ void FightSDL::getPlayerFightChoice()
         fight.giveActions(orders);
         fight.initTurn();
         orders.clear();
-        while (previousMenu.size() > 1)
-            returnToPreviousMenu();
         simulateFight();
         break;
     case 1:
@@ -403,7 +401,6 @@ void FightSDL::checkChoiceSet()
             addOrder(createAction(fight.team1[caster].getInfos("id"), spell, targetId));
             returnToPreviousMenu();
             returnToPreviousMenu();
-            status = mainMenu;
         }
         else if (stepStatus == 2)
         {
@@ -521,13 +518,17 @@ void FightSDL::startEnemyTurn()
 void FightSDL::simulateFight()
 {
     SDL_Event event;
+    while (previousMenu.size() > 1)
+        returnToPreviousMenu();
+    status = mainMenu;
     while (fight.actionsOrdered.size() > 0 || spellImpacts.size() > 0)
     {
         while (SDL_PollEvent(&event))
         {
             // Empêche le jeu de planter s'il tourne en arrière plan
         }
-        if (fight.isOver(team1Alive)) {
+        if (fight.isOver(team1Alive))
+        {
             over = true;
             return;
         }

@@ -1,0 +1,62 @@
+\hypertarget{_map_8h_source}{}\doxysection{Map.\+h}
+\label{_map_8h_source}\index{src/Map.h@{src/Map.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_MAP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_MAP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}jsonFunction.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Sprite.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}Database.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}Hitbox.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}Entity.h"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_map}{Map}}}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordtype}{int}\ width;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Largeur\ de\ la\ map}}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{int}\ height;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Hauteur\ de\ la\ map}}
+\DoxyCodeLine{00015\ \ \ \ \ std::vector<std::vector<int>\ >\ map;\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Première\ dimension\ :\ couche,\ deuxième\ dimension\ :\ case}}
+\DoxyCodeLine{00016\ \ \ \ \ std::unordered\_map<int,\ std::string>\ tileSets;\ \ \textcolor{comment}{//\ Clé\ :\ firstGid,\ Valeur\ :\ TileSet}}
+\DoxyCodeLine{00017\ \ \ \ \ std::vector<int>\ firstGids;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Liste\ des\ firstGids\ des\ TileSets}}
+\DoxyCodeLine{00018\ \ \ \ \ std::vector<Hitbox>\ hitboxes;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Les\ hitboxes}}
+\DoxyCodeLine{00019\ \ \ \ \ std::vector<Entity>\ entities;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Les\ entités}}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ levelMin;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Le\ niveau\ minimum\ des\ monstres}}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ levelMax;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Le\ niveau\ maximum\ des\ monstres}}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ respawnX;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ La\ position\ de\ respawn\ en\ x}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ respawnY;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ La\ position\ de\ respawn\ en\ y}}
+\DoxyCodeLine{00024\ \ \ \ \ std::vector<std::string>\ monsters;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Les\ monstres\ possibles\ en\ combat}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00029\ \ \ \ \ std::string\ getTileSet(\textcolor{keywordtype}{int}\ gid)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{int}\ getFirstGid(\textcolor{keywordtype}{int}\ value)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{class_map_a0f5ad0fd4563497b4214038cbca8b582}{Map}}();}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_map_a6061db6163ef87970275b38a8d4bdecb}{loadMap}}(std::string\ path,\ \mbox{\hyperlink{class_database}{Database}}\ \&db);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_map_ab3181204ba96eb15b96ee1ced85e198e}{getWidth}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_map_a67113f1ffac80d9a20b15fa18a58edc2}{getHeight}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_map_a88dce19f7b55c11c4226989ca9c39ed1}{getLayerCount}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_map_a2cbdd3fdcfe00383def6750970f27eae}{getValue}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ layer)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_map_a24c8f096f31c155d0a5544680ab60ca3}{drawLayer}}(\textcolor{keywordtype}{int}\ layer,\ SDL\_Renderer\ *renderer,\ \mbox{\hyperlink{struct_camera}{Camera}}\ camera,\ std::unordered\_map<std::string,\ Sprite>\ \&sprites,\ \mbox{\hyperlink{class_database}{Database}}\ \&db)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00073\ \ \ \ \ std::vector<Hitbox>\ \mbox{\hyperlink{class_map_a532bd7bc457772a1fa87ad190847ff42}{getHitboxes}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00077\ \ \ \ \ std::vector<Entity>\ \mbox{\hyperlink{class_map_a4e0f13c6774ea784d06099d6d813ecee}{getEntities}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00081\ \ \ \ \ std::vector<std::string>\ \mbox{\hyperlink{class_map_a589b082643af3fd6569492a1f85130a2}{getMonsters}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \&levelMin,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \&levelMax)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_map_a9d77af967cb8fbcbfd922836dc35bfca}{getRespawnCoord}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \&x,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \&y)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00087\ \};}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00094\ \textcolor{keywordtype}{bool}\ tileInCamera(\mbox{\hyperlink{struct_camera}{Camera}}\ \&c,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

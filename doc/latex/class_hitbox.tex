@@ -1,0 +1,318 @@
+\hypertarget{class_hitbox}{}\doxysection{Hitbox Class Reference}
+\label{class_hitbox}\index{Hitbox@{Hitbox}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_hitbox_a999b0be8486978b3dd7bcd001c7c3c03}\label{class_hitbox_a999b0be8486978b3dd7bcd001c7c3c03}} 
+{\bfseries Hitbox} ()
+\begin{DoxyCompactList}\small\item\em Constructeur par défaut de la classe \mbox{\hyperlink{class_hitbox}{Hitbox}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_hitbox_afb0d5289875a746e8e3607236031294b}{Hitbox}} (int x, int y, int w, int h, int offsetX=0, int offsetY=0, Hitbox\+Type type=Solid)
+\begin{DoxyCompactList}\small\item\em Constructeur de la classe \mbox{\hyperlink{class_hitbox}{Hitbox}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_hitbox}{Hitbox}} \& \mbox{\hyperlink{class_hitbox_ad06673de9dd9fb0185ed012efa9102c1}{operator=}} (const \mbox{\hyperlink{class_hitbox}{Hitbox}} \&h)
+\begin{DoxyCompactList}\small\item\em Constructeur par copie de la classe \mbox{\hyperlink{class_hitbox}{Hitbox}} avec l\textquotesingle{}opérateur =. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_hitbox_a96a032adbbf7f4c2928c89edb80f4a5d}{getX}} () const
+\begin{DoxyCompactList}\small\item\em Retourne la coordonnée x du coin supérieur gauche de la \mbox{\hyperlink{class_hitbox}{Hitbox}}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_hitbox_ad4519e5d1196ddc883bddb0b8f1728f5}{getY}} () const
+\begin{DoxyCompactList}\small\item\em Retourne la coordonnée y du coin supérieur gauche de la \mbox{\hyperlink{class_hitbox}{Hitbox}}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_hitbox_a7fce22eedea87ea9f0277030731c92dd}{get\+OffsetX}} () const
+\begin{DoxyCompactList}\small\item\em Retourne l\textquotesingle{}écart entre le coin supérieur gauche x de l\textquotesingle{}entité et le coin supérieur gauche de la \mbox{\hyperlink{class_hitbox}{Hitbox}}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_hitbox_a83a51fdd9a2e50d1c93c5cd5dc695688}{get\+OffsetY}} () const
+\begin{DoxyCompactList}\small\item\em Retourne l\textquotesingle{}écart entre le coin supérieur gauche y de l\textquotesingle{}entité et le coin supérieur gauche de la \mbox{\hyperlink{class_hitbox}{Hitbox}}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_hitbox_a481f4aff847495e44ab2359739432e03}{get\+RealX}} () const
+\begin{DoxyCompactList}\small\item\em Renvoie le vrai x de la \mbox{\hyperlink{class_hitbox}{Hitbox}}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_hitbox_ad058e179f65a45fe1e867b60c604deab}{get\+RealY}} () const
+\begin{DoxyCompactList}\small\item\em Renvoie le vrai y de la \mbox{\hyperlink{class_hitbox}{Hitbox}}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_hitbox_a6dd11001509c0be7bb8e7f2796c6dfb7}{get\+Width}} () const
+\begin{DoxyCompactList}\small\item\em Retourne la largeur de la \mbox{\hyperlink{class_hitbox}{Hitbox}}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_hitbox_ad1701db71dce247958ec1c20ae020a57}{get\+Height}} () const
+\begin{DoxyCompactList}\small\item\em Retourne la hauteur de la \mbox{\hyperlink{class_hitbox}{Hitbox}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hitbox_acf7b9fb5af3490935375afa8c86a642a}{setX}} (int x)
+\begin{DoxyCompactList}\small\item\em Modifie la coordonnée x du coin supérieur gauche de la \mbox{\hyperlink{class_hitbox}{Hitbox}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hitbox_a6442a794ab675a487bb16fb3d63177e4}{setY}} (int y)
+\begin{DoxyCompactList}\small\item\em Modifie la coordonnée y du coin supérieur gauche de la \mbox{\hyperlink{class_hitbox}{Hitbox}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hitbox_ac9486ef0fff04656b454870d6f9d0f5b}{setW}} (int w)
+\begin{DoxyCompactList}\small\item\em Modifie la largeur de la \mbox{\hyperlink{class_hitbox}{Hitbox}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hitbox_aa242e80eb19168d794117e7d4d2a1be9}{setH}} (int h)
+\begin{DoxyCompactList}\small\item\em Modifie la hauteur de la \mbox{\hyperlink{class_hitbox}{Hitbox}}. \end{DoxyCompactList}\item 
+Collision\+Side \mbox{\hyperlink{class_hitbox_a6597c78181f9c11f9d27abe612b29ba4}{get\+Collision}} (\mbox{\hyperlink{class_hitbox}{Hitbox}} h) const
+\begin{DoxyCompactList}\small\item\em Retourne le côté de collision entre deux \mbox{\hyperlink{class_hitbox}{Hitbox}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hitbox_a80225ea61d0d70de78da9778f7f5ee0c}{get\+Hitbox\+Border}} (int \&x, int \&y, Collision\+Side side, \mbox{\hyperlink{class_hitbox}{Hitbox}} h) const
+\begin{DoxyCompactList}\small\item\em Modifie x et y en fonction du côté de collision. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_hitbox_aa92eba950d0d13a67122aa85d342b6a8}{is\+Colliding}} (\mbox{\hyperlink{class_hitbox}{Hitbox}} h) const
+\begin{DoxyCompactList}\small\item\em Vrai si la \mbox{\hyperlink{class_hitbox}{Hitbox}} est en collision avec une autre \mbox{\hyperlink{class_hitbox}{Hitbox}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_hitbox_afb0d5289875a746e8e3607236031294b}\label{class_hitbox_afb0d5289875a746e8e3607236031294b}} 
+\index{Hitbox@{Hitbox}!Hitbox@{Hitbox}}
+\index{Hitbox@{Hitbox}!Hitbox@{Hitbox}}
+\doxysubsubsection{\texorpdfstring{Hitbox()}{Hitbox()}}
+{\footnotesize\ttfamily Hitbox\+::\+Hitbox (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{w,  }\item[{int}]{h,  }\item[{int}]{offsetX = {\ttfamily 0},  }\item[{int}]{offsetY = {\ttfamily 0},  }\item[{Hitbox\+Type}]{type = {\ttfamily Solid} }\end{DoxyParamCaption})}
+
+
+
+Constructeur de la classe \mbox{\hyperlink{class_hitbox}{Hitbox}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Coordonnée x du coin supérieur gauche de la \mbox{\hyperlink{class_hitbox}{Hitbox}} \\
+\hline
+{\em y} & Coordonnée y du coin supérieur gauche de la \mbox{\hyperlink{class_hitbox}{Hitbox}} \\
+\hline
+{\em w} & Largeur de la \mbox{\hyperlink{class_hitbox}{Hitbox}} \\
+\hline
+{\em h} & Hauteur de la \mbox{\hyperlink{class_hitbox}{Hitbox}} \\
+\hline
+{\em offsetX} & Ecart entre le coin supérieur gauche de l\textquotesingle{}entité et le coin supérieur gauche de la \mbox{\hyperlink{class_hitbox}{Hitbox}} \\
+\hline
+{\em offsetY} & Ecart entre le coin supérieur gauche de l\textquotesingle{}entité et le coin supérieur gauche de la \mbox{\hyperlink{class_hitbox}{Hitbox}} \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_hitbox_a6597c78181f9c11f9d27abe612b29ba4}\label{class_hitbox_a6597c78181f9c11f9d27abe612b29ba4}} 
+\index{Hitbox@{Hitbox}!getCollision@{getCollision}}
+\index{getCollision@{getCollision}!Hitbox@{Hitbox}}
+\doxysubsubsection{\texorpdfstring{getCollision()}{getCollision()}}
+{\footnotesize\ttfamily Collision\+Side Hitbox\+::get\+Collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_hitbox}{Hitbox}}}]{h }\end{DoxyParamCaption}) const}
+
+
+
+Retourne le côté de collision entre deux \mbox{\hyperlink{class_hitbox}{Hitbox}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em h} & La \mbox{\hyperlink{class_hitbox}{Hitbox}} avec laquelle on veut tester la collision \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Le côté de collision entre deux \mbox{\hyperlink{class_hitbox}{Hitbox}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_hitbox_ad1701db71dce247958ec1c20ae020a57}\label{class_hitbox_ad1701db71dce247958ec1c20ae020a57}} 
+\index{Hitbox@{Hitbox}!getHeight@{getHeight}}
+\index{getHeight@{getHeight}!Hitbox@{Hitbox}}
+\doxysubsubsection{\texorpdfstring{getHeight()}{getHeight()}}
+{\footnotesize\ttfamily int Hitbox\+::get\+Height (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne la hauteur de la \mbox{\hyperlink{class_hitbox}{Hitbox}}. 
+
+\begin{DoxyReturn}{Returns}
+La hauteur de la \mbox{\hyperlink{class_hitbox}{Hitbox}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_hitbox_a80225ea61d0d70de78da9778f7f5ee0c}\label{class_hitbox_a80225ea61d0d70de78da9778f7f5ee0c}} 
+\index{Hitbox@{Hitbox}!getHitboxBorder@{getHitboxBorder}}
+\index{getHitboxBorder@{getHitboxBorder}!Hitbox@{Hitbox}}
+\doxysubsubsection{\texorpdfstring{getHitboxBorder()}{getHitboxBorder()}}
+{\footnotesize\ttfamily void Hitbox\+::get\+Hitbox\+Border (\begin{DoxyParamCaption}\item[{int \&}]{x,  }\item[{int \&}]{y,  }\item[{Collision\+Side}]{side,  }\item[{\mbox{\hyperlink{class_hitbox}{Hitbox}}}]{h }\end{DoxyParamCaption}) const}
+
+
+
+Modifie x et y en fonction du côté de collision. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & La coordonnée x du coin supérieur gauche de l\textquotesingle{}entité \\
+\hline
+{\em y} & La coordonnée y du coin supérieur gauche de l\textquotesingle{}entité \\
+\hline
+{\em side} & Le côté de collision \\
+\hline
+{\em h} & La \mbox{\hyperlink{class_hitbox}{Hitbox}} avec laquelle on veut tester la collision \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hitbox_a7fce22eedea87ea9f0277030731c92dd}\label{class_hitbox_a7fce22eedea87ea9f0277030731c92dd}} 
+\index{Hitbox@{Hitbox}!getOffsetX@{getOffsetX}}
+\index{getOffsetX@{getOffsetX}!Hitbox@{Hitbox}}
+\doxysubsubsection{\texorpdfstring{getOffsetX()}{getOffsetX()}}
+{\footnotesize\ttfamily int Hitbox\+::get\+OffsetX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne l\textquotesingle{}écart entre le coin supérieur gauche x de l\textquotesingle{}entité et le coin supérieur gauche de la \mbox{\hyperlink{class_hitbox}{Hitbox}}. 
+
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}écart entre le coin supérieur gauche de l\textquotesingle{}entité et le coin supérieur gauche de la \mbox{\hyperlink{class_hitbox}{Hitbox}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_hitbox_a83a51fdd9a2e50d1c93c5cd5dc695688}\label{class_hitbox_a83a51fdd9a2e50d1c93c5cd5dc695688}} 
+\index{Hitbox@{Hitbox}!getOffsetY@{getOffsetY}}
+\index{getOffsetY@{getOffsetY}!Hitbox@{Hitbox}}
+\doxysubsubsection{\texorpdfstring{getOffsetY()}{getOffsetY()}}
+{\footnotesize\ttfamily int Hitbox\+::get\+OffsetY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne l\textquotesingle{}écart entre le coin supérieur gauche y de l\textquotesingle{}entité et le coin supérieur gauche de la \mbox{\hyperlink{class_hitbox}{Hitbox}}. 
+
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}écart entre le coin supérieur gauche de l\textquotesingle{}entité et le coin supérieur gauche de la \mbox{\hyperlink{class_hitbox}{Hitbox}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_hitbox_a481f4aff847495e44ab2359739432e03}\label{class_hitbox_a481f4aff847495e44ab2359739432e03}} 
+\index{Hitbox@{Hitbox}!getRealX@{getRealX}}
+\index{getRealX@{getRealX}!Hitbox@{Hitbox}}
+\doxysubsubsection{\texorpdfstring{getRealX()}{getRealX()}}
+{\footnotesize\ttfamily int Hitbox\+::get\+RealX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Renvoie le vrai x de la \mbox{\hyperlink{class_hitbox}{Hitbox}}. 
+
+\begin{DoxyReturn}{Returns}
+Le vrai x de la \mbox{\hyperlink{class_hitbox}{Hitbox}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_hitbox_ad058e179f65a45fe1e867b60c604deab}\label{class_hitbox_ad058e179f65a45fe1e867b60c604deab}} 
+\index{Hitbox@{Hitbox}!getRealY@{getRealY}}
+\index{getRealY@{getRealY}!Hitbox@{Hitbox}}
+\doxysubsubsection{\texorpdfstring{getRealY()}{getRealY()}}
+{\footnotesize\ttfamily int Hitbox\+::get\+RealY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Renvoie le vrai y de la \mbox{\hyperlink{class_hitbox}{Hitbox}}. 
+
+\begin{DoxyReturn}{Returns}
+Le vrai y de la \mbox{\hyperlink{class_hitbox}{Hitbox}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_hitbox_a6dd11001509c0be7bb8e7f2796c6dfb7}\label{class_hitbox_a6dd11001509c0be7bb8e7f2796c6dfb7}} 
+\index{Hitbox@{Hitbox}!getWidth@{getWidth}}
+\index{getWidth@{getWidth}!Hitbox@{Hitbox}}
+\doxysubsubsection{\texorpdfstring{getWidth()}{getWidth()}}
+{\footnotesize\ttfamily int Hitbox\+::get\+Width (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne la largeur de la \mbox{\hyperlink{class_hitbox}{Hitbox}}. 
+
+\begin{DoxyReturn}{Returns}
+La largeur de la \mbox{\hyperlink{class_hitbox}{Hitbox}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_hitbox_a96a032adbbf7f4c2928c89edb80f4a5d}\label{class_hitbox_a96a032adbbf7f4c2928c89edb80f4a5d}} 
+\index{Hitbox@{Hitbox}!getX@{getX}}
+\index{getX@{getX}!Hitbox@{Hitbox}}
+\doxysubsubsection{\texorpdfstring{getX()}{getX()}}
+{\footnotesize\ttfamily int Hitbox\+::getX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne la coordonnée x du coin supérieur gauche de la \mbox{\hyperlink{class_hitbox}{Hitbox}}. 
+
+\begin{DoxyReturn}{Returns}
+La coordonnée x du coin supérieur gauche de la \mbox{\hyperlink{class_hitbox}{Hitbox}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_hitbox_ad4519e5d1196ddc883bddb0b8f1728f5}\label{class_hitbox_ad4519e5d1196ddc883bddb0b8f1728f5}} 
+\index{Hitbox@{Hitbox}!getY@{getY}}
+\index{getY@{getY}!Hitbox@{Hitbox}}
+\doxysubsubsection{\texorpdfstring{getY()}{getY()}}
+{\footnotesize\ttfamily int Hitbox\+::getY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne la coordonnée y du coin supérieur gauche de la \mbox{\hyperlink{class_hitbox}{Hitbox}}. 
+
+\begin{DoxyReturn}{Returns}
+La coordonnée y du coin supérieur gauche de la \mbox{\hyperlink{class_hitbox}{Hitbox}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_hitbox_aa92eba950d0d13a67122aa85d342b6a8}\label{class_hitbox_aa92eba950d0d13a67122aa85d342b6a8}} 
+\index{Hitbox@{Hitbox}!isColliding@{isColliding}}
+\index{isColliding@{isColliding}!Hitbox@{Hitbox}}
+\doxysubsubsection{\texorpdfstring{isColliding()}{isColliding()}}
+{\footnotesize\ttfamily bool Hitbox\+::is\+Colliding (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_hitbox}{Hitbox}}}]{h }\end{DoxyParamCaption}) const}
+
+
+
+Vrai si la \mbox{\hyperlink{class_hitbox}{Hitbox}} est en collision avec une autre \mbox{\hyperlink{class_hitbox}{Hitbox}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em h} & La \mbox{\hyperlink{class_hitbox}{Hitbox}} avec laquelle on veut tester la collision \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vrai si la \mbox{\hyperlink{class_hitbox}{Hitbox}} est en collision avec une autre \mbox{\hyperlink{class_hitbox}{Hitbox}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_hitbox_ad06673de9dd9fb0185ed012efa9102c1}\label{class_hitbox_ad06673de9dd9fb0185ed012efa9102c1}} 
+\index{Hitbox@{Hitbox}!operator=@{operator=}}
+\index{operator=@{operator=}!Hitbox@{Hitbox}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_hitbox}{Hitbox}} \& Hitbox\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_hitbox}{Hitbox}} \&}]{h }\end{DoxyParamCaption})}
+
+
+
+Constructeur par copie de la classe \mbox{\hyperlink{class_hitbox}{Hitbox}} avec l\textquotesingle{}opérateur =. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em h} & \mbox{\hyperlink{class_hitbox}{Hitbox}} à copier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Une copie de la \mbox{\hyperlink{class_hitbox}{Hitbox}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_hitbox_aa242e80eb19168d794117e7d4d2a1be9}\label{class_hitbox_aa242e80eb19168d794117e7d4d2a1be9}} 
+\index{Hitbox@{Hitbox}!setH@{setH}}
+\index{setH@{setH}!Hitbox@{Hitbox}}
+\doxysubsubsection{\texorpdfstring{setH()}{setH()}}
+{\footnotesize\ttfamily void Hitbox\+::setH (\begin{DoxyParamCaption}\item[{int}]{h }\end{DoxyParamCaption})}
+
+
+
+Modifie la hauteur de la \mbox{\hyperlink{class_hitbox}{Hitbox}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em h} & La nouvelle hauteur de la \mbox{\hyperlink{class_hitbox}{Hitbox}} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hitbox_ac9486ef0fff04656b454870d6f9d0f5b}\label{class_hitbox_ac9486ef0fff04656b454870d6f9d0f5b}} 
+\index{Hitbox@{Hitbox}!setW@{setW}}
+\index{setW@{setW}!Hitbox@{Hitbox}}
+\doxysubsubsection{\texorpdfstring{setW()}{setW()}}
+{\footnotesize\ttfamily void Hitbox\+::setW (\begin{DoxyParamCaption}\item[{int}]{w }\end{DoxyParamCaption})}
+
+
+
+Modifie la largeur de la \mbox{\hyperlink{class_hitbox}{Hitbox}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em w} & La nouvelle largeur de la \mbox{\hyperlink{class_hitbox}{Hitbox}} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hitbox_acf7b9fb5af3490935375afa8c86a642a}\label{class_hitbox_acf7b9fb5af3490935375afa8c86a642a}} 
+\index{Hitbox@{Hitbox}!setX@{setX}}
+\index{setX@{setX}!Hitbox@{Hitbox}}
+\doxysubsubsection{\texorpdfstring{setX()}{setX()}}
+{\footnotesize\ttfamily void Hitbox\+::setX (\begin{DoxyParamCaption}\item[{int}]{x }\end{DoxyParamCaption})}
+
+
+
+Modifie la coordonnée x du coin supérieur gauche de la \mbox{\hyperlink{class_hitbox}{Hitbox}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & La nouvelle coordonnée x du coin supérieur gauche de la \mbox{\hyperlink{class_hitbox}{Hitbox}} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hitbox_a6442a794ab675a487bb16fb3d63177e4}\label{class_hitbox_a6442a794ab675a487bb16fb3d63177e4}} 
+\index{Hitbox@{Hitbox}!setY@{setY}}
+\index{setY@{setY}!Hitbox@{Hitbox}}
+\doxysubsubsection{\texorpdfstring{setY()}{setY()}}
+{\footnotesize\ttfamily void Hitbox\+::setY (\begin{DoxyParamCaption}\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Modifie la coordonnée y du coin supérieur gauche de la \mbox{\hyperlink{class_hitbox}{Hitbox}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em y} & La nouvelle coordonnée y du coin supérieur gauche de la \mbox{\hyperlink{class_hitbox}{Hitbox}} \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/Hitbox.\+h\item 
+src/Hitbox.\+cpp\end{DoxyCompactItemize}

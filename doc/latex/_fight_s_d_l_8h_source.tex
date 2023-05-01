@@ -1,0 +1,120 @@
+\hypertarget{_fight_s_d_l_8h_source}{}\doxysection{Fight\+SDL.\+h}
+\label{_fight_s_d_l_8h_source}\index{src/FightSDL.h@{src/FightSDL.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_FIGHT\_SDL}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_FIGHT\_SDL}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Fight.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Sprite.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}Menu.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{enum}\ fightStatus}
+\DoxyCodeLine{00009\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ mainMenu,\ \ \ \ \ \textcolor{comment}{//\ Menu\ principal}}
+\DoxyCodeLine{00011\ \ \ \ \ simulateTurn,\ \textcolor{comment}{//\ Si\ le\ tour\ est\ simulé}}
+\DoxyCodeLine{00012\ \ \ \ \ tactic,\ \ \ \ \ \ \ \textcolor{comment}{//\ Si\ le\ joueur\ choisit\ une\ tactique}}
+\DoxyCodeLine{00013\ \ \ \ \ order,\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Si\ le\ joueur\ choisit\ un\ ordre}}
+\DoxyCodeLine{00014\ \ \ \ \ scout,\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Si\ le\ joueur\ choisit\ un\ monstre\ à}}
+\DoxyCodeLine{00015\ \ \ \ \ flee\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Si\ le\ joueur\ fuit}}
+\DoxyCodeLine{00016\ \};}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_fight_s_d_l}{FightSDL}}}
+\DoxyCodeLine{00019\ \{}
+\DoxyCodeLine{00020\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{class_fight}{Fight}}\ fight;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Le\ combat\ en\ mémoire}}
+\DoxyCodeLine{00022\ \ \ \ \ SDL\_Renderer\ *renderer;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Le\ renderer}}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{class_sprite}{Sprite}}\ *cursor;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Le\ sprite\ du\ curseur\ pour\ les\ menus}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{int}\ timeLastFrame;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Le\ temps\ du\ dernier\ frame}}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{struct_camera}{Camera}}\ camera;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ La\ caméra}}
+\DoxyCodeLine{00026\ \ \ \ \ std::vector<std::string>\ teamSprites1;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Les\ sprites\ des\ monstres\ de\ l'équipe\ 1}}
+\DoxyCodeLine{00027\ \ \ \ \ std::vector<std::string>\ teamSprites2;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Les\ sprites\ des\ monstres\ de\ l'équipe\ 2}}
+\DoxyCodeLine{00028\ \ \ \ \ std::vector<std::string>\ teamSpritesIcon1;\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Les\ sprites\ des\ icônes\ des\ monstres\ de\ l'équipe\ 1}}
+\DoxyCodeLine{00029\ \ \ \ \ std::string\ background;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Le\ sprite\ du\ fond}}
+\DoxyCodeLine{00030\ \ \ \ \ std::vector<std::string>\ tacticIcons;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Les\ sprites\ des\ icônes\ des\ tactiques}}
+\DoxyCodeLine{00031\ \ \ \ \ std::string\ currentMenu;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Le\ menu\ actuel}}
+\DoxyCodeLine{00032\ \ \ \ \ std::stack<std::string>\ previousMenu;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Les\ menus\ précédents}}
+\DoxyCodeLine{00033\ \ \ \ \ fightStatus\ status;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Le\ status\ du\ combat}}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{int}\ stepStatus;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ L'étape\ du\ status}}
+\DoxyCodeLine{00035\ \ \ \ \ std::unordered\_map<std::string,\ Menu>\ menus;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Les\ menus\ du\ combat}}
+\DoxyCodeLine{00036\ \ \ \ \ std::vector<Action>\ orders;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Les\ monstres\ ciblés}}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{int}\ caster;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Le\ monstre\ qui\ lance\ le\ sort\ -\/1\ non\ défini\ de\ 0\ à\ 2\ équipe\ du\ joueur\ de\ 3\ à\ 5\ équipe\ adverse}}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{int}\ spellChoice;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Le\ sort\ choisi}}
+\DoxyCodeLine{00039\ \ \ \ \ Tactics\ tacticIndex;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ La\ tactique\ choisie}}
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{class_database}{Database}}\ *database;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ La\ base\ de\ donnée}}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{int}\ timeSaver;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Le\ dernier\ temps\ où\ un\ sort\ a\ impacté}}
+\DoxyCodeLine{00042\ \ \ \ \ std::queue<spellImpact>\ spellImpacts;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Les\ impacts\ de\ sorts}}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{bool}\ pointToAlly;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Si\ la\ camera\ pointe\ vers\ l'ennemi}}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ goldReward;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ La\ récompense\ en\ or}}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ xpReward;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ La\ récompense\ en\ xp}}
+\DoxyCodeLine{00046\ \ \ \ \ std::unordered\_map<std::string,\ Mix\_Chunk\ *>\ *sounds;\ \textcolor{comment}{//\ Les\ sons}}
+\DoxyCodeLine{00047\ \ \ \ \ std::unordered\_map<std::string,\ Sprite>\ *sprites;\ \ \ \ \ \textcolor{comment}{//\ Les\ sprites}}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{bool}\ fleed;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Si\ le\ joueur\ a\ fuit}}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{bool}\ scouted;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Si\ le\ joueur\ a\ dresser\ un\ monstre}}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{bool}\ over;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Si\ le\ combat\ est\ terminé}}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{bool}\ team1Alive;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Si\ l'équipe\ du\ joueur\ est\ vivante}}
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{class_monster}{Monster}}\ *monsterScouted;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Le\ monstre\ dressé}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ createTeamSprite(std::vector<Monster>\ \&team,\ \textcolor{keywordtype}{int}\ teamIndex\ =\ 1);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ createTeamSpriteIcon(std::vector<Monster>\ \&team);}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ drawTeam(\textcolor{keywordtype}{bool}\ team1);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{void}\ drawTeamInfo(std::vector<Monster>\ \&team,\ std::vector<std::string>\ \&teamIcons);}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{void}\ getPlayerFightChoice();}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{void}\ checkChoiceSet();}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{void}\ createMenu();}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{void}\ changeCurrentMenu(std::string\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{void}\ returnToPreviousMenu();}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{void}\ addOrder(\mbox{\hyperlink{struct_action}{Action}}\ action);}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{void}\ removeOrder(std::string\ idCaster);}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{void}\ drawOrder();}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordtype}{int}\ getMonsterIndex(std::string\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{bool}\ \&team);}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordtype}{void}\ updateMonsterMenu();}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00111\ \ \ \ \ std::vector<std::string>\ applyXp();}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordtype}{void}\ simulateScout();}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordtype}{void}\ simulateFlee();}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keywordtype}{void}\ simulateFight();}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keywordtype}{void}\ endFight();}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordtype}{void}\ startEnemyTurn();}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00130\ \ \ \ \ \mbox{\hyperlink{class_fight_s_d_l}{FightSDL}}(\mbox{\hyperlink{class_fight}{Fight}}\ \&fight,\ SDL\_Renderer\ *renderer,\ \mbox{\hyperlink{class_sprite}{Sprite}}\ *cursor,\ \mbox{\hyperlink{class_database}{Database}}\ *database,\ std::unordered\_map<std::string,\ Sprite>\ *sprites,\ std::unordered\_map<std::string,\ Mix\_Chunk\ *>\ *sounds);}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00133\ \ \ \ \ \mbox{\hyperlink{class_fight_s_d_l_af4f0684842f7b8b8e8cd9608f36229c5}{\string~FightSDL}}();}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_fight_s_d_l_ad45169598dee40b441733d35e0c80b3d}{runFight}}();}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_fight_s_d_l_a68d84a278f318204e244e4728e9145a3}{getGoldReward}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_fight_s_d_l_a3454936fa0d7987e26856c1ad1f0acdd}{getXpReward}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00150\ \ \ \ \ std::vector<Monster>\ \mbox{\hyperlink{class_fight_s_d_l_aca4929657d870f47a4573fdd80e73bee}{getTeam}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \&teamIndex)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_fight_s_d_l_ab1981891bf9349dbc2bbf09f1ba926bd}{getFleed}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_fight_s_d_l_a6a0dc62ae34a577fb3b62846d9397b2f}{getScouted}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00162\ \ \ \ \ \mbox{\hyperlink{class_monster}{Monster}}\ *\mbox{\hyperlink{class_fight_s_d_l_ac8ac8b944cb8aebb815a36a3e062e739}{getMonsterScouted}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00163\ \};}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00165\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

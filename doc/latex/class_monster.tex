@@ -1,0 +1,667 @@
+\hypertarget{class_monster}{}\doxysection{Monster Class Reference}
+\label{class_monster}\index{Monster@{Monster}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_monster_ab8c501a732ac12dce1848f4e77144092}{Monster}} (rapidjson\+::\+Value \&monster\+Data, std\+::string idM, \mbox{\hyperlink{class_database}{Database}} \&database)
+\begin{DoxyCompactList}\small\item\em Constructeur à partir d\textquotesingle{}un monstre dans la sauvegarde. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_monster_a1152134709dbd5919d351e742be92f37}\label{class_monster_a1152134709dbd5919d351e742be92f37}} 
+{\bfseries Monster} (std\+::string name, std\+::string type, \mbox{\hyperlink{class_database}{Database}} \&database, rapidjson\+::\+Document \&save, unsigned int lvl)
+\begin{DoxyCompactList}\small\item\em Constructeur de monstre sauvage. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_monster_abe7d4af9bf06f53d06c95cfcb0dc5e47}{Monster}} (\mbox{\hyperlink{class_monster}{Monster}} \&m1, \mbox{\hyperlink{class_monster}{Monster}} \&m2, std\+::string name, std\+::string type, \mbox{\hyperlink{class_database}{Database}} \&database, std\+::unordered\+\_\+map$<$ std\+::string, unsigned int $>$ \&skills, rapidjson\+::\+Document \&save)
+\begin{DoxyCompactList}\small\item\em Constructeur de monstre de synthèse. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_monster_a3dfc253fbec8331d42ac13c20bf9425f}\label{class_monster_a3dfc253fbec8331d42ac13c20bf9425f}} 
+{\bfseries Monster} ()
+\begin{DoxyCompactList}\small\item\em génère un monstre null \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_monster_a02ff2832263b222b6ba285cc451fadcc}\label{class_monster_a02ff2832263b222b6ba285cc451fadcc}} 
+void {\bfseries print} () const
+\begin{DoxyCompactList}\small\item\em Affiche les caractéristiques du monstre dans la console. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_monster_a8652a98fac12d2fe152eeefb50086b61}\label{class_monster_a8652a98fac12d2fe152eeefb50086b61}} 
+void {\bfseries print\+Spells} () const
+\begin{DoxyCompactList}\small\item\em Affiche les sorts du monstre dans la console. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_monster_ac17ad17cccd8bf07a23f21f8d14241fb}{add\+Xp}} (unsigned int xp)
+\begin{DoxyCompactList}\small\item\em Ajoute des points d\textquotesingle{}expérience au monstre. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_monster_ae35181ef3dfaf8deba5e1ae828bb68cd}{add\+Skill\+Point}} (unsigned int points)
+\begin{DoxyCompactList}\small\item\em Ajoute des points de compétence au monstre. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_monster_a08635831d5412908fe01daa39862f42e}{apply\+Skill\+Point}} (unsigned int points, std\+::string skill, \mbox{\hyperlink{class_database}{Database}} \&db)
+\begin{DoxyCompactList}\small\item\em Applique les points de compétence au monstre dans un de ses sets de compétences. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_monster_a891257bf87de0600961a4c532f45f01e}{update\+Save\+Monster}} (rapidjson\+::\+Document \&save) const
+\begin{DoxyCompactList}\small\item\em Met à jour les statistiques du monstre dans la sauvegarde. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_monster_a9d9ee590c2def5a045b62e40e9b3be1e}{create\+Save\+Monster}} (rapidjson\+::\+Document \&save) const
+\begin{DoxyCompactList}\small\item\em Crée un monstre dans la sauvegarde. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_monster_aa6c7fd4cd4d6fad1fcc2938f58335574}{operator==}} (const \mbox{\hyperlink{class_monster}{Monster}} \&m) const
+\begin{DoxyCompactList}\small\item\em vrai si les deux monstres ont le même identifiant \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_monster_a20b647e8518f0cec9294930ab8b5bc72}{operator!=}} (const \mbox{\hyperlink{class_monster}{Monster}} \&m) const
+\begin{DoxyCompactList}\small\item\em Vrai si les deux monstres n\textquotesingle{}ont pas le même identifiant. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_monster_a4c450825a9d94cf22a9956c84765980d}{get\+Agility}} () const
+\begin{DoxyCompactList}\small\item\em Donne l\textquotesingle{}agilité du monstre. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{class_monster_a4527b3b86d330497eca2351b597b62c3}{get\+Exp}} () const
+\begin{DoxyCompactList}\small\item\em Donne l\textquotesingle{}experience du monstre. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{class_monster_a45009114b74e92cdd72f025174917a04}{get\+Level}} () const
+\begin{DoxyCompactList}\small\item\em Accesseur du niveau du monstre. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_monster_a5d021637e7638254169a942f9b6c393c}{get\+Xp\+Lvl}} (int level) const
+\begin{DoxyCompactList}\small\item\em Donne l\textquotesingle{}xp nécessaire pour atteindre le niveau demandé \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{class_monster_a5ce240140533dc6928b302b96165c816}{get\+Spells}} () const
+\begin{DoxyCompactList}\small\item\em Donne les sorts du monstre. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_monster_a28ae1112e37262ce150e3c02465b3dd5}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Donne le nom du monstre. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_monster_a68f478cd3f9e848b72289d2a4abb9aa1}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Donne le type du monstre. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_monster_a362e02911d3054ab2f934ccff154d5ec}{get\+Stat}} (std\+::string stat) const
+\begin{DoxyCompactList}\small\item\em Donne la statistique du monstre demandée. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_monster_ae333fcc33c5e6b2da23cc2d23f49404e}{get\+Resistance}} (std\+::string resistance) const
+\begin{DoxyCompactList}\small\item\em Donne les resistances du monstre. \end{DoxyCompactList}\item 
+Tactics \mbox{\hyperlink{class_monster_a7e0236178f5b58328729143cd2201380}{get\+Tactic}} () const
+\begin{DoxyCompactList}\small\item\em Donne la tactique du monstre. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_monster_ad9cb0a9fb3e51ee0dd6f3936a60afcc1}{set\+Tactic}} (Tactics tactic)
+\begin{DoxyCompactList}\small\item\em Définit la tactique du monstre. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_monster_a3385b634432518ca3dd192d0316b400a}{damage}} (float damage)
+\begin{DoxyCompactList}\small\item\em Inflige des dégâts au monstre. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_monster_a671e396f298a5b995c38c38b23e2b56b}{heal}} (float heal)
+\begin{DoxyCompactList}\small\item\em Soigne le monstre. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_monster_adc5630fc448eed67b3502d228d8f7e39}{set\+Stats}} (std\+::string alteration, float value, int turn)
+\begin{DoxyCompactList}\small\item\em Défini les alterations de statistiques du monstre. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_monster_ae66e29e8fe30e85a88da4ebf8e030375}{set\+Status}} (std\+::string status, int turn)
+\begin{DoxyCompactList}\small\item\em Défini les alterations de status du monstre. \end{DoxyCompactList}\item 
+std\+::queue$<$ std\+::string $>$ \mbox{\hyperlink{class_monster_a806c582e893a651f8224824e8c20b323}{update\+Stat\+Status}} ()
+\begin{DoxyCompactList}\small\item\em Met à jour les alterations de statistiques et de status du monstre. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_monster_ae50b29b796d5ce93fd9f8ed7725cea42}{get\+Status}} (std\+::string status) const
+\begin{DoxyCompactList}\small\item\em Renvoie vrai si le status du monstre est altéré \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_monster_ac7a6905b1519ff55be8d0f27bdbfde75}{get\+Infos}} (std\+::string info) const
+\begin{DoxyCompactList}\small\item\em retourne une informations du monstre \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{class_monster_a0fd7a5b3cb7aa1346d1d1d23d26a11fd}{get\+Synth\+Id}} () const
+\begin{DoxyCompactList}\small\item\em Donne l\textquotesingle{}identifiant de synthèse du monstre. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{class_monster_adc435ab4f1f5c009ce3c8f861770f27e}{get\+Skill\+To\+Attribute}} () const
+\begin{DoxyCompactList}\small\item\em Donne les points de compétence du monstre qui n\textquotesingle{}ont pas encore été appliqués. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_monster_a33752f0fbcd07ce959782f3056258981}{auto\+Attribute\+Skill}} (\mbox{\hyperlink{class_database}{Database}} \&db)
+\begin{DoxyCompactList}\small\item\em Attribution automatique des points de compétence du monstre. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_monster_a363bba916f18423d433f200906a0fce5}{set\+Name}} (std\+::string name)
+\begin{DoxyCompactList}\small\item\em change le nom du monstre \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_monster_a1a70826b50ae10b67e49e70c559e3897}\label{class_monster_a1a70826b50ae10b67e49e70c559e3897}} 
+void {\bfseries full\+Heal} ()
+\begin{DoxyCompactList}\small\item\em Soigne le monstre à 100\%. \end{DoxyCompactList}\item 
+std\+::unordered\+\_\+map$<$ std\+::string, unsigned int $>$ \mbox{\hyperlink{class_monster_a027ed32f8e643e146ec7e179508cd144}{get\+Skills}} () const
+\begin{DoxyCompactList}\small\item\em Donne les compétences du monstre. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{class_monster_af7a106a523005f572f9bacca2733e391}{get\+Synth\+Level}} () const
+\begin{DoxyCompactList}\small\item\em Donne le niveau de synthèse du monstre. \end{DoxyCompactList}\item 
+std\+::unordered\+\_\+map$<$ std\+::string, float $>$ \mbox{\hyperlink{class_monster_aa7a9ba4e46f70dea57addf88ca76ec8a}{get\+Growth}} () const
+\begin{DoxyCompactList}\small\item\em Donne la croissance du monstre. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{class_monster_aa49d01b50cd86aab68e05a1eab814ec3}{get\+Hp}} () const
+\begin{DoxyCompactList}\small\item\em Retourne les hp du monstre. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{class_monster_adf4a826d8351d3cce87730d31877b413}{get\+Mp}} () const
+\begin{DoxyCompactList}\small\item\em Retourne les mp du monstre. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_monster_ac68df6a36a803b52e0f64bc9f9f9109b}\label{class_monster_ac68df6a36a803b52e0f64bc9f9f9109b}} 
+float {\bfseries hp}
+\item 
+\mbox{\Hypertarget{class_monster_a51b5cb11a6413063c09dcecf20e8211c}\label{class_monster_a51b5cb11a6413063c09dcecf20e8211c}} 
+float {\bfseries mp}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_monster_ab8c501a732ac12dce1848f4e77144092}\label{class_monster_ab8c501a732ac12dce1848f4e77144092}} 
+\index{Monster@{Monster}!Monster@{Monster}}
+\index{Monster@{Monster}!Monster@{Monster}}
+\doxysubsubsection{\texorpdfstring{Monster()}{Monster()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Monster\+::\+Monster (\begin{DoxyParamCaption}\item[{rapidjson\+::\+Value \&}]{monster\+Data,  }\item[{std\+::string}]{idM,  }\item[{\mbox{\hyperlink{class_database}{Database}} \&}]{database }\end{DoxyParamCaption})}
+
+
+
+Constructeur à partir d\textquotesingle{}un monstre dans la sauvegarde. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em monster\+Data} & données du monstre \\
+\hline
+{\em idM} & identifiant du monstre \\
+\hline
+{\em database} & base de données \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_monster_abe7d4af9bf06f53d06c95cfcb0dc5e47}\label{class_monster_abe7d4af9bf06f53d06c95cfcb0dc5e47}} 
+\index{Monster@{Monster}!Monster@{Monster}}
+\index{Monster@{Monster}!Monster@{Monster}}
+\doxysubsubsection{\texorpdfstring{Monster()}{Monster()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Monster\+::\+Monster (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_monster}{Monster}} \&}]{m1,  }\item[{\mbox{\hyperlink{class_monster}{Monster}} \&}]{m2,  }\item[{std\+::string}]{name,  }\item[{std\+::string}]{type,  }\item[{\mbox{\hyperlink{class_database}{Database}} \&}]{database,  }\item[{std\+::unordered\+\_\+map$<$ std\+::string, unsigned int $>$ \&}]{skills,  }\item[{rapidjson\+::\+Document \&}]{save }\end{DoxyParamCaption})}
+
+
+
+Constructeur de monstre de synthèse. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m1} & Monstre parent 1 \\
+\hline
+{\em m2} & Monstre parent 2 \\
+\hline
+{\em database} & Base de données \\
+\hline
+{\em skills} & Compétences du monstre \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_monster_ae35181ef3dfaf8deba5e1ae828bb68cd}\label{class_monster_ae35181ef3dfaf8deba5e1ae828bb68cd}} 
+\index{Monster@{Monster}!addSkillPoint@{addSkillPoint}}
+\index{addSkillPoint@{addSkillPoint}!Monster@{Monster}}
+\doxysubsubsection{\texorpdfstring{addSkillPoint()}{addSkillPoint()}}
+{\footnotesize\ttfamily void Monster\+::add\+Skill\+Point (\begin{DoxyParamCaption}\item[{unsigned int}]{points }\end{DoxyParamCaption})}
+
+
+
+Ajoute des points de compétence au monstre. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em points} & nombre de points de compétence à ajouter \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_monster_ac17ad17cccd8bf07a23f21f8d14241fb}\label{class_monster_ac17ad17cccd8bf07a23f21f8d14241fb}} 
+\index{Monster@{Monster}!addXp@{addXp}}
+\index{addXp@{addXp}!Monster@{Monster}}
+\doxysubsubsection{\texorpdfstring{addXp()}{addXp()}}
+{\footnotesize\ttfamily bool Monster\+::add\+Xp (\begin{DoxyParamCaption}\item[{unsigned int}]{xp }\end{DoxyParamCaption})}
+
+
+
+Ajoute des points d\textquotesingle{}expérience au monstre. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em xp} & nombre de points d\textquotesingle{}expérience à ajouter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vrai si le monstre a gagné un niveau 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_monster_a08635831d5412908fe01daa39862f42e}\label{class_monster_a08635831d5412908fe01daa39862f42e}} 
+\index{Monster@{Monster}!applySkillPoint@{applySkillPoint}}
+\index{applySkillPoint@{applySkillPoint}!Monster@{Monster}}
+\doxysubsubsection{\texorpdfstring{applySkillPoint()}{applySkillPoint()}}
+{\footnotesize\ttfamily void Monster\+::apply\+Skill\+Point (\begin{DoxyParamCaption}\item[{unsigned int}]{points,  }\item[{std\+::string}]{skill,  }\item[{\mbox{\hyperlink{class_database}{Database}} \&}]{db }\end{DoxyParamCaption})}
+
+
+
+Applique les points de compétence au monstre dans un de ses sets de compétences. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em points} & nombre de points de compétence à appliquer \\
+\hline
+{\em skill} & set de compétence dans lequel appliquer les points \\
+\hline
+{\em skill\+Base} & base de données des compétences \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_monster_a33752f0fbcd07ce959782f3056258981}\label{class_monster_a33752f0fbcd07ce959782f3056258981}} 
+\index{Monster@{Monster}!autoAttributeSkill@{autoAttributeSkill}}
+\index{autoAttributeSkill@{autoAttributeSkill}!Monster@{Monster}}
+\doxysubsubsection{\texorpdfstring{autoAttributeSkill()}{autoAttributeSkill()}}
+{\footnotesize\ttfamily void Monster\+::auto\+Attribute\+Skill (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_database}{Database}} \&}]{db }\end{DoxyParamCaption})}
+
+
+
+Attribution automatique des points de compétence du monstre. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em db} & base de données \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_monster_a9d9ee590c2def5a045b62e40e9b3be1e}\label{class_monster_a9d9ee590c2def5a045b62e40e9b3be1e}} 
+\index{Monster@{Monster}!createSaveMonster@{createSaveMonster}}
+\index{createSaveMonster@{createSaveMonster}!Monster@{Monster}}
+\doxysubsubsection{\texorpdfstring{createSaveMonster()}{createSaveMonster()}}
+{\footnotesize\ttfamily void Monster\+::create\+Save\+Monster (\begin{DoxyParamCaption}\item[{rapidjson\+::\+Document \&}]{save }\end{DoxyParamCaption}) const}
+
+
+
+Crée un monstre dans la sauvegarde. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em save} & sauvegarde \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_monster_a3385b634432518ca3dd192d0316b400a}\label{class_monster_a3385b634432518ca3dd192d0316b400a}} 
+\index{Monster@{Monster}!damage@{damage}}
+\index{damage@{damage}!Monster@{Monster}}
+\doxysubsubsection{\texorpdfstring{damage()}{damage()}}
+{\footnotesize\ttfamily void Monster\+::damage (\begin{DoxyParamCaption}\item[{float}]{damage }\end{DoxyParamCaption})}
+
+
+
+Inflige des dégâts au monstre. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em damage} & dégâts à infliger \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_monster_a4c450825a9d94cf22a9956c84765980d}\label{class_monster_a4c450825a9d94cf22a9956c84765980d}} 
+\index{Monster@{Monster}!getAgility@{getAgility}}
+\index{getAgility@{getAgility}!Monster@{Monster}}
+\doxysubsubsection{\texorpdfstring{getAgility()}{getAgility()}}
+{\footnotesize\ttfamily float Monster\+::get\+Agility (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Donne l\textquotesingle{}agilité du monstre. 
+
+\begin{DoxyReturn}{Returns}
+Retourne l\textquotesingle{}agilité du monstre 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_monster_a4527b3b86d330497eca2351b597b62c3}\label{class_monster_a4527b3b86d330497eca2351b597b62c3}} 
+\index{Monster@{Monster}!getExp@{getExp}}
+\index{getExp@{getExp}!Monster@{Monster}}
+\doxysubsubsection{\texorpdfstring{getExp()}{getExp()}}
+{\footnotesize\ttfamily unsigned int Monster\+::get\+Exp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Donne l\textquotesingle{}experience du monstre. 
+
+\begin{DoxyReturn}{Returns}
+Retourne l\textquotesingle{}experience du monstre 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_monster_aa7a9ba4e46f70dea57addf88ca76ec8a}\label{class_monster_aa7a9ba4e46f70dea57addf88ca76ec8a}} 
+\index{Monster@{Monster}!getGrowth@{getGrowth}}
+\index{getGrowth@{getGrowth}!Monster@{Monster}}
+\doxysubsubsection{\texorpdfstring{getGrowth()}{getGrowth()}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$ std\+::string, float $>$ Monster\+::get\+Growth (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Donne la croissance du monstre. 
+
+\begin{DoxyReturn}{Returns}
+Retourne la croissance du monstre 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_monster_aa49d01b50cd86aab68e05a1eab814ec3}\label{class_monster_aa49d01b50cd86aab68e05a1eab814ec3}} 
+\index{Monster@{Monster}!getHp@{getHp}}
+\index{getHp@{getHp}!Monster@{Monster}}
+\doxysubsubsection{\texorpdfstring{getHp()}{getHp()}}
+{\footnotesize\ttfamily unsigned int Monster\+::get\+Hp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne les hp du monstre. 
+
+\begin{DoxyReturn}{Returns}
+Retourne les hp du monstre 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_monster_ac7a6905b1519ff55be8d0f27bdbfde75}\label{class_monster_ac7a6905b1519ff55be8d0f27bdbfde75}} 
+\index{Monster@{Monster}!getInfos@{getInfos}}
+\index{getInfos@{getInfos}!Monster@{Monster}}
+\doxysubsubsection{\texorpdfstring{getInfos()}{getInfos()}}
+{\footnotesize\ttfamily std\+::string Monster\+::get\+Infos (\begin{DoxyParamCaption}\item[{std\+::string}]{info }\end{DoxyParamCaption}) const}
+
+
+
+retourne une informations du monstre 
+
+
+\begin{DoxyParams}{Parameters}
+{\em info} & information demandée \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Retourne l\textquotesingle{}informations du nom info du monstre 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_monster_a45009114b74e92cdd72f025174917a04}\label{class_monster_a45009114b74e92cdd72f025174917a04}} 
+\index{Monster@{Monster}!getLevel@{getLevel}}
+\index{getLevel@{getLevel}!Monster@{Monster}}
+\doxysubsubsection{\texorpdfstring{getLevel()}{getLevel()}}
+{\footnotesize\ttfamily unsigned int Monster\+::get\+Level (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Accesseur du niveau du monstre. 
+
+\begin{DoxyReturn}{Returns}
+Retourne le niveau du monstre 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_monster_adf4a826d8351d3cce87730d31877b413}\label{class_monster_adf4a826d8351d3cce87730d31877b413}} 
+\index{Monster@{Monster}!getMp@{getMp}}
+\index{getMp@{getMp}!Monster@{Monster}}
+\doxysubsubsection{\texorpdfstring{getMp()}{getMp()}}
+{\footnotesize\ttfamily unsigned int Monster\+::get\+Mp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne les mp du monstre. 
+
+\begin{DoxyReturn}{Returns}
+Retourne les mp du monstre 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_monster_a28ae1112e37262ce150e3c02465b3dd5}\label{class_monster_a28ae1112e37262ce150e3c02465b3dd5}} 
+\index{Monster@{Monster}!getName@{getName}}
+\index{getName@{getName}!Monster@{Monster}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily std\+::string Monster\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Donne le nom du monstre. 
+
+\begin{DoxyReturn}{Returns}
+Retourne le nom du monstre 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_monster_ae333fcc33c5e6b2da23cc2d23f49404e}\label{class_monster_ae333fcc33c5e6b2da23cc2d23f49404e}} 
+\index{Monster@{Monster}!getResistance@{getResistance}}
+\index{getResistance@{getResistance}!Monster@{Monster}}
+\doxysubsubsection{\texorpdfstring{getResistance()}{getResistance()}}
+{\footnotesize\ttfamily float Monster\+::get\+Resistance (\begin{DoxyParamCaption}\item[{std\+::string}]{resistance }\end{DoxyParamCaption}) const}
+
+
+
+Donne les resistances du monstre. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em resistance} & resistance demandée \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Retourne la resistance du monstre demandée 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_monster_a027ed32f8e643e146ec7e179508cd144}\label{class_monster_a027ed32f8e643e146ec7e179508cd144}} 
+\index{Monster@{Monster}!getSkills@{getSkills}}
+\index{getSkills@{getSkills}!Monster@{Monster}}
+\doxysubsubsection{\texorpdfstring{getSkills()}{getSkills()}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$ std\+::string, unsigned int $>$ Monster\+::get\+Skills (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Donne les compétences du monstre. 
+
+\begin{DoxyReturn}{Returns}
+Retourne les compétences du monstre 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_monster_adc435ab4f1f5c009ce3c8f861770f27e}\label{class_monster_adc435ab4f1f5c009ce3c8f861770f27e}} 
+\index{Monster@{Monster}!getSkillToAttribute@{getSkillToAttribute}}
+\index{getSkillToAttribute@{getSkillToAttribute}!Monster@{Monster}}
+\doxysubsubsection{\texorpdfstring{getSkillToAttribute()}{getSkillToAttribute()}}
+{\footnotesize\ttfamily unsigned int Monster\+::get\+Skill\+To\+Attribute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Donne les points de compétence du monstre qui n\textquotesingle{}ont pas encore été appliqués. 
+
+\begin{DoxyReturn}{Returns}
+Retourne les points de compétence du monstre qui n\textquotesingle{}ont pas encore été appliqués 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_monster_a5ce240140533dc6928b302b96165c816}\label{class_monster_a5ce240140533dc6928b302b96165c816}} 
+\index{Monster@{Monster}!getSpells@{getSpells}}
+\index{getSpells@{getSpells}!Monster@{Monster}}
+\doxysubsubsection{\texorpdfstring{getSpells()}{getSpells()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ Monster\+::get\+Spells (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Donne les sorts du monstre. 
+
+\begin{DoxyReturn}{Returns}
+Retourne les sorts du monstre 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_monster_a362e02911d3054ab2f934ccff154d5ec}\label{class_monster_a362e02911d3054ab2f934ccff154d5ec}} 
+\index{Monster@{Monster}!getStat@{getStat}}
+\index{getStat@{getStat}!Monster@{Monster}}
+\doxysubsubsection{\texorpdfstring{getStat()}{getStat()}}
+{\footnotesize\ttfamily float Monster\+::get\+Stat (\begin{DoxyParamCaption}\item[{std\+::string}]{stat }\end{DoxyParamCaption}) const}
+
+
+
+Donne la statistique du monstre demandée. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stat} & statistique demandée \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Retourne la statistique du monstre demandée 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_monster_ae50b29b796d5ce93fd9f8ed7725cea42}\label{class_monster_ae50b29b796d5ce93fd9f8ed7725cea42}} 
+\index{Monster@{Monster}!getStatus@{getStatus}}
+\index{getStatus@{getStatus}!Monster@{Monster}}
+\doxysubsubsection{\texorpdfstring{getStatus()}{getStatus()}}
+{\footnotesize\ttfamily bool Monster\+::get\+Status (\begin{DoxyParamCaption}\item[{std\+::string}]{status }\end{DoxyParamCaption}) const}
+
+
+
+Renvoie vrai si le status du monstre est altéré 
+
+
+\begin{DoxyParams}{Parameters}
+{\em status} & status à vérifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Retourne vrai si le status du monstre est altéré 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_monster_a0fd7a5b3cb7aa1346d1d1d23d26a11fd}\label{class_monster_a0fd7a5b3cb7aa1346d1d1d23d26a11fd}} 
+\index{Monster@{Monster}!getSynthId@{getSynthId}}
+\index{getSynthId@{getSynthId}!Monster@{Monster}}
+\doxysubsubsection{\texorpdfstring{getSynthId()}{getSynthId()}}
+{\footnotesize\ttfamily unsigned int Monster\+::get\+Synth\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Donne l\textquotesingle{}identifiant de synthèse du monstre. 
+
+\begin{DoxyReturn}{Returns}
+Retourne l\textquotesingle{}identifiant de synthèse du monstre 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_monster_af7a106a523005f572f9bacca2733e391}\label{class_monster_af7a106a523005f572f9bacca2733e391}} 
+\index{Monster@{Monster}!getSynthLevel@{getSynthLevel}}
+\index{getSynthLevel@{getSynthLevel}!Monster@{Monster}}
+\doxysubsubsection{\texorpdfstring{getSynthLevel()}{getSynthLevel()}}
+{\footnotesize\ttfamily unsigned int Monster\+::get\+Synth\+Level (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Donne le niveau de synthèse du monstre. 
+
+\begin{DoxyReturn}{Returns}
+Retourne le niveau de synthèse du monstre 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_monster_a7e0236178f5b58328729143cd2201380}\label{class_monster_a7e0236178f5b58328729143cd2201380}} 
+\index{Monster@{Monster}!getTactic@{getTactic}}
+\index{getTactic@{getTactic}!Monster@{Monster}}
+\doxysubsubsection{\texorpdfstring{getTactic()}{getTactic()}}
+{\footnotesize\ttfamily Tactics Monster\+::get\+Tactic (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Donne la tactique du monstre. 
+
+\begin{DoxyReturn}{Returns}
+Retourne la tactique du monstre 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_monster_a68f478cd3f9e848b72289d2a4abb9aa1}\label{class_monster_a68f478cd3f9e848b72289d2a4abb9aa1}} 
+\index{Monster@{Monster}!getType@{getType}}
+\index{getType@{getType}!Monster@{Monster}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily std\+::string Monster\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Donne le type du monstre. 
+
+\begin{DoxyReturn}{Returns}
+Retourne le type du monstre 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_monster_a5d021637e7638254169a942f9b6c393c}\label{class_monster_a5d021637e7638254169a942f9b6c393c}} 
+\index{Monster@{Monster}!getXpLvl@{getXpLvl}}
+\index{getXpLvl@{getXpLvl}!Monster@{Monster}}
+\doxysubsubsection{\texorpdfstring{getXpLvl()}{getXpLvl()}}
+{\footnotesize\ttfamily int Monster\+::get\+Xp\+Lvl (\begin{DoxyParamCaption}\item[{int}]{level }\end{DoxyParamCaption}) const}
+
+
+
+Donne l\textquotesingle{}xp nécessaire pour atteindre le niveau demandé 
+
+
+\begin{DoxyParams}{Parameters}
+{\em level} & niveau demandé \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Retourne l\textquotesingle{}xp nécessaire pour atteindre le niveau demandé 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_monster_a671e396f298a5b995c38c38b23e2b56b}\label{class_monster_a671e396f298a5b995c38c38b23e2b56b}} 
+\index{Monster@{Monster}!heal@{heal}}
+\index{heal@{heal}!Monster@{Monster}}
+\doxysubsubsection{\texorpdfstring{heal()}{heal()}}
+{\footnotesize\ttfamily void Monster\+::heal (\begin{DoxyParamCaption}\item[{float}]{heal }\end{DoxyParamCaption})}
+
+
+
+Soigne le monstre. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em heal} & points de vie à soigner \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_monster_a20b647e8518f0cec9294930ab8b5bc72}\label{class_monster_a20b647e8518f0cec9294930ab8b5bc72}} 
+\index{Monster@{Monster}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!Monster@{Monster}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool Monster\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_monster}{Monster}} \&}]{m }\end{DoxyParamCaption}) const}
+
+
+
+Vrai si les deux monstres n\textquotesingle{}ont pas le même identifiant. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & Monstre à comparer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vrai si les deux monstres n\textquotesingle{}ont pas le même identifiant 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_monster_aa6c7fd4cd4d6fad1fcc2938f58335574}\label{class_monster_aa6c7fd4cd4d6fad1fcc2938f58335574}} 
+\index{Monster@{Monster}!operator==@{operator==}}
+\index{operator==@{operator==}!Monster@{Monster}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Monster\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_monster}{Monster}} \&}]{m }\end{DoxyParamCaption}) const}
+
+
+
+vrai si les deux monstres ont le même identifiant 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & monstre à comparer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vrai si les deux monstres ont le même identifiant 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_monster_a363bba916f18423d433f200906a0fce5}\label{class_monster_a363bba916f18423d433f200906a0fce5}} 
+\index{Monster@{Monster}!setName@{setName}}
+\index{setName@{setName}!Monster@{Monster}}
+\doxysubsubsection{\texorpdfstring{setName()}{setName()}}
+{\footnotesize\ttfamily void Monster\+::set\+Name (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})}
+
+
+
+change le nom du monstre 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & nouveau nom du monstre \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_monster_adc5630fc448eed67b3502d228d8f7e39}\label{class_monster_adc5630fc448eed67b3502d228d8f7e39}} 
+\index{Monster@{Monster}!setStats@{setStats}}
+\index{setStats@{setStats}!Monster@{Monster}}
+\doxysubsubsection{\texorpdfstring{setStats()}{setStats()}}
+{\footnotesize\ttfamily void Monster\+::set\+Stats (\begin{DoxyParamCaption}\item[{std\+::string}]{alteration,  }\item[{float}]{value,  }\item[{int}]{turn }\end{DoxyParamCaption})}
+
+
+
+Défini les alterations de statistiques du monstre. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em alteration} & statistique à modifier \\
+\hline
+{\em value} & valeur de l\textquotesingle{}alteration \\
+\hline
+{\em turn} & nombre de tours de l\textquotesingle{}alteration \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_monster_ae66e29e8fe30e85a88da4ebf8e030375}\label{class_monster_ae66e29e8fe30e85a88da4ebf8e030375}} 
+\index{Monster@{Monster}!setStatus@{setStatus}}
+\index{setStatus@{setStatus}!Monster@{Monster}}
+\doxysubsubsection{\texorpdfstring{setStatus()}{setStatus()}}
+{\footnotesize\ttfamily void Monster\+::set\+Status (\begin{DoxyParamCaption}\item[{std\+::string}]{status,  }\item[{int}]{turn }\end{DoxyParamCaption})}
+
+
+
+Défini les alterations de status du monstre. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em status} & status à modifier \\
+\hline
+{\em turn} & nombre de tours du status \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_monster_ad9cb0a9fb3e51ee0dd6f3936a60afcc1}\label{class_monster_ad9cb0a9fb3e51ee0dd6f3936a60afcc1}} 
+\index{Monster@{Monster}!setTactic@{setTactic}}
+\index{setTactic@{setTactic}!Monster@{Monster}}
+\doxysubsubsection{\texorpdfstring{setTactic()}{setTactic()}}
+{\footnotesize\ttfamily void Monster\+::set\+Tactic (\begin{DoxyParamCaption}\item[{Tactics}]{tactic }\end{DoxyParamCaption})}
+
+
+
+Définit la tactique du monstre. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tactic} & tactique du monstre \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_monster_a891257bf87de0600961a4c532f45f01e}\label{class_monster_a891257bf87de0600961a4c532f45f01e}} 
+\index{Monster@{Monster}!updateSaveMonster@{updateSaveMonster}}
+\index{updateSaveMonster@{updateSaveMonster}!Monster@{Monster}}
+\doxysubsubsection{\texorpdfstring{updateSaveMonster()}{updateSaveMonster()}}
+{\footnotesize\ttfamily void Monster\+::update\+Save\+Monster (\begin{DoxyParamCaption}\item[{rapidjson\+::\+Document \&}]{save }\end{DoxyParamCaption}) const}
+
+
+
+Met à jour les statistiques du monstre dans la sauvegarde. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em save} & sauvegarde \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_monster_a806c582e893a651f8224824e8c20b323}\label{class_monster_a806c582e893a651f8224824e8c20b323}} 
+\index{Monster@{Monster}!updateStatStatus@{updateStatStatus}}
+\index{updateStatStatus@{updateStatStatus}!Monster@{Monster}}
+\doxysubsubsection{\texorpdfstring{updateStatStatus()}{updateStatStatus()}}
+{\footnotesize\ttfamily std\+::queue$<$ std\+::string $>$ Monster\+::update\+Stat\+Status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Met à jour les alterations de statistiques et de status du monstre. 
+
+\begin{DoxyReturn}{Returns}
+Retourne la liste des status qui ont été supprimés 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/Monster.\+h\item 
+src/Monster.\+cpp\end{DoxyCompactItemize}

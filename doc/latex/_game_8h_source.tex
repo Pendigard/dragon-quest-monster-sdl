@@ -1,0 +1,175 @@
+\hypertarget{_game_8h_source}{}\doxysection{Game.\+h}
+\label{_game_8h_source}\index{src/Game.h@{src/Game.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_GAME}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_GAME}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Sprite.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Player.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}Monster.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}Database.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}Synthesis.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}Fight.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}Menu.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}FightSDL.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}Entity.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}Map.h"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structmenu_manager}{menuManager}}}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ std::unordered\_map<std::string,\ Menu>\ menus;\ \textcolor{comment}{//\ Les\ menus}}
+\DoxyCodeLine{00018\ \ \ \ \ std::string\ currentMenu;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Le\ menu\ actuel}}
+\DoxyCodeLine{00019\ \ \ \ \ std::string\ menuStatus;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Le\ statut\ du\ menu\ actuel}}
+\DoxyCodeLine{00020\ \ \ \ \ std::stack<std::string>\ previousMenu;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Les\ menus\ précédents}}
+\DoxyCodeLine{00021\ \ \ \ \ std::stack<std::string>\ previousMenuStatus;\ \ \textcolor{comment}{//\ Les\ statuts\ des\ menus\ précédents}}
+\DoxyCodeLine{00022\ \ \ \ \ std::stack<int>\ previousChoiceX;\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Les\ choix\ précédents\ en\ X}}
+\DoxyCodeLine{00023\ \ \ \ \ std::stack<int>\ previousChoiceY;\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Les\ choix\ précédents\ en\ Y}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{int}\ saveX;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ La\ sauvegarde\ du\ choix\ en\ X}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{int}\ saveY;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ La\ sauvegarde\ du\ choix\ en\ Y}}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{int}\ stepMenu;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ L'étape\ du\ menu}}
+\DoxyCodeLine{00027\ \};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structskill_changer}{skillChanger}}}
+\DoxyCodeLine{00030\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{class_monster}{Monster}}\ *monster;}
+\DoxyCodeLine{00032\ \ \ \ \ std::unordered\_map<int,\ int>\ pointToApply;}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ pointLeft;}
+\DoxyCodeLine{00034\ \};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structsynthesis_manager}{synthesisManager}}}
+\DoxyCodeLine{00037\ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{class_monster}{Monster}}\ *mPlus;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Le\ monstre\ plus}}
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{class_monster}{Monster}}\ *mMinus;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Le\ monstre\ moins}}
+\DoxyCodeLine{00040\ \ \ \ \ std::vector<Monster\ *>\ choicePlus;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Les\ choix\ de\ monstres\ plus}}
+\DoxyCodeLine{00041\ \ \ \ \ std::vector<Monster\ *>\ choiceMinus;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Les\ choix\ de\ monstres\ moins}}
+\DoxyCodeLine{00042\ \ \ \ \ std::vector<std::string>\ children;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Les\ enfants\ possibles}}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{bool}\ choosingPlus;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Vrai\ si\ le\ joueur\ choisi\ le\ monstre\ plus\ faux\ s'il\ choisi\ le\ monstre\ moins}}
+\DoxyCodeLine{00044\ \ \ \ \ std::string\ child;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ L'enfant\ choisi}}
+\DoxyCodeLine{00045\ \ \ \ \ std::unordered\_map<std::string,\ unsigned\ int>\ skills;\ \textcolor{comment}{//\ Les\ compétences\ possibles}}
+\DoxyCodeLine{00046\ \ \ \ \ std::vector<std::string>\ skillsSelected;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Les\ compétences\ sélectionnées}}
+\DoxyCodeLine{00047\ \};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_game}{Game}}}
+\DoxyCodeLine{00050\ \{}
+\DoxyCodeLine{00051\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{class_player}{Player}}\ player;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Le\ joueur}}
+\DoxyCodeLine{00053\ \ \ \ \ \mbox{\hyperlink{class_entity}{Entity}}\ playerEntity;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ L'entité\ du\ joueur}}
+\DoxyCodeLine{00054\ \ \ \ \ rapidjson::Document\ save;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Les\ données\ de\ sauvegarde}}
+\DoxyCodeLine{00055\ \ \ \ \ \mbox{\hyperlink{class_database}{Database}}\ database;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ La\ base\ de\ données}}
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{struct_camera}{Camera}}\ camera;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ La\ caméra}}
+\DoxyCodeLine{00057\ \ \ \ \ SDL\_Renderer\ *renderer;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Le\ renderer}}
+\DoxyCodeLine{00058\ \ \ \ \ SDL\_Window\ *window;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ La\ fenêtre}}
+\DoxyCodeLine{00059\ \ \ \ \ SDL\_Event\ event;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ L'évènement}}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{int}\ timeLastFrame;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ La\ mesure\ en\ tick\ du\ dernier\ changement\ de\ frame\ des\ sprites}}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{int}\ screenWidth;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ La\ largeur\ de\ la\ fenêtre}}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{int}\ screenHeight;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ La\ hauteur\ de\ la\ fenêtre}}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{bool}\ running;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Vrai\ si\ le\ jeu\ est\ en\ cours\ d'execution}}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{bool}\ inMenu;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Vrai\ si\ le\ joueur\ est\ dans\ un\ menu}}
+\DoxyCodeLine{00065\ \ \ \ \ std::unordered\_map<std::string,\ Sprite>\ sprites;\ \ \ \ \ \textcolor{comment}{//\ Les\ sprites}}
+\DoxyCodeLine{00066\ \ \ \ \ \mbox{\hyperlink{structmenu_manager}{menuManager}}\ \mbox{\hyperlink{structmenu_manager}{menuManager}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Le\ gestionnaire\ de\ menus}}
+\DoxyCodeLine{00067\ \ \ \ \ \mbox{\hyperlink{structskill_changer}{skillChanger}}\ skillUpdater;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Le\ gestionnaire\ de\ changement\ de\ compétences}}
+\DoxyCodeLine{00068\ \ \ \ \ \mbox{\hyperlink{structsynthesis_manager}{synthesisManager}}\ synthetizer;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Le\ gestionnaire\ de\ synthèse}}
+\DoxyCodeLine{00069\ \ \ \ \ \mbox{\hyperlink{class_sprite}{Sprite}}\ cursor;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Le\ curseur}}
+\DoxyCodeLine{00070\ \ \ \ \ \mbox{\hyperlink{class_map}{Map}}\ currentMap;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ La\ carte\ actuelle}}
+\DoxyCodeLine{00071\ \ \ \ \ std::vector<Hitbox>\ hitboxes;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Les\ hitboxes}}
+\DoxyCodeLine{00072\ \ \ \ \ std::vector<Entity>\ entities;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Les\ entités}}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{bool}\ adminView;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Vrai\ si\ l'admin\ view\ est\ activée}}
+\DoxyCodeLine{00074\ \ \ \ \ std::unordered\_map<std::string,\ Mix\_Chunk\ *>\ sounds;\ \textcolor{comment}{//\ Les\ sons}}
+\DoxyCodeLine{00075\ \ \ \ \ std::unordered\_map<std::string,\ Mix\_Music\ *>\ musics;\ \textcolor{comment}{//\ Les\ musiques}}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{int}\ musicVolume;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Le\ volume\ de\ la\ musique}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00080\ \ \ \ \ \mbox{\hyperlink{class_game_ad59df6562a58a614fda24622d3715b65}{Game}}();}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00083\ \ \ \ \ \mbox{\hyperlink{class_game_ae3d112ca6e0e55150d2fdbc704474530}{\string~Game}}();}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a1ab78f5ed0d5ea879157357cf2fb2afa}{run}}();}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_aa574d129f713c4b0ed4114c5d5224be3}{loadGame}}();}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a39a7d255eab8d5ec0139be05b0150849}{loadSprites}}();}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a74fd5e5fb252b3b84bf495c9b56bc1fd}{loadSounds}}();}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a1385e5ea3c34af1dec9274160ad1046e}{drawEntity}}(\mbox{\hyperlink{class_entity}{Entity}}\ entity);}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a31ada838b82ee204ab554c9a4352a0a5}{printInfos}}();}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a96a1ad6fef199800525e4472a6182310}{drawHitbox}}(\mbox{\hyperlink{class_hitbox}{Hitbox}}\ h);}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_ae53fceba1d9bb2aeeaffb4d636ba90e6}{drawGame}}();}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a0cfc647506542f877d8495596aa3ece1}{drawMap}}();}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a62087084eedb6c36c7ed00244ca8e1e9}{getEvents}}();}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a9f7ad0384767e46fa072891c123b7d9c}{saveGame}}();}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a99d3f6b3c6e59278e44aebc64b63c481}{getAction}}();}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a670479b278bedaefb7446e9f47829493}{runScript}}(std::string\ script);}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a08dadd2fdf30efe422fcad1d40092b0c}{deleteFromSave}}(std::string\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_aa5b5ffc0c2b24a7adbf6a2342ff77fce}{updateCameraPosition}}();}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a8e905429008b2773a38e7809f711edc3}{updateEntities}}();}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00142\ \ \ \ \ std::vector<Monster>\ \mbox{\hyperlink{class_game_aadbc3dfb76ba9a27d9d49b70206d3679}{createWildMonsterTeam}}(std::vector<std::string>\ monsters,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ levelMin,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ levelMax,\ std::string\ monster);}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a43eafa2eedc98b5147ed31f8c08db363}{createMenus}}();}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a6357713bf3bc2339f457b973e0548339}{openMenu}}(std::string\ name,\ \textcolor{keywordtype}{bool}\ canEscape\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a506f21864a23eba1df3f62fee6a80c64}{changeMenu}}(std::string\ name,\ std::string\ status);}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a2d904438d4a37ad4e6a4394f85b14b35}{returnToPreviousMenu}}();}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a483b7ace93ca4d95e2749a16f5dfde1b}{getPlayerChoice}}();}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_aaf4a457f64b79f97321952fe98c7afe9}{drawMessage}}(std::string\ message);}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00168\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_game_affe631ed32e796a090fc3cf57c2f8f27}{askForConfirmation}}(std::string\ message);}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00174\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a5065b987f5c2b1c47b1e3bed7f33a9c2}{drawMonsterInfo}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \mbox{\hyperlink{class_monster}{Monster}}\ monster);}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00180\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_ab0d3723bbd8cd6a0890dcf2e7a5310fb}{drawPartMonsterInfo}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \mbox{\hyperlink{class_monster}{Monster}}\ monster);}
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00188\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_ac5540f6960b25f059bd360bf0c125196}{drawTeamInfo}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ std::vector<Monster>\ team,\ \textcolor{keywordtype}{int}\ shiftX\ =\ 0,\ \textcolor{keywordtype}{int}\ shiftY\ =\ 0);}
+\DoxyCodeLine{00189\ }
+\DoxyCodeLine{00198\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a3c3590e1329e9695b3c26d43cc8d1cb1}{drawPartTeamInfo}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ std::vector<Monster>\ team,\ \textcolor{keywordtype}{int}\ shiftX\ =\ 0,\ \textcolor{keywordtype}{int}\ shiftY\ =\ 0,\ \textcolor{keywordtype}{int}\ start\ =\ 0,\ \textcolor{keywordtype}{int}\ end\ =\ 0);}
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00208\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a3c3590e1329e9695b3c26d43cc8d1cb1}{drawPartTeamInfo}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ std::vector<Monster\ *>\ team,\ \textcolor{keywordtype}{int}\ shiftX\ =\ 0,\ \textcolor{keywordtype}{int}\ shiftY\ =\ 0,\ \textcolor{keywordtype}{int}\ start\ =\ 0,\ \textcolor{keywordtype}{int}\ end\ =\ 0);}
+\DoxyCodeLine{00209\ }
+\DoxyCodeLine{00212\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a014e68df786d152cc9346e88a7dc4a21}{forbiddenTeamSwap}}(\textcolor{keywordtype}{bool}\ forbidden\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00213\ }
+\DoxyCodeLine{00217\ \ \ \ \ std::vector<Monster>\ *\mbox{\hyperlink{class_game_a6636d9b61db7359679729046c3956da1}{getTeamFromChoice}}(\textcolor{keywordtype}{int}\ choice);}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00220\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a3fd262a8b3a0cadfb5e076e62d31af1e}{updateStorageMonsterMenu}}();}
+\DoxyCodeLine{00221\ }
+\DoxyCodeLine{00224\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a9413a3cf0daae2fa90798a3deca15661}{getSkillPointsMenu}}(\mbox{\hyperlink{class_monster}{Monster}}\ monster);}
+\DoxyCodeLine{00225\ }
+\DoxyCodeLine{00227\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a34a74719330522baa23aea12e1003d8e}{getSynthesisVector}}();}
+\DoxyCodeLine{00228\ }
+\DoxyCodeLine{00231\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a57d9ba597648d878edd4b11d760cf979}{getSynthesisMenu}}(std::string\ charge);}
+\DoxyCodeLine{00232\ }
+\DoxyCodeLine{00234\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_ad07b517555222a52938d1d53ad3f63da}{getSynthesisResultMenu}}();}
+\DoxyCodeLine{00235\ }
+\DoxyCodeLine{00237\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_afe41a684321a360c9a9bd0e4b16f2746}{getSynthSkillMenu}}();}
+\DoxyCodeLine{00238\ \ \ \ \ }
+\DoxyCodeLine{00240\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_ad076640f12f447fa0c4d56724830b476}{clearSynthesis}}();}
+\DoxyCodeLine{00241\ }
+\DoxyCodeLine{00244\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_af0e22fd94bcfdd87d7446296ff67eb22}{startFight}}(std::string\ monster\ =\ \textcolor{stringliteral}{"{}null"{}});}
+\DoxyCodeLine{00245\ }
+\DoxyCodeLine{00248\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a57ce5104fd4d0723c720bbeaf95ad2d2}{drawSkillSetInfo}}(std::string\ skillSet);}
+\DoxyCodeLine{00249\ }
+\DoxyCodeLine{00251\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a951e9487b10cab1672f8bf09ea85cb4a}{emptyMenu}}();}
+\DoxyCodeLine{00252\ }
+\DoxyCodeLine{00254\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a7190645b12e732f39cd6a35669170e7a}{checkTextures}}();}
+\DoxyCodeLine{00255\ }
+\DoxyCodeLine{00256\ \};}
+\DoxyCodeLine{00257\ }
+\DoxyCodeLine{00258\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

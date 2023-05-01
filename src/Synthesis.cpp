@@ -86,6 +86,15 @@ std::vector<std::string> makeSynthesisPreview(Monster parent1, Monster parent2, 
         result.push_back(getMonsterFromRecipe(parent1, parent2, db));
         return result;    
     }
+    if (parent1.getInfos("family") == "???") {
+        result.push_back(parent1.getInfos("type"));
+    }
+    if (parent2.getInfos("family") == "???") {
+        result.push_back(parent2.getInfos("type"));
+    }
+    if (parent1.getInfos("family") == "???" || parent2.getInfos("family") == "???") {
+        return result;
+    }
     std::string rank = getSynthesisRank(parent1, parent2);
     std::string monster1 = getChildMonster(parent1, rank);
     std::string monster2 = getChildMonster(parent2, rank);

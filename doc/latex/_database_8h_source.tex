@@ -1,0 +1,52 @@
+\hypertarget{_database_8h_source}{}\doxysection{Database.\+h}
+\label{_database_8h_source}\index{src/Database.h@{src/Database.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_DATABASE}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_DATABASE}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}jsonFunction.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_database}{Database}}}
+\DoxyCodeLine{00006\ \{}
+\DoxyCodeLine{00007\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00008\ \ \ \ \ rapidjson::Document\ monsterBase;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Base\ de\ données\ des\ monstres}}
+\DoxyCodeLine{00009\ \ \ \ \ rapidjson::Document\ library;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Base\ de\ données\ de\ la\ librairie\ des\ monstres}}
+\DoxyCodeLine{00010\ \ \ \ \ rapidjson::Document\ skillBase;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Base\ de\ données\ des\ compétences}}
+\DoxyCodeLine{00011\ \ \ \ \ rapidjson::Document\ spellBase;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Base\ de\ données\ des\ sorts}}
+\DoxyCodeLine{00012\ \ \ \ \ rapidjson::Document\ synthesisRecipe;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Base\ de\ données\ des\ recettes\ de\ synthese}}
+\DoxyCodeLine{00013\ \ \ \ \ rapidjson::Document\ scripts;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Base\ de\ données\ des\ scripts}}
+\DoxyCodeLine{00014\ \ \ \ \ std::unordered\_map<std::string,\ rapidjson::Document>\ tilesets;\ \textcolor{comment}{//\ Clé\ :\ nom\ du\ fichier\ du\ tileset,\ Valeur\ :\ contenu\ du\ tileset}}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{class_database_a4703c80e6969d33565ea340f768fdadf}{Database}}();}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_database_ae24bdc272750ae30a2591e29614e57fe}{loadDatabase}}();}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00024\ \ \ \ \ rapidjson::Document\ \&\mbox{\hyperlink{class_database_a3314001ddc0e2b7178c6674ce7746501}{getMonsterBase}}();}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00029\ \ \ \ \ rapidjson::Value\ \&\mbox{\hyperlink{class_database_aaf79a5ba5881d779e638b325030d3112}{getMonsterStatType}}(std::string\ type);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00033\ \ \ \ \ rapidjson::Document\ \&\mbox{\hyperlink{class_database_a898444115dcf599ba80d29b93df42afb}{getLibrary}}();}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00037\ \ \ \ \ rapidjson::Document\ \&\mbox{\hyperlink{class_database_a12e37765aa145e90eacccf922e63e643}{getSkillBase}}();}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00041\ \ \ \ \ rapidjson::Document\ \&\mbox{\hyperlink{class_database_a52b301221c4b5e67868a1c0b27e168e9}{getSpellBase}}();}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00048\ \ \ \ \ rapidjson::Value\ \&\mbox{\hyperlink{class_database_a4348ee2d1f10fc8cefafb95a2a334ec3}{getMonsterStat}}(std::string\ family,\ std::string\ rank,\ std::string\ type);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00052\ \ \ \ \ rapidjson::Document\ \&\mbox{\hyperlink{class_database_aec05d6c34fe7b9b643bac82af1349d3a}{getSynthesisRecipe}}();}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_database_a0c145c8342bd67b9cd67dff9c28c9834}{getTileSetWidth}}(std::string\ tileset)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_database_aa0c69cca6cac77d3ff1712b1e7d70345}{getTileSetHeight}}(std::string\ tileset)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_database_ad4bf12bd903b46dd39d4c7d0b9afe825}{getTileWidth}}(std::string\ tileset)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_database_aa9f82db0b5ba579201a2d8678372e9a9}{getTileHeight}}(std::string\ tileset)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00077\ \ \ \ \ std::string\ \mbox{\hyperlink{class_database_ade78c6eadc411eb6df82353592bfc65e}{getImage}}(std::string\ tileset)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00082\ \ \ \ \ rapidjson::Value\ \&\mbox{\hyperlink{class_database_ab107eb1f056adad79bf272ffaffead19}{getScript}}(std::string\ scriptName);}
+\DoxyCodeLine{00083\ \};}
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

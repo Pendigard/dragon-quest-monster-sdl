@@ -1,0 +1,91 @@
+\hypertarget{_menu_8h_source}{}\doxysection{Menu.\+h}
+\label{_menu_8h_source}\index{src/Menu.h@{src/Menu.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_MENU}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_MENU}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}SDL\_functions.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Sprite.h"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{enum}\ cursorDirection}
+\DoxyCodeLine{00008\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Les\ directions\ du\ curseur\ par\ rapport\ à\ l'option}}
+\DoxyCodeLine{00009\ \ \ \ \ UP\ =\ 1,\ \ \ \textcolor{comment}{//\ en\ haut\ de\ l'option}}
+\DoxyCodeLine{00010\ \ \ \ \ DOWN\ =\ 3,\ \textcolor{comment}{//\ en\ bas\ de\ l'option}}
+\DoxyCodeLine{00011\ \ \ \ \ LEFT\ =\ 2,\ \textcolor{comment}{//\ à\ gauche\ de\ l'option}}
+\DoxyCodeLine{00012\ \ \ \ \ RIGHT\ =\ 0\ \textcolor{comment}{//\ à\ droite\ de\ l'option}}
+\DoxyCodeLine{00013\ \};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_option}{Option}}}
+\DoxyCodeLine{00016\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Une\ option\ du\ menu}}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{int}\ x,\ y;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Position\ de\ l'option}}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{int}\ w,\ h;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Taille\ de\ l'option}}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{int}\ size;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Taille\ du\ texte\ de\ l'option}}
+\DoxyCodeLine{00020\ \ \ \ \ std::string\ text;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Texte\ de\ l'option}}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{bool}\ transparent;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Si\ l'option\ est\ transparente\ ou\ non}}
+\DoxyCodeLine{00022\ \ \ \ \ cursorDirection\ direction;\ \textcolor{comment}{//\ La\ direction\ du\ curseur\ par\ rapport\ à\ l'option}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{bool}\ forbidden;\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Si\ l'option\ est\ interdite\ ou\ non}}
+\DoxyCodeLine{00024\ \};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00036\ \mbox{\hyperlink{struct_option}{Option}}\ createOption(std::string\ text,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h,\ cursorDirection\ direction\ =\ RIGHT,\ \textcolor{keywordtype}{bool}\ transparent\ =\ \textcolor{keyword}{false},\ \textcolor{keywordtype}{int}\ size\ =\ 20);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_menu}{Menu}}}
+\DoxyCodeLine{00039\ \{}
+\DoxyCodeLine{00040\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{int}\ currentChoiceX;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ L'index\ de\ la\ ligne\ de\ l'option\ actuelle}}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{int}\ currentChoiceY;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ L'index\ de\ la\ colonne\ l'option\ actuelle}}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{int}\ currentPage;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ L'index\ de\ la\ page\ actuelle}}
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{class_sprite}{Sprite}}\ *cursor;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Le\ curseur}}
+\DoxyCodeLine{00045\ \ \ \ \ std::vector<std::vector<std::vector<Option>\ >\ >\ options;\ \textcolor{comment}{//\ Les\ options\ du\ menu}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{bool}\ changePageX;\ \textcolor{comment}{//\ Si\ on\ change\ de\ page\ avec\ la\ coordonnée\ X}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{class_menu_ad466dd83355124a6ed958430450bfe94}{Menu}}();}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00055\ \ \ \ \ \mbox{\hyperlink{class_menu_ad466dd83355124a6ed958430450bfe94}{Menu}}(\mbox{\hyperlink{class_menu}{Menu}}\ \textcolor{keyword}{const}\ \&other);}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00059\ \ \ \ \ \mbox{\hyperlink{class_menu_ad466dd83355124a6ed958430450bfe94}{Menu}}(\mbox{\hyperlink{class_sprite}{Sprite}}\ *cursor);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a31ead2c4ceee7330f48c965ad51f4a66}{addOption}}(\mbox{\hyperlink{struct_option}{Option}}\ option,\ \textcolor{keywordtype}{int}\ row\ =\ 0,\ \textcolor{keywordtype}{int}\ page\ =\ 0);}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a45be3b70bee9e4eecffcddfeeeab4c7c}{addRow}}(std::vector<Option>\ row,\ \textcolor{keywordtype}{int}\ page\ =\ 0);}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a9b393c2b08a4e87c7434fba1f36882ad}{drawOptions}}(SDL\_Renderer\ *renderer,\ \mbox{\hyperlink{struct_camera}{Camera}}\ camera);}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_menu_a196d9b32d3cff336719faf1780e18dfc}{getCurrentChoiceX}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_menu_ab474524e984d374f2610a5ebd323be1e}{getCurrentChoiceY}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_menu_ac54350e8a5c16d48a436666494c6b20b}{getCurrentPage}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a844aaca128966495382c58d27f8f3cce}{changeCurrentChoice}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a20f9866042698fb606fd18f789115f74}{setFirstChoice}}();}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_afdb80237848a7c405f45823611b9db6f}{changeChoiceRight}}();}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a2b9b2aa4bf7870d0823dd69414b04e59}{changeChoiceLeft}}();}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_ad51c8af3cb62d2e938ab8e00c8c62712}{changeChoiceUp}}();}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_ad267c6f5087894b975f29c6744e65a71}{changeChoiceDown}}();}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a2e00504be344902bc2d1aeecc8ade956}{setForbiddenChoice}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{bool}\ forbidden,\ \textcolor{keywordtype}{int}\ page\ =\ 0);}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_menu_a61c34694436a6e4891b1eba8bdfe7121}{isForbiddenChoice}}();}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a1d48a7156840141ab137101e946f97e0}{clearForbiddenChoices}}();}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a3630ce145aab68961ec535762d928558}{clear}}();}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_menu_a8adc336f91fe36b729b9c45f9296e02c}{empty}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_menu_a73e23fd6b5d40d9f82cb7a7042eb82b3}{getNbRow}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00130\ \ \ \ \ }
+\DoxyCodeLine{00133\ \ \ \ \ \mbox{\hyperlink{struct_option}{Option}}\&\ \mbox{\hyperlink{class_menu_ab3452af4e4811b4b66e1e369a9d3239d}{getCurrentOption}}();}
+\DoxyCodeLine{00134\ \};}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

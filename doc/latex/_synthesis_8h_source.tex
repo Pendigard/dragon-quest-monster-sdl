@@ -1,0 +1,24 @@
+\hypertarget{_synthesis_8h_source}{}\doxysection{Synthesis.\+h}
+\label{_synthesis_8h_source}\index{src/Synthesis.h@{src/Synthesis.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SYNTHESIS\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SYNTHESIS\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Monster.h"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00011\ std::vector<std::string>\ makeSynthesisPreview(\mbox{\hyperlink{class_monster}{Monster}}\ parent1,\ \mbox{\hyperlink{class_monster}{Monster}}\ parent2,\ \mbox{\hyperlink{class_database}{Database}}\ \&db);}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00018\ \textcolor{keywordtype}{bool}\ isRecipe(\mbox{\hyperlink{class_monster}{Monster}}\ parent1,\ \mbox{\hyperlink{class_monster}{Monster}}\ parent2,\ \mbox{\hyperlink{class_database}{Database}}\ \&db);}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00025\ std::string\ getMonsterFromRecipe(\mbox{\hyperlink{class_monster}{Monster}}\ parent1,\ \mbox{\hyperlink{class_monster}{Monster}}\ parent2,\ \mbox{\hyperlink{class_database}{Database}}\ \&db);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00031\ std::string\ getSynthesisRank(\mbox{\hyperlink{class_monster}{Monster}}\ parent1,\ \mbox{\hyperlink{class_monster}{Monster}}\ parent2);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00037\ std::string\ getChildMonster(\mbox{\hyperlink{class_monster}{Monster}}\ parent1,\ std::string\ rank);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00045\ std::unordered\_map<std::string,\ unsigned\ int>\ getSynthesisSkills(\mbox{\hyperlink{class_monster}{Monster}}\ parent1,\ \mbox{\hyperlink{class_monster}{Monster}}\ parent2,\ std::string\ child,\ \mbox{\hyperlink{class_database}{Database}}\ \&db);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

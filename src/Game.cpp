@@ -874,12 +874,12 @@ void Game::getSynthesisVector()
     {
         if (player.storageMonsters[i].getInfos("id") != idPlus && player.storageMonsters[i].getInfos("charge") != "plus")
         {
-            //if (player.storageMonsters[i].getLevel() >= 10)
+            if (player.storageMonsters[i].getLevel() >= 10)
                 synthetizer.choiceMinus.push_back(&player.storageMonsters[i]);
         }
         if (player.storageMonsters[i].getInfos("id") != idMinus && player.storageMonsters[i].getInfos("charge") != "moins")
         {
-            //if (player.storageMonsters[i].getLevel() >= 10)
+            if (player.storageMonsters[i].getLevel() >= 10)
                 synthetizer.choicePlus.push_back(&player.storageMonsters[i]);
         }
     }
@@ -1306,6 +1306,9 @@ void Game::forbiddenTeamSwap(bool forbidden)
         for (size_t i = player.benchTeam.size(); i < 3; i++)
         {
             menuManager.menus["swapTeam"].setForbiddenChoice(i, 1, true);
+        }
+        if (player.mainTeam.size() == 1 && player.benchTeam.size() > 0) {
+            menuManager.menus["swapTeam"].setForbiddenChoice(0,0,true);
         }
     }
     menuManager.menus["swapTeam"].setFirstChoice();

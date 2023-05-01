@@ -1,0 +1,279 @@
+\hypertarget{class_menu}{}\doxysection{Menu Class Reference}
+\label{class_menu}\index{Menu@{Menu}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_menu_ad466dd83355124a6ed958430450bfe94}\label{class_menu_ad466dd83355124a6ed958430450bfe94}} 
+{\bfseries Menu} ()
+\begin{DoxyCompactList}\small\item\em Constructeur par défaut. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_menu_acb1be7b5eaef5ea0785143a493484c71}{Menu}} (\mbox{\hyperlink{class_menu}{Menu}} const \&other)
+\begin{DoxyCompactList}\small\item\em Constructeur de copie. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_menu_a9a464201b4573a17bd35c627e29ae491}{Menu}} (\mbox{\hyperlink{class_sprite}{Sprite}} $\ast$cursor)
+\begin{DoxyCompactList}\small\item\em Constructeur de la classe \mbox{\hyperlink{class_menu}{Menu}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_menu_a31ead2c4ceee7330f48c965ad51f4a66}{add\+Option}} (\mbox{\hyperlink{struct_option}{Option}} option, int row=0, int page=0)
+\begin{DoxyCompactList}\small\item\em Ajoute une option au menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_menu_a45be3b70bee9e4eecffcddfeeeab4c7c}{add\+Row}} (std\+::vector$<$ \mbox{\hyperlink{struct_option}{Option}} $>$ row, int page=0)
+\begin{DoxyCompactList}\small\item\em Ajoute une ligne d\textquotesingle{}options au menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_menu_a9b393c2b08a4e87c7434fba1f36882ad}{draw\+Options}} (SDL\+\_\+\+Renderer $\ast$renderer, \mbox{\hyperlink{struct_camera}{Camera}} camera)
+\begin{DoxyCompactList}\small\item\em Dessine un rectangle noir avec un contour blanc si transparant est faux au point x,y de la taille w,h. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_menu_a196d9b32d3cff336719faf1780e18dfc}{get\+Current\+ChoiceX}} () const
+\begin{DoxyCompactList}\small\item\em Retourne l\textquotesingle{}index X de l\textquotesingle{}option actuelle. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_menu_ab474524e984d374f2610a5ebd323be1e}{get\+Current\+ChoiceY}} () const
+\begin{DoxyCompactList}\small\item\em Retourne l\textquotesingle{}index Y de l\textquotesingle{}option actuelle. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_menu_ac54350e8a5c16d48a436666494c6b20b}{get\+Current\+Page}} () const
+\begin{DoxyCompactList}\small\item\em Retourne l\textquotesingle{}index de la page actuelle. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_menu_a844aaca128966495382c58d27f8f3cce}{change\+Current\+Choice}} (int x, int y)
+\begin{DoxyCompactList}\small\item\em Retourne l\textquotesingle{}action à effectuer lorsqu\textquotesingle{}une option est choisie. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_menu_a20f9866042698fb606fd18f789115f74}\label{class_menu_a20f9866042698fb606fd18f789115f74}} 
+void {\bfseries set\+First\+Choice} ()
+\begin{DoxyCompactList}\small\item\em Retourne au premier choix du menu. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_menu_afdb80237848a7c405f45823611b9db6f}\label{class_menu_afdb80237848a7c405f45823611b9db6f}} 
+void {\bfseries change\+Choice\+Right} ()
+\begin{DoxyCompactList}\small\item\em Déplace le curseur vers la droite au premier menu accessible à droite. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_menu_a2b9b2aa4bf7870d0823dd69414b04e59}\label{class_menu_a2b9b2aa4bf7870d0823dd69414b04e59}} 
+void {\bfseries change\+Choice\+Left} ()
+\begin{DoxyCompactList}\small\item\em Déplace le curseur vers la gauche au premier menu accessible à gauche. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_menu_ad51c8af3cb62d2e938ab8e00c8c62712}\label{class_menu_ad51c8af3cb62d2e938ab8e00c8c62712}} 
+void {\bfseries change\+Choice\+Up} ()
+\begin{DoxyCompactList}\small\item\em Déplace le curseur vers le haut au premier menu accessible en haut. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_menu_ad267c6f5087894b975f29c6744e65a71}\label{class_menu_ad267c6f5087894b975f29c6744e65a71}} 
+void {\bfseries change\+Choice\+Down} ()
+\begin{DoxyCompactList}\small\item\em Déplace le curseur vers le bas au premier menu accessible en bas. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_menu_a2e00504be344902bc2d1aeecc8ade956}{set\+Forbidden\+Choice}} (int x, int y, bool forbidden, int page=0)
+\begin{DoxyCompactList}\small\item\em Définit si le choix est interdit. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_menu_a61c34694436a6e4891b1eba8bdfe7121}{is\+Forbidden\+Choice}} ()
+\begin{DoxyCompactList}\small\item\em Retourne si le choix est interdit. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_menu_a1d48a7156840141ab137101e946f97e0}\label{class_menu_a1d48a7156840141ab137101e946f97e0}} 
+void {\bfseries clear\+Forbidden\+Choices} ()
+\begin{DoxyCompactList}\small\item\em Supprime toutes les interdictions de choix. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_menu_a3630ce145aab68961ec535762d928558}\label{class_menu_a3630ce145aab68961ec535762d928558}} 
+void {\bfseries clear} ()
+\begin{DoxyCompactList}\small\item\em Supprime toutes les options du menu. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_menu_a8adc336f91fe36b729b9c45f9296e02c}{empty}} () const
+\begin{DoxyCompactList}\small\item\em Vrai si le menu est vide. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{class_menu_a73e23fd6b5d40d9f82cb7a7042eb82b3}{get\+Nb\+Row}} () const
+\begin{DoxyCompactList}\small\item\em Retourne le nombre de ligne du menu. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_option}{Option}} \& \mbox{\hyperlink{class_menu_ab3452af4e4811b4b66e1e369a9d3239d}{get\+Current\+Option}} ()
+\begin{DoxyCompactList}\small\item\em Retourne l\textquotesingle{}option choisi actuellement. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_menu_a115ccc465585a22e3dfbe2a1785bbec9}\label{class_menu_a115ccc465585a22e3dfbe2a1785bbec9}} 
+bool {\bfseries change\+PageX}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_menu_acb1be7b5eaef5ea0785143a493484c71}\label{class_menu_acb1be7b5eaef5ea0785143a493484c71}} 
+\index{Menu@{Menu}!Menu@{Menu}}
+\index{Menu@{Menu}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{Menu()}{Menu()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Menu\+::\+Menu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_menu}{Menu}} const \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Constructeur de copie. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & Le menu à copier \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_menu_a9a464201b4573a17bd35c627e29ae491}\label{class_menu_a9a464201b4573a17bd35c627e29ae491}} 
+\index{Menu@{Menu}!Menu@{Menu}}
+\index{Menu@{Menu}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{Menu()}{Menu()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Menu\+::\+Menu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_sprite}{Sprite}} $\ast$}]{cursor }\end{DoxyParamCaption})}
+
+
+
+Constructeur de la classe \mbox{\hyperlink{class_menu}{Menu}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em options} & Les options du menu \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_menu_a31ead2c4ceee7330f48c965ad51f4a66}\label{class_menu_a31ead2c4ceee7330f48c965ad51f4a66}} 
+\index{Menu@{Menu}!addOption@{addOption}}
+\index{addOption@{addOption}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{addOption()}{addOption()}}
+{\footnotesize\ttfamily void Menu\+::add\+Option (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_option}{Option}}}]{option,  }\item[{int}]{row = {\ttfamily 0},  }\item[{int}]{page = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Ajoute une option au menu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em option} & L\textquotesingle{}option à ajouter \\
+\hline
+{\em row} & La ligne de l\textquotesingle{}option, row \texorpdfstring{$<$}{<}= au nombre de lignes + 1 \\
+\hline
+{\em page} & La page de l\textquotesingle{}option, page \texorpdfstring{$<$}{<}= au nombre de pages + 1 \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_menu_a45be3b70bee9e4eecffcddfeeeab4c7c}\label{class_menu_a45be3b70bee9e4eecffcddfeeeab4c7c}} 
+\index{Menu@{Menu}!addRow@{addRow}}
+\index{addRow@{addRow}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{addRow()}{addRow()}}
+{\footnotesize\ttfamily void Menu\+::add\+Row (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{struct_option}{Option}} $>$}]{row,  }\item[{int}]{page = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Ajoute une ligne d\textquotesingle{}options au menu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & La ligne d\textquotesingle{}options \\
+\hline
+{\em page} & La page de l\textquotesingle{}option, page \texorpdfstring{$<$}{<}= au nombre de pages + 1 \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_menu_a844aaca128966495382c58d27f8f3cce}\label{class_menu_a844aaca128966495382c58d27f8f3cce}} 
+\index{Menu@{Menu}!changeCurrentChoice@{changeCurrentChoice}}
+\index{changeCurrentChoice@{changeCurrentChoice}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{changeCurrentChoice()}{changeCurrentChoice()}}
+{\footnotesize\ttfamily void Menu\+::change\+Current\+Choice (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Retourne l\textquotesingle{}action à effectuer lorsqu\textquotesingle{}une option est choisie. 
+
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}action à effectuer lorsqu\textquotesingle{}une option est choisie 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_menu_a9b393c2b08a4e87c7434fba1f36882ad}\label{class_menu_a9b393c2b08a4e87c7434fba1f36882ad}} 
+\index{Menu@{Menu}!drawOptions@{drawOptions}}
+\index{drawOptions@{drawOptions}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{drawOptions()}{drawOptions()}}
+{\footnotesize\ttfamily void Menu\+::draw\+Options (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{\mbox{\hyperlink{struct_camera}{Camera}}}]{camera }\end{DoxyParamCaption})}
+
+
+
+Dessine un rectangle noir avec un contour blanc si transparant est faux au point x,y de la taille w,h. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em renderer} & Le renderer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_menu_a8adc336f91fe36b729b9c45f9296e02c}\label{class_menu_a8adc336f91fe36b729b9c45f9296e02c}} 
+\index{Menu@{Menu}!empty@{empty}}
+\index{empty@{empty}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{empty()}{empty()}}
+{\footnotesize\ttfamily bool Menu\+::empty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Vrai si le menu est vide. 
+
+\begin{DoxyReturn}{Returns}
+Vrai si le menu est vide 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_menu_a196d9b32d3cff336719faf1780e18dfc}\label{class_menu_a196d9b32d3cff336719faf1780e18dfc}} 
+\index{Menu@{Menu}!getCurrentChoiceX@{getCurrentChoiceX}}
+\index{getCurrentChoiceX@{getCurrentChoiceX}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{getCurrentChoiceX()}{getCurrentChoiceX()}}
+{\footnotesize\ttfamily int Menu\+::get\+Current\+ChoiceX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne l\textquotesingle{}index X de l\textquotesingle{}option actuelle. 
+
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}index X de l\textquotesingle{}option actuelle 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_menu_ab474524e984d374f2610a5ebd323be1e}\label{class_menu_ab474524e984d374f2610a5ebd323be1e}} 
+\index{Menu@{Menu}!getCurrentChoiceY@{getCurrentChoiceY}}
+\index{getCurrentChoiceY@{getCurrentChoiceY}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{getCurrentChoiceY()}{getCurrentChoiceY()}}
+{\footnotesize\ttfamily int Menu\+::get\+Current\+ChoiceY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne l\textquotesingle{}index Y de l\textquotesingle{}option actuelle. 
+
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}index Y de l\textquotesingle{}option actuelle 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_menu_ab3452af4e4811b4b66e1e369a9d3239d}\label{class_menu_ab3452af4e4811b4b66e1e369a9d3239d}} 
+\index{Menu@{Menu}!getCurrentOption@{getCurrentOption}}
+\index{getCurrentOption@{getCurrentOption}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{getCurrentOption()}{getCurrentOption()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_option}{Option}} \& Menu\+::get\+Current\+Option (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retourne l\textquotesingle{}option choisi actuellement. 
+
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}option choisi 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_menu_ac54350e8a5c16d48a436666494c6b20b}\label{class_menu_ac54350e8a5c16d48a436666494c6b20b}} 
+\index{Menu@{Menu}!getCurrentPage@{getCurrentPage}}
+\index{getCurrentPage@{getCurrentPage}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{getCurrentPage()}{getCurrentPage()}}
+{\footnotesize\ttfamily int Menu\+::get\+Current\+Page (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne l\textquotesingle{}index de la page actuelle. 
+
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}index de la page actuelle 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_menu_a73e23fd6b5d40d9f82cb7a7042eb82b3}\label{class_menu_a73e23fd6b5d40d9f82cb7a7042eb82b3}} 
+\index{Menu@{Menu}!getNbRow@{getNbRow}}
+\index{getNbRow@{getNbRow}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{getNbRow()}{getNbRow()}}
+{\footnotesize\ttfamily unsigned int Menu\+::get\+Nb\+Row (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne le nombre de ligne du menu. 
+
+\begin{DoxyReturn}{Returns}
+Le nombre de ligne du menu 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_menu_a61c34694436a6e4891b1eba8bdfe7121}\label{class_menu_a61c34694436a6e4891b1eba8bdfe7121}} 
+\index{Menu@{Menu}!isForbiddenChoice@{isForbiddenChoice}}
+\index{isForbiddenChoice@{isForbiddenChoice}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{isForbiddenChoice()}{isForbiddenChoice()}}
+{\footnotesize\ttfamily bool Menu\+::is\+Forbidden\+Choice (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retourne si le choix est interdit. 
+
+\begin{DoxyReturn}{Returns}
+Si le choix est interdit 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_menu_a2e00504be344902bc2d1aeecc8ade956}\label{class_menu_a2e00504be344902bc2d1aeecc8ade956}} 
+\index{Menu@{Menu}!setForbiddenChoice@{setForbiddenChoice}}
+\index{setForbiddenChoice@{setForbiddenChoice}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{setForbiddenChoice()}{setForbiddenChoice()}}
+{\footnotesize\ttfamily void Menu\+::set\+Forbidden\+Choice (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{bool}]{forbidden,  }\item[{int}]{page = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Définit si le choix est interdit. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Coordonnée x du choix \\
+\hline
+{\em y} & Coordonnée y du choix \\
+\hline
+{\em page} & La page du choix, page \texorpdfstring{$<$}{<}= au nombre de pages \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/Menu.\+h\item 
+src/Menu.\+cpp\end{DoxyCompactItemize}

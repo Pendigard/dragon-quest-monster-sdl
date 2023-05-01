@@ -1,0 +1,76 @@
+\hypertarget{_hitbox_8h_source}{}\doxysection{Hitbox.\+h}
+\label{_hitbox_8h_source}\index{src/Hitbox.h@{src/Hitbox.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_HITBOX}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_HITBOX}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Sprite.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}jsonFunction.h"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{enum}\ CollisionSide}
+\DoxyCodeLine{00008\ \{}
+\DoxyCodeLine{00009\ \ \ \ \ None=4,}
+\DoxyCodeLine{00010\ \ \ \ \ Top=0,}
+\DoxyCodeLine{00011\ \ \ \ \ Bottom=1,}
+\DoxyCodeLine{00012\ \ \ \ \ Left=2,}
+\DoxyCodeLine{00013\ \ \ \ \ Right=3}
+\DoxyCodeLine{00014\ \};}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{enum}\ HitboxType}
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ Solid}
+\DoxyCodeLine{00019\ \};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_hitbox}{Hitbox}}}
+\DoxyCodeLine{00022\ \{}
+\DoxyCodeLine{00023\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{int}\ x;\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Coordonnée\ x\ du\ coin\ supérieur\ gauche\ de\ la\ Hitbox}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{int}\ y;\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Coordonnée\ y\ du\ coin\ supérieur\ gauche\ de\ la\ Hitbox}}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{int}\ offsetX;\ \ \ \ \ \textcolor{comment}{//\ Ecart\ entre\ le\ coin\ supérieur\ gauche\ de\ l'entité\ et\ le\ coin\ supérieur\ gauche\ de\ la\ Hitbox}}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{int}\ offsetY;\ \ \ \ \ \textcolor{comment}{//\ Ecart\ entre\ le\ coin\ supérieur\ gauche\ de\ l'entité\ et\ le\ coin\ supérieur\ gauche\ de\ la\ Hitbox}}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{int}\ w;\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Largeur\ de\ la\ Hitbox}}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{int}\ h;\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Hauteur\ de\ la\ Hitbox}}
+\DoxyCodeLine{00030\ \ \ \ \ HitboxType\ type;\ \textcolor{comment}{//\ Type\ de\ la\ Hitbox}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{class_hitbox_a999b0be8486978b3dd7bcd001c7c3c03}{Hitbox}}();}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{class_hitbox_a999b0be8486978b3dd7bcd001c7c3c03}{Hitbox}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h,\ \textcolor{keywordtype}{int}\ offsetX\ =\ 0,\ \textcolor{keywordtype}{int}\ offsetY\ =\ 0,HitboxType\ type\ =\ Solid);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00048\ \ \ \ \ \mbox{\hyperlink{class_hitbox}{Hitbox}}\ \&\mbox{\hyperlink{class_hitbox_ad06673de9dd9fb0185ed012efa9102c1}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_hitbox}{Hitbox}}\ \&h);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_hitbox_a96a032adbbf7f4c2928c89edb80f4a5d}{getX}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_hitbox_ad4519e5d1196ddc883bddb0b8f1728f5}{getY}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_hitbox_a7fce22eedea87ea9f0277030731c92dd}{getOffsetX}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_hitbox_a83a51fdd9a2e50d1c93c5cd5dc695688}{getOffsetY}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_hitbox_a481f4aff847495e44ab2359739432e03}{getRealX}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_hitbox_ad058e179f65a45fe1e867b60c604deab}{getRealY}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_hitbox_a6dd11001509c0be7bb8e7f2796c6dfb7}{getWidth}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_hitbox_ad1701db71dce247958ec1c20ae020a57}{getHeight}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_hitbox_acf7b9fb5af3490935375afa8c86a642a}{setX}}(\textcolor{keywordtype}{int}\ x);}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_hitbox_a6442a794ab675a487bb16fb3d63177e4}{setY}}(\textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_hitbox_ac9486ef0fff04656b454870d6f9d0f5b}{setW}}(\textcolor{keywordtype}{int}\ w);}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_hitbox_aa242e80eb19168d794117e7d4d2a1be9}{setH}}(\textcolor{keywordtype}{int}\ h);}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00101\ \ \ \ \ CollisionSide\ \mbox{\hyperlink{class_hitbox_a6597c78181f9c11f9d27abe612b29ba4}{getCollision}}(\mbox{\hyperlink{class_hitbox}{Hitbox}}\ h)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_hitbox_a80225ea61d0d70de78da9778f7f5ee0c}{getHitboxBorder}}(\textcolor{keywordtype}{int}\ \&x,\ \textcolor{keywordtype}{int}\ \&y,\ CollisionSide\ side,\ \mbox{\hyperlink{class_hitbox}{Hitbox}}\ h)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_hitbox_aa92eba950d0d13a67122aa85d342b6a8}{isColliding}}(\mbox{\hyperlink{class_hitbox}{Hitbox}}\ h)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00114\ \};}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

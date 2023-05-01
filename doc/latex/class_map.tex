@@ -1,0 +1,192 @@
+\hypertarget{class_map}{}\doxysection{Map Class Reference}
+\label{class_map}\index{Map@{Map}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_map_a0f5ad0fd4563497b4214038cbca8b582}\label{class_map_a0f5ad0fd4563497b4214038cbca8b582}} 
+{\bfseries Map} ()
+\begin{DoxyCompactList}\small\item\em Constructeur. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_a6061db6163ef87970275b38a8d4bdecb}{load\+Map}} (std\+::string path, \mbox{\hyperlink{class_database}{Database}} \&db)
+\begin{DoxyCompactList}\small\item\em Charge une map. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_map_ab3181204ba96eb15b96ee1ced85e198e}{get\+Width}} () const
+\begin{DoxyCompactList}\small\item\em Retourne la largeur de la map. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_map_a67113f1ffac80d9a20b15fa18a58edc2}{get\+Height}} () const
+\begin{DoxyCompactList}\small\item\em Retourne la hauteur de la map. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_map_a88dce19f7b55c11c4226989ca9c39ed1}{get\+Layer\+Count}} () const
+\begin{DoxyCompactList}\small\item\em Retourne le nombre de calques de la map. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_map_a2cbdd3fdcfe00383def6750970f27eae}{get\+Value}} (int x, int y, int layer) const
+\begin{DoxyCompactList}\small\item\em Retourne la valeur d\textquotesingle{}une case. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_a24c8f096f31c155d0a5544680ab60ca3}{draw\+Layer}} (int layer, SDL\+\_\+\+Renderer $\ast$renderer, \mbox{\hyperlink{struct_camera}{Camera}} camera, std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_sprite}{Sprite}} $>$ \&sprites, \mbox{\hyperlink{class_database}{Database}} \&db) const
+\begin{DoxyCompactList}\small\item\em Dessine un calque de la map. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_hitbox}{Hitbox}} $>$ \mbox{\hyperlink{class_map_a532bd7bc457772a1fa87ad190847ff42}{get\+Hitboxes}} () const
+\begin{DoxyCompactList}\small\item\em Retourne les hitboxes de la map. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_entity}{Entity}} $>$ \mbox{\hyperlink{class_map_a4e0f13c6774ea784d06099d6d813ecee}{get\+Entities}} () const
+\begin{DoxyCompactList}\small\item\em Retourne les entités de la map. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{class_map_a589b082643af3fd6569492a1f85130a2}{get\+Monsters}} (unsigned int \&level\+Min, unsigned int \&level\+Max) const
+\begin{DoxyCompactList}\small\item\em Retourne le niveau minimum des monstres. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_a9d77af967cb8fbcbfd922836dc35bfca}{get\+Respawn\+Coord}} (unsigned int \&x, unsigned int \&y) const
+\begin{DoxyCompactList}\small\item\em Retourne la position de respawn. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_map_a24c8f096f31c155d0a5544680ab60ca3}\label{class_map_a24c8f096f31c155d0a5544680ab60ca3}} 
+\index{Map@{Map}!drawLayer@{drawLayer}}
+\index{drawLayer@{drawLayer}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{drawLayer()}{drawLayer()}}
+{\footnotesize\ttfamily void Map\+::draw\+Layer (\begin{DoxyParamCaption}\item[{int}]{layer,  }\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{\mbox{\hyperlink{struct_camera}{Camera}}}]{camera,  }\item[{std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_sprite}{Sprite}} $>$ \&}]{sprites,  }\item[{\mbox{\hyperlink{class_database}{Database}} \&}]{db }\end{DoxyParamCaption}) const}
+
+
+
+Dessine un calque de la map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em layer} & Indice du calque à dessiner \\
+\hline
+{\em renderer} & Le renderer \\
+\hline
+{\em camera} & La caméra \\
+\hline
+{\em sprites} & Les sprites \\
+\hline
+{\em db} & La base de données \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_map_a4e0f13c6774ea784d06099d6d813ecee}\label{class_map_a4e0f13c6774ea784d06099d6d813ecee}} 
+\index{Map@{Map}!getEntities@{getEntities}}
+\index{getEntities@{getEntities}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{getEntities()}{getEntities()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_entity}{Entity}} $>$ Map\+::get\+Entities (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne les entités de la map. 
+
+\begin{DoxyReturn}{Returns}
+Les entités de la map 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_map_a67113f1ffac80d9a20b15fa18a58edc2}\label{class_map_a67113f1ffac80d9a20b15fa18a58edc2}} 
+\index{Map@{Map}!getHeight@{getHeight}}
+\index{getHeight@{getHeight}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{getHeight()}{getHeight()}}
+{\footnotesize\ttfamily int Map\+::get\+Height (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne la hauteur de la map. 
+
+\begin{DoxyReturn}{Returns}
+La hauteur de la map 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_map_a532bd7bc457772a1fa87ad190847ff42}\label{class_map_a532bd7bc457772a1fa87ad190847ff42}} 
+\index{Map@{Map}!getHitboxes@{getHitboxes}}
+\index{getHitboxes@{getHitboxes}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{getHitboxes()}{getHitboxes()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_hitbox}{Hitbox}} $>$ Map\+::get\+Hitboxes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne les hitboxes de la map. 
+
+\begin{DoxyReturn}{Returns}
+Les hitboxes de la map 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_map_a88dce19f7b55c11c4226989ca9c39ed1}\label{class_map_a88dce19f7b55c11c4226989ca9c39ed1}} 
+\index{Map@{Map}!getLayerCount@{getLayerCount}}
+\index{getLayerCount@{getLayerCount}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{getLayerCount()}{getLayerCount()}}
+{\footnotesize\ttfamily int Map\+::get\+Layer\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne le nombre de calques de la map. 
+
+\begin{DoxyReturn}{Returns}
+Le nombre de calques de la map 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_map_a589b082643af3fd6569492a1f85130a2}\label{class_map_a589b082643af3fd6569492a1f85130a2}} 
+\index{Map@{Map}!getMonsters@{getMonsters}}
+\index{getMonsters@{getMonsters}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{getMonsters()}{getMonsters()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ Map\+::get\+Monsters (\begin{DoxyParamCaption}\item[{unsigned int \&}]{level\+Min,  }\item[{unsigned int \&}]{level\+Max }\end{DoxyParamCaption}) const}
+
+
+
+Retourne le niveau minimum des monstres. 
+
+\begin{DoxyReturn}{Returns}
+Le niveau minimum des monstres 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_map_a9d77af967cb8fbcbfd922836dc35bfca}\label{class_map_a9d77af967cb8fbcbfd922836dc35bfca}} 
+\index{Map@{Map}!getRespawnCoord@{getRespawnCoord}}
+\index{getRespawnCoord@{getRespawnCoord}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{getRespawnCoord()}{getRespawnCoord()}}
+{\footnotesize\ttfamily void Map\+::get\+Respawn\+Coord (\begin{DoxyParamCaption}\item[{unsigned int \&}]{x,  }\item[{unsigned int \&}]{y }\end{DoxyParamCaption}) const}
+
+
+
+Retourne la position de respawn. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Coordonnée x \\
+\hline
+{\em y} & Coordonnée y \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_map_a2cbdd3fdcfe00383def6750970f27eae}\label{class_map_a2cbdd3fdcfe00383def6750970f27eae}} 
+\index{Map@{Map}!getValue@{getValue}}
+\index{getValue@{getValue}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{getValue()}{getValue()}}
+{\footnotesize\ttfamily int Map\+::get\+Value (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{layer }\end{DoxyParamCaption}) const}
+
+
+
+Retourne la valeur d\textquotesingle{}une case. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Coordonnée x de la case \\
+\hline
+{\em y} & Coordonnée y de la case \\
+\hline
+{\em layer} & Couche de la case \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+La valeur de la case 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_map_ab3181204ba96eb15b96ee1ced85e198e}\label{class_map_ab3181204ba96eb15b96ee1ced85e198e}} 
+\index{Map@{Map}!getWidth@{getWidth}}
+\index{getWidth@{getWidth}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{getWidth()}{getWidth()}}
+{\footnotesize\ttfamily int Map\+::get\+Width (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne la largeur de la map. 
+
+\begin{DoxyReturn}{Returns}
+La largeur de la map 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_map_a6061db6163ef87970275b38a8d4bdecb}\label{class_map_a6061db6163ef87970275b38a8d4bdecb}} 
+\index{Map@{Map}!loadMap@{loadMap}}
+\index{loadMap@{loadMap}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{loadMap()}{loadMap()}}
+{\footnotesize\ttfamily void Map\+::load\+Map (\begin{DoxyParamCaption}\item[{std\+::string}]{path,  }\item[{\mbox{\hyperlink{class_database}{Database}} \&}]{db }\end{DoxyParamCaption})}
+
+
+
+Charge une map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Le chemin vers le fichier de la map \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/Map.\+h\item 
+src/Map.\+cpp\end{DoxyCompactItemize}

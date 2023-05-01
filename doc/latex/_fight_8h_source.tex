@@ -1,0 +1,142 @@
+\hypertarget{_fight_8h_source}{}\doxysection{Fight.\+h}
+\label{_fight_8h_source}\index{src/Fight.h@{src/Fight.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_FIGHT}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_FIGHT}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stack>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Monster.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}jsonFunction.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_action}{Action}}}
+\DoxyCodeLine{00009\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ std::string\ idCaster;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Id\ du\ monstre\ qui\ lance\ le\ sort}}
+\DoxyCodeLine{00011\ \ \ \ \ std::vector<std::string>\ idTargets;\ \textcolor{comment}{//\ Id\ des\ cibles\ du\ sort}}
+\DoxyCodeLine{00012\ \ \ \ \ std::string\ spell;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Nom\ du\ sort}}
+\DoxyCodeLine{00013\ \};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{enum}\ functionImpact}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ damage,\ \textcolor{comment}{//\ Appliquer\ au\ monstre\ la\ fonction\ damage}}
+\DoxyCodeLine{00018\ \ \ \ \ heal,\ \ \ \textcolor{comment}{//\ Appliquer\ au\ monstre\ la\ fonction\ heal}}
+\DoxyCodeLine{00019\ \ \ \ \ stats,\ \ \textcolor{comment}{//\ Appliquer\ au\ monstre\ la\ fonction\ d'altération\ des\ stats}}
+\DoxyCodeLine{00020\ \ \ \ \ status,\ \textcolor{comment}{//\ Appliquer\ au\ monstre\ la\ fonction\ d'altération\ des\ status}}
+\DoxyCodeLine{00021\ \ \ \ \ null\ \ \ \ \textcolor{comment}{//\ Ne\ rien\ faire}}
+\DoxyCodeLine{00022\ \};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{enum}\ actionType}
+\DoxyCodeLine{00025\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ cast,}
+\DoxyCodeLine{00027\ \ \ \ \ takeDamage,}
+\DoxyCodeLine{00028\ \ \ \ \ takeHeal,}
+\DoxyCodeLine{00029\ \ \ \ \ takeStatus,}
+\DoxyCodeLine{00030\ \ \ \ \ attack,}
+\DoxyCodeLine{00031\ \ \ \ \ prepareScout,}
+\DoxyCodeLine{00032\ \ \ \ \ critical,}
+\DoxyCodeLine{00033\ \ \ \ \ none}
+\DoxyCodeLine{00034\ \};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structspell_impact}{spellImpact}}}
+\DoxyCodeLine{00037\ \{}
+\DoxyCodeLine{00038\ \ \ \ \ std::string\ message;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Message\ à\ afficher\ à\ l'impact\ du\ sort}}
+\DoxyCodeLine{00039\ \ \ \ \ functionImpact\ function;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Fonction\ à\ appliquer}}
+\DoxyCodeLine{00040\ \ \ \ \ std::vector<std::string>\ targetId;\ \ \ \ \ \ \ \textcolor{comment}{//\ Id\ des\ cibles}}
+\DoxyCodeLine{00041\ \ \ \ \ std::vector<float>\ argumentFloat;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Arguments\ de\ la\ fonction}}
+\DoxyCodeLine{00042\ \ \ \ \ std::vector<int>\ argumentInt;\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Arguments\ de\ la\ fonction}}
+\DoxyCodeLine{00043\ \ \ \ \ std::vector<std::string>\ argumentString;\ \textcolor{comment}{//\ Arguments\ de\ la\ fonction}}
+\DoxyCodeLine{00044\ \ \ \ \ actionType\ type;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Type\ d'action}}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{bool}\ team1;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Indique\ si\ l'impact\ se\ fait\ sur\ l'équipe\ du\ joueur}}
+\DoxyCodeLine{00046\ \};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structscout_impact}{scoutImpact}}}
+\DoxyCodeLine{00049\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ std::string\ message;\ \ \ \ \ \ \textcolor{comment}{//\ Message\ à\ afficher\ à\ l'impact\ du\ sort}}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ chanceScout;\ \textcolor{comment}{//\ Chance\ de\ dresser}}
+\DoxyCodeLine{00052\ \ \ \ \ actionType\ type;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Type\ d'action}}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{bool}\ team1;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Indique\ si\ l'impact\ se\ fait\ sur\ l'équipe\ du\ joueur}}
+\DoxyCodeLine{00054\ \};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \mbox{\hyperlink{structscout_impact}{scoutImpact}}\ createScoutImpact(std::string\ message,\ actionType\ type,\ \textcolor{keywordtype}{bool}\ team1,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ chanceScout\ =\ 0);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_fight}{Fight}}}
+\DoxyCodeLine{00059\ \{}
+\DoxyCodeLine{00060\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{bool}\ isTeam1(\mbox{\hyperlink{class_monster}{Monster}}\ m)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ createStackAgility();}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00074\ \ \ \ \ \mbox{\hyperlink{struct_action}{Action}}\ tacticSansPitie(\mbox{\hyperlink{class_monster}{Monster}}\ caster);}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00079\ \ \ \ \ \mbox{\hyperlink{struct_action}{Action}}\ tacticSagesse(\mbox{\hyperlink{class_monster}{Monster}}\ caster);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00084\ \ \ \ \ \mbox{\hyperlink{struct_action}{Action}}\ tacticNoMana(\mbox{\hyperlink{class_monster}{Monster}}\ caster);}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00089\ \ \ \ \ \mbox{\hyperlink{struct_action}{Action}}\ tacticSoin(\mbox{\hyperlink{class_monster}{Monster}}\ caster);}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{void}\ checkTargetAlive(std::vector<std::string>\ \&targets,\ std::string\ spell,\ \mbox{\hyperlink{class_monster}{Monster}}\ caster);}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00099\ \ \ \ \ std::string\ getStatusName(std::string\ status);}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00105\ \ \ \ \ std::queue<spellImpact>\ getStatusEffect(\mbox{\hyperlink{class_monster}{Monster}}\ \&caster,\ \textcolor{keywordtype}{bool}\ \&canMove);}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00111\ \ \ \ \ std::string\ getStatsName(std::string\ stat,\ \textcolor{keywordtype}{bool}\ buff);}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00118\ \ \ \ \ std::queue<spellImpact>\ simulateAttack(\mbox{\hyperlink{class_monster}{Monster}}\ \&caster,\ std::vector<std::string>\ targets,\ std::string\ spell);}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00125\ \ \ \ \ std::queue<spellImpact>\ simulateHeal(\mbox{\hyperlink{class_monster}{Monster}}\ \&caster,\ std::vector<std::string>\ targets,\ std::string\ spell);}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keywordtype}{bool}\ consumeMana(\mbox{\hyperlink{class_monster}{Monster}}\ \&caster,\ std::string\ spell);}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ nbTurn;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Nombre\ de\ tours}}
+\DoxyCodeLine{00135\ \ \ \ \ std::vector<Monster>\ team1;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Équipe\ du\ joueur}}
+\DoxyCodeLine{00136\ \ \ \ \ std::vector<Monster>\ team2;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Équipe\ de\ l'I.A.}}
+\DoxyCodeLine{00137\ \ \ \ \ std::vector<Action>\ actions;\ \ \ \ \ \ \ \textcolor{comment}{//\ Actions\ à\ effectuer}}
+\DoxyCodeLine{00138\ \ \ \ \ std::queue<Action>\ actionsOrdered;\ \textcolor{comment}{//\ File\ des\ actions\ à\ effectuer}}
+\DoxyCodeLine{00139\ \ \ \ \ rapidjson::Document\ spellBase;\ \ \ \ \ \textcolor{comment}{//\ Base\ de\ données\ des\ sorts}}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keywordtype}{bool}\ teamFlee;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Indique\ si\ l'équipe\ a\ fui}}
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keywordtype}{bool}\ canScout;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Indique\ si\ l'équipe\ peut\ dresser}}
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keywordtype}{bool}\ scouting;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Indique\ si\ l'équipe\ est\ en\ train\ de\ dresser}}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \ \ \ \ \mbox{\hyperlink{class_fight}{Fight}}();}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00149\ \ \ \ \ \mbox{\hyperlink{class_fight}{Fight}}(std::vector<Monster>\ t1,\ std::vector<Monster>\ t2);}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00153\ \ \ \ \ \mbox{\hyperlink{class_fight}{Fight}}(\mbox{\hyperlink{class_fight}{Fight}}\ \textcolor{keyword}{const}\ \&fight);}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ \ \ \ \ \mbox{\hyperlink{class_fight}{Fight}}\ \&operator=(\mbox{\hyperlink{class_fight}{Fight}}\ \textcolor{keyword}{const}\ \&fight);}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_fight_a380fe3b38eef5122fb5a5909ff0ec5d2}{spellTacticChoice}}(\mbox{\hyperlink{class_monster}{Monster}}\ \&caster);}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00162\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_fight_a4a947755e059c2d916affd20dca891ec}{giveActions}}(std::vector<Action>\ actions);}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00166\ \ \ \ \ std::queue<std::string>\ \mbox{\hyperlink{class_fight_ac71a19afe96ece3b1227702d23a89c51}{initTurn}}();}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00170\ \ \ \ \ std::queue<spellImpact>\ \mbox{\hyperlink{class_fight_a75358dc3e2e8421c2ff277319cc3a759}{simulateAction}}();}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00174\ \ \ \ \ std::queue<std::string>\ \mbox{\hyperlink{class_fight_ace15cba4c4cb661b172174a83dd53763}{simulateTurn}}();}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00179\ \ \ \ \ \mbox{\hyperlink{class_monster}{Monster}}\ \&\mbox{\hyperlink{class_fight_ac316d1c125f0f112d2d0b5189b8abb42}{getMonsterById}}(std::string\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00183\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_fight_abca3c8f09e7f86cabb02b754afaca30b}{updateMonster}}(\mbox{\hyperlink{structspell_impact}{spellImpact}}\ impact);}
+\DoxyCodeLine{00184\ }
+\DoxyCodeLine{00188\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_fight_a4cb44c9564e88e4eca5da6402ae7745c}{isOver}}(\textcolor{keywordtype}{bool}\ \&isTeam1Win);}
+\DoxyCodeLine{00189\ }
+\DoxyCodeLine{00193\ \ \ \ \ std::vector<std::string>\ \mbox{\hyperlink{class_fight_ae7ccb45fd2e96ec18d6d3bb39fd73339}{getTeamAlive}}(std::vector<Monster>\ team)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00194\ }
+\DoxyCodeLine{00200\ \ \ \ \ std::vector<std::string>\ \mbox{\hyperlink{class_fight_a28d5acf71940922351d7d6c2e288b659}{getTargetTactic}}(\mbox{\hyperlink{class_monster}{Monster}}\ caster,\ std::string\ spell);}
+\DoxyCodeLine{00201\ }
+\DoxyCodeLine{00204\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_fight_a321aaed488ede2a4bfe053acf1dc792f}{flee}}();}
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00209\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_fight_a2eddd06d9992afc48a31ad673ba52590}{scout}}(std::string\ idMonster,\ std::queue<scoutImpact>\ \&messages);}
+\DoxyCodeLine{00210\ }
+\DoxyCodeLine{00214\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_fight_aee824d78a9d375e6a9fc56a5c828574e}{getGoldReward}}(\mbox{\hyperlink{class_database}{Database}}\ \&db)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00219\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_fight_a095cef57144ba099e63844cb78ef33b5}{getExpReward}}(\mbox{\hyperlink{class_database}{Database}}\ \&db)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00220\ \};}
+\DoxyCodeLine{00226\ \mbox{\hyperlink{struct_action}{Action}}\ createAction(std::string\ idCaster,\ std::string\ spell,\ std::vector<std::string>\ idTargets);}
+\DoxyCodeLine{00227\ }
+\DoxyCodeLine{00228\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

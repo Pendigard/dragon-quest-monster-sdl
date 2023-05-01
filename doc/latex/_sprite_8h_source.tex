@@ -1,0 +1,97 @@
+\hypertarget{_sprite_8h_source}{}\doxysection{Sprite.\+h}
+\label{_sprite_8h_source}\index{src/Sprite.h@{src/Sprite.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_SPRITE}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_SPRITE}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_image.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <cassert>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}jsonFunction.h"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_camera}{Camera}}}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{int}\ x;\ \ \ \ \textcolor{comment}{//\ Position\ de\ la\ caméra\ en\ x}}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{int}\ y;\ \ \ \ \textcolor{comment}{//\ Position\ de\ la\ caméra\ en\ y}}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{int}\ w;\ \ \ \ \textcolor{comment}{//\ Largeur\ de\ l'écran}}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{int}\ h;\ \ \ \ \textcolor{comment}{//\ Hauteur\ de\ l'écran}}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{int}\ zoom;\ \textcolor{comment}{//\ Zoom\ de\ la\ caméra}}
+\DoxyCodeLine{00019\ \};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00022\ \textcolor{comment}{Un\ sprite\ est\ une\ texture\ animée\ ou\ non.\ Il\ a\ une\ largeur\ et\ une\ hauteur.}}
+\DoxyCodeLine{00023\ \textcolor{comment}{Il\ peut\ être\ composé\ de\ plusieurs\ textures.\ Chaque\ texture\ est\ une\ frame.}}
+\DoxyCodeLine{00024\ \textcolor{comment}{Il\ se\ base\ sur\ le\ chemin\ vers\ le\ fichier\ pour\ charger\ les\ textures.}}
+\DoxyCodeLine{00025\ \textcolor{comment}{Un\ sprite\ possède\ un\ pointeur\ vers\ le\ renderer.}}
+\DoxyCodeLine{00026\ \textcolor{comment}{On\ peut\ soit\ dessiner\ le\ sprite\ à\ une\ position\ donnée\ et\ le\ laisser\ gérer\ le}}
+\DoxyCodeLine{00027\ \textcolor{comment}{changement\ de\ frame,\ soit\ dessiner\ une\ frame\ donnée\ et\ gérer\ à\ l'exterieur\ de}}
+\DoxyCodeLine{00028\ \textcolor{comment}{la\ classe\ le\ changement\ de\ frame,\ c'est\ le\ cas\ pour\ la\ classe\ entité.}}
+\DoxyCodeLine{00029\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_sprite}{Sprite}}}
+\DoxyCodeLine{00032\ \{}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00035\ \ \ \ \ SDL\_Rect\ srcRect,\ destRect;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ srcRect\ est\ la\ zone\ de\ la\ texture\ à\ afficher,\ destRect\ est\ la\ zone\ de\ l'écran\ où\ on\ veut\ l'afficher}}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{int}\ width,\ height;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ La\ longueur\ et\ la\ largeur\ de\ la\ texture}}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{bool}\ isAnimated;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Si\ la\ texture\ est\ animée}}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{int}\ currentSprite;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ L'index\ de\ la\ texture\ actuelle}}
+\DoxyCodeLine{00039\ \ \ \ \ std::vector<SDL\_Texture\ *>\ texture;\ \textcolor{comment}{//\ Les\ textures}}
+\DoxyCodeLine{00040\ \ \ \ \ std::string\ path;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Le\ chemin\ vers\ le\ fichier}}
+\DoxyCodeLine{00041\ \ \ \ \ SDL\_Renderer\ *renderer;\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Le\ renderer}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ loadTexture(std::string\ path,\ \textcolor{keywordtype}{int}\ numSprites);}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{class_sprite_a12cba3ac1868418add3c4d95ce87e615}{Sprite}}(\mbox{\hyperlink{class_sprite}{Sprite}}\ \textcolor{keyword}{const}\ \&other);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{class_sprite}{Sprite}}\ \&\mbox{\hyperlink{class_sprite_a027c0392bf6b9335fad3428133f4f813}{operator=}}(\mbox{\hyperlink{class_sprite}{Sprite}}\ \textcolor{keyword}{const}\ \&other);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00062\ \ \ \ \ \mbox{\hyperlink{class_sprite_a12cba3ac1868418add3c4d95ce87e615}{Sprite}}(SDL\_Renderer\ *renderer,\ std::string\ path,\ \textcolor{keywordtype}{int}\ numSprites);}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00065\ \ \ \ \ \mbox{\hyperlink{class_sprite_a12cba3ac1868418add3c4d95ce87e615}{Sprite}}();}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00068\ \ \ \ \ \mbox{\hyperlink{class_sprite_a8accab430f9d90ae5117b57d67e32b84}{\string~Sprite}}();}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sprite_a5667414fab8ba41fde5e8f3af0b94b3a}{draw}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \mbox{\hyperlink{struct_camera}{Camera}}\ c,\ \textcolor{keywordtype}{float}\ size\ =\ 1,\ \textcolor{keywordtype}{int}\ frame\ =\ -\/1,\ \textcolor{keywordtype}{bool}\ bottomCoord\ =\ \textcolor{keyword}{false},\ \textcolor{keywordtype}{bool}\ flip\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sprite_a5667414fab8ba41fde5e8f3af0b94b3a}{draw}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{float}\ size\ =\ 1,\ \textcolor{keywordtype}{int}\ frame\ =\ -\/1,\ \textcolor{keywordtype}{bool}\ bottomCoord\ =\ \textcolor{keyword}{false},\ \textcolor{keywordtype}{bool}\ flip\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sprite_aa2410ca02ed2b51b8f0a8d9dc22597e9}{drawCrop}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ cropX,\ \textcolor{keywordtype}{int}\ cropY,\ \mbox{\hyperlink{struct_camera}{Camera}}\ c,\ \textcolor{keywordtype}{int}\ cropW\ =\ 32,\ \textcolor{keywordtype}{int}\ cropH\ =\ 32,\ \textcolor{keywordtype}{float}\ size\ =\ 1);}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sprite_a6d0f7e628b4ea8540697605fff906759}{update}}();}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sprite_a7af0079630d970b351fe1ee6916a41b4}{changeAnimation}}();}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_sprite_a8324c9576eae936165fd7965d34ec95e}{getIsAnimated}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_sprite_a5d9a104a034ca44a1243beb16605684f}{getWidth}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_sprite_ae4d387161151d1d9b2162f4339b8fc6c}{getHeight}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00119\ \ \ \ \ std::string\ \mbox{\hyperlink{class_sprite_aa4752acf5e7b29caa60a35c224d822f9}{getPath}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00123\ \ \ \ \ SDL\_Renderer\ *\mbox{\hyperlink{class_sprite_a9206146385e6470680931fa9c22de3c2}{getRenderer}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_sprite_a6293fdb7bfb4b24067ecde137f169f38}{getNumSprites}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sprite_aa4301ac10c0ee9120b6ccda5218d994b}{setCurrentSprite}}(\textcolor{keywordtype}{int}\ currentSprite);}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00135\ \ \ \ \ std::vector<SDL\_Texture\ *>\ \&\mbox{\hyperlink{class_sprite_ad5882304abacee56ada62ca5c5f67646}{getTextures}}();}
+\DoxyCodeLine{00136\ \};}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00140\ \textcolor{keywordtype}{void}\ updateSprite(std::vector<Sprite>\ \&vec);}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00146\ \textcolor{keywordtype}{void}\ loadOverworldSprite(SDL\_Renderer\ *renderer,\ std::string\ name,\ std::unordered\_map<std::string,\ Sprite>\ \&sprites);}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00152\ \textcolor{keywordtype}{void}\ loadMonsterSprite(SDL\_Renderer\ *renderer,\ std::string\ type,\ std::unordered\_map<std::string,\ Sprite>\ \&sprites);}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00160\ \textcolor{keywordtype}{void}\ loadSprite(SDL\_Renderer\ *renderer,\ std::string\ name,\ std::string\ path,\ std::unordered\_map<std::string,\ Sprite>\ \&sprites,\ \textcolor{keywordtype}{int}\ numSprites\ =\ 1);}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

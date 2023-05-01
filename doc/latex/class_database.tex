@@ -1,0 +1,259 @@
+\hypertarget{class_database}{}\doxysection{Database Class Reference}
+\label{class_database}\index{Database@{Database}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_database_a4703c80e6969d33565ea340f768fdadf}\label{class_database_a4703c80e6969d33565ea340f768fdadf}} 
+{\bfseries Database} ()
+\begin{DoxyCompactList}\small\item\em Constructeur lance la fonction \mbox{\hyperlink{class_database_ae24bdc272750ae30a2591e29614e57fe}{load\+Database()}} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_database_ae24bdc272750ae30a2591e29614e57fe}\label{class_database_ae24bdc272750ae30a2591e29614e57fe}} 
+void {\bfseries load\+Database} ()
+\begin{DoxyCompactList}\small\item\em Charge les données de monster.\+json, library.\+json, skill.\+json et spell.\+json. \end{DoxyCompactList}\item 
+rapidjson\+::\+Document \& \mbox{\hyperlink{class_database_a3314001ddc0e2b7178c6674ce7746501}{get\+Monster\+Base}} ()
+\begin{DoxyCompactList}\small\item\em retourne la base de données des monstres \end{DoxyCompactList}\item 
+rapidjson\+::\+Value \& \mbox{\hyperlink{class_database_aaf79a5ba5881d779e638b325030d3112}{get\+Monster\+Stat\+Type}} (std\+::string type)
+\begin{DoxyCompactList}\small\item\em retourne les statistiques d\textquotesingle{}un monstre à partir de son type \end{DoxyCompactList}\item 
+rapidjson\+::\+Document \& \mbox{\hyperlink{class_database_a898444115dcf599ba80d29b93df42afb}{get\+Library}} ()
+\begin{DoxyCompactList}\small\item\em retourne la base de données de la librairie des monstres \end{DoxyCompactList}\item 
+rapidjson\+::\+Document \& \mbox{\hyperlink{class_database_a12e37765aa145e90eacccf922e63e643}{get\+Skill\+Base}} ()
+\begin{DoxyCompactList}\small\item\em retourne la base de données des compétences \end{DoxyCompactList}\item 
+rapidjson\+::\+Document \& \mbox{\hyperlink{class_database_a52b301221c4b5e67868a1c0b27e168e9}{get\+Spell\+Base}} ()
+\begin{DoxyCompactList}\small\item\em retourne la base de données des sorts \end{DoxyCompactList}\item 
+rapidjson\+::\+Value \& \mbox{\hyperlink{class_database_a4348ee2d1f10fc8cefafb95a2a334ec3}{get\+Monster\+Stat}} (std\+::string family, std\+::string rank, std\+::string type)
+\begin{DoxyCompactList}\small\item\em retourne les statistiques d\textquotesingle{}un monstre \end{DoxyCompactList}\item 
+rapidjson\+::\+Document \& \mbox{\hyperlink{class_database_aec05d6c34fe7b9b643bac82af1349d3a}{get\+Synthesis\+Recipe}} ()
+\begin{DoxyCompactList}\small\item\em Retourne la base de données des recettes de synthese. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_database_a0c145c8342bd67b9cd67dff9c28c9834}{get\+Tile\+Set\+Width}} (std\+::string tileset) const
+\begin{DoxyCompactList}\small\item\em retourne la largeur du tileset \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_database_aa0c69cca6cac77d3ff1712b1e7d70345}{get\+Tile\+Set\+Height}} (std\+::string tileset) const
+\begin{DoxyCompactList}\small\item\em retourne la hauteur du tileset \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_database_ad4bf12bd903b46dd39d4c7d0b9afe825}{get\+Tile\+Width}} (std\+::string tileset) const
+\begin{DoxyCompactList}\small\item\em retourne la largeur d\textquotesingle{}une tile d\textquotesingle{}un tileset \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_database_aa9f82db0b5ba579201a2d8678372e9a9}{get\+Tile\+Height}} (std\+::string tileset) const
+\begin{DoxyCompactList}\small\item\em retourne la hauteur d\textquotesingle{}une tile d\textquotesingle{}un tileset \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_database_ade78c6eadc411eb6df82353592bfc65e}{get\+Image}} (std\+::string tileset) const
+\begin{DoxyCompactList}\small\item\em retourne le chemin de fichier vers l\textquotesingle{}image associé au tileset \end{DoxyCompactList}\item 
+rapidjson\+::\+Value \& \mbox{\hyperlink{class_database_ab107eb1f056adad79bf272ffaffead19}{get\+Script}} (std\+::string script\+Name)
+\begin{DoxyCompactList}\small\item\em retourne un script \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_database_ade78c6eadc411eb6df82353592bfc65e}\label{class_database_ade78c6eadc411eb6df82353592bfc65e}} 
+\index{Database@{Database}!getImage@{getImage}}
+\index{getImage@{getImage}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{getImage()}{getImage()}}
+{\footnotesize\ttfamily std\+::string Database\+::get\+Image (\begin{DoxyParamCaption}\item[{std\+::string}]{tileset }\end{DoxyParamCaption}) const}
+
+
+
+retourne le chemin de fichier vers l\textquotesingle{}image associé au tileset 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tileset} & Le nom du fichier du tileset \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Le chemin de fichier vers l\textquotesingle{}image associé au tileset 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_database_a898444115dcf599ba80d29b93df42afb}\label{class_database_a898444115dcf599ba80d29b93df42afb}} 
+\index{Database@{Database}!getLibrary@{getLibrary}}
+\index{getLibrary@{getLibrary}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{getLibrary()}{getLibrary()}}
+{\footnotesize\ttfamily rapidjson\+::\+Document \& Database\+::get\+Library (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+retourne la base de données de la librairie des monstres 
+
+\begin{DoxyReturn}{Returns}
+La base de données de la librairie des monstres 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_database_a3314001ddc0e2b7178c6674ce7746501}\label{class_database_a3314001ddc0e2b7178c6674ce7746501}} 
+\index{Database@{Database}!getMonsterBase@{getMonsterBase}}
+\index{getMonsterBase@{getMonsterBase}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{getMonsterBase()}{getMonsterBase()}}
+{\footnotesize\ttfamily rapidjson\+::\+Document \& Database\+::get\+Monster\+Base (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+retourne la base de données des monstres 
+
+\begin{DoxyReturn}{Returns}
+La base de données des monstres 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_database_a4348ee2d1f10fc8cefafb95a2a334ec3}\label{class_database_a4348ee2d1f10fc8cefafb95a2a334ec3}} 
+\index{Database@{Database}!getMonsterStat@{getMonsterStat}}
+\index{getMonsterStat@{getMonsterStat}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{getMonsterStat()}{getMonsterStat()}}
+{\footnotesize\ttfamily rapidjson\+::\+Value \& Database\+::get\+Monster\+Stat (\begin{DoxyParamCaption}\item[{std\+::string}]{family,  }\item[{std\+::string}]{rank,  }\item[{std\+::string}]{type }\end{DoxyParamCaption})}
+
+
+
+retourne les statistiques d\textquotesingle{}un monstre 
+
+
+\begin{DoxyParams}{Parameters}
+{\em family} & La famille du monstre \\
+\hline
+{\em rank} & Le rang du monstre \\
+\hline
+{\em type} & Le type du monstre \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Les statistiques du monstre 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_database_aaf79a5ba5881d779e638b325030d3112}\label{class_database_aaf79a5ba5881d779e638b325030d3112}} 
+\index{Database@{Database}!getMonsterStatType@{getMonsterStatType}}
+\index{getMonsterStatType@{getMonsterStatType}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{getMonsterStatType()}{getMonsterStatType()}}
+{\footnotesize\ttfamily rapidjson\+::\+Value \& Database\+::get\+Monster\+Stat\+Type (\begin{DoxyParamCaption}\item[{std\+::string}]{type }\end{DoxyParamCaption})}
+
+
+
+retourne les statistiques d\textquotesingle{}un monstre à partir de son type 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & Le type du monstre \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Les statistiques du monstre 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_database_ab107eb1f056adad79bf272ffaffead19}\label{class_database_ab107eb1f056adad79bf272ffaffead19}} 
+\index{Database@{Database}!getScript@{getScript}}
+\index{getScript@{getScript}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{getScript()}{getScript()}}
+{\footnotesize\ttfamily rapidjson\+::\+Value \& Database\+::get\+Script (\begin{DoxyParamCaption}\item[{std\+::string}]{script\+Name }\end{DoxyParamCaption})}
+
+
+
+retourne un script 
+
+
+\begin{DoxyParams}{Parameters}
+{\em script\+Name} & Le nom du script \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Le script 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_database_a12e37765aa145e90eacccf922e63e643}\label{class_database_a12e37765aa145e90eacccf922e63e643}} 
+\index{Database@{Database}!getSkillBase@{getSkillBase}}
+\index{getSkillBase@{getSkillBase}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{getSkillBase()}{getSkillBase()}}
+{\footnotesize\ttfamily rapidjson\+::\+Document \& Database\+::get\+Skill\+Base (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+retourne la base de données des compétences 
+
+\begin{DoxyReturn}{Returns}
+La base de données des compétences 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_database_a52b301221c4b5e67868a1c0b27e168e9}\label{class_database_a52b301221c4b5e67868a1c0b27e168e9}} 
+\index{Database@{Database}!getSpellBase@{getSpellBase}}
+\index{getSpellBase@{getSpellBase}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{getSpellBase()}{getSpellBase()}}
+{\footnotesize\ttfamily rapidjson\+::\+Document \& Database\+::get\+Spell\+Base (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+retourne la base de données des sorts 
+
+\begin{DoxyReturn}{Returns}
+La base de données des sorts 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_database_aec05d6c34fe7b9b643bac82af1349d3a}\label{class_database_aec05d6c34fe7b9b643bac82af1349d3a}} 
+\index{Database@{Database}!getSynthesisRecipe@{getSynthesisRecipe}}
+\index{getSynthesisRecipe@{getSynthesisRecipe}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{getSynthesisRecipe()}{getSynthesisRecipe()}}
+{\footnotesize\ttfamily rapidjson\+::\+Document \& Database\+::get\+Synthesis\+Recipe (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retourne la base de données des recettes de synthese. 
+
+\begin{DoxyReturn}{Returns}
+La base de données des recettes de synthese 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_database_aa9f82db0b5ba579201a2d8678372e9a9}\label{class_database_aa9f82db0b5ba579201a2d8678372e9a9}} 
+\index{Database@{Database}!getTileHeight@{getTileHeight}}
+\index{getTileHeight@{getTileHeight}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{getTileHeight()}{getTileHeight()}}
+{\footnotesize\ttfamily int Database\+::get\+Tile\+Height (\begin{DoxyParamCaption}\item[{std\+::string}]{tileset }\end{DoxyParamCaption}) const}
+
+
+
+retourne la hauteur d\textquotesingle{}une tile d\textquotesingle{}un tileset 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tileset} & Le nom du fichier du tileset \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+La hauteur d\textquotesingle{}une tile d\textquotesingle{}un tileset 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_database_aa0c69cca6cac77d3ff1712b1e7d70345}\label{class_database_aa0c69cca6cac77d3ff1712b1e7d70345}} 
+\index{Database@{Database}!getTileSetHeight@{getTileSetHeight}}
+\index{getTileSetHeight@{getTileSetHeight}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{getTileSetHeight()}{getTileSetHeight()}}
+{\footnotesize\ttfamily int Database\+::get\+Tile\+Set\+Height (\begin{DoxyParamCaption}\item[{std\+::string}]{tileset }\end{DoxyParamCaption}) const}
+
+
+
+retourne la hauteur du tileset 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tileset} & Le nom du fichier du tileset \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+La hauteur du tileset 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_database_a0c145c8342bd67b9cd67dff9c28c9834}\label{class_database_a0c145c8342bd67b9cd67dff9c28c9834}} 
+\index{Database@{Database}!getTileSetWidth@{getTileSetWidth}}
+\index{getTileSetWidth@{getTileSetWidth}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{getTileSetWidth()}{getTileSetWidth()}}
+{\footnotesize\ttfamily int Database\+::get\+Tile\+Set\+Width (\begin{DoxyParamCaption}\item[{std\+::string}]{tileset }\end{DoxyParamCaption}) const}
+
+
+
+retourne la largeur du tileset 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tileset} & Le nom du fichier du tileset \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+La largeur du tileset 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_database_ad4bf12bd903b46dd39d4c7d0b9afe825}\label{class_database_ad4bf12bd903b46dd39d4c7d0b9afe825}} 
+\index{Database@{Database}!getTileWidth@{getTileWidth}}
+\index{getTileWidth@{getTileWidth}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{getTileWidth()}{getTileWidth()}}
+{\footnotesize\ttfamily int Database\+::get\+Tile\+Width (\begin{DoxyParamCaption}\item[{std\+::string}]{tileset }\end{DoxyParamCaption}) const}
+
+
+
+retourne la largeur d\textquotesingle{}une tile d\textquotesingle{}un tileset 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tileset} & Le nom du fichier du tileset \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+La largeur d\textquotesingle{}une tile d\textquotesingle{}un tileset 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/Database.\+h\item 
+src/Database.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,476 @@
+\hypertarget{class_entity}{}\doxysection{Entity Class Reference}
+\label{class_entity}\index{Entity@{Entity}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_entity_a980f368aa07ce358583982821533a54a}\label{class_entity_a980f368aa07ce358583982821533a54a}} 
+{\bfseries Entity} ()
+\begin{DoxyCompactList}\small\item\em Constructeur par défaut de la classe \mbox{\hyperlink{class_entity}{Entity}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_entity_a52bda21692a29d1a2daafadb6ec29507}{Entity}} (int x, int y, int speed, std\+::vector$<$ std\+::string $>$ s, int w, int h, int x\+Hitbox, int y\+Hitbox)
+\begin{DoxyCompactList}\small\item\em Constructeur du player de la classe \mbox{\hyperlink{class_entity}{Entity}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_entity_a46ef21a0728f2f14eb7ac99799dd22b0}{Entity}} (std\+::string monster\+Name, int x, int y, \mbox{\hyperlink{class_database}{Database}} \&db, ai\+Type ai=AI\+\_\+\+NONE, Direction d=MOVE\+\_\+\+DOWN)
+\begin{DoxyCompactList}\small\item\em Constructeur d\textquotesingle{}un monstre de la classe \mbox{\hyperlink{class_entity}{Entity}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_entity_ae93de8fb592c9bdeb2171f84a59339ce}{Entity}} (std\+::string npc\+Name, int x, int y, int w, int h, ai\+Type ai=AI\+\_\+\+NONE, int offsetX=0, int offsetY=0, Direction d=MOVE\+\_\+\+DOWN)
+\begin{DoxyCompactList}\small\item\em Constructeur d\textquotesingle{}un NPC de la classe \mbox{\hyperlink{class_entity}{Entity}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_entity_adf6d3f7cb1b2ba029b6b048a395cc8ae}\label{class_entity_adf6d3f7cb1b2ba029b6b048a395cc8ae}} 
+{\bfseries $\sim$\+Entity} ()
+\begin{DoxyCompactList}\small\item\em Destrcuteur de la classe \mbox{\hyperlink{class_entity}{Entity}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_entity}{Entity}} \& \mbox{\hyperlink{class_entity_a142475fdf7920b3d1ac476a00da99df2}{operator=}} (const \mbox{\hyperlink{class_entity}{Entity}} \&e)
+\begin{DoxyCompactList}\small\item\em Constructeur par copie de la classe \mbox{\hyperlink{class_entity}{Entity}} par l\textquotesingle{}opérateur =. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_entity_ae20025575531e6b7914c5b94401a423a}{Entity}} (const \mbox{\hyperlink{class_entity}{Entity}} \&e)
+\begin{DoxyCompactList}\small\item\em Constructeur par copie de la classe \mbox{\hyperlink{class_entity}{Entity}}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_entity_a5a851d21579432e736fb7c479e86fb6b}{getX}} () const
+\begin{DoxyCompactList}\small\item\em Retourne la coordonnée x du coin supérieur gauche de l\textquotesingle{}entité \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_entity_ae48a05fef6420bb320d17aed7ea98cb3}{getY}} () const
+\begin{DoxyCompactList}\small\item\em Retourne la coordonnée y du coin supérieur gauche de l\textquotesingle{}entité \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_hitbox}{Hitbox}} \& \mbox{\hyperlink{class_entity_a7d93c25f71416560e9c468956a104f4d}{get\+Hitbox}} ()
+\begin{DoxyCompactList}\small\item\em Retourne la \mbox{\hyperlink{class_hitbox}{Hitbox}} de l\textquotesingle{}entité \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_entity_a96264c82212c8a3ffd2ba4401edcfb8d}{get\+Speed}} () const
+\begin{DoxyCompactList}\small\item\em Retourne la vitesse de l\textquotesingle{}entité \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_af04c3e33da68f779dc3bcb64c34da9d9}{set\+Speed}} (int s)
+\begin{DoxyCompactList}\small\item\em Change la vitesse de l\textquotesingle{}entité \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_abd3c1da61bfefb942f609e5f8606f1cc}{move}} (int x, int y)
+\begin{DoxyCompactList}\small\item\em Modifie la coordonnée x du coin supérieur gauche de l\textquotesingle{}entité \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_entity_ab72296eceda3417186ccdb2b2dd64ff8}\label{class_entity_ab72296eceda3417186ccdb2b2dd64ff8}} 
+void {\bfseries move\+Up} ()
+\begin{DoxyCompactList}\small\item\em Fait monter l\textquotesingle{}entité \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_entity_a10f39c35a26c9a808676c70eb2742c7b}\label{class_entity_a10f39c35a26c9a808676c70eb2742c7b}} 
+void {\bfseries move\+Down} ()
+\begin{DoxyCompactList}\small\item\em Fait descendre l\textquotesingle{}entité \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_entity_a7775cd62029bcba5875a6d9e28172d0e}\label{class_entity_a7775cd62029bcba5875a6d9e28172d0e}} 
+void {\bfseries move\+Left} ()
+\begin{DoxyCompactList}\small\item\em Fait aller l\textquotesingle{}entité à gauche. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_entity_a72d22f873f82e23e424f58d42a45162c}\label{class_entity_a72d22f873f82e23e424f58d42a45162c}} 
+void {\bfseries move\+Right} ()
+\begin{DoxyCompactList}\small\item\em Fait aller l\textquotesingle{}entité à droite. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_entity_a7a2a6291b64d63013059ebcb2849419f}\label{class_entity_a7a2a6291b64d63013059ebcb2849419f}} 
+void {\bfseries clear\+Collision} ()
+\begin{DoxyCompactList}\small\item\em Supprime toutes les collisions de l\textquotesingle{}entité \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_entity_a55686cdfa84be1cb23dc614b68d931da}\label{class_entity_a55686cdfa84be1cb23dc614b68d931da}} 
+void {\bfseries clear\+Moves} ()
+\begin{DoxyCompactList}\small\item\em Supprime tous les déplacements de l\textquotesingle{}entité \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_entity_a6071dabcb55312ee99c10d8dd32feb82}{get\+Sprite\+ID}} () const
+\begin{DoxyCompactList}\small\item\em Retourne l\textquotesingle{}id du \mbox{\hyperlink{class_sprite}{Sprite}} actuel de l\textquotesingle{}entité \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_entity_aca03da35d98f62176d94e7f87ef855e4}\label{class_entity_aca03da35d98f62176d94e7f87ef855e4}} 
+void {\bfseries update\+Frame} ()
+\begin{DoxyCompactList}\small\item\em Change la frame de l\textquotesingle{}entité \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_entity_a00b6eeaf99b35c8f8b10b5fbfc1baf4f}\label{class_entity_a00b6eeaf99b35c8f8b10b5fbfc1baf4f}} 
+void {\bfseries update} ()
+\begin{DoxyCompactList}\small\item\em Met à jour l\textquotesingle{}entité \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_entity_a03f026a7f91825b356c43fb91cc0c21b}{get\+Frame}} () const
+\begin{DoxyCompactList}\small\item\em Retourne la frame actuelle de l\textquotesingle{}entité \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_a6c998ff6054552ca3faa9bed75222136}{set\+Collision}} (Collision\+Side side)
+\begin{DoxyCompactList}\small\item\em Définis une collision à l\textquotesingle{}entité \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_entity_a4a95621f9f021f9f8417c948dc540263}\label{class_entity_a4a95621f9f021f9f8417c948dc540263}} 
+void {\bfseries update\+Ai} ()
+\begin{DoxyCompactList}\small\item\em Met à jour le comportement de l\textquotesingle{}entité en fonction de son IA. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_entity_a403f69eb888da7c5a690b79c658cdf47}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Retourne le nom de l\textquotesingle{}entité \end{DoxyCompactList}\item 
+entity\+Types \mbox{\hyperlink{class_entity_a77b9753e32baacd55a86aeeebd1dda9e}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Retourne le type de l\textquotesingle{}entité \end{DoxyCompactList}\item 
+Direction \mbox{\hyperlink{class_entity_a6e758491533926eb0c27d4ddad83a210}{get\+Direction}} () const
+\begin{DoxyCompactList}\small\item\em Retourne la direction qui défini où regarde l\textquotesingle{}entité \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_a743ea31ba009417c7747233774ce0fa4}{set\+Script}} (std\+::string script)
+\begin{DoxyCompactList}\small\item\em Change le script de l\textquotesingle{}entité \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_entity_aa032ca094fdf7bc94652c1e6e82e5fd9}{get\+Script}} () const
+\begin{DoxyCompactList}\small\item\em Retourne le nom du script de l\textquotesingle{}entité \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_a5d911eae2db989c77e9dd0005e1cb730}{collision}} (\mbox{\hyperlink{class_hitbox}{Hitbox}} \&h)
+\begin{DoxyCompactList}\small\item\em Défini les collisions de l\textquotesingle{}entité en fonction d\textquotesingle{}une \mbox{\hyperlink{class_hitbox}{Hitbox}}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_entity_a136ad209fac2c4bde92d1bd37318ee07}{collided}} (\mbox{\hyperlink{class_entity}{Entity}} \&e)
+\begin{DoxyCompactList}\small\item\em Vrai si l\textquotesingle{}entité est en collision avec une autre entité \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_entity_ae91f2d49456200d6a8b82ff47ea91967}{in\+Front\+Of}} (\mbox{\hyperlink{class_entity}{Entity}} \&e) const
+\begin{DoxyCompactList}\small\item\em Vrai si l\textquotesingle{}entité est en face d\textquotesingle{}une autre entité \end{DoxyCompactList}\item 
+ai\+Type \mbox{\hyperlink{class_entity_ae7a47015d62e1516379ba0956cf9da61}{get\+Ai}} () const
+\begin{DoxyCompactList}\small\item\em Retourne l\textquotesingle{}IA de l\textquotesingle{}entité \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_entity_ace8afb15dc9a8c46f409bbc0a6bade01}\label{class_entity_ace8afb15dc9a8c46f409bbc0a6bade01}} 
+std\+::vector$<$ bool $>$ {\bfseries moves}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_entity_a52bda21692a29d1a2daafadb6ec29507}\label{class_entity_a52bda21692a29d1a2daafadb6ec29507}} 
+\index{Entity@{Entity}!Entity@{Entity}}
+\index{Entity@{Entity}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{Entity()}{Entity()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily Entity\+::\+Entity (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{speed,  }\item[{std\+::vector$<$ std\+::string $>$}]{s,  }\item[{int}]{w,  }\item[{int}]{h,  }\item[{int}]{x\+Hitbox,  }\item[{int}]{y\+Hitbox }\end{DoxyParamCaption})}
+
+
+
+Constructeur du player de la classe \mbox{\hyperlink{class_entity}{Entity}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Coordonnée x du coin supérieur gauche de l\textquotesingle{}entité \\
+\hline
+{\em y} & Coordonnée y du coin supérieur gauche de l\textquotesingle{}entité \\
+\hline
+{\em speed} & Vitesse de l\textquotesingle{}entité \\
+\hline
+{\em s} & Id des Sprites de l\textquotesingle{}entité \\
+\hline
+{\em w} & Largeur de l\textquotesingle{}hitbox de l\textquotesingle{}entité \\
+\hline
+{\em h} & Hauteur de l\textquotesingle{}hitbox de l\textquotesingle{}entité \\
+\hline
+{\em x\+Hitbox} & Ecart entre le coin supérieur gauche de l\textquotesingle{}entité et le coin supérieur gauche de l\textquotesingle{}hitbox \\
+\hline
+{\em y\+Hitbox} & Ecart entre le coin supérieur gauche de l\textquotesingle{}entité et le coin supérieur gauche de l\textquotesingle{}hitbox \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_entity_a46ef21a0728f2f14eb7ac99799dd22b0}\label{class_entity_a46ef21a0728f2f14eb7ac99799dd22b0}} 
+\index{Entity@{Entity}!Entity@{Entity}}
+\index{Entity@{Entity}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{Entity()}{Entity()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily Entity\+::\+Entity (\begin{DoxyParamCaption}\item[{std\+::string}]{monster\+Name,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{\mbox{\hyperlink{class_database}{Database}} \&}]{db,  }\item[{ai\+Type}]{ai = {\ttfamily AI\+\_\+NONE},  }\item[{Direction}]{d = {\ttfamily MOVE\+\_\+DOWN} }\end{DoxyParamCaption})}
+
+
+
+Constructeur d\textquotesingle{}un monstre de la classe \mbox{\hyperlink{class_entity}{Entity}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em monster\+Name} & Nom du monstre \\
+\hline
+{\em x} & Coordonnée x du coin supérieur gauche de l\textquotesingle{}entité \\
+\hline
+{\em y} & Coordonnée y du coin supérieur gauche de l\textquotesingle{}entité \\
+\hline
+{\em db} & Base de données \\
+\hline
+{\em ai} & Type d\textquotesingle{}intelligence artificielle du monstre \\
+\hline
+{\em d} & Direction ou regarde le monstre \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_entity_ae93de8fb592c9bdeb2171f84a59339ce}\label{class_entity_ae93de8fb592c9bdeb2171f84a59339ce}} 
+\index{Entity@{Entity}!Entity@{Entity}}
+\index{Entity@{Entity}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{Entity()}{Entity()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily Entity\+::\+Entity (\begin{DoxyParamCaption}\item[{std\+::string}]{npc\+Name,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{w,  }\item[{int}]{h,  }\item[{ai\+Type}]{ai = {\ttfamily AI\+\_\+NONE},  }\item[{int}]{offsetX = {\ttfamily 0},  }\item[{int}]{offsetY = {\ttfamily 0},  }\item[{Direction}]{d = {\ttfamily MOVE\+\_\+DOWN} }\end{DoxyParamCaption})}
+
+
+
+Constructeur d\textquotesingle{}un NPC de la classe \mbox{\hyperlink{class_entity}{Entity}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em npc\+Name} & Nom du NPC \\
+\hline
+{\em x} & Coordonnée x du coin supérieur gauche de l\textquotesingle{}entité \\
+\hline
+{\em y} & Coordonnée y du coin supérieur gauche de l\textquotesingle{}entité \\
+\hline
+{\em w} & Largeur de l\textquotesingle{}hitbox de l\textquotesingle{}entité \\
+\hline
+{\em h} & Hauteur de l\textquotesingle{}hitbox de l\textquotesingle{}entité \\
+\hline
+{\em ai} & Type d\textquotesingle{}intelligence artificielle du NPC \\
+\hline
+{\em offsetX} & Ecart x entre le coin supérieur gauche de l\textquotesingle{}entité et le coin supérieur gauche de l\textquotesingle{}hitbox \\
+\hline
+{\em offsetY} & Ecart y entre le coin supérieur gauche de l\textquotesingle{}entité et le coin supérieur gauche de l\textquotesingle{}hitbox \\
+\hline
+{\em d} & Direction ou regarde le NPC \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_entity_ae20025575531e6b7914c5b94401a423a}\label{class_entity_ae20025575531e6b7914c5b94401a423a}} 
+\index{Entity@{Entity}!Entity@{Entity}}
+\index{Entity@{Entity}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{Entity()}{Entity()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily Entity\+::\+Entity (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_entity}{Entity}} \&}]{e }\end{DoxyParamCaption})}
+
+
+
+Constructeur par copie de la classe \mbox{\hyperlink{class_entity}{Entity}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & L\textquotesingle{}entité à copier \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_entity_a136ad209fac2c4bde92d1bd37318ee07}\label{class_entity_a136ad209fac2c4bde92d1bd37318ee07}} 
+\index{Entity@{Entity}!collided@{collided}}
+\index{collided@{collided}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{collided()}{collided()}}
+{\footnotesize\ttfamily bool Entity\+::collided (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_entity}{Entity}} \&}]{e }\end{DoxyParamCaption})}
+
+
+
+Vrai si l\textquotesingle{}entité est en collision avec une autre entité 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & L\textquotesingle{}entité avec laquelle on vérifie la collision \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vrai si l\textquotesingle{}entité est en collision avec une autre entité 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_entity_a5d911eae2db989c77e9dd0005e1cb730}\label{class_entity_a5d911eae2db989c77e9dd0005e1cb730}} 
+\index{Entity@{Entity}!collision@{collision}}
+\index{collision@{collision}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{collision()}{collision()}}
+{\footnotesize\ttfamily void Entity\+::collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_hitbox}{Hitbox}} \&}]{h }\end{DoxyParamCaption})}
+
+
+
+Défini les collisions de l\textquotesingle{}entité en fonction d\textquotesingle{}une \mbox{\hyperlink{class_hitbox}{Hitbox}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em h} & La \mbox{\hyperlink{class_hitbox}{Hitbox}} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_entity_ae7a47015d62e1516379ba0956cf9da61}\label{class_entity_ae7a47015d62e1516379ba0956cf9da61}} 
+\index{Entity@{Entity}!getAi@{getAi}}
+\index{getAi@{getAi}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{getAi()}{getAi()}}
+{\footnotesize\ttfamily ai\+Type Entity\+::get\+Ai (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne l\textquotesingle{}IA de l\textquotesingle{}entité 
+
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}IA de l\textquotesingle{}entité 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_entity_a6e758491533926eb0c27d4ddad83a210}\label{class_entity_a6e758491533926eb0c27d4ddad83a210}} 
+\index{Entity@{Entity}!getDirection@{getDirection}}
+\index{getDirection@{getDirection}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{getDirection()}{getDirection()}}
+{\footnotesize\ttfamily Direction Entity\+::get\+Direction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne la direction qui défini où regarde l\textquotesingle{}entité 
+
+\begin{DoxyReturn}{Returns}
+La direction 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_entity_a03f026a7f91825b356c43fb91cc0c21b}\label{class_entity_a03f026a7f91825b356c43fb91cc0c21b}} 
+\index{Entity@{Entity}!getFrame@{getFrame}}
+\index{getFrame@{getFrame}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{getFrame()}{getFrame()}}
+{\footnotesize\ttfamily int Entity\+::get\+Frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne la frame actuelle de l\textquotesingle{}entité 
+
+\begin{DoxyReturn}{Returns}
+La frame actuelle de l\textquotesingle{}entité 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_entity_a7d93c25f71416560e9c468956a104f4d}\label{class_entity_a7d93c25f71416560e9c468956a104f4d}} 
+\index{Entity@{Entity}!getHitbox@{getHitbox}}
+\index{getHitbox@{getHitbox}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{getHitbox()}{getHitbox()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_hitbox}{Hitbox}} \& Entity\+::get\+Hitbox (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retourne la \mbox{\hyperlink{class_hitbox}{Hitbox}} de l\textquotesingle{}entité 
+
+\begin{DoxyReturn}{Returns}
+La \mbox{\hyperlink{class_hitbox}{Hitbox}} de l\textquotesingle{}entité 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_entity_a403f69eb888da7c5a690b79c658cdf47}\label{class_entity_a403f69eb888da7c5a690b79c658cdf47}} 
+\index{Entity@{Entity}!getName@{getName}}
+\index{getName@{getName}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily std\+::string Entity\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne le nom de l\textquotesingle{}entité 
+
+\begin{DoxyReturn}{Returns}
+Le nom de l\textquotesingle{}entité 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_entity_aa032ca094fdf7bc94652c1e6e82e5fd9}\label{class_entity_aa032ca094fdf7bc94652c1e6e82e5fd9}} 
+\index{Entity@{Entity}!getScript@{getScript}}
+\index{getScript@{getScript}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{getScript()}{getScript()}}
+{\footnotesize\ttfamily std\+::string Entity\+::get\+Script (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne le nom du script de l\textquotesingle{}entité 
+
+\begin{DoxyReturn}{Returns}
+Le nom du script de l\textquotesingle{}entité 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_entity_a96264c82212c8a3ffd2ba4401edcfb8d}\label{class_entity_a96264c82212c8a3ffd2ba4401edcfb8d}} 
+\index{Entity@{Entity}!getSpeed@{getSpeed}}
+\index{getSpeed@{getSpeed}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{getSpeed()}{getSpeed()}}
+{\footnotesize\ttfamily int Entity\+::get\+Speed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne la vitesse de l\textquotesingle{}entité 
+
+\begin{DoxyReturn}{Returns}
+La vitesse de l\textquotesingle{}entité 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_entity_a6071dabcb55312ee99c10d8dd32feb82}\label{class_entity_a6071dabcb55312ee99c10d8dd32feb82}} 
+\index{Entity@{Entity}!getSpriteID@{getSpriteID}}
+\index{getSpriteID@{getSpriteID}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{getSpriteID()}{getSpriteID()}}
+{\footnotesize\ttfamily std\+::string Entity\+::get\+Sprite\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne l\textquotesingle{}id du \mbox{\hyperlink{class_sprite}{Sprite}} actuel de l\textquotesingle{}entité 
+
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}id du \mbox{\hyperlink{class_sprite}{Sprite}} actuel de l\textquotesingle{}entité 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_entity_a77b9753e32baacd55a86aeeebd1dda9e}\label{class_entity_a77b9753e32baacd55a86aeeebd1dda9e}} 
+\index{Entity@{Entity}!getType@{getType}}
+\index{getType@{getType}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily entity\+Types Entity\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne le type de l\textquotesingle{}entité 
+
+\begin{DoxyReturn}{Returns}
+Le type de l\textquotesingle{}entité 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_entity_a5a851d21579432e736fb7c479e86fb6b}\label{class_entity_a5a851d21579432e736fb7c479e86fb6b}} 
+\index{Entity@{Entity}!getX@{getX}}
+\index{getX@{getX}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{getX()}{getX()}}
+{\footnotesize\ttfamily int Entity\+::getX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne la coordonnée x du coin supérieur gauche de l\textquotesingle{}entité 
+
+\begin{DoxyReturn}{Returns}
+La coordonnée x du coin supérieur gauche de l\textquotesingle{}entité 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_entity_ae48a05fef6420bb320d17aed7ea98cb3}\label{class_entity_ae48a05fef6420bb320d17aed7ea98cb3}} 
+\index{Entity@{Entity}!getY@{getY}}
+\index{getY@{getY}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{getY()}{getY()}}
+{\footnotesize\ttfamily int Entity\+::getY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne la coordonnée y du coin supérieur gauche de l\textquotesingle{}entité 
+
+\begin{DoxyReturn}{Returns}
+La coordonnée y du coin supérieur gauche de l\textquotesingle{}entité 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_entity_ae91f2d49456200d6a8b82ff47ea91967}\label{class_entity_ae91f2d49456200d6a8b82ff47ea91967}} 
+\index{Entity@{Entity}!inFrontOf@{inFrontOf}}
+\index{inFrontOf@{inFrontOf}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{inFrontOf()}{inFrontOf()}}
+{\footnotesize\ttfamily bool Entity\+::in\+Front\+Of (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_entity}{Entity}} \&}]{e }\end{DoxyParamCaption}) const}
+
+
+
+Vrai si l\textquotesingle{}entité est en face d\textquotesingle{}une autre entité 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & L\textquotesingle{}entité \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vrai si l\textquotesingle{}entité est en face d\textquotesingle{}une autre entité 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_entity_abd3c1da61bfefb942f609e5f8606f1cc}\label{class_entity_abd3c1da61bfefb942f609e5f8606f1cc}} 
+\index{Entity@{Entity}!move@{move}}
+\index{move@{move}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily void Entity\+::move (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Modifie la coordonnée x du coin supérieur gauche de l\textquotesingle{}entité 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & La nouvelle coordonnée x du coin supérieur gauche de l\textquotesingle{}entité \\
+\hline
+{\em y} & La nouvelle coordonnée y du coin supérieur gauche de l\textquotesingle{}entité \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_entity_a142475fdf7920b3d1ac476a00da99df2}\label{class_entity_a142475fdf7920b3d1ac476a00da99df2}} 
+\index{Entity@{Entity}!operator=@{operator=}}
+\index{operator=@{operator=}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_entity}{Entity}} \& Entity\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_entity}{Entity}} \&}]{e }\end{DoxyParamCaption})}
+
+
+
+Constructeur par copie de la classe \mbox{\hyperlink{class_entity}{Entity}} par l\textquotesingle{}opérateur =. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & L\textquotesingle{}entité à copier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Une copie de l\textquotesingle{}entité e 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_entity_a6c998ff6054552ca3faa9bed75222136}\label{class_entity_a6c998ff6054552ca3faa9bed75222136}} 
+\index{Entity@{Entity}!setCollision@{setCollision}}
+\index{setCollision@{setCollision}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{setCollision()}{setCollision()}}
+{\footnotesize\ttfamily void Entity\+::set\+Collision (\begin{DoxyParamCaption}\item[{Collision\+Side}]{side }\end{DoxyParamCaption})}
+
+
+
+Définis une collision à l\textquotesingle{}entité 
+
+
+\begin{DoxyParams}{Parameters}
+{\em side} & Le côté de la collision \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_entity_a743ea31ba009417c7747233774ce0fa4}\label{class_entity_a743ea31ba009417c7747233774ce0fa4}} 
+\index{Entity@{Entity}!setScript@{setScript}}
+\index{setScript@{setScript}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{setScript()}{setScript()}}
+{\footnotesize\ttfamily void Entity\+::set\+Script (\begin{DoxyParamCaption}\item[{std\+::string}]{script }\end{DoxyParamCaption})}
+
+
+
+Change le script de l\textquotesingle{}entité 
+
+
+\begin{DoxyParams}{Parameters}
+{\em script} & Nom du nouveau script de l\textquotesingle{}entité \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_entity_af04c3e33da68f779dc3bcb64c34da9d9}\label{class_entity_af04c3e33da68f779dc3bcb64c34da9d9}} 
+\index{Entity@{Entity}!setSpeed@{setSpeed}}
+\index{setSpeed@{setSpeed}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{setSpeed()}{setSpeed()}}
+{\footnotesize\ttfamily void Entity\+::set\+Speed (\begin{DoxyParamCaption}\item[{int}]{s }\end{DoxyParamCaption})}
+
+
+
+Change la vitesse de l\textquotesingle{}entité 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & La nouvelle vitesse de l\textquotesingle{}entité \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/Entity.\+h\item 
+src/Entity.\+cpp\end{DoxyCompactItemize}

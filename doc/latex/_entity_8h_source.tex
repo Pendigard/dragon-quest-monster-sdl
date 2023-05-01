@@ -1,0 +1,149 @@
+\hypertarget{_entity_8h_source}{}\doxysection{Entity.\+h}
+\label{_entity_8h_source}\index{src/Entity.h@{src/Entity.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_ENTITY}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_ENTITY}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}jsonFunction.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Sprite.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}Hitbox.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}Database.h"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{enum}\ Direction}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ MOVE\_DOWN\ =\ 0,}
+\DoxyCodeLine{00012\ \ \ \ \ MOVE\_UP\ =\ 1,}
+\DoxyCodeLine{00013\ \ \ \ \ MOVE\_LEFT\ =\ 2,}
+\DoxyCodeLine{00014\ \ \ \ \ MOVE\_RIGHT\ =\ 3}
+\DoxyCodeLine{00015\ \};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{enum}\ aiType}
+\DoxyCodeLine{00018\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ AI\_NONE\ =\ 0,}
+\DoxyCodeLine{00020\ \ \ \ \ AI\_RANDOM\ =\ 1,}
+\DoxyCodeLine{00021\ \ \ \ \ AI\_LEFT\_RIGHT\ =\ 2}
+\DoxyCodeLine{00022\ \};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{enum}\ entityTypes}
+\DoxyCodeLine{00025\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ PLAYER\ =\ 0,}
+\DoxyCodeLine{00027\ \ \ \ \ NPC\ =\ 1,}
+\DoxyCodeLine{00028\ \ \ \ \ MONSTER\ =\ 2}
+\DoxyCodeLine{00029\ \};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structframe_manager}{frameManager}}}
+\DoxyCodeLine{00032\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{int}\ frame;\ \ \ \ \ \ \textcolor{comment}{//\ Indice\ de\ la\ frame\ actuelle}}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{bool}\ ascending;\ \textcolor{comment}{//\ Indique\ si\ l'indice\ de\ la\ frame\ doit\ s'incrémenter\ ou\ se\ décrémenter}}
+\DoxyCodeLine{00035\ \};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00038\ \textcolor{comment}{Une\ entité\ est\ un\ objet\ qui\ peut\ se\ déplacer\ sur\ la\ carte.}}
+\DoxyCodeLine{00039\ \textcolor{comment}{Elle\ est\ composée\ d'une\ hitbox,\ d'une\ position,\ d'une\ vitesse,\ d'une\ direction\ et\ d'un\ sprite.}}
+\DoxyCodeLine{00040\ \textcolor{comment}{Elle\ peut\ se\ déplacer\ dans\ les\ 4\ directions.\ En\ générale\ elle\ est\ composée\ de\ 4\ sprites.\ Un\ pour\ chaque\ direction.}}
+\DoxyCodeLine{00041\ \textcolor{comment}{Chacun\ de\ ces\ sprites\ est\ composé\ de\ 3\ frames.\ En\ général\ la\ frame\ 2\ est\ la\ frame\ de\ repos.}}
+\DoxyCodeLine{00042\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_entity}{Entity}}}
+\DoxyCodeLine{00045\ \{}
+\DoxyCodeLine{00046\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{int}\ x;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Coordonnée\ x\ du\ coin\ supérieur\ gauche\ de\ l'entité}}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{int}\ y;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Coordonnée\ y\ du\ coin\ supérieur\ gauche\ de\ l'entité}}
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{class_hitbox}{Hitbox}}\ h;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Hitbox\ de\ l'entité}}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{int}\ speed;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Vitesse\ de\ l'entité}}
+\DoxyCodeLine{00051\ \ \ \ \ std::vector<std::string>\ spritesID;\ \textcolor{comment}{//\ Id\ des\ Sprites\ de\ l'entité}}
+\DoxyCodeLine{00052\ \ \ \ \ Direction\ d;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Direction\ de\ l'entité}}
+\DoxyCodeLine{00053\ \ \ \ \ \mbox{\hyperlink{structframe_manager}{frameManager}}\ f;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Frame\ de\ l'entité}}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{bool}\ moving;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Indique\ si\ l'entité\ se\ déplace\ ou\ non}}
+\DoxyCodeLine{00055\ \ \ \ \ std::vector<bool>\ collisions;\ \ \ \ \ \ \ \textcolor{comment}{//\ Indique\ si\ l'entité\ est\ en\ collision\ avec\ un\ autre\ objet}}
+\DoxyCodeLine{00056\ \ \ \ \ aiType\ ai;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Type\ d'intelligence\ artificielle\ de\ l'entité}}
+\DoxyCodeLine{00057\ \ \ \ \ entityTypes\ type;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Type\ de\ l'entité}}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{int}\ timeLastMove;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Temps\ depuis\ le\ dernier\ déplacement\ de\ l'entité}}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{int}\ timeLastFrame;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Temps\ depuis\ le\ dernier\ changement\ de\ frame\ de\ l'entité}}
+\DoxyCodeLine{00060\ \ \ \ \ std::string\ name;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Nom\ de\ l'entité}}
+\DoxyCodeLine{00061\ \ \ \ \ std::string\ script;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Script\ de\ l'entité}}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{int}\ destX;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Coordonnée\ x\ de\ la\ destination\ de\ l'entité}}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{int}\ destY;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Coordonnée\ y\ de\ la\ destination\ de\ l'entité}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ changeDestination(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{void}\ moveToDestination();}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{bool}\ atDestination()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00078\ \ \ \ \ std::vector<bool>\ moves;\ \textcolor{comment}{//\ Tableau\ de\ booléens\ qui\ indique\ si\ l'entité\ se\ déplace\ dans\ une\ direction}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00081\ \ \ \ \ \mbox{\hyperlink{class_entity_a980f368aa07ce358583982821533a54a}{Entity}}();}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00092\ \ \ \ \ \mbox{\hyperlink{class_entity_a980f368aa07ce358583982821533a54a}{Entity}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ speed,\ std::vector<std::string>\ s,\ \textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h,\ \textcolor{keywordtype}{int}\ xHitbox,\ \textcolor{keywordtype}{int}\ yHitbox);}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00101\ \ \ \ \ \mbox{\hyperlink{class_entity_a980f368aa07ce358583982821533a54a}{Entity}}(std::string\ monsterName,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \mbox{\hyperlink{class_database}{Database}}\ \&db,\ aiType\ ai\ =\ AI\_NONE,\ Direction\ d\ =\ MOVE\_DOWN);}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00113\ \ \ \ \ \mbox{\hyperlink{class_entity_a980f368aa07ce358583982821533a54a}{Entity}}(std::string\ npcName,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h,\ aiType\ ai\ =\ AI\_NONE,\ \textcolor{keywordtype}{int}\ offsetX\ =\ 0,\ \textcolor{keywordtype}{int}\ offsetY\ =\ 0,\ Direction\ d\ =\ MOVE\_DOWN);}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00116\ \ \ \ \ \mbox{\hyperlink{class_entity_adf6d3f7cb1b2ba029b6b048a395cc8ae}{\string~Entity}}();}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00121\ \ \ \ \ \mbox{\hyperlink{class_entity}{Entity}}\ \&\mbox{\hyperlink{class_entity_a142475fdf7920b3d1ac476a00da99df2}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_entity}{Entity}}\ \&e);}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00125\ \ \ \ \ \mbox{\hyperlink{class_entity_a980f368aa07ce358583982821533a54a}{Entity}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_entity}{Entity}}\ \&e);}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_entity_a5a851d21579432e736fb7c479e86fb6b}{getX}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_entity_ae48a05fef6420bb320d17aed7ea98cb3}{getY}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00137\ \ \ \ \ \mbox{\hyperlink{class_hitbox}{Hitbox}}\ \&\mbox{\hyperlink{class_entity_a7d93c25f71416560e9c468956a104f4d}{getHitbox}}();}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_entity_a96264c82212c8a3ffd2ba4401edcfb8d}{getSpeed}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_entity_af04c3e33da68f779dc3bcb64c34da9d9}{setSpeed}}(\textcolor{keywordtype}{int}\ s);}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00150\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_entity_abd3c1da61bfefb942f609e5f8606f1cc}{move}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_entity_ab72296eceda3417186ccdb2b2dd64ff8}{moveUp}}();}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_entity_a10f39c35a26c9a808676c70eb2742c7b}{moveDown}}();}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_entity_a7775cd62029bcba5875a6d9e28172d0e}{moveLeft}}();}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00162\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_entity_a72d22f873f82e23e424f58d42a45162c}{moveRight}}();}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00165\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_entity_a7a2a6291b64d63013059ebcb2849419f}{clearCollision}}();}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00168\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_entity_a55686cdfa84be1cb23dc614b68d931da}{clearMoves}}();}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00172\ \ \ \ \ std::string\ \mbox{\hyperlink{class_entity_a6071dabcb55312ee99c10d8dd32feb82}{getSpriteID}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00175\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_entity_aca03da35d98f62176d94e7f87ef855e4}{updateFrame}}();}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00178\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_entity_a00b6eeaf99b35c8f8b10b5fbfc1baf4f}{update}}();}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00182\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_entity_a03f026a7f91825b356c43fb91cc0c21b}{getFrame}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00186\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_entity_a6c998ff6054552ca3faa9bed75222136}{setCollision}}(CollisionSide\ side);}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_entity_a4a95621f9f021f9f8417c948dc540263}{updateAi}}();}
+\DoxyCodeLine{00190\ }
+\DoxyCodeLine{00193\ \ \ \ \ std::string\ \mbox{\hyperlink{class_entity_a403f69eb888da7c5a690b79c658cdf47}{getName}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00194\ }
+\DoxyCodeLine{00197\ \ \ \ \ entityTypes\ \mbox{\hyperlink{class_entity_a77b9753e32baacd55a86aeeebd1dda9e}{getType}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00201\ \ \ \ \ Direction\ \mbox{\hyperlink{class_entity_a6e758491533926eb0c27d4ddad83a210}{getDirection}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00205\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_entity_a743ea31ba009417c7747233774ce0fa4}{setScript}}(std::string\ script);}
+\DoxyCodeLine{00206\ }
+\DoxyCodeLine{00209\ \ \ \ \ std::string\ \mbox{\hyperlink{class_entity_aa032ca094fdf7bc94652c1e6e82e5fd9}{getScript}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00210\ }
+\DoxyCodeLine{00213\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_entity_a5d911eae2db989c77e9dd0005e1cb730}{collision}}(\mbox{\hyperlink{class_hitbox}{Hitbox}}\ \&h);}
+\DoxyCodeLine{00214\ }
+\DoxyCodeLine{00218\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_entity_a136ad209fac2c4bde92d1bd37318ee07}{collided}}(\mbox{\hyperlink{class_entity}{Entity}}\ \&e);}
+\DoxyCodeLine{00219\ }
+\DoxyCodeLine{00223\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_entity_ae91f2d49456200d6a8b82ff47ea91967}{inFrontOf}}(\mbox{\hyperlink{class_entity}{Entity}}\ \&e)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00224\ }
+\DoxyCodeLine{00227\ \ \ \ \ aiType\ \mbox{\hyperlink{class_entity_ae7a47015d62e1516379ba0956cf9da61}{getAi}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00228\ \};}
+\DoxyCodeLine{00229\ }
+\DoxyCodeLine{00230\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

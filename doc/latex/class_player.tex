@@ -1,0 +1,144 @@
+\hypertarget{class_player}{}\doxysection{Player Class Reference}
+\label{class_player}\index{Player@{Player}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_player_afaa45c1e6a3b3d87cddf94139e51bce9}{add\+Monster}} (const \mbox{\hyperlink{class_monster}{Monster}} \&m, unsigned int team)
+\begin{DoxyCompactList}\small\item\em Ajoute un monstre à l\textquotesingle{}équipe. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_a9ba36ee5f6e7f267363e359b6aef8a6d}{remove\+Monster}} (const int index, unsigned int team)
+\begin{DoxyCompactList}\small\item\em Supprime un monstre de l\textquotesingle{}équipe. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_monster}{Monster}} \mbox{\hyperlink{class_player_aa0f2a382db6310a17a1d4fe70311da7f}{get\+Monster}} (const int index, unsigned int team)
+\begin{DoxyCompactList}\small\item\em Retourne le monstre à l\textquotesingle{}index donné \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_aedf11a6d1492476b895e61a57f11ba18}{add\+Gold}} (const unsigned int g)
+\begin{DoxyCompactList}\small\item\em Ajoute de l\textquotesingle{}or au joueur. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_a8cf89e50a9a77920558a7ed5c1aa8304}{remove\+Gold}} (const unsigned int g)
+\begin{DoxyCompactList}\small\item\em Retire de l\textquotesingle{}or au joueur. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{class_player_afefb64b3b84775f06b6992f0ce84b8c5}{get\+Gold}} () const
+\begin{DoxyCompactList}\small\item\em Retourne l\textquotesingle{}or du joueur. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_player_afa80262fd997d36baf64359543cdf201}\label{class_player_afa80262fd997d36baf64359543cdf201}} 
+void {\bfseries heal\+All\+Monsters} ()
+\begin{DoxyCompactList}\small\item\em Soigne tous les monstres. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_player_acad1d948b0031aa760f590fddc6d25c5}\label{class_player_acad1d948b0031aa760f590fddc6d25c5}} 
+void {\bfseries heal\+Storage\+Monsters} ()
+\begin{DoxyCompactList}\small\item\em Soigne tous les monstres de la réserve. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_player_a5e015918e828b07c1fddd1d9695e5e22}\label{class_player_a5e015918e828b07c1fddd1d9695e5e22}} 
+std\+::vector$<$ \mbox{\hyperlink{class_monster}{Monster}} $>$ {\bfseries main\+Team}
+\item 
+\mbox{\Hypertarget{class_player_a970e848b53925c1d5262f1177aa52cbf}\label{class_player_a970e848b53925c1d5262f1177aa52cbf}} 
+std\+::vector$<$ \mbox{\hyperlink{class_monster}{Monster}} $>$ {\bfseries bench\+Team}
+\item 
+\mbox{\Hypertarget{class_player_a9a17d29160a63da5889bddcc4303262b}\label{class_player_a9a17d29160a63da5889bddcc4303262b}} 
+std\+::vector$<$ \mbox{\hyperlink{class_monster}{Monster}} $>$ {\bfseries storage\+Monsters}
+\item 
+\mbox{\Hypertarget{class_player_a464ad75421567580ac88259231f661dc}\label{class_player_a464ad75421567580ac88259231f661dc}} 
+std\+::string {\bfseries respawn\+Map}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_player_aedf11a6d1492476b895e61a57f11ba18}\label{class_player_aedf11a6d1492476b895e61a57f11ba18}} 
+\index{Player@{Player}!addGold@{addGold}}
+\index{addGold@{addGold}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{addGold()}{addGold()}}
+{\footnotesize\ttfamily void Player\+::add\+Gold (\begin{DoxyParamCaption}\item[{const unsigned int}]{g }\end{DoxyParamCaption})}
+
+
+
+Ajoute de l\textquotesingle{}or au joueur. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & L\textquotesingle{}or à ajouter \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_player_afaa45c1e6a3b3d87cddf94139e51bce9}\label{class_player_afaa45c1e6a3b3d87cddf94139e51bce9}} 
+\index{Player@{Player}!addMonster@{addMonster}}
+\index{addMonster@{addMonster}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{addMonster()}{addMonster()}}
+{\footnotesize\ttfamily void Player\+::add\+Monster (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_monster}{Monster}} \&}]{m,  }\item[{unsigned int}]{team }\end{DoxyParamCaption})}
+
+
+
+Ajoute un monstre à l\textquotesingle{}équipe. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & Le monstre à ajouter \\
+\hline
+{\em team} & L\textquotesingle{}équipe dans laquelle ajouter le monstre \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_player_afefb64b3b84775f06b6992f0ce84b8c5}\label{class_player_afefb64b3b84775f06b6992f0ce84b8c5}} 
+\index{Player@{Player}!getGold@{getGold}}
+\index{getGold@{getGold}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{getGold()}{getGold()}}
+{\footnotesize\ttfamily unsigned int Player\+::get\+Gold (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne l\textquotesingle{}or du joueur. 
+
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}or du joueur 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_player_aa0f2a382db6310a17a1d4fe70311da7f}\label{class_player_aa0f2a382db6310a17a1d4fe70311da7f}} 
+\index{Player@{Player}!getMonster@{getMonster}}
+\index{getMonster@{getMonster}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{getMonster()}{getMonster()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_monster}{Monster}} Player\+::get\+Monster (\begin{DoxyParamCaption}\item[{const int}]{index,  }\item[{unsigned int}]{team }\end{DoxyParamCaption})}
+
+
+
+Retourne le monstre à l\textquotesingle{}index donné 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & L\textquotesingle{}index du monstre \\
+\hline
+{\em team} & L\textquotesingle{}équipe dans laquelle chercher le monstre \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Le monstre 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_player_a8cf89e50a9a77920558a7ed5c1aa8304}\label{class_player_a8cf89e50a9a77920558a7ed5c1aa8304}} 
+\index{Player@{Player}!removeGold@{removeGold}}
+\index{removeGold@{removeGold}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{removeGold()}{removeGold()}}
+{\footnotesize\ttfamily void Player\+::remove\+Gold (\begin{DoxyParamCaption}\item[{const unsigned int}]{g }\end{DoxyParamCaption})}
+
+
+
+Retire de l\textquotesingle{}or au joueur. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & L\textquotesingle{}or à retirer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_player_a9ba36ee5f6e7f267363e359b6aef8a6d}\label{class_player_a9ba36ee5f6e7f267363e359b6aef8a6d}} 
+\index{Player@{Player}!removeMonster@{removeMonster}}
+\index{removeMonster@{removeMonster}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{removeMonster()}{removeMonster()}}
+{\footnotesize\ttfamily void Player\+::remove\+Monster (\begin{DoxyParamCaption}\item[{const int}]{index,  }\item[{unsigned int}]{team }\end{DoxyParamCaption})}
+
+
+
+Supprime un monstre de l\textquotesingle{}équipe. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & L\textquotesingle{}indice du monstre à supprimer \\
+\hline
+{\em team} & L\textquotesingle{}équipe dans laquelle supprimer le monstre \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/Player.\+h\item 
+src/Player.\+cpp\end{DoxyCompactItemize}

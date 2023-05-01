@@ -1,0 +1,70 @@
+\hypertarget{_game_txt_8h_source}{}\doxysection{Game\+Txt.\+h}
+\label{_game_txt_8h_source}\index{src/GameTxt.h@{src/GameTxt.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_GAME}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_GAME}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Player.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}jsonFunction.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}Fight.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}Synthesis.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <unistd.h>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_game}{Game}}}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{class_player}{Player}}\ player;\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Le\ joueur}}
+\DoxyCodeLine{00014\ \ \ \ \ rapidjson::Document\ save;\ \textcolor{comment}{//\ Les\ données\ de\ sauvegarde}}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{class_database}{Database}}\ database;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ La\ base\ de\ données}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_aa574d129f713c4b0ed4114c5d5224be3}{loadGame}}();}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a9f7ad0384767e46fa072891c123b7d9c}{saveGame}}();}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_game_a7eb08fe94c0f9a991208452ef2f6a8aa}{askTarget}}(\textcolor{keywordtype}{bool}\ isOffensive,\ \mbox{\hyperlink{class_fight}{Fight}}\ \&f);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00034\ \ \ \ \ std::vector<std::string>\ \mbox{\hyperlink{class_game_ab57a102da189d6bd51639463d71e7fc6}{getTargetPlayer}}(\mbox{\hyperlink{class_monster}{Monster}}\ caster,\ std::string\ spell,\ \mbox{\hyperlink{class_fight}{Fight}}\ \&f);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_game_a3df21fabdf24f583f91dfcc117c03dcd}{orderMonster}}(\mbox{\hyperlink{class_monster}{Monster}}\ m);}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00044\ \ \ \ \ std::vector<Action>\ \mbox{\hyperlink{class_game_a483b7ace93ca4d95e2749a16f5dfde1b}{getPlayerChoice}}(\mbox{\hyperlink{class_fight}{Fight}}\ \&f);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a45d4a3ff5afd6489bd5654438958f782}{getTacticChoice}}(\mbox{\hyperlink{class_fight}{Fight}}\ \&f);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_aa25e9e4cbde48536965b7cb13dc96fb2}{printOrder}}(std::vector<Action>\ order,\ \mbox{\hyperlink{class_fight}{Fight}}\ \&f);}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_game_a31ae43040f59ee027c3d95bd606bcd6c}{fight}}(\mbox{\hyperlink{class_fight}{Fight}}\ \&f);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a08dadd2fdf30efe422fcad1d40092b0c}{deleteFromSave}}(std::string\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00069\ \ \ \ \ std::vector<Monster>\ \mbox{\hyperlink{class_game_aadbc3dfb76ba9a27d9d49b70206d3679}{createWildMonsterTeam}}(std::vector<std::string>\ monsters,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ levelMin,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ levelMax,\ std::string\ monster);}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a2af5a38f0c98a5f823d667d9b9372071}{scoutMonster}}(std::string\ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{class_fight}{Fight}}\ \&f);}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_aa333825d0bca80e91e53c7e23f053405}{play}}();}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a9cc29c4b3a6fbf6c9bed67bebbfc97e9}{scoutCenter}}();}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a82dde0ec6745fdb43561aafb6899f1af}{healTeam}}();}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a072720f9e93478b459b59962dd6282f9}{organizeMonsters}}();}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a91b7e6269a3afb3a2b3f1c0b8648c8db}{exploration}}(std::vector<std::string>\ monsterZone,\ \textcolor{keywordtype}{int}\ niveauMin,\ \textcolor{keywordtype}{int}\ niveauMax);}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a60fe62556c6d5aaa19bb31d6e7f231b8}{getReward}}(\mbox{\hyperlink{class_fight}{Fight}}\ \&f);}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_acb5999d1648f1ef111ace0aa19155329}{attributePoint}}(\mbox{\hyperlink{class_monster}{Monster}}\ \&m);}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a82d2f40d9f969b4cf26eb0025979b8d7}{synthesis}}();}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00108\ \ \ \ \ std::vector<Monster>\ \mbox{\hyperlink{class_game_a3e9ce594a789c3ed4380cabf4e52f14d}{getSynthetisableMonster}}(std::string\ charge,\ std::string\ firstChoice);}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00111\ \ \ \ \ std::unordered\_map<std::string,\ unsigned\ int>\ \mbox{\hyperlink{class_game_ad010247fefa542cdfc5b378f7ae68d31}{getSkillSynthChoice}}(\mbox{\hyperlink{class_monster}{Monster}}\ m1,\ \mbox{\hyperlink{class_monster}{Monster}}\ m2,\ std::string\ child);}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_afc1e2cc0d04508446ef1a15b1b82465d}{deleteMonster}}(std::string\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00116\ \};}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

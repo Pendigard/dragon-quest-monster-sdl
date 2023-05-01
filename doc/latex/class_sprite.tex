@@ -1,0 +1,284 @@
+\hypertarget{class_sprite}{}\doxysection{Sprite Class Reference}
+\label{class_sprite}\index{Sprite@{Sprite}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_sprite_a4fb886780d9db9e0bcf8a7ea6fb490d0}{Sprite}} (\mbox{\hyperlink{class_sprite}{Sprite}} const \&other)
+\begin{DoxyCompactList}\small\item\em Constructeur de la classe \mbox{\hyperlink{class_sprite}{Sprite}} par copie. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_sprite}{Sprite}} \& \mbox{\hyperlink{class_sprite_a027c0392bf6b9335fad3428133f4f813}{operator=}} (\mbox{\hyperlink{class_sprite}{Sprite}} const \&other)
+\begin{DoxyCompactList}\small\item\em Opérateur d\textquotesingle{}affectation de la classe \mbox{\hyperlink{class_sprite}{Sprite}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_sprite_a1ff6aa88dcc0ed6d56c9b7bea52c166a}{Sprite}} (SDL\+\_\+\+Renderer $\ast$renderer, std\+::string path, int num\+Sprites)
+\begin{DoxyCompactList}\small\item\em Constructeur de la classe \mbox{\hyperlink{class_sprite}{Sprite}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_sprite_a12cba3ac1868418add3c4d95ce87e615}\label{class_sprite_a12cba3ac1868418add3c4d95ce87e615}} 
+{\bfseries Sprite} ()
+\begin{DoxyCompactList}\small\item\em Constructeur de la classe \mbox{\hyperlink{class_sprite}{Sprite}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_sprite_a8accab430f9d90ae5117b57d67e32b84}\label{class_sprite_a8accab430f9d90ae5117b57d67e32b84}} 
+{\bfseries $\sim$\+Sprite} ()
+\begin{DoxyCompactList}\small\item\em Destructeur de la classe \mbox{\hyperlink{class_sprite}{Sprite}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sprite_a5667414fab8ba41fde5e8f3af0b94b3a}{draw}} (int x, int y, \mbox{\hyperlink{struct_camera}{Camera}} c, float size=1, int frame=-\/1, bool bottom\+Coord=false, bool flip=false)
+\begin{DoxyCompactList}\small\item\em Dessine la texture à la position x,y en fonction de la caméra. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sprite_a0e6a203b67d3befcc32c7fb3f930aeed}{draw}} (int x, int y, float size=1, int frame=-\/1, bool bottom\+Coord=false, bool flip=false)
+\begin{DoxyCompactList}\small\item\em Dessine la texture à la position x,y de manière absolue. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sprite_aa2410ca02ed2b51b8f0a8d9dc22597e9}{draw\+Crop}} (int x, int y, int cropX, int cropY, \mbox{\hyperlink{struct_camera}{Camera}} c, int cropW=32, int cropH=32, float size=1)
+\begin{DoxyCompactList}\small\item\em Dessine une partie de la texture à la position x,y en fonction de la caméra. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_sprite_a6d0f7e628b4ea8540697605fff906759}\label{class_sprite_a6d0f7e628b4ea8540697605fff906759}} 
+void {\bfseries update} ()
+\begin{DoxyCompactList}\small\item\em Change la frame actuelle du sprite. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_sprite_a7af0079630d970b351fe1ee6916a41b4}\label{class_sprite_a7af0079630d970b351fe1ee6916a41b4}} 
+void {\bfseries change\+Animation} ()
+\begin{DoxyCompactList}\small\item\em Change l\textquotesingle{}état d\textquotesingle{}animation du sprite. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_sprite_a8324c9576eae936165fd7965d34ec95e}\label{class_sprite_a8324c9576eae936165fd7965d34ec95e}} 
+bool {\bfseries get\+Is\+Animated} () const
+\begin{DoxyCompactList}\small\item\em Retourne l\textquotesingle{}état d\textquotesingle{}animation du sprite. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_sprite_a5d9a104a034ca44a1243beb16605684f}{get\+Width}} () const
+\begin{DoxyCompactList}\small\item\em Accesseur vers la largeur de la texture. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_sprite_ae4d387161151d1d9b2162f4339b8fc6c}{get\+Height}} () const
+\begin{DoxyCompactList}\small\item\em Accesseur vers hauteur de la texture. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_sprite_aa4752acf5e7b29caa60a35c224d822f9}{get\+Path}} () const
+\begin{DoxyCompactList}\small\item\em Accesseur vers le chemin vers le fichier. \end{DoxyCompactList}\item 
+SDL\+\_\+\+Renderer $\ast$ \mbox{\hyperlink{class_sprite_a9206146385e6470680931fa9c22de3c2}{get\+Renderer}} () const
+\begin{DoxyCompactList}\small\item\em Accesseur vers le renderer. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{class_sprite_a6293fdb7bfb4b24067ecde137f169f38}{get\+Num\+Sprites}} () const
+\begin{DoxyCompactList}\small\item\em Accesseur vers le nombre de sprites. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sprite_aa4301ac10c0ee9120b6ccda5218d994b}{set\+Current\+Sprite}} (int current\+Sprite)
+\begin{DoxyCompactList}\small\item\em Change la frame actuelle du sprite. \end{DoxyCompactList}\item 
+std\+::vector$<$ SDL\+\_\+\+Texture $\ast$ $>$ \& \mbox{\hyperlink{class_sprite_ad5882304abacee56ada62ca5c5f67646}{get\+Textures}} ()
+\begin{DoxyCompactList}\small\item\em Retourne les textures du sprite. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_sprite_a4fb886780d9db9e0bcf8a7ea6fb490d0}\label{class_sprite_a4fb886780d9db9e0bcf8a7ea6fb490d0}} 
+\index{Sprite@{Sprite}!Sprite@{Sprite}}
+\index{Sprite@{Sprite}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{Sprite()}{Sprite()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Sprite\+::\+Sprite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_sprite}{Sprite}} const \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Constructeur de la classe \mbox{\hyperlink{class_sprite}{Sprite}} par copie. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & L\textquotesingle{}objet \mbox{\hyperlink{class_sprite}{Sprite}} à copier \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_sprite_a1ff6aa88dcc0ed6d56c9b7bea52c166a}\label{class_sprite_a1ff6aa88dcc0ed6d56c9b7bea52c166a}} 
+\index{Sprite@{Sprite}!Sprite@{Sprite}}
+\index{Sprite@{Sprite}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{Sprite()}{Sprite()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Sprite\+::\+Sprite (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{std\+::string}]{path,  }\item[{int}]{num\+Sprites }\end{DoxyParamCaption})}
+
+
+
+Constructeur de la classe \mbox{\hyperlink{class_sprite}{Sprite}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em renderer} & Le renderer \\
+\hline
+{\em path} & Le chemin vers le fichier \\
+\hline
+{\em num\+Sprites} & Le nombre de textures \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_sprite_a5667414fab8ba41fde5e8f3af0b94b3a}\label{class_sprite_a5667414fab8ba41fde5e8f3af0b94b3a}} 
+\index{Sprite@{Sprite}!draw@{draw}}
+\index{draw@{draw}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Sprite\+::draw (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{\mbox{\hyperlink{struct_camera}{Camera}}}]{c,  }\item[{float}]{size = {\ttfamily 1},  }\item[{int}]{frame = {\ttfamily -\/1},  }\item[{bool}]{bottom\+Coord = {\ttfamily false},  }\item[{bool}]{flip = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Dessine la texture à la position x,y en fonction de la caméra. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & La coordonnée en abscisse x \\
+\hline
+{\em y} & La coordonnée en ordonnée y \\
+\hline
+{\em c} & La caméra \\
+\hline
+{\em size} & La taille de la texture \\
+\hline
+{\em frame} & L\textquotesingle{}indice de la frame à dessiner \\
+\hline
+{\em bottom\+Coord} & Si la position est au centre ou en bas de la texture \\
+\hline
+{\em flip} & Si la texture est retournée \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_sprite_a0e6a203b67d3befcc32c7fb3f930aeed}\label{class_sprite_a0e6a203b67d3befcc32c7fb3f930aeed}} 
+\index{Sprite@{Sprite}!draw@{draw}}
+\index{draw@{draw}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Sprite\+::draw (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{float}]{size = {\ttfamily 1},  }\item[{int}]{frame = {\ttfamily -\/1},  }\item[{bool}]{bottom\+Coord = {\ttfamily false},  }\item[{bool}]{flip = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Dessine la texture à la position x,y de manière absolue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & La coordonnée en abscisse x \\
+\hline
+{\em y} & La coordonnée en ordonnée y \\
+\hline
+{\em size} & La taille de la texture \\
+\hline
+{\em frame} & L\textquotesingle{}indice de la frame à dessiner \\
+\hline
+{\em bottom\+Coord} & Si la position est au centre ou en bas de la texture \\
+\hline
+{\em flip} & Si la texture est retournée \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_sprite_aa2410ca02ed2b51b8f0a8d9dc22597e9}\label{class_sprite_aa2410ca02ed2b51b8f0a8d9dc22597e9}} 
+\index{Sprite@{Sprite}!drawCrop@{drawCrop}}
+\index{drawCrop@{drawCrop}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{drawCrop()}{drawCrop()}}
+{\footnotesize\ttfamily void Sprite\+::draw\+Crop (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{cropX,  }\item[{int}]{cropY,  }\item[{\mbox{\hyperlink{struct_camera}{Camera}}}]{c,  }\item[{int}]{cropW = {\ttfamily 32},  }\item[{int}]{cropH = {\ttfamily 32},  }\item[{float}]{size = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+
+
+Dessine une partie de la texture à la position x,y en fonction de la caméra. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & La coordonnée en abscisse x \\
+\hline
+{\em y} & La coordonnée en ordonnée y \\
+\hline
+{\em cropX} & Coordonnée en abscisse x de la partie de la texture à dessiner \\
+\hline
+{\em cropY} & Coordonnée en ordonnée y de la partie de la texture à dessiner \\
+\hline
+{\em c} & La caméra \\
+\hline
+{\em cropW} & Largeur de la partie de la texture à dessiner \\
+\hline
+{\em cropH} & Hauteur de la partie de la texture à dessiner \\
+\hline
+{\em size} & La taille de la texture \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_sprite_ae4d387161151d1d9b2162f4339b8fc6c}\label{class_sprite_ae4d387161151d1d9b2162f4339b8fc6c}} 
+\index{Sprite@{Sprite}!getHeight@{getHeight}}
+\index{getHeight@{getHeight}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{getHeight()}{getHeight()}}
+{\footnotesize\ttfamily int Sprite\+::get\+Height (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Accesseur vers hauteur de la texture. 
+
+\begin{DoxyReturn}{Returns}
+La hauteur de la texture 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sprite_a6293fdb7bfb4b24067ecde137f169f38}\label{class_sprite_a6293fdb7bfb4b24067ecde137f169f38}} 
+\index{Sprite@{Sprite}!getNumSprites@{getNumSprites}}
+\index{getNumSprites@{getNumSprites}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{getNumSprites()}{getNumSprites()}}
+{\footnotesize\ttfamily unsigned int Sprite\+::get\+Num\+Sprites (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Accesseur vers le nombre de sprites. 
+
+\begin{DoxyReturn}{Returns}
+Le nombre de sprites 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sprite_aa4752acf5e7b29caa60a35c224d822f9}\label{class_sprite_aa4752acf5e7b29caa60a35c224d822f9}} 
+\index{Sprite@{Sprite}!getPath@{getPath}}
+\index{getPath@{getPath}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{getPath()}{getPath()}}
+{\footnotesize\ttfamily std\+::string Sprite\+::get\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Accesseur vers le chemin vers le fichier. 
+
+\begin{DoxyReturn}{Returns}
+Le chemin vers le fichier 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sprite_a9206146385e6470680931fa9c22de3c2}\label{class_sprite_a9206146385e6470680931fa9c22de3c2}} 
+\index{Sprite@{Sprite}!getRenderer@{getRenderer}}
+\index{getRenderer@{getRenderer}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{getRenderer()}{getRenderer()}}
+{\footnotesize\ttfamily SDL\+\_\+\+Renderer $\ast$ Sprite\+::get\+Renderer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Accesseur vers le renderer. 
+
+\begin{DoxyReturn}{Returns}
+Le renderer 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sprite_ad5882304abacee56ada62ca5c5f67646}\label{class_sprite_ad5882304abacee56ada62ca5c5f67646}} 
+\index{Sprite@{Sprite}!getTextures@{getTextures}}
+\index{getTextures@{getTextures}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{getTextures()}{getTextures()}}
+{\footnotesize\ttfamily std\+::vector$<$ SDL\+\_\+\+Texture $\ast$ $>$ \& Sprite\+::get\+Textures (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retourne les textures du sprite. 
+
+\begin{DoxyReturn}{Returns}
+Les textures du sprite 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sprite_a5d9a104a034ca44a1243beb16605684f}\label{class_sprite_a5d9a104a034ca44a1243beb16605684f}} 
+\index{Sprite@{Sprite}!getWidth@{getWidth}}
+\index{getWidth@{getWidth}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{getWidth()}{getWidth()}}
+{\footnotesize\ttfamily int Sprite\+::get\+Width (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Accesseur vers la largeur de la texture. 
+
+\begin{DoxyReturn}{Returns}
+La largeur de la texture 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sprite_a027c0392bf6b9335fad3428133f4f813}\label{class_sprite_a027c0392bf6b9335fad3428133f4f813}} 
+\index{Sprite@{Sprite}!operator=@{operator=}}
+\index{operator=@{operator=}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_sprite}{Sprite}} \& Sprite\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_sprite}{Sprite}} const \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Opérateur d\textquotesingle{}affectation de la classe \mbox{\hyperlink{class_sprite}{Sprite}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & L\textquotesingle{}objet \mbox{\hyperlink{class_sprite}{Sprite}} à copier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}objet \mbox{\hyperlink{class_sprite}{Sprite}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sprite_aa4301ac10c0ee9120b6ccda5218d994b}\label{class_sprite_aa4301ac10c0ee9120b6ccda5218d994b}} 
+\index{Sprite@{Sprite}!setCurrentSprite@{setCurrentSprite}}
+\index{setCurrentSprite@{setCurrentSprite}!Sprite@{Sprite}}
+\doxysubsubsection{\texorpdfstring{setCurrentSprite()}{setCurrentSprite()}}
+{\footnotesize\ttfamily void Sprite\+::set\+Current\+Sprite (\begin{DoxyParamCaption}\item[{int}]{current\+Sprite }\end{DoxyParamCaption})}
+
+
+
+Change la frame actuelle du sprite. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em current\+Sprite} & L\textquotesingle{}indice de la nouvelle frame \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/Sprite.\+h\item 
+src/Sprite.\+cpp\end{DoxyCompactItemize}

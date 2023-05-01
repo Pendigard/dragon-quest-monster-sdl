@@ -1,0 +1,798 @@
+\hypertarget{class_game}{}\doxysection{Game Class Reference}
+\label{class_game}\index{Game@{Game}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_game_ad59df6562a58a614fda24622d3715b65}\label{class_game_ad59df6562a58a614fda24622d3715b65}} 
+{\bfseries Game} ()
+\begin{DoxyCompactList}\small\item\em Constructeur initialise toutes les composantes de SDL. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_ae3d112ca6e0e55150d2fdbc704474530}\label{class_game_ae3d112ca6e0e55150d2fdbc704474530}} 
+{\bfseries $\sim$\+Game} ()
+\begin{DoxyCompactList}\small\item\em Destructeur. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a1ab78f5ed0d5ea879157357cf2fb2afa}\label{class_game_a1ab78f5ed0d5ea879157357cf2fb2afa}} 
+void {\bfseries run} ()
+\begin{DoxyCompactList}\small\item\em Lance l\textquotesingle{}execution du jeu. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_aa574d129f713c4b0ed4114c5d5224be3}\label{class_game_aa574d129f713c4b0ed4114c5d5224be3}} 
+void {\bfseries load\+Game} ()
+\begin{DoxyCompactList}\small\item\em Charge les données de sauvegarde. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a39a7d255eab8d5ec0139be05b0150849}\label{class_game_a39a7d255eab8d5ec0139be05b0150849}} 
+void {\bfseries load\+Sprites} ()
+\begin{DoxyCompactList}\small\item\em Charge les sprites. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a74fd5e5fb252b3b84bf495c9b56bc1fd}\label{class_game_a74fd5e5fb252b3b84bf495c9b56bc1fd}} 
+void {\bfseries load\+Sounds} ()
+\begin{DoxyCompactList}\small\item\em Charge les sons et les musiques. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a1385e5ea3c34af1dec9274160ad1046e}{draw\+Entity}} (\mbox{\hyperlink{class_entity}{Entity}} entity)
+\begin{DoxyCompactList}\small\item\em Dessine une entité \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a31ada838b82ee204ab554c9a4352a0a5}\label{class_game_a31ada838b82ee204ab554c9a4352a0a5}} 
+void {\bfseries print\+Infos} ()
+\begin{DoxyCompactList}\small\item\em Dessine les infos du jeu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a96a1ad6fef199800525e4472a6182310}{draw\+Hitbox}} (\mbox{\hyperlink{class_hitbox}{Hitbox}} h)
+\begin{DoxyCompactList}\small\item\em Dessine les contours d\textquotesingle{}une hitbox. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_ae53fceba1d9bb2aeeaffb4d636ba90e6}\label{class_game_ae53fceba1d9bb2aeeaffb4d636ba90e6}} 
+void {\bfseries draw\+Game} ()
+\begin{DoxyCompactList}\small\item\em Dessine le jeu. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a0cfc647506542f877d8495596aa3ece1}\label{class_game_a0cfc647506542f877d8495596aa3ece1}} 
+void {\bfseries draw\+Map} ()
+\begin{DoxyCompactList}\small\item\em Dessine la map sauf le dernier calque. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a62087084eedb6c36c7ed00244ca8e1e9}\label{class_game_a62087084eedb6c36c7ed00244ca8e1e9}} 
+void {\bfseries get\+Events} ()
+\begin{DoxyCompactList}\small\item\em Gère les évènements tel que les touches appuyées. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a9f7ad0384767e46fa072891c123b7d9c}\label{class_game_a9f7ad0384767e46fa072891c123b7d9c}} 
+void {\bfseries save\+Game} ()
+\begin{DoxyCompactList}\small\item\em Sauvegarde les données dans le fichier de sauvegarde. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a99d3f6b3c6e59278e44aebc64b63c481}\label{class_game_a99d3f6b3c6e59278e44aebc64b63c481}} 
+void {\bfseries get\+Action} ()
+\begin{DoxyCompactList}\small\item\em Génère une hitbox en face du joueur. Si elle touche une entité lance le script de l\textquotesingle{}entité \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a670479b278bedaefb7446e9f47829493}{run\+Script}} (std\+::string script)
+\begin{DoxyCompactList}\small\item\em Lance un script. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a08dadd2fdf30efe422fcad1d40092b0c}{delete\+From\+Save}} (std\+::string id)
+\begin{DoxyCompactList}\small\item\em Supprime un monstre de la sauvegarde. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_aa5b5ffc0c2b24a7adbf6a2342ff77fce}\label{class_game_aa5b5ffc0c2b24a7adbf6a2342ff77fce}} 
+void {\bfseries update\+Camera\+Position} ()
+\begin{DoxyCompactList}\small\item\em Met à jour la position de la caméra en fonction de la position du joueur. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a8e905429008b2773a38e7809f711edc3}\label{class_game_a8e905429008b2773a38e7809f711edc3}} 
+void {\bfseries update\+Entities} ()
+\begin{DoxyCompactList}\small\item\em Met à jour les entités. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_monster}{Monster}} $>$ \mbox{\hyperlink{class_game_aadbc3dfb76ba9a27d9d49b70206d3679}{create\+Wild\+Monster\+Team}} (std\+::vector$<$ std\+::string $>$ monsters, unsigned int level\+Min, unsigned int level\+Max, std\+::string monster)
+\begin{DoxyCompactList}\small\item\em Crée une équipe de monstres sauvages. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a43eafa2eedc98b5147ed31f8c08db363}\label{class_game_a43eafa2eedc98b5147ed31f8c08db363}} 
+void {\bfseries create\+Menus} ()
+\begin{DoxyCompactList}\small\item\em Crée les menus. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a6357713bf3bc2339f457b973e0548339}{open\+Menu}} (std\+::string name, bool can\+Escape=true)
+\begin{DoxyCompactList}\small\item\em ouvre un menu \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a506f21864a23eba1df3f62fee6a80c64}{change\+Menu}} (std\+::string name, std\+::string status)
+\begin{DoxyCompactList}\small\item\em Change le menu actuel. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a2d904438d4a37ad4e6a4394f85b14b35}\label{class_game_a2d904438d4a37ad4e6a4394f85b14b35}} 
+void {\bfseries return\+To\+Previous\+Menu} ()
+\begin{DoxyCompactList}\small\item\em Retourne au menu précédent. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a483b7ace93ca4d95e2749a16f5dfde1b}\label{class_game_a483b7ace93ca4d95e2749a16f5dfde1b}} 
+void {\bfseries get\+Player\+Choice} ()
+\begin{DoxyCompactList}\small\item\em Récupère le choix du joueur dans un menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_aaf4a457f64b79f97321952fe98c7afe9}{draw\+Message}} (std\+::string message)
+\begin{DoxyCompactList}\small\item\em Affiche un message. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_game_affe631ed32e796a090fc3cf57c2f8f27}{ask\+For\+Confirmation}} (std\+::string message)
+\begin{DoxyCompactList}\small\item\em Affiche un message avec une confirmation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a5065b987f5c2b1c47b1e3bed7f33a9c2}{draw\+Monster\+Info}} (int x, int y, \mbox{\hyperlink{class_monster}{Monster}} monster)
+\begin{DoxyCompactList}\small\item\em Affiche les informations d\textquotesingle{}un monstre. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_ab0d3723bbd8cd6a0890dcf2e7a5310fb}{draw\+Part\+Monster\+Info}} (int x, int y, \mbox{\hyperlink{class_monster}{Monster}} monster)
+\begin{DoxyCompactList}\small\item\em Affiche les informations partielles d\textquotesingle{}un monstre. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_ac5540f6960b25f059bd360bf0c125196}{draw\+Team\+Info}} (int x, int y, std\+::vector$<$ \mbox{\hyperlink{class_monster}{Monster}} $>$ team, int shiftX=0, int shiftY=0)
+\begin{DoxyCompactList}\small\item\em Affiche les informations d\textquotesingle{}une équipe. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a3c3590e1329e9695b3c26d43cc8d1cb1}{draw\+Part\+Team\+Info}} (int x, int y, std\+::vector$<$ \mbox{\hyperlink{class_monster}{Monster}} $>$ team, int shiftX=0, int shiftY=0, int start=0, int end=0)
+\begin{DoxyCompactList}\small\item\em Affiche les informations partielles d\textquotesingle{}une équipe de monstre. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a37be6e741960e0efbd7d4e8254e41674}{draw\+Part\+Team\+Info}} (int x, int y, std\+::vector$<$ \mbox{\hyperlink{class_monster}{Monster}} $\ast$ $>$ team, int shiftX=0, int shiftY=0, int start=0, int end=0)
+\begin{DoxyCompactList}\small\item\em Affiche les informations d\textquotesingle{}une équipe de pointeur sur monstre. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a014e68df786d152cc9346e88a7dc4a21}{forbidden\+Team\+Swap}} (bool forbidden=true)
+\begin{DoxyCompactList}\small\item\em Definis les case du menu de choix de monstre non selectionnable. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_monster}{Monster}} $>$ $\ast$ \mbox{\hyperlink{class_game_a6636d9b61db7359679729046c3956da1}{get\+Team\+From\+Choice}} (int choice)
+\begin{DoxyCompactList}\small\item\em Renvoie un pointeur sur l\textquotesingle{}équipe choisie par le joueur. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a3fd262a8b3a0cadfb5e076e62d31af1e}\label{class_game_a3fd262a8b3a0cadfb5e076e62d31af1e}} 
+void {\bfseries update\+Storage\+Monster\+Menu} ()
+\begin{DoxyCompactList}\small\item\em Met à jour le menu de stockage de monstre. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a9413a3cf0daae2fa90798a3deca15661}{get\+Skill\+Points\+Menu}} (\mbox{\hyperlink{class_monster}{Monster}} monster)
+\begin{DoxyCompactList}\small\item\em Donne le menu d\textquotesingle{}attribution des points de compétence. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a34a74719330522baa23aea12e1003d8e}\label{class_game_a34a74719330522baa23aea12e1003d8e}} 
+void {\bfseries get\+Synthesis\+Vector} ()
+\begin{DoxyCompactList}\small\item\em Renvoie les vecteurs des différents choix de monstre d\textquotesingle{}une synthèse. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a57d9ba597648d878edd4b11d760cf979}{get\+Synthesis\+Menu}} (std\+::string charge)
+\begin{DoxyCompactList}\small\item\em Renvoie le menu de selection de monstre pour une synthèse. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_ad07b517555222a52938d1d53ad3f63da}\label{class_game_ad07b517555222a52938d1d53ad3f63da}} 
+void {\bfseries get\+Synthesis\+Result\+Menu} ()
+\begin{DoxyCompactList}\small\item\em Renvoie le menu des résultats de synthèse. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_afe41a684321a360c9a9bd0e4b16f2746}\label{class_game_afe41a684321a360c9a9bd0e4b16f2746}} 
+void {\bfseries get\+Synth\+Skill\+Menu} ()
+\begin{DoxyCompactList}\small\item\em Renvoie le menu de selection de compétence pour une synthèse. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_ad076640f12f447fa0c4d56724830b476}\label{class_game_ad076640f12f447fa0c4d56724830b476}} 
+void {\bfseries clear\+Synthesis} ()
+\begin{DoxyCompactList}\small\item\em Vide les informations de synthèse. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_af0e22fd94bcfdd87d7446296ff67eb22}{start\+Fight}} (std\+::string monster=\char`\"{}null\char`\"{})
+\begin{DoxyCompactList}\small\item\em Démarre un combat. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a57ce5104fd4d0723c720bbeaf95ad2d2}{draw\+Skill\+Set\+Info}} (std\+::string skill\+Set)
+\begin{DoxyCompactList}\small\item\em Affiche les informations d\textquotesingle{}un set de compétence. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a951e9487b10cab1672f8bf09ea85cb4a}\label{class_game_a951e9487b10cab1672f8bf09ea85cb4a}} 
+void {\bfseries empty\+Menu} ()
+\begin{DoxyCompactList}\small\item\em Retourne au dernier menu précédent. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a7190645b12e732f39cd6a35669170e7a}\label{class_game_a7190645b12e732f39cd6a35669170e7a}} 
+void {\bfseries check\+Textures} ()
+\begin{DoxyCompactList}\small\item\em Vérifie que toutes les textures sont chargées. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_aa574d129f713c4b0ed4114c5d5224be3}\label{class_game_aa574d129f713c4b0ed4114c5d5224be3}} 
+void {\bfseries load\+Game} ()
+\begin{DoxyCompactList}\small\item\em Charge les données de save.\+json, skill.\+json, spell.\+json et monster.\+json. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a9f7ad0384767e46fa072891c123b7d9c}\label{class_game_a9f7ad0384767e46fa072891c123b7d9c}} 
+void {\bfseries save\+Game} ()
+\begin{DoxyCompactList}\small\item\em Sauvegarde les données dans save.\+json, skill.\+json, spell.\+json et monster.\+json. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{class_game_a7eb08fe94c0f9a991208452ef2f6a8aa}{ask\+Target}} (bool is\+Offensive, \mbox{\hyperlink{class_fight}{Fight}} \&f)
+\begin{DoxyCompactList}\small\item\em Demande au joueur de choisir une cible. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{class_game_ab57a102da189d6bd51639463d71e7fc6}{get\+Target\+Player}} (\mbox{\hyperlink{class_monster}{Monster}} caster, std\+::string spell, \mbox{\hyperlink{class_fight}{Fight}} \&f)
+\begin{DoxyCompactList}\small\item\em Demande les cibles possibles pour un sort. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{class_game_a3df21fabdf24f583f91dfcc117c03dcd}{order\+Monster}} (\mbox{\hyperlink{class_monster}{Monster}} m)
+\begin{DoxyCompactList}\small\item\em Demande au joueur de donner un ordre à ses monstres. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_action}{Action}} $>$ \mbox{\hyperlink{class_game_af960dcc2cb46ae24afeb7e27d3cbc743}{get\+Player\+Choice}} (\mbox{\hyperlink{class_fight}{Fight}} \&f)
+\begin{DoxyCompactList}\small\item\em Demande au joueur de choisir des actions pour ses monstres. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a45d4a3ff5afd6489bd5654438958f782}{get\+Tactic\+Choice}} (\mbox{\hyperlink{class_fight}{Fight}} \&f)
+\begin{DoxyCompactList}\small\item\em Demande au joueur de choisir une tactique. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_aa25e9e4cbde48536965b7cb13dc96fb2}{print\+Order}} (std\+::vector$<$ \mbox{\hyperlink{struct_action}{Action}} $>$ order, \mbox{\hyperlink{class_fight}{Fight}} \&f)
+\begin{DoxyCompactList}\small\item\em Affiche les ordres donnés par le joueur à ses monstres. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_game_a31ae43040f59ee027c3d95bd606bcd6c}{fight}} (\mbox{\hyperlink{class_fight}{Fight}} \&f)
+\begin{DoxyCompactList}\small\item\em Lance le combat. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a08dadd2fdf30efe422fcad1d40092b0c}{delete\+From\+Save}} (std\+::string id)
+\begin{DoxyCompactList}\small\item\em Supprime un monstre de la sauvegarde. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_monster}{Monster}} $>$ \mbox{\hyperlink{class_game_aadbc3dfb76ba9a27d9d49b70206d3679}{create\+Wild\+Monster\+Team}} (std\+::vector$<$ std\+::string $>$ monsters, unsigned int level\+Min, unsigned int level\+Max, std\+::string monster)
+\begin{DoxyCompactList}\small\item\em Crée une équipe de monstres sauvages. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a2af5a38f0c98a5f823d667d9b9372071}{scout\+Monster}} (std\+::string id, \mbox{\hyperlink{class_fight}{Fight}} \&f)
+\begin{DoxyCompactList}\small\item\em Demande au joueur quoi faire avec le monstre nouvellement capturé \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_aa333825d0bca80e91e53c7e23f053405}\label{class_game_aa333825d0bca80e91e53c7e23f053405}} 
+void {\bfseries play} ()
+\begin{DoxyCompactList}\small\item\em Lance le jeu en mode texte. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a9cc29c4b3a6fbf6c9bed67bebbfc97e9}\label{class_game_a9cc29c4b3a6fbf6c9bed67bebbfc97e9}} 
+void {\bfseries scout\+Center} ()
+\begin{DoxyCompactList}\small\item\em Affiche le menu du centre des dresseurs. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a82dde0ec6745fdb43561aafb6899f1af}\label{class_game_a82dde0ec6745fdb43561aafb6899f1af}} 
+void {\bfseries heal\+Team} ()
+\begin{DoxyCompactList}\small\item\em Soigne l\textquotesingle{}équipe du joueur. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a072720f9e93478b459b59962dd6282f9}\label{class_game_a072720f9e93478b459b59962dd6282f9}} 
+void {\bfseries organize\+Monsters} ()
+\begin{DoxyCompactList}\small\item\em Affiche le menu d\textquotesingle{}organisation des monstres du joueur. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a91b7e6269a3afb3a2b3f1c0b8648c8db}{exploration}} (std\+::vector$<$ std\+::string $>$ monster\+Zone, int niveau\+Min, int niveau\+Max)
+\begin{DoxyCompactList}\small\item\em Simule une exploration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a60fe62556c6d5aaa19bb31d6e7f231b8}{get\+Reward}} (\mbox{\hyperlink{class_fight}{Fight}} \&f)
+\begin{DoxyCompactList}\small\item\em Récompense le joueur après un combat. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_acb5999d1648f1ef111ace0aa19155329}{attribute\+Point}} (\mbox{\hyperlink{class_monster}{Monster}} \&m)
+\begin{DoxyCompactList}\small\item\em Affiche le menu d\textquotesingle{}attribution des points de compétences. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a82d2f40d9f969b4cf26eb0025979b8d7}\label{class_game_a82d2f40d9f969b4cf26eb0025979b8d7}} 
+void {\bfseries synthesis} ()
+\begin{DoxyCompactList}\small\item\em Affiche le menu de synthèse et lance la synthèse choisie. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_monster}{Monster}} $>$ \mbox{\hyperlink{class_game_a3e9ce594a789c3ed4380cabf4e52f14d}{get\+Synthetisable\+Monster}} (std\+::string charge, std\+::string first\+Choice)
+\begin{DoxyCompactList}\small\item\em donne les monstres qui peuvent être synthétisés en fonction de la charge et du premier choix \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_ad010247fefa542cdfc5b378f7ae68d31}\label{class_game_ad010247fefa542cdfc5b378f7ae68d31}} 
+std\+::unordered\+\_\+map$<$ std\+::string, unsigned int $>$ {\bfseries get\+Skill\+Synth\+Choice} (\mbox{\hyperlink{class_monster}{Monster}} m1, \mbox{\hyperlink{class_monster}{Monster}} m2, std\+::string child)
+\begin{DoxyCompactList}\small\item\em Demande au joueur de choisir les sets de compétences pour la synthèse au joueur. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_afc1e2cc0d04508446ef1a15b1b82465d}{delete\+Monster}} (std\+::string id)
+\begin{DoxyCompactList}\small\item\em supprime un monstre de la sauvegarde \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_game_affe631ed32e796a090fc3cf57c2f8f27}\label{class_game_affe631ed32e796a090fc3cf57c2f8f27}} 
+\index{Game@{Game}!askForConfirmation@{askForConfirmation}}
+\index{askForConfirmation@{askForConfirmation}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{askForConfirmation()}{askForConfirmation()}}
+{\footnotesize\ttfamily bool Game\+::ask\+For\+Confirmation (\begin{DoxyParamCaption}\item[{std\+::string}]{message }\end{DoxyParamCaption})}
+
+
+
+Affiche un message avec une confirmation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & Le message à afficher \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a7eb08fe94c0f9a991208452ef2f6a8aa}\label{class_game_a7eb08fe94c0f9a991208452ef2f6a8aa}} 
+\index{Game@{Game}!askTarget@{askTarget}}
+\index{askTarget@{askTarget}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{askTarget()}{askTarget()}}
+{\footnotesize\ttfamily unsigned int Game\+::ask\+Target (\begin{DoxyParamCaption}\item[{bool}]{is\+Offensive,  }\item[{\mbox{\hyperlink{class_fight}{Fight}} \&}]{f }\end{DoxyParamCaption})}
+
+
+
+Demande au joueur de choisir une cible. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em is\+Offensive} & Si le sort est offensif ou non \\
+\hline
+{\em f} & Le combat \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}indice de la cible choisie 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_acb5999d1648f1ef111ace0aa19155329}\label{class_game_acb5999d1648f1ef111ace0aa19155329}} 
+\index{Game@{Game}!attributePoint@{attributePoint}}
+\index{attributePoint@{attributePoint}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{attributePoint()}{attributePoint()}}
+{\footnotesize\ttfamily void Game\+::attribute\+Point (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_monster}{Monster}} \&}]{m }\end{DoxyParamCaption})}
+
+
+
+Affiche le menu d\textquotesingle{}attribution des points de compétences. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & Le monstre à attribuer des points \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a506f21864a23eba1df3f62fee6a80c64}\label{class_game_a506f21864a23eba1df3f62fee6a80c64}} 
+\index{Game@{Game}!changeMenu@{changeMenu}}
+\index{changeMenu@{changeMenu}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{changeMenu()}{changeMenu()}}
+{\footnotesize\ttfamily void Game\+::change\+Menu (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{std\+::string}]{status }\end{DoxyParamCaption})}
+
+
+
+Change le menu actuel. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Le nom du menu à changer \\
+\hline
+{\em status} & Le status du menu à changer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_aadbc3dfb76ba9a27d9d49b70206d3679}\label{class_game_aadbc3dfb76ba9a27d9d49b70206d3679}} 
+\index{Game@{Game}!createWildMonsterTeam@{createWildMonsterTeam}}
+\index{createWildMonsterTeam@{createWildMonsterTeam}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{createWildMonsterTeam()}{createWildMonsterTeam()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_monster}{Monster}} $>$ Game\+::create\+Wild\+Monster\+Team (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{monsters,  }\item[{unsigned int}]{level\+Min,  }\item[{unsigned int}]{level\+Max,  }\item[{std\+::string}]{monster = {\ttfamily \char`\"{}null\char`\"{}} }\end{DoxyParamCaption})}
+
+
+
+Crée une équipe de monstres sauvages. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em monsters} & Les monstres possiblement présents dans l\textquotesingle{}équipe \\
+\hline
+{\em level\+Min} & Niveau minimum des monstres \\
+\hline
+{\em level\+Max} & Niveau maximum des monstres \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}équipe de monstres sauvages 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_aadbc3dfb76ba9a27d9d49b70206d3679}\label{class_game_aadbc3dfb76ba9a27d9d49b70206d3679}} 
+\index{Game@{Game}!createWildMonsterTeam@{createWildMonsterTeam}}
+\index{createWildMonsterTeam@{createWildMonsterTeam}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{createWildMonsterTeam()}{createWildMonsterTeam()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_monster}{Monster}} $>$ Game\+::create\+Wild\+Monster\+Team (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{monsters,  }\item[{unsigned int}]{level\+Min,  }\item[{unsigned int}]{level\+Max,  }\item[{std\+::string}]{monster }\end{DoxyParamCaption})}
+
+
+
+Crée une équipe de monstres sauvages. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em monsters} & Les monstres possiblement présents dans l\textquotesingle{}équipe \\
+\hline
+{\em level\+Min} & Niveau minimum des monstres \\
+\hline
+{\em level\+Max} & Niveau maximum des monstres \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}équipe de monstres sauvages 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_a08dadd2fdf30efe422fcad1d40092b0c}\label{class_game_a08dadd2fdf30efe422fcad1d40092b0c}} 
+\index{Game@{Game}!deleteFromSave@{deleteFromSave}}
+\index{deleteFromSave@{deleteFromSave}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{deleteFromSave()}{deleteFromSave()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Game\+::delete\+From\+Save (\begin{DoxyParamCaption}\item[{std\+::string}]{id }\end{DoxyParamCaption})}
+
+
+
+Supprime un monstre de la sauvegarde. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & L\textquotesingle{}id du monstre à supprimer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a08dadd2fdf30efe422fcad1d40092b0c}\label{class_game_a08dadd2fdf30efe422fcad1d40092b0c}} 
+\index{Game@{Game}!deleteFromSave@{deleteFromSave}}
+\index{deleteFromSave@{deleteFromSave}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{deleteFromSave()}{deleteFromSave()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Game\+::delete\+From\+Save (\begin{DoxyParamCaption}\item[{std\+::string}]{id }\end{DoxyParamCaption})}
+
+
+
+Supprime un monstre de la sauvegarde. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & L\textquotesingle{}identifiant du monstre à supprimer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_afc1e2cc0d04508446ef1a15b1b82465d}\label{class_game_afc1e2cc0d04508446ef1a15b1b82465d}} 
+\index{Game@{Game}!deleteMonster@{deleteMonster}}
+\index{deleteMonster@{deleteMonster}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{deleteMonster()}{deleteMonster()}}
+{\footnotesize\ttfamily void Game\+::delete\+Monster (\begin{DoxyParamCaption}\item[{std\+::string}]{id }\end{DoxyParamCaption})}
+
+
+
+supprime un monstre de la sauvegarde 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & L\textquotesingle{}identifiant du monstre à supprimer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a1385e5ea3c34af1dec9274160ad1046e}\label{class_game_a1385e5ea3c34af1dec9274160ad1046e}} 
+\index{Game@{Game}!drawEntity@{drawEntity}}
+\index{drawEntity@{drawEntity}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{drawEntity()}{drawEntity()}}
+{\footnotesize\ttfamily void Game\+::draw\+Entity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_entity}{Entity}}}]{entity }\end{DoxyParamCaption})}
+
+
+
+Dessine une entité 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & L\textquotesingle{}entité à dessiner \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a96a1ad6fef199800525e4472a6182310}\label{class_game_a96a1ad6fef199800525e4472a6182310}} 
+\index{Game@{Game}!drawHitbox@{drawHitbox}}
+\index{drawHitbox@{drawHitbox}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{drawHitbox()}{drawHitbox()}}
+{\footnotesize\ttfamily void Game\+::draw\+Hitbox (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_hitbox}{Hitbox}}}]{h }\end{DoxyParamCaption})}
+
+
+
+Dessine les contours d\textquotesingle{}une hitbox. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em h} & La hitbox à dessiner \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_aaf4a457f64b79f97321952fe98c7afe9}\label{class_game_aaf4a457f64b79f97321952fe98c7afe9}} 
+\index{Game@{Game}!drawMessage@{drawMessage}}
+\index{drawMessage@{drawMessage}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{drawMessage()}{drawMessage()}}
+{\footnotesize\ttfamily void Game\+::draw\+Message (\begin{DoxyParamCaption}\item[{std\+::string}]{message }\end{DoxyParamCaption})}
+
+
+
+Affiche un message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & Le message à afficher \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a5065b987f5c2b1c47b1e3bed7f33a9c2}\label{class_game_a5065b987f5c2b1c47b1e3bed7f33a9c2}} 
+\index{Game@{Game}!drawMonsterInfo@{drawMonsterInfo}}
+\index{drawMonsterInfo@{drawMonsterInfo}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{drawMonsterInfo()}{drawMonsterInfo()}}
+{\footnotesize\ttfamily void Game\+::draw\+Monster\+Info (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{\mbox{\hyperlink{class_monster}{Monster}}}]{monster }\end{DoxyParamCaption})}
+
+
+
+Affiche les informations d\textquotesingle{}un monstre. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Coordonnée x du monstre \\
+\hline
+{\em y} & Coordonnée y du monstre \\
+\hline
+{\em monster} & Le monstre dont on veut afficher les informations \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_ab0d3723bbd8cd6a0890dcf2e7a5310fb}\label{class_game_ab0d3723bbd8cd6a0890dcf2e7a5310fb}} 
+\index{Game@{Game}!drawPartMonsterInfo@{drawPartMonsterInfo}}
+\index{drawPartMonsterInfo@{drawPartMonsterInfo}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{drawPartMonsterInfo()}{drawPartMonsterInfo()}}
+{\footnotesize\ttfamily void Game\+::draw\+Part\+Monster\+Info (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{\mbox{\hyperlink{class_monster}{Monster}}}]{monster }\end{DoxyParamCaption})}
+
+
+
+Affiche les informations partielles d\textquotesingle{}un monstre. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Coordonnée x du monstre \\
+\hline
+{\em y} & Coordonnée y du monstre \\
+\hline
+{\em monster} & Le monstre dont on veut afficher les informations \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a37be6e741960e0efbd7d4e8254e41674}\label{class_game_a37be6e741960e0efbd7d4e8254e41674}} 
+\index{Game@{Game}!drawPartTeamInfo@{drawPartTeamInfo}}
+\index{drawPartTeamInfo@{drawPartTeamInfo}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{drawPartTeamInfo()}{drawPartTeamInfo()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Game\+::draw\+Part\+Team\+Info (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{std\+::vector$<$ \mbox{\hyperlink{class_monster}{Monster}} $\ast$ $>$}]{team,  }\item[{int}]{shiftX = {\ttfamily 0},  }\item[{int}]{shiftY = {\ttfamily 0},  }\item[{int}]{start = {\ttfamily 0},  }\item[{int}]{end = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Affiche les informations d\textquotesingle{}une équipe de pointeur sur monstre. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Coordonnée x de l\textquotesingle{}équipe \\
+\hline
+{\em y} & Coordonnée y de l\textquotesingle{}équipe \\
+\hline
+{\em team} & L\textquotesingle{}équipe dont on veut afficher les informations \\
+\hline
+{\em shiftX} & Le décalage en x entre chaque monstre \\
+\hline
+{\em shiftY} & Le décalage en y entre chaque monstre \\
+\hline
+{\em start} & L\textquotesingle{}index du monstre de départ \\
+\hline
+{\em end} & L\textquotesingle{}index du monstre de fin \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a3c3590e1329e9695b3c26d43cc8d1cb1}\label{class_game_a3c3590e1329e9695b3c26d43cc8d1cb1}} 
+\index{Game@{Game}!drawPartTeamInfo@{drawPartTeamInfo}}
+\index{drawPartTeamInfo@{drawPartTeamInfo}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{drawPartTeamInfo()}{drawPartTeamInfo()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Game\+::draw\+Part\+Team\+Info (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{std\+::vector$<$ \mbox{\hyperlink{class_monster}{Monster}} $>$}]{team,  }\item[{int}]{shiftX = {\ttfamily 0},  }\item[{int}]{shiftY = {\ttfamily 0},  }\item[{int}]{start = {\ttfamily 0},  }\item[{int}]{end = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Affiche les informations partielles d\textquotesingle{}une équipe de monstre. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Coordonnée x de l\textquotesingle{}équipe \\
+\hline
+{\em y} & Coordonnée y de l\textquotesingle{}équipe \\
+\hline
+{\em team} & L\textquotesingle{}équipe dont on veut afficher les informations \\
+\hline
+{\em shiftX} & Le décalage en x entre chaque monstre \\
+\hline
+{\em shiftY} & Le décalage en y entre chaque monstre \\
+\hline
+{\em start} & L\textquotesingle{}index du monstre de départ \\
+\hline
+{\em end} & L\textquotesingle{}index du monstre de fin \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a57ce5104fd4d0723c720bbeaf95ad2d2}\label{class_game_a57ce5104fd4d0723c720bbeaf95ad2d2}} 
+\index{Game@{Game}!drawSkillSetInfo@{drawSkillSetInfo}}
+\index{drawSkillSetInfo@{drawSkillSetInfo}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{drawSkillSetInfo()}{drawSkillSetInfo()}}
+{\footnotesize\ttfamily void Game\+::draw\+Skill\+Set\+Info (\begin{DoxyParamCaption}\item[{std\+::string}]{skill\+Set }\end{DoxyParamCaption})}
+
+
+
+Affiche les informations d\textquotesingle{}un set de compétence. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em skill\+Set} & Le set de compétence dont on veut afficher les informations \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_ac5540f6960b25f059bd360bf0c125196}\label{class_game_ac5540f6960b25f059bd360bf0c125196}} 
+\index{Game@{Game}!drawTeamInfo@{drawTeamInfo}}
+\index{drawTeamInfo@{drawTeamInfo}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{drawTeamInfo()}{drawTeamInfo()}}
+{\footnotesize\ttfamily void Game\+::draw\+Team\+Info (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{std\+::vector$<$ \mbox{\hyperlink{class_monster}{Monster}} $>$}]{team,  }\item[{int}]{shiftX = {\ttfamily 0},  }\item[{int}]{shiftY = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Affiche les informations d\textquotesingle{}une équipe. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Coordonnée x de l\textquotesingle{}équipe \\
+\hline
+{\em y} & Coordonnée y de l\textquotesingle{}équipe \\
+\hline
+{\em team} & L\textquotesingle{}équipe dont on veut afficher les informations \\
+\hline
+{\em shiftX} & Le décalage en x entre chaque monstre \\
+\hline
+{\em shiftY} & Le décalage en y entre chaque monstre \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a91b7e6269a3afb3a2b3f1c0b8648c8db}\label{class_game_a91b7e6269a3afb3a2b3f1c0b8648c8db}} 
+\index{Game@{Game}!exploration@{exploration}}
+\index{exploration@{exploration}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{exploration()}{exploration()}}
+{\footnotesize\ttfamily void Game\+::exploration (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{monster\+Zone,  }\item[{int}]{niveau\+Min,  }\item[{int}]{niveau\+Max }\end{DoxyParamCaption})}
+
+
+
+Simule une exploration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em monster\+Zone} & Les monstres qui peuvent être rencontrés \\
+\hline
+{\em niveau\+Min} & Niveau minimum des monstres rencontrés \\
+\hline
+{\em niveau\+Max} & Niveau maximum des monstres rencontrés \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a31ae43040f59ee027c3d95bd606bcd6c}\label{class_game_a31ae43040f59ee027c3d95bd606bcd6c}} 
+\index{Game@{Game}!fight@{fight}}
+\index{fight@{fight}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{fight()}{fight()}}
+{\footnotesize\ttfamily bool Game\+::fight (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_fight}{Fight}} \&}]{f }\end{DoxyParamCaption})}
+
+
+
+Lance le combat. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & Le combat à lancer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Si l\textquotesingle{}équipe du joueur est encore en vie 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_a014e68df786d152cc9346e88a7dc4a21}\label{class_game_a014e68df786d152cc9346e88a7dc4a21}} 
+\index{Game@{Game}!forbiddenTeamSwap@{forbiddenTeamSwap}}
+\index{forbiddenTeamSwap@{forbiddenTeamSwap}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{forbiddenTeamSwap()}{forbiddenTeamSwap()}}
+{\footnotesize\ttfamily void Game\+::forbidden\+Team\+Swap (\begin{DoxyParamCaption}\item[{bool}]{forbidden = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Definis les case du menu de choix de monstre non selectionnable. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em forbidden} & Si vrai les cases vides sont non selectionnable Faux toute les cases sont selectionnable \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_af960dcc2cb46ae24afeb7e27d3cbc743}\label{class_game_af960dcc2cb46ae24afeb7e27d3cbc743}} 
+\index{Game@{Game}!getPlayerChoice@{getPlayerChoice}}
+\index{getPlayerChoice@{getPlayerChoice}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{getPlayerChoice()}{getPlayerChoice()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{struct_action}{Action}} $>$ Game\+::get\+Player\+Choice (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_fight}{Fight}} \&}]{f }\end{DoxyParamCaption})}
+
+
+
+Demande au joueur de choisir des actions pour ses monstres. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & Le combat \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Les actions choisies par le joueur 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_a60fe62556c6d5aaa19bb31d6e7f231b8}\label{class_game_a60fe62556c6d5aaa19bb31d6e7f231b8}} 
+\index{Game@{Game}!getReward@{getReward}}
+\index{getReward@{getReward}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{getReward()}{getReward()}}
+{\footnotesize\ttfamily void Game\+::get\+Reward (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_fight}{Fight}} \&}]{f }\end{DoxyParamCaption})}
+
+
+
+Récompense le joueur après un combat. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & Le combat \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a9413a3cf0daae2fa90798a3deca15661}\label{class_game_a9413a3cf0daae2fa90798a3deca15661}} 
+\index{Game@{Game}!getSkillPointsMenu@{getSkillPointsMenu}}
+\index{getSkillPointsMenu@{getSkillPointsMenu}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{getSkillPointsMenu()}{getSkillPointsMenu()}}
+{\footnotesize\ttfamily void Game\+::get\+Skill\+Points\+Menu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_monster}{Monster}}}]{monster }\end{DoxyParamCaption})}
+
+
+
+Donne le menu d\textquotesingle{}attribution des points de compétence. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em monster} & Le monstre dont on veut attribuer les points de compétence \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a57d9ba597648d878edd4b11d760cf979}\label{class_game_a57d9ba597648d878edd4b11d760cf979}} 
+\index{Game@{Game}!getSynthesisMenu@{getSynthesisMenu}}
+\index{getSynthesisMenu@{getSynthesisMenu}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{getSynthesisMenu()}{getSynthesisMenu()}}
+{\footnotesize\ttfamily void Game\+::get\+Synthesis\+Menu (\begin{DoxyParamCaption}\item[{std\+::string}]{charge }\end{DoxyParamCaption})}
+
+
+
+Renvoie le menu de selection de monstre pour une synthèse. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em charge} & La charge des monstres à synthétiser \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a3e9ce594a789c3ed4380cabf4e52f14d}\label{class_game_a3e9ce594a789c3ed4380cabf4e52f14d}} 
+\index{Game@{Game}!getSynthetisableMonster@{getSynthetisableMonster}}
+\index{getSynthetisableMonster@{getSynthetisableMonster}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{getSynthetisableMonster()}{getSynthetisableMonster()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_monster}{Monster}} $>$ Game\+::get\+Synthetisable\+Monster (\begin{DoxyParamCaption}\item[{std\+::string}]{charge,  }\item[{std\+::string}]{first\+Choice = {\ttfamily \char`\"{}null\char`\"{}} }\end{DoxyParamCaption})}
+
+
+
+donne les monstres qui peuvent être synthétisés en fonction de la charge et du premier choix 
+
+
+\begin{DoxyParams}{Parameters}
+{\em charge} & La charge du monstre \\
+\hline
+{\em first\+Choice} & Le premier choix du joueur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Les monstres qui peuvent être synthétisés 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_a45d4a3ff5afd6489bd5654438958f782}\label{class_game_a45d4a3ff5afd6489bd5654438958f782}} 
+\index{Game@{Game}!getTacticChoice@{getTacticChoice}}
+\index{getTacticChoice@{getTacticChoice}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{getTacticChoice()}{getTacticChoice()}}
+{\footnotesize\ttfamily void Game\+::get\+Tactic\+Choice (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_fight}{Fight}} \&}]{f }\end{DoxyParamCaption})}
+
+
+
+Demande au joueur de choisir une tactique. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & Le combat \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_ab57a102da189d6bd51639463d71e7fc6}\label{class_game_ab57a102da189d6bd51639463d71e7fc6}} 
+\index{Game@{Game}!getTargetPlayer@{getTargetPlayer}}
+\index{getTargetPlayer@{getTargetPlayer}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{getTargetPlayer()}{getTargetPlayer()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ Game\+::get\+Target\+Player (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_monster}{Monster}}}]{caster,  }\item[{std\+::string}]{spell,  }\item[{\mbox{\hyperlink{class_fight}{Fight}} \&}]{f }\end{DoxyParamCaption})}
+
+
+
+Demande les cibles possibles pour un sort. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em caster} & Le monstre qui lance le sort \\
+\hline
+{\em spell} & Le sort lancé \\
+\hline
+{\em f} & Le combat \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Les cibles possibles 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_a6636d9b61db7359679729046c3956da1}\label{class_game_a6636d9b61db7359679729046c3956da1}} 
+\index{Game@{Game}!getTeamFromChoice@{getTeamFromChoice}}
+\index{getTeamFromChoice@{getTeamFromChoice}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{getTeamFromChoice()}{getTeamFromChoice()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_monster}{Monster}} $>$ $\ast$ Game\+::get\+Team\+From\+Choice (\begin{DoxyParamCaption}\item[{int}]{choice }\end{DoxyParamCaption})}
+
+
+
+Renvoie un pointeur sur l\textquotesingle{}équipe choisie par le joueur. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em choice} & Le choix du joueur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Un pointeur sur l\textquotesingle{}équipe choisie par le joueur 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_a6357713bf3bc2339f457b973e0548339}\label{class_game_a6357713bf3bc2339f457b973e0548339}} 
+\index{Game@{Game}!openMenu@{openMenu}}
+\index{openMenu@{openMenu}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{openMenu()}{openMenu()}}
+{\footnotesize\ttfamily void Game\+::open\+Menu (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{bool}]{can\+Escape = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+ouvre un menu 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Le nom du menu à ouvrir \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a3df21fabdf24f583f91dfcc117c03dcd}\label{class_game_a3df21fabdf24f583f91dfcc117c03dcd}} 
+\index{Game@{Game}!orderMonster@{orderMonster}}
+\index{orderMonster@{orderMonster}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{orderMonster()}{orderMonster()}}
+{\footnotesize\ttfamily unsigned int Game\+::order\+Monster (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_monster}{Monster}}}]{m }\end{DoxyParamCaption})}
+
+
+
+Demande au joueur de donner un ordre à ses monstres. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & Le monstre à ordonner \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}ordre du monstre 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_aa25e9e4cbde48536965b7cb13dc96fb2}\label{class_game_aa25e9e4cbde48536965b7cb13dc96fb2}} 
+\index{Game@{Game}!printOrder@{printOrder}}
+\index{printOrder@{printOrder}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{printOrder()}{printOrder()}}
+{\footnotesize\ttfamily void Game\+::print\+Order (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{struct_action}{Action}} $>$}]{order,  }\item[{\mbox{\hyperlink{class_fight}{Fight}} \&}]{f }\end{DoxyParamCaption})}
+
+
+
+Affiche les ordres donnés par le joueur à ses monstres. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em order} & Les ordres donnés par le joueur \\
+\hline
+{\em f} & Le combat \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a670479b278bedaefb7446e9f47829493}\label{class_game_a670479b278bedaefb7446e9f47829493}} 
+\index{Game@{Game}!runScript@{runScript}}
+\index{runScript@{runScript}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{runScript()}{runScript()}}
+{\footnotesize\ttfamily void Game\+::run\+Script (\begin{DoxyParamCaption}\item[{std\+::string}]{script }\end{DoxyParamCaption})}
+
+
+
+Lance un script. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em script} & Nom du script à lancer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a2af5a38f0c98a5f823d667d9b9372071}\label{class_game_a2af5a38f0c98a5f823d667d9b9372071}} 
+\index{Game@{Game}!scoutMonster@{scoutMonster}}
+\index{scoutMonster@{scoutMonster}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{scoutMonster()}{scoutMonster()}}
+{\footnotesize\ttfamily void Game\+::scout\+Monster (\begin{DoxyParamCaption}\item[{std\+::string}]{id,  }\item[{\mbox{\hyperlink{class_fight}{Fight}} \&}]{f }\end{DoxyParamCaption})}
+
+
+
+Demande au joueur quoi faire avec le monstre nouvellement capturé 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & L\textquotesingle{}identifiant du monstre capturé \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_af0e22fd94bcfdd87d7446296ff67eb22}\label{class_game_af0e22fd94bcfdd87d7446296ff67eb22}} 
+\index{Game@{Game}!startFight@{startFight}}
+\index{startFight@{startFight}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{startFight()}{startFight()}}
+{\footnotesize\ttfamily void Game\+::start\+Fight (\begin{DoxyParamCaption}\item[{std\+::string}]{monster = {\ttfamily \char`\"{}null\char`\"{}} }\end{DoxyParamCaption})}
+
+
+
+Démarre un combat. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em monster} & Monstre devant être présent dans le combat par défaut \char`\"{}null\char`\"{} donc aucun \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/Game.\+h\item 
+src/Game\+Txt.\+h\item 
+src/Game.\+cpp\item 
+src/Game\+Txt.\+cpp\end{DoxyCompactItemize}
