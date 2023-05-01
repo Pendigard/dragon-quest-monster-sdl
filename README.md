@@ -22,7 +22,7 @@ Pour lancer le jeu lancez la commande:
 
 ## Fonctionnalités
 
-# Les monstres (implémenté complètement)
+-Les monstres (implémenté complètement)
     Un Monstre peut être considéré comme un combattant il possède plusieurs caractéristiques:
         - Un nom
         - Un type : On peut voir ça comme son espece
@@ -41,7 +41,7 @@ Pour lancer le jeu lancez la commande:
         - Sagesse : Détermine la puissance des compétences magiques du monstre
 
 
-# Combat en tour par tour (implémenté partiellement)
+-Combat en tour par tour (implémenté partiellement)
     Le joueur affronte des monstres sauvages dans des combats en tour par tour par équipe allant de 1 à 3 monstres par équipe. Le joueur peut choisir les actions de ses monstres où les laisser agir de manière autonome en suivant une tactique prédéfinie que le joueur peut choisir:
     - Sans pitié : Le monstre utilise seulement des compétences infligeant des dégâts sur les ennemis
     - Soins avant tout : Le monstre utilise seulement des compétences de soin pour aider ses alliés
