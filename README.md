@@ -22,8 +22,32 @@ Pour lancer le jeu lancez la commande:
 
 ## Fonctionnalités
 
-- Combat en tour par tour (implémenté partiellement)
-    Le joueur affronte des monstres sauvages dans des combats en tour par tour par équipe allant de 1 à 3 monstres par équipe. Le joueur peut choisir les actions de ses monstres où les laisser agir de manière autonome en suivant une tactique prédéfinie que le joueur peut choisir
+# Les monstres (implémenté complètement)
+    Un Monstre peut être considéré comme un combattant il possède plusieurs caractéristiques:
+        - Un nom
+        - Un type : On peut voir ça comme son espece
+        - Un niveau : Le niveau du monstre détermine la croissance de ses statistiques
+        - Des statistiques : Les statistiques du monstre déterminent sa puissance en combat
+        - Des sets de compétences : Les sets de compétences du monstre déterminent les actions qu'il peut effectuer en combat
+        - Une croissance : qui détermine comment vont évoluer les statistiques du monstre lorsqu'il gagne un niveau
+        - Des statistiques Max : Les statistiques max du monstre déterminent la valeur limite qu'il peut atteindre dans chaque statistiques. Elles dépendent de son type
+    
+    Les monstres possèdent 6 statistiques : 
+        - PV : Les points de vie du monstre, si ils tombent à 0 le monstre est KO
+        - PM : Les points de mana du monstre, ils sont consommés lorsqu'il utilise une compétence
+        - Attaque : Détermine la puissance des compétences physiques du monstre
+        - Défense : Détermine la résistance aux compétences adverses du monstre
+        - Agilité : Détermine la vitesse d'attaque du monstre plus la valeur est élevée plus le monstre attaquera en premier
+        - Sagesse : Détermine la puissance des compétences magiques du monstre
+
+
+# Combat en tour par tour (implémenté partiellement)
+    Le joueur affronte des monstres sauvages dans des combats en tour par tour par équipe allant de 1 à 3 monstres par équipe. Le joueur peut choisir les actions de ses monstres où les laisser agir de manière autonome en suivant une tactique prédéfinie que le joueur peut choisir:
+    - Sans pitié : Le monstre utilise seulement des compétences infligeant des dégâts sur les ennemis
+    - Soins avant tout : Le monstre utilise seulement des compétences de soin pour aider ses alliés
+    - Agir avec sagesse : Le monstre utilise des compétences offensive pouvant infliger des dégâts sur les ennemis ainsi qu'alterer leur statut ou des compétences de soutien pour aider ses alliés
+    - Pas de magie : Le monstre n'utilise que des compétences qui ne consomment pas de PM
+
 
 
 ## Auteurs
