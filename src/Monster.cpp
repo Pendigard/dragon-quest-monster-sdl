@@ -165,6 +165,10 @@ Monster::Monster(Monster &m1, Monster &m2, std::string name, std::string type, D
     tactic = SansPitie;
 }
 
+Monster::~Monster()
+{
+}
+
 void Monster::initStatus()
 {
     status["poison"] = 0;

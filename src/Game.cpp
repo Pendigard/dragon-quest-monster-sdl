@@ -9,6 +9,7 @@ Game::Game()
     camera.w = screenWidth;
     camera.h = screenHeight;
     camera.zoom = 2;
+    adminView = false;
 
     // Initialisation de la SDL
     if (SDL_Init(SDL_INIT_VIDEO) != 0)
@@ -58,8 +59,7 @@ Game::Game()
         exit(1);
     }
 
-    musicVolume = 28;
-    Mix_VolumeMusic(musicVolume);
+    Mix_VolumeMusic(28);
 
     cursor = Sprite(renderer, "data/sprite/cursor/cursor_", 4);
 
@@ -540,14 +540,19 @@ void Game::updateCameraPosition()
     camera.y = std::min(std::max(playerEntity.getY() * camera.zoom - (screenHeight / 2), 0), ((currentMap.getHeight()) * 32) * camera.zoom - screenHeight);
 }
 
-void Game::drawSkillSetInfo(std::string skillSet)
+void Game::drawSkillSetInfo(std::string skillSet, unsigned int point)
 {
     rapidjson::Value &skillBase = database.getSkillBase()[skillSet.c_str()];
     int line = 0, column = 0;
+    SDL_Color color = {255, 255, 255};
     for (rapidjson::Value::ConstMemberIterator itr = skillBase["stepUpgrade"].MemberBegin(); itr != skillBase["stepUpgrade"].MemberEnd(); itr++)
     {
         std::string text = itr->name.GetString() + (std::string) ": " + std::to_string(itr->value["point"].GetInt());
-        drawText(renderer, text, 30 + column * 300, 70 + line * 50, 16, {255, 255, 255});
+        if (itr->value["point"].GetInt() < point)
+            color = {255, 255, 0};
+        else
+            color = {255, 255, 255};
+        drawText(renderer, text, 30 + column * 300, 70 + line * 50, 16, color);
         line++;
         if (line == 5)
         {
@@ -634,6 +639,7 @@ void Game::drawPartMonsterInfo(int x, int y, Monster monster)
     int width = 250;
     int height = 100;
     SDL_Color white = {255, 255, 255};
+    loadOverworldSprite(renderer, monster.getInfos("type"), sprites);
     drawBox(renderer, x, y, width, height);
     drawText(renderer, "Nom: " + monster.getInfos("name"), x + 10, y + 10, 12, white);
     sprites[monster.getInfos("type") + "_front"].draw(x + 10, y + 25, 2);
@@ -853,7 +859,6 @@ void Game::clearSynthesis()
     synthetizer.skills.clear();
     synthetizer.skillsSelected.clear();
     synthetizer.child = "";
-
 }
 
 void Game::getSynthesisVector()
@@ -874,12 +879,12 @@ void Game::getSynthesisVector()
     {
         if (player.storageMonsters[i].getInfos("id") != idPlus && player.storageMonsters[i].getInfos("charge") != "plus")
         {
-            //if (player.storageMonsters[i].getLevel() >= 10)
+            if (player.storageMonsters[i].getLevel() >= 10)
                 synthetizer.choiceMinus.push_back(&player.storageMonsters[i]);
         }
         if (player.storageMonsters[i].getInfos("id") != idMinus && player.storageMonsters[i].getInfos("charge") != "moins")
         {
-            //if (player.storageMonsters[i].getLevel() >= 10)
+            if (player.storageMonsters[i].getLevel() >= 10)
                 synthetizer.choicePlus.push_back(&player.storageMonsters[i]);
         }
     }
@@ -1235,24 +1240,30 @@ void Game::getPlayerChoice()
                     }
                     drawMessage("Synthétisation en cours...");
                     drawMessage("Synthétisation réussie !");
-                    Monster newMonster = Monster(*synthetizer.mPlus, *synthetizer.mMinus, maxLenString(synthetizer.child,15), synthetizer.child, database, skillSets, save);
+                    Monster newMonster = Monster(*synthetizer.mPlus, *synthetizer.mMinus, maxLenString(synthetizer.child, 15), synthetizer.child, database, skillSets, save);
                     drawMessage("Vous obtenez un " + newMonster.getInfos("type") + " !");
+                    std::string idPlus = synthetizer.mPlus->getInfos("id");
+                    std::string idMinus = synthetizer.mMinus->getInfos("id");
                     size_t indexPlusToErase = 0;
                     size_t indexMinusToErase = 0;
                     for (size_t i = 0; i < player.storageMonsters.size(); i++)
                     {
-                        if (player.storageMonsters[i] == *synthetizer.mPlus)
+                        if (player.storageMonsters[i].getInfos("id") == idPlus)
                         {
                             indexPlusToErase = i;
                         }
-                        if (player.storageMonsters[i] == *synthetizer.mMinus)
+                    }
+                    player.storageMonsters.erase(player.storageMonsters.begin() + indexPlusToErase);
+                    for (size_t i = 0; i < player.storageMonsters.size(); i++)
+                    {
+                        if (player.storageMonsters[i].getInfos("id") == idMinus)
                         {
                             indexMinusToErase = i;
                         }
                     }
-                    player.storageMonsters.erase(player.storageMonsters.begin() + indexPlusToErase);
                     player.storageMonsters.erase(player.storageMonsters.begin() + indexMinusToErase);
                     player.storageMonsters.push_back(newMonster);
+                    updateStorageMonsterMenu();
                     while (menuManager.previousMenu.size() > 0)
                     {
                         menuManager.previousMenu.pop();
@@ -1307,8 +1318,9 @@ void Game::forbiddenTeamSwap(bool forbidden)
         {
             menuManager.menus["swapTeam"].setForbiddenChoice(i, 1, true);
         }
-        if (player.mainTeam.size() == 1 && player.benchTeam.size() > 0) {
-            menuManager.menus["swapTeam"].setForbiddenChoice(0,0,true);
+        if (player.mainTeam.size() == 1 && player.benchTeam.size() > 0)
+        {
+            menuManager.menus["swapTeam"].setForbiddenChoice(0, 0, true);
         }
     }
     menuManager.menus["swapTeam"].setFirstChoice();
@@ -1330,44 +1342,7 @@ void Game::returnToPreviousMenu()
     menuManager.previousChoiceY.pop();
 }
 
-void Game::openMenu(std::string name, bool canEscape)
-{
-    inMenu = true;
-    menuManager.currentMenu = name;
-    menuManager.stepMenu = 0;
-    playerEntity.clearMoves();
-    while (inMenu && running)
-    {
-        while (SDL_PollEvent(&event))
-        {
-            if (event.type == SDL_QUIT)
-            {
-                running = false;
-                inMenu = false;
-            }
-            if (event.type == SDL_KEYDOWN)
-            {
-                if (event.key.keysym.sym == SDLK_UP)
-                    menuManager.menus[menuManager.currentMenu].changeChoiceUp();
-                if (event.key.keysym.sym == SDLK_DOWN)
-                    menuManager.menus[menuManager.currentMenu].changeChoiceDown();
-                if (event.key.keysym.sym == SDLK_LEFT)
-                    menuManager.menus[menuManager.currentMenu].changeChoiceLeft();
-                if (event.key.keysym.sym == SDLK_RIGHT)
-                    menuManager.menus[menuManager.currentMenu].changeChoiceRight();
-                if (event.key.keysym.sym == SDLK_ESCAPE)
-                {
-                    if (menuManager.previousMenu.empty() && canEscape)
-                        inMenu = false;
-                    returnToPreviousMenu();
-                }
-                if (event.key.keysym.sym == SDLK_RETURN)
-                {
-                    getPlayerChoice();
-                }
-            }
-        }
-        drawGame();
+void Game::drawMenus() {
         sprites["pausescreen"].draw(0, 0);
         if (menuManager.currentMenu == "pause")
         {
@@ -1400,9 +1375,9 @@ void Game::openMenu(std::string name, bool canEscape)
             {
                 std::string text = skill.first + ": " + std::to_string(skill.second) + " + " + std::to_string(skillUpdater.pointToApply[i]);
                 drawText(renderer, text, 10, 350 + (i - 1) * 75, 15, color);
+                if (i+1 == menuManager.menus["skillPoints"].getCurrentChoiceY() + 1)
+                    drawSkillSetInfo(skill.first, skill.second + skillUpdater.pointToApply[i]);
                 i++;
-                if (i == menuManager.menus["skillPoints"].getCurrentChoiceY() + 1)
-                    drawSkillSetInfo(skill.first);
             }
         }
         if (menuManager.currentMenu == "scoutMonster")
@@ -1458,7 +1433,47 @@ void Game::openMenu(std::string name, bool canEscape)
             }
         }
         menuManager.menus[menuManager.currentMenu].drawOptions(renderer, camera);
-        updateCameraPosition();
+}
+
+void Game::openMenu(std::string name, bool canEscape)
+{
+    inMenu = true;
+    menuManager.currentMenu = name;
+    menuManager.stepMenu = 0;
+    playerEntity.clearMoves();
+    while (inMenu && running)
+    {
+        while (SDL_PollEvent(&event))
+        {
+            if (event.type == SDL_QUIT)
+            {
+                running = false;
+                inMenu = false;
+            }
+            if (event.type == SDL_KEYDOWN)
+            {
+                if (event.key.keysym.sym == SDLK_UP)
+                    menuManager.menus[menuManager.currentMenu].changeChoiceUp();
+                if (event.key.keysym.sym == SDLK_DOWN)
+                    menuManager.menus[menuManager.currentMenu].changeChoiceDown();
+                if (event.key.keysym.sym == SDLK_LEFT)
+                    menuManager.menus[menuManager.currentMenu].changeChoiceLeft();
+                if (event.key.keysym.sym == SDLK_RIGHT)
+                    menuManager.menus[menuManager.currentMenu].changeChoiceRight();
+                if (event.key.keysym.sym == SDLK_ESCAPE)
+                {
+                    if (menuManager.previousMenu.empty() && canEscape)
+                        inMenu = false;
+                    returnToPreviousMenu();
+                }
+                if (event.key.keysym.sym == SDLK_RETURN)
+                {
+                    getPlayerChoice();
+                }
+            }
+        }
+        drawGame();
+        drawMenus();
         SDL_RenderPresent(renderer);
     }
 }

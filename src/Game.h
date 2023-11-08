@@ -49,33 +49,46 @@ struct synthesisManager
 class Game
 {
 private:
+    // Sauvegarde et base de données
     Player player;                                       // Le joueur
-    Entity playerEntity;                                 // L'entité du joueur
     rapidjson::Document save;                            // Les données de sauvegarde
     Database database;                                   // La base de données
-    Camera camera;                                       // La caméra
+
+    // SDL
     SDL_Renderer *renderer;                              // Le renderer
     SDL_Window *window;                                  // La fenêtre
     SDL_Event event;                                     // L'évènement
+
+    // Infos relatives au jeu
     int timeLastFrame;                                   // La mesure en tick du dernier changement de frame des sprites
     int screenWidth;                                     // La largeur de la fenêtre
     int screenHeight;                                    // La hauteur de la fenêtre
     bool running;                                        // Vrai si le jeu est en cours d'execution
     bool inMenu;                                         // Vrai si le joueur est dans un menu
+    bool adminView;                                      // Vrai si l'admin view est activée    
+    Camera camera;                                       // La caméra
+
+    // Resources
     std::unordered_map<std::string, Sprite> sprites;     // Les sprites
+    std::unordered_map<std::string, Mix_Chunk *> sounds; // Les sons
+    std::unordered_map<std::string, Mix_Music *> musics; // Les musiques
+
+    // Menu
     menuManager menuManager;                             // Le gestionnaire de menus
     skillChanger skillUpdater;                           // Le gestionnaire de changement de compétences
     synthesisManager synthetizer;                        // Le gestionnaire de synthèse
     Sprite cursor;                                       // Le curseur
+
+    // Map
     Map currentMap;                                      // La carte actuelle
     std::vector<Hitbox> hitboxes;                        // Les hitboxes
     std::vector<Entity> entities;                        // Les entités
-    bool adminView;                                      // Vrai si l'admin view est activée
-    std::unordered_map<std::string, Mix_Chunk *> sounds; // Les sons
-    std::unordered_map<std::string, Mix_Music *> musics; // Les musiques
-    int musicVolume;                                     // Le volume de la musique
+    Entity playerEntity;                                 // L'entité du joueur
 
 public:
+
+    // Initialisation
+
     /// @brief Constructeur initialise toutes les composantes de SDL
     Game();
 
@@ -84,6 +97,8 @@ public:
 
     /// @brief Lance l'execution du jeu
     void run();
+
+    // Chargement des ressources
 
     /// @brief Charge les données de sauvegarde
     void loadGame();
@@ -94,12 +109,11 @@ public:
     /// @brief Charge les sons et les musiques
     void loadSounds();
 
+    // Affichage
+
     /// @brief Dessine une entité
     /// @param entity L'entité à dessiner
     void drawEntity(Entity entity);
-
-    /// @brief Dessine les infos du jeu
-    void printInfos();
 
     /// @brief Dessine les contours d'une hitbox
     /// @param h La hitbox à dessiner
@@ -111,62 +125,9 @@ public:
     /// @brief Dessine la map sauf le dernier calque
     void drawMap();
 
-    /// @brief Gère les évènements tel que les touches appuyées
-    void getEvents();
-
-    /// @brief Sauvegarde les données dans le fichier de sauvegarde
-    void saveGame();
-
-    /// @brief Génère une hitbox en face du joueur. Si elle touche une entité lance le script de l'entité
-    void getAction();
-
-    /// @brief Lance un script
-    /// @param script Nom du script à lancer
-    void runScript(std::string script);
-
-    /// @brief Supprime un monstre de la sauvegarde
-    /// @param id L'id du monstre à supprimer
-    void deleteFromSave(std::string id);
-
-    /// @brief Met à jour la position de la caméra en fonction de la position du joueur
-    void updateCameraPosition();
-
-    /// @brief Met à jour les entités
-    void updateEntities();
-
-    /// @brief Crée une équipe de monstres sauvages
-    /// @param monsters Les monstres possiblement présents dans l'équipe
-    /// @param levelMin Niveau minimum des monstres
-    /// @param levelMax Niveau maximum des monstres
-    /// @return L'équipe de monstres sauvages
-    std::vector<Monster> createWildMonsterTeam(std::vector<std::string> monsters, unsigned int levelMin, unsigned int levelMax, std::string monster);
-
-    /// @brief Crée les menus
-    void createMenus();
-
-    /// @brief ouvre un menu
-    /// @param name Le nom du menu à ouvrir
-    void openMenu(std::string name, bool canEscape = true);
-
-    /// @brief Change le menu actuel
-    /// @param name Le nom du menu à changer
-    /// @param status Le status du menu à changer
-    void changeMenu(std::string name, std::string status);
-
-    /// @brief Retourne au menu précédent
-    void returnToPreviousMenu();
-
-    /// @brief Récupère le choix du joueur dans un menu
-    void getPlayerChoice();
-
-    /// @brief Affiche un message
-    /// @param message Le message à afficher
-    void drawMessage(std::string message);
-
-    /// @brief Affiche un message avec une confirmation
-    /// @param message Le message à afficher
-    bool askForConfirmation(std::string message);
-
+   /// @brief Dessine les infos du jeu
+    void printInfos();    
+    
     /// @brief Affiche les informations d'un monstre
     /// @param x Coordonnée x du monstre
     /// @param y Coordonnée y du monstre
@@ -207,6 +168,72 @@ public:
     /// @param end L'index du monstre de fin
     void drawPartTeamInfo(int x, int y, std::vector<Monster *> team, int shiftX = 0, int shiftY = 0, int start = 0, int end = 0);
 
+    /// @brief Affiche les informations d'un set de compétence
+    /// @param skillSet Le set de compétence dont on veut afficher les informations
+    void drawSkillSetInfo(std::string skillSet, unsigned int point = 0);
+
+    /// @brief Affiche les menus et les informations associées à chaque menu
+    void drawMenus();
+
+    // Gestion des évenements
+
+    /// @brief Gère les évènements tel que les touches appuyées
+    void getEvents();
+
+    /// @brief Génère une hitbox en face du joueur. Si elle touche une entité lance le script de l'entité
+    void getAction();
+
+    /// @brief Lance un script
+    /// @param script Nom du script à lancer
+    void runScript(std::string script);
+
+    /// @brief Affiche un message
+    /// @param message Le message à afficher
+    void drawMessage(std::string message);
+
+    /// @brief Affiche un message avec une confirmation
+    /// @param message Le message à afficher
+    bool askForConfirmation(std::string message);
+
+    /// @brief Démarre un combat
+    /// @param monster Monstre devant être présent dans le combat par défaut "null" donc aucun
+    void startFight(std::string monster = "null");
+
+    // Sauvegarde
+
+    /// @brief Sauvegarde les données dans le fichier de sauvegarde
+    void saveGame();
+
+    /// @brief Supprime un monstre de la sauvegarde
+    /// @param id L'id du monstre à supprimer
+    void deleteFromSave(std::string id);
+
+    /// @brief Met à jour la position de la caméra en fonction de la position du joueur
+    void updateCameraPosition();
+
+    /// @brief Met à jour les entités
+    void updateEntities();
+
+    // Gestions des menus
+
+    /// @brief Crée les menus
+    void createMenus();
+
+    /// @brief ouvre un menu
+    /// @param name Le nom du menu à ouvrir
+    void openMenu(std::string name, bool canEscape = true);
+
+    /// @brief Change le menu actuel
+    /// @param name Le nom du menu à changer
+    /// @param status Le status du menu à changer
+    void changeMenu(std::string name, std::string status);
+
+    /// @brief Retourne au menu précédent
+    void returnToPreviousMenu();
+
+    /// @brief Récupère le choix du joueur dans un menu
+    void getPlayerChoice();
+
     /// @brief Definis les case du menu de choix de monstre non selectionnable
     /// @param forbidden Si vrai les cases vides sont non selectionnable Faux toute les cases sont selectionnable
     void forbiddenTeamSwap(bool forbidden = true);
@@ -239,19 +266,22 @@ public:
     /// @brief Vide les informations de synthèse
     void clearSynthesis();
 
-    /// @brief Démarre un combat
-    /// @param monster Monstre devant être présent dans le combat par défaut "null" donc aucun
-    void startFight(std::string monster = "null");
-
-    /// @brief Affiche les informations d'un set de compétence
-    /// @param skillSet Le set de compétence dont on veut afficher les informations
-    void drawSkillSetInfo(std::string skillSet);
-
     /// @brief Retourne au dernier menu précédent
     void emptyMenu();
 
+    // Test
+
     /// @brief Vérifie que toutes les textures sont chargées
     void checkTextures();
+
+    // Autres
+
+    /// @brief Crée une équipe de monstres sauvages
+    /// @param monsters Les monstres possiblement présents dans l'équipe
+    /// @param levelMin Niveau minimum des monstres
+    /// @param levelMax Niveau maximum des monstres
+    /// @return L'équipe de monstres sauvages
+    std::vector<Monster> createWildMonsterTeam(std::vector<std::string> monsters, unsigned int levelMin, unsigned int levelMax, std::string monster);
 
 };
 

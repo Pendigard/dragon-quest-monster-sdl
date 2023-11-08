@@ -72,6 +72,8 @@ public:
     /// @brief génère un monstre null
     Monster();
 
+    ~Monster();
+
     ///@brief Affiche les caractéristiques du monstre dans la console
     void print() const;
 
